@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <ProgressBar
+        android:id="@+id/progressBarShowServiceDetails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        app:layout_constraintRight_toLeftOf="parent"
+        app:layout_constraintLeft_toRightOf="parent"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/trading_service"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/textColorEarthquakeLocation"
+        android:textStyle="bold"/>
+
+    <LinearLayout
+        android:id="@+id/linearTradingServiceData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/txtTradingServiceDate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/tradingDate"
+            android:layout_marginTop="10dp"
+            android:padding="10dp"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:id="@+id/txtTradingServiceDateData"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/textColorEarthquakeLocation"
+            android:text="@string/note_available"
+            android:layout_marginTop="10dp"
+            android:padding="10dp"
+            android:textSize="15sp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearOrderDescriptionData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/txtTradingOrderDescription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/tradingOrderDescription"
+            android:layout_marginTop="10dp"
+            android:padding="10dp"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:id="@+id/txtOrderDescriptionData"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/textColorEarthquakeLocation"
+            android:text="@string/note_available"
+            android:layout_marginTop="10dp"
+            android:padding="10dp"
+            android:textSize="15sp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearAreaData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/txtTradingArea"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/tradingArea"
+            android:layout_marginTop="10dp"
+            android:padding="10dp"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:id="@+id/txtProductAreaData"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/textColorEarthquakeLocation"
+            android:text="@string/note_available"
+            android:layout_marginTop="10dp"
+            android:padding="10dp"
+            android:textSize="15sp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearUnitDataData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/txtTradingUnitName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/tradingUnit"
+            android:layout_marginTop="10dp"
+            android:padding="10dp"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:id="@+id/txtProductUnitData"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/textColorEarthquakeLocation"
+            android:text="@string/note_available"
+            android:layout_marginTop="10dp"
+            android:padding="10dp"
+            android:textSize="15sp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearServiceSourceTypeData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/txtTradingServiceSourceType"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/tradingSourceType"
+            android:layout_marginTop="10dp"
+            android:padding="10dp"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:id="@+id/txtServiceSourceTypeData"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/textColorEarthquakeLocation"
+            android:text="@string/note_available"
+            android:layout_marginTop="10dp"
+            android:padding="10dp"
+            android:textSize="15sp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearServiceStatusTypeData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/txtTradingServiceStatus"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/tradingStatus"
+            android:layout_marginTop="10dp"
+            android:padding="10dp"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:id="@+id/txtServiceStatusData"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/textColorEarthquakeLocation"
+            android:text="@string/note_available"
+            android:layout_marginTop="10dp"
+            android:padding="10dp"
+            android:textSize="15sp"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/linearServiceActionData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/txtTradingServiceAction"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/tradingAction"
+            android:layout_marginTop="10dp"
+            android:padding="10dp"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:id="@+id/txtServiceActionData"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/textColorEarthquakeLocation"
+            android:text="@string/note_available"
+            android:layout_marginTop="10dp"
+            android:padding="10dp"
+            android:textSize="15sp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearServiceFollowUpData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/txtTradingServiceFollowUp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/tradingFollowUp"
+            android:layout_marginTop="10dp"
+            android:padding="10dp"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:id="@+id/txtServiceFollowUpData"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/textColorEarthquakeLocation"
+            android:text="@string/note_available"
+            android:layout_marginTop="10dp"
+            android:padding="10dp"
+            android:textSize="15sp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearServiceRequirementRemarkData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/txtTradingServiceRequirementRemark"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/tradingRequirementRemark"
+            android:layout_marginTop="10dp"
+            android:padding="10dp"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:id="@+id/txtServiceRequirementRemarkData"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/textColorEarthquakeLocation"
+            android:text="@string/note_available"
+            android:layout_marginTop="10dp"
+            android:padding="10dp"
+            android:textSize="15sp"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/linearServiceAssignToData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/txtTradingServiceAssignTo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/tradingAssignTo"
+            android:layout_marginTop="10dp"
+            android:padding="10dp"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:id="@+id/txtServiceAssignToData"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/textColorEarthquakeLocation"
+            android:text="@string/note_available"
+            android:layout_marginTop="10dp"
+            android:padding="10dp"
+            android:textSize="15sp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearServiceGeneratedData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/txtServiceGeneratedTo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/tradingGeneratedBy"
+            android:layout_marginTop="10dp"
+            android:padding="10dp"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:id="@+id/txtServiceGeneratedToData"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/textColorEarthquakeLocation"
+            android:text="@string/note_available"
+            android:layout_marginTop="10dp"
+            android:padding="10dp"
+            android:textSize="15sp"/>
+
+    </LinearLayout>
+
+</LinearLayout>
