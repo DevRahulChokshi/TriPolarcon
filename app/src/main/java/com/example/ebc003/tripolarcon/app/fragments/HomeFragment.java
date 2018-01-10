@@ -2,6 +2,7 @@ package com.example.ebc003.tripolarcon.app.fragments;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -13,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -53,9 +55,12 @@ public class HomeFragment extends Fragment{
     ProgressBar progressBar;
     @BindView (R.id.recyclerConvertedLead)
     RecyclerView convertedLeadList;
+    @BindView (R.id.txtTotalLead)
+    TextView mTxtTotalLead;
 
     private RecyclerView.LayoutManager layoutManager;
     private String user_id;
+    private int size;
 
 
     @Override
@@ -152,7 +157,7 @@ public class HomeFragment extends Fragment{
                         try {
                             //Parsing the fetched Json String to JSON Object
                             jsonArray = new JSONArray (response);
-                            int size=jsonArray.length ();
+                            size=jsonArray.length ();
                             Log.i (TAG,"Size:-"+size);
                             for (int i=0;i<=jsonArray.length ();i++){
                                 try{
@@ -220,5 +225,8 @@ public class HomeFragment extends Fragment{
         convertedLeadList.addItemDecoration (dividerItemDecoration);
         convertedLeadList.setAdapter (leadListAdapter);
         progressBar.setVisibility (View.GONE);
+
+        String mTxtTotalSize=size+" "+"Leads";
+        mTxtTotalLead.setText (mTxtTotalSize);
     }
 }

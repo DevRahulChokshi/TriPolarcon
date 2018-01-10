@@ -22,4 +22,16 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/progressBarShowLead"/>
 
+    <TextView
+        android:id="@+id/txtTotalLead"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/leads"
+        android:textSize="18sp"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/grey_400"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerConvertedLead"
+        app:layout_constraintLeft_toRightOf="parent"
+        app:layout_constraintRight_toLeftOf="parent"/>
+
 </android.support.constraint.ConstraintLayout>
