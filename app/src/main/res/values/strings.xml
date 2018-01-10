@@ -47,4 +47,5 @@
     <string name="tradingOrderDescription">Order Description</string>
     <string name="tradingArea">Area</string>
     <string name="tradingUnit">Unit</string>
+    <string name="leads">Leads</string>
 </resources>
