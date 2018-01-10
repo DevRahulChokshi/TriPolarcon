@@ -53,6 +53,7 @@ public class ActivityContainer extends AppCompatActivity  implements MyAdapterIt
 
         manager=getSupportFragmentManager ();
 
+        Log.i (TAG,"SecondCommit");
     }
 
     private void checkShredPreference () {
@@ -87,7 +88,6 @@ public class ActivityContainer extends AppCompatActivity  implements MyAdapterIt
 
     @Override
     public boolean onOptionsItemSelected (MenuItem item) {
-
         switch (item.getItemId ()){
             case R.id.menu_logout: {
                 clearSharedPreference();
