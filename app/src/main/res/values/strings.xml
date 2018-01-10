@@ -48,4 +48,10 @@
     <string name="tradingArea">Area</string>
     <string name="tradingUnit">Unit</string>
     <string name="leads">Leads</string>
+    <string name="edit_log">Edit Log</string>
+    <string name="add_log_detail">Add Log</string>
+    <string name="AddLogSchedule">Schedule</string>
+    <string name="AddLogDate">Date</string>
+    <string name="AddLogTime">Time</string>
+    <string name="AddLogRemark">Remark</string>
 </resources>

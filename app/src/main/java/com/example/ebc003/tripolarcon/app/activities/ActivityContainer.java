@@ -53,7 +53,11 @@ public class ActivityContainer extends AppCompatActivity  implements MyAdapterIt
 
         manager=getSupportFragmentManager ();
 
-        Log.i (TAG,"SecondCommit");
+//        HomeFragment homeFragment=new HomeFragment ();
+//        FragmentManager fragmentManager=getSupportFragmentManager ();
+//        FragmentTransaction transaction=fragmentManager.beginTransaction ();
+//        transaction.replace (R.id.fragment_container,homeFragment);
+//        transaction.commit ();
     }
 
     private void checkShredPreference () {

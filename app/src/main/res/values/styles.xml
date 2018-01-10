@@ -7,7 +7,6 @@
     </style>
 
     <style name="ParentMaterialTheme" parent="Theme.AppCompat.Light.NoActionBar">
-
         <!-- Parent theme For all Pre - lollipop and lollipop above versions i.e. For all devices -->
 
         <item name="colorPrimary">@color/primaryColor</item>
@@ -15,18 +14,27 @@
         <item name="colorAccent">@color/secondaryColor</item>
     </style>
 
-    <style name="ToolBarTheme"  parent="ThemeOverlay.AppCompat.Light">
-
+    <style name="ToolBarTheme" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:maxWidth">20dip</item>
+        <item name="android:maxHeight">20dip</item>
         <item name="android:textColorPrimary">#fff</item>    <!-- Text Color of Toolbar Title  -->
         <item name="android:textColorSecondary">#fff</item>  <!-- Color of Overflow Menu ( 3 DOTS icon )
                                                                     and color of Navigation Drawer Icon-->
     </style>
 
     <style name="PopupTheme"  parent="ThemeOverlay.AppCompat.Light">
-
         <item name="android:textColorPrimary">@color/grey_500</item>  <!-- Text color of Overflow Menu -->
         <item name="android:background">@color/overflowMenuBg</item>        <!-- Background of Overflow Menu -->
 
     </style>
+
+    <!-- style for Action Bar -->
+    <style name="MyActionBarTabStyle" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:paddingLeft">32dp</item>
+        <item name="android:paddingRight">32dp</item>
+        <item name="android:paddingTop">32dp</item>
+        <item name="android:paddingBottom">32dp</item>
+    </style>
+
 
 </resources>

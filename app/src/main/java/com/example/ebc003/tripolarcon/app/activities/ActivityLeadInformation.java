@@ -1,15 +1,19 @@
 package com.example.ebc003.tripolarcon.app.activities;
 
 import android.content.Intent;
+import android.icu.text.UnicodeSetSpanner;
 import android.nfc.Tag;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -36,7 +40,6 @@ public class ActivityLeadInformation extends AppCompatActivity implements View.O
     private static final String TAG=ActivityLeadInformation.class.getSimpleName ();
 
     @BindView (R.id.lead_info_toolbar) Toolbar mToolbar;
-
     @BindView (R.id.txtCompanyNameData) TextView mTxtCompanyName;
     @BindView (R.id.txtUserEmailData) TextView mTxtCompanyEmail;
     @BindView (R.id.txtCompanyWebSiteData) TextView mTxtWebSite;
@@ -66,6 +69,25 @@ public class ActivityLeadInformation extends AppCompatActivity implements View.O
         checkIntentData();
 
         getLeadData ();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu (Menu menu) {
+        getMenuInflater ().inflate (R.menu.lead_info_menu,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected (MenuItem item) {
+        int id=item.getItemId ();
+        switch (id){
+            case R.id.editLog:{
+                Intent intent=new Intent (this,GenerateLog.class);
+                startActivity (intent);
+                break;
+            }
+        }
+        return super.onOptionsItemSelected (item);
     }
 
     private void checkIntentData () {
