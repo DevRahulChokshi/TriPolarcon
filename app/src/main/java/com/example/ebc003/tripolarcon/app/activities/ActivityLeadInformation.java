@@ -83,6 +83,7 @@ public class ActivityLeadInformation extends AppCompatActivity implements View.O
         switch (id){
             case R.id.editLog:{
                 Intent intent=new Intent (this,GenerateLog.class);
+                intent.putExtra (Constants.COMPANY_NAME,company_name);
                 startActivity (intent);
                 break;
             }
@@ -97,6 +98,7 @@ public class ActivityLeadInformation extends AppCompatActivity implements View.O
             Bundle bundle=intent.getExtras ();
             if (bundle!=null){
                 company_name=bundle.getString (Constants.COMPANY_NAME,"N/A");
+                CompanyID=bundle.getString (Constants.USER_ID,"N/A");
                 Log.i (TAG,company_name);
             }else {
                 Log.i (TAG,"Bundle is null");

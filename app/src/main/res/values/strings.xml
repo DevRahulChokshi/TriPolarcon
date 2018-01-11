@@ -54,4 +54,7 @@
     <string name="AddLogDate">Date</string>
     <string name="AddLogTime">Time</string>
     <string name="AddLogRemark">Remark</string>
+    <string name="date_formate">DD/MM/YY</string>
+    <string name="choose">Choose</string>
+    <string name="time_formate">HH/MM</string>
 </resources>

@@ -31,7 +31,8 @@
         android:id="@+id/linearAddLogSchedule"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginBottom="10dp">
 
         <TextView
             android:id="@+id/txtAddLogSchedule"
@@ -60,7 +61,8 @@
         android:id="@+id/linearAddLogDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginBottom="10dp">
 
         <TextView
             android:id="@+id/txtAddLogDate"
@@ -73,23 +75,31 @@
             android:padding="10dp"
             android:textSize="15sp"/>
 
-        <Spinner
-            android:id="@+id/spinAddLogDate"
+        <EditText
+            android:id="@+id/editAddLogDtn"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="2"
+            android:layout_weight="1"
             android:textColor="@color/textColorEarthquakeLocation"
-            android:text="@string/note_available"
+            android:hint="@string/date_formate"
             android:layout_marginTop="10dp"
             android:padding="10dp"
             android:textSize="15sp"/>
+
+        <Button
+            android:id="@+id/btnDtn"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/choose"/>
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearAddLogTime"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginBottom="10dp">
 
         <TextView
             android:id="@+id/txtAddLogTime"
@@ -102,23 +112,30 @@
             android:padding="10dp"
             android:textSize="15sp"/>
 
-        <Spinner
-            android:id="@+id/spinAddLogTime"
+        <EditText
+            android:id="@+id/editAddLogTime"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="2"
+            android:layout_weight="1"
             android:textColor="@color/textColorEarthquakeLocation"
-            android:text="@string/note_available"
             android:layout_marginTop="10dp"
+            android:hint="@string/time_formate"
             android:padding="10dp"
             android:textSize="15sp"/>
+        <Button
+            android:id="@+id/btnTime"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/choose"/>
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearAddLogRemark"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginBottom="10dp">
 
         <TextView
             android:id="@+id/txtAddLogRemark"

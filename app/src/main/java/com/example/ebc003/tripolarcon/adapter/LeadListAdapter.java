@@ -66,6 +66,7 @@ public class LeadListAdapter extends RecyclerView.Adapter<LeadListAdapter.MyView
                 holder.txtUser.setText (leadListData.getTxtUser ());
                 holder.txtLeadTitle.setText (leadListData.getTxtLeadTitle ());
                 holder.txtUserEmail.setText (leadListData.getTxtUserEmail ());
+                strCompanyName=leadListData.getTxtCompanyId ();
             }
             else {
                 Toast.makeText (context.getApplicationContext (),"Data List is null",Toast.LENGTH_LONG).show ();

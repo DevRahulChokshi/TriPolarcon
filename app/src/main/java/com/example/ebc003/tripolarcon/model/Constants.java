@@ -47,6 +47,7 @@ public class Constants {
     public static final String URL_SHOW_LEAD_DETAIL_INFO="http://www.ebusinesscanvas.com/tripolarcon/android_app/lead_detail_info.php";
     public static final String URL_SHOW_TRADING_INFO="http://www.ebusinesscanvas.com/tripolarcon/android_app/trading_detail.php";
     public static final String URL_SHOW_TRADING_SERVICE_INFO="http://www.ebusinesscanvas.com/tripolarcon/android_app/trading_service_detail.php";
+    public static final String URL_ADD_LOG="http://www.ebusinesscanvas.com/tripolarcon/android_app/add_log.php";
 
     public static final String ORDER_DATE="order_date";
     public static final String ORDER_DETAIL_ID="order_details_id";
@@ -64,4 +65,10 @@ public class Constants {
     public static final String AREA="ser_area";
     public static final String UNIT="unit_id";
 
+    public static final String LOG_SCHEDULE = "add_schedule";
+    public static final String LOG_SCHEDULE_TIME = "add_schedule_time";
+    public static final String LOG_SCHEDULE_DATE = "add_schedule_date";
+    public static final String LOG_DATE = "add_date";
+    public static final String LOG_TIME = "add_time";
+    public static final String LOG_REMARK = "add_remark";
 }

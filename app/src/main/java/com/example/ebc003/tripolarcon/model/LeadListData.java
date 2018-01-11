@@ -8,6 +8,7 @@ import android.util.Log;
 
 public class LeadListData {
 
+    public String txtCompanyId;
     public String txtUser;
     public String txtLeadTitle;
     public String txtUserEmail;
@@ -31,6 +32,13 @@ public class LeadListData {
 //        this.isCheckState = isCheckState;
 //    }
 
+    public String getTxtCompanyId () {
+        return txtCompanyId;
+    }
+
+    public void setTxtCompanyId (String txtCompanyId) {
+        this.txtCompanyId = txtCompanyId;
+    }
 
     public void setTxtUser (String txtUser) {
         this.txtUser = txtUser;

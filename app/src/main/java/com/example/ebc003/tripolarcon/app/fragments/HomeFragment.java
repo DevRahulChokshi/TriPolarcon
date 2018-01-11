@@ -164,6 +164,7 @@ public class HomeFragment extends Fragment{
 
                                     LeadListData leadListData=new LeadListData ();
 
+                                    String CompanyID=jsonArray.getJSONObject (i).getString ("id");
                                     String CompanyName=jsonArray.getJSONObject (i).getString ("name");
                                     String CompanyEmail=jsonArray.getJSONObject (i).getString ("email");
                                     String OfficePhoneNumber=jsonArray.getJSONObject (i).getString ("cust_comp_phn");
@@ -179,6 +180,7 @@ public class HomeFragment extends Fragment{
                                     String firstData= String.valueOf (first);
 
                                     leadListData.setTxtUserEmail (CompanyEmail);
+                                    leadListData.setTxtCompanyId (CompanyID);
                                     leadListData.setTxtLeadTitle (CompanyName);
                                     leadListData.setTxtUser (firstData);
                                     leadListData.setStrOfficeNumber (OfficePhoneNumber);
