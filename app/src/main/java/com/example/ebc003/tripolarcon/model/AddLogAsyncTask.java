@@ -3,6 +3,7 @@ package com.example.ebc003.tripolarcon.model;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.icu.text.UnicodeSetSpanner;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.view.View;
@@ -30,12 +31,14 @@ public class AddLogAsyncTask  extends AsyncTask<String,Void,Boolean>{
     ProgressBar progressBar;
     private Context context;
 
-    public AddLogAsyncTask (Context context){
+    public AddLogAsyncTask (Context context,ProgressBar progressBar){
         this.context=context;
+        this.progressBar=progressBar;
     }
 
     @Override
     protected void onPreExecute () {
+        progressBar.setVisibility (View.VISIBLE);
         super.onPreExecute ();
     }
 
@@ -82,6 +85,13 @@ public class AddLogAsyncTask  extends AsyncTask<String,Void,Boolean>{
 
     @Override
     protected void onPostExecute (Boolean aBoolean) {
+
+        if (aBoolean){
+            progressBar.setVisibility (View.GONE);
+        }
+        else {
+            Toast.makeText (context,"Something Wrong",Toast.LENGTH_LONG).show ();
+        }
 
         super.onPostExecute (aBoolean);
     }

@@ -15,6 +15,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -25,6 +26,8 @@ import com.example.ebc003.tripolarcon.model.AddLogAsyncTask;
 import com.example.ebc003.tripolarcon.model.Constants;
 import com.example.ebc003.tripolarcon.model.DatePickerDialogExample;
 import com.example.ebc003.tripolarcon.model.TimePickerDialogExample;
+
+import java.util.Calendar;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -40,6 +43,8 @@ public class GenerateLog extends AppCompatActivity implements View.OnClickListen
     @BindView (R.id.editAddLogDtn) EditText mEdtDate;
     @BindView (R.id.editAddLogTime) EditText mEdtTime;
     @BindView (R.id.editAddLogRemark) EditText mEdtRemark;
+    @BindView (R.id.progressBarAddLog) ProgressBar progressBar;
+
     String company_name;
     String userID;
     String companyId;
@@ -64,10 +69,11 @@ public class GenerateLog extends AppCompatActivity implements View.OnClickListen
         if (intent!=null){
             company_name=intent.getStringExtra (Constants.COMPANY_NAME);
             companyId=intent.getStringExtra (Constants.USER_ID);
+
             Log.i (TAG,company_name);
             Log.i (TAG,companyId);
         }
-
+        progressBar.setVisibility (View.GONE);
         checkShredPreference ();
     }
 
@@ -116,8 +122,19 @@ public class GenerateLog extends AppCompatActivity implements View.OnClickListen
         String mDate=mEdtDate.getText ().toString ();
         String mTime=mEdtTime.getText ().toString ();
 
-        AddLogAsyncTask addLogAsyncTask=new AddLogAsyncTask (getApplicationContext ());
-        addLogAsyncTask.execute (item,"20/06/2018","11:00",mRemark,mDate,mTime,companyId,userID);
+        final Calendar myCalender = Calendar.getInstance();
+        int hour = myCalender.get(Calendar.HOUR_OF_DAY);
+        int minute = myCalender.get(Calendar.MINUTE);
+
+        int year = myCalender.get(Calendar.YEAR);
+        int month = myCalender.get(Calendar.MONTH);
+        int day = myCalender.get(Calendar.DAY_OF_MONTH);
+
+        String CurrentDate=year+"/"+(month)+1+"/"+day;
+        String CurrentTime=hour+"/"+minute;
+
+        AddLogAsyncTask addLogAsyncTask=new AddLogAsyncTask (getApplicationContext (),progressBar);
+        addLogAsyncTask.execute (item,CurrentDate,CurrentTime,mRemark,mDate,mTime,companyId,userID);
     }
 
     @Override
@@ -156,7 +173,5 @@ public class GenerateLog extends AppCompatActivity implements View.OnClickListen
     }
 
     @Override
-    public void onNothingSelected (AdapterView<?> parent) {
-
-    }
+    public void onNothingSelected (AdapterView<?> parent) {}
 }

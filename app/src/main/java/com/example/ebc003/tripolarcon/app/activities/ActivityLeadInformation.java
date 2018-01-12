@@ -84,6 +84,7 @@ public class ActivityLeadInformation extends AppCompatActivity implements View.O
             case R.id.editLog:{
                 Intent intent=new Intent (this,GenerateLog.class);
                 intent.putExtra (Constants.COMPANY_NAME,company_name);
+                intent.putExtra (Constants.USER_ID,CompanyID);
                 startActivity (intent);
                 break;
             }
@@ -125,6 +126,7 @@ public class ActivityLeadInformation extends AppCompatActivity implements View.O
                                 try{
 
                                     CompanyID=jsonArray.getJSONObject (i).getString (Constants.USER_ID);
+                                    Log.i (TAG,"JSON DATA:-:-"+CompanyID);
                                     String CompanyName=jsonArray.getJSONObject (i).getString ("name");
                                     String CompanyEmail=jsonArray.getJSONObject (i).getString ("email");
                                     String OfficePhoneNumber=jsonArray.getJSONObject (i).getString ("cust_comp_phn");
@@ -198,6 +200,8 @@ public class ActivityLeadInformation extends AppCompatActivity implements View.O
                     Intent intent=new Intent (this,ActivityTradingDetails.class);
                     intent.putExtra (Constants.USER_ID,CompanyID);
                     intent.putExtra (Constants.ASSIGN_TO,assign_to);
+                    Log.i (TAG,"IntentData ID:-"+CompanyID);
+                    Log.i (TAG,"IntentData: Company Name-"+CompanyID);
                     startActivity (intent);
                 break;
         }
