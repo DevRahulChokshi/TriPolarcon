@@ -1,8 +1,6 @@
 package com.example.ebc003.tripolarcon.app.activities;
 
 import android.content.Intent;
-import android.icu.text.UnicodeSetSpanner;
-import android.nfc.Tag;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,7 +11,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -24,7 +21,6 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.ebc003.tripolarcon.R;
 import com.example.ebc003.tripolarcon.model.Constants;
-import com.example.ebc003.tripolarcon.model.LeadListData;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -82,7 +78,7 @@ public class ActivityLeadInformation extends AppCompatActivity implements View.O
         int id=item.getItemId ();
         switch (id){
             case R.id.editLog:{
-                Intent intent=new Intent (this,GenerateLog.class);
+                Intent intent=new Intent (this,ActivityGenerateLog.class);
                 intent.putExtra (Constants.COMPANY_NAME,company_name);
                 intent.putExtra (Constants.USER_ID,CompanyID);
                 startActivity (intent);

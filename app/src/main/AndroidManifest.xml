@@ -22,7 +22,8 @@
         <activity android:name=".app.activities.ActivityContainer" />
         <activity android:name=".app.activities.ActivityLeadInformation" />
         <activity android:name=".app.activities.ActivityTradingDetails" />
-        <activity android:name=".app.activities.GenerateLog"></activity>
+        <activity android:name=".app.activities.ActivityGenerateLog" />
+        <activity android:name=".app.activities.ActivityShowLogDetail"></activity>
     </application>
 
 </manifest>

@@ -5,14 +5,12 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical">
-
     <android.support.v7.widget.CardView
         xmlns:card_view="http://schemas.android.com/apk/res-auto"
         android:id="@+id/card_view"
         android:layout_gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="?android:attr/listPreferredItemHeight"
@@ -21,9 +19,8 @@
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
             android:paddingStart="16dp">
-
             <TextView
-                android:id="@+id/txtUser"
+                android:id="@+id/txtLogCompanyLatter"
                 android:layout_width="36dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -32,8 +29,7 @@
                 android:gravity="center"
                 android:textColor="@android:color/white"
                 android:textSize="16sp"
-                tools:text="R" />
-
+                tools:text="R"/>
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -42,9 +38,8 @@
                 android:layout_marginStart="16dp"
                 android:layout_weight="1"
                 android:orientation="vertical">
-
                 <TextView
-                    android:id="@+id/txtLeadTitle"
+                    android:id="@+id/txtLogCompanyName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
@@ -54,9 +49,8 @@
                     android:textColor="@color/textColorEarthquakeLocation"
                     android:textSize="12sp"
                     tools:text="Infosys Visit" />
-
                 <TextView
-                    android:id="@+id/txtUserEmail"
+                    android:id="@+id/txtLogDateTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
@@ -64,27 +58,7 @@
                     android:textColor="@color/textColorEarthquakeDetails"
                     android:textSize="16sp"
                     tools:text="Long placeholder location that should wrap to more than 2 lines of text" />
-
             </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="16dp"
-                android:layout_marginStart="16dp"
-                android:orientation="vertical">
-
-                <android.support.v7.widget.AppCompatCheckBox
-                    android:id="@+id/checkLead"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-            </LinearLayout>
-
         </LinearLayout>
-
     </android.support.v7.widget.CardView>
-
-
 </LinearLayout>

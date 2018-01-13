@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.ebc003.tripolarcon.app.activities.GenerateLog">
+    tools:context="com.example.ebc003.tripolarcon.app.activities.ActivityGenerateLog">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/add_log_toolbar"
@@ -162,5 +162,10 @@
             android:padding="10dp"
             android:textSize="15sp"/>
     </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:theme="@style/Divider"/>
 
 </LinearLayout>

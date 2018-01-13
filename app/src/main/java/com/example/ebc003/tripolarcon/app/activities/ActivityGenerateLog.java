@@ -17,7 +17,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.example.ebc003.tripolarcon.R;
 import com.example.ebc003.tripolarcon.app.MyDatePicker;
@@ -32,9 +31,9 @@ import java.util.Calendar;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class GenerateLog extends AppCompatActivity implements View.OnClickListener,MyDatePicker,MyTimePicker,AdapterView.OnItemSelectedListener{
+public class ActivityGenerateLog extends AppCompatActivity implements View.OnClickListener,MyDatePicker,MyTimePicker,AdapterView.OnItemSelectedListener{
 
-    private static final String TAG=GenerateLog.class.getSimpleName ();
+    private static final String TAG=ActivityGenerateLog.class.getSimpleName ();
 
     @BindView (R.id.spinAddLogSchedule) Spinner mSpinnerSchedule;
     @BindView (R.id.add_log_toolbar) Toolbar toolbar;
@@ -45,10 +44,13 @@ public class GenerateLog extends AppCompatActivity implements View.OnClickListen
     @BindView (R.id.editAddLogRemark) EditText mEdtRemark;
     @BindView (R.id.progressBarAddLog) ProgressBar progressBar;
 
+
     String company_name;
     String userID;
     String companyId;
     String item;
+
+
 
     @Override
     protected void onCreate (Bundle savedInstanceState) {
@@ -65,6 +67,8 @@ public class GenerateLog extends AppCompatActivity implements View.OnClickListen
         mBtnTime.setOnClickListener (this);
         mSpinnerSchedule.setOnItemSelectedListener (this);
 
+        checkShredPreference ();
+
         Intent intent=getIntent ();
         if (intent!=null){
             company_name=intent.getStringExtra (Constants.COMPANY_NAME);
@@ -74,7 +78,7 @@ public class GenerateLog extends AppCompatActivity implements View.OnClickListen
             Log.i (TAG,companyId);
         }
         progressBar.setVisibility (View.GONE);
-        checkShredPreference ();
+
     }
 
     private void checkShredPreference () {
@@ -110,6 +114,12 @@ public class GenerateLog extends AppCompatActivity implements View.OnClickListen
         switch (id){
             case R.id.addLog:{
                 addLogDetails();
+                break;
+            }
+            case R.id.showLog:{
+                    Intent intent=new Intent (this,ActivityShowLogDetail.class);
+                    intent.putExtra (Constants.USER_ID,userID);
+                    startActivity (intent);
                 break;
             }
         }
@@ -174,4 +184,5 @@ public class GenerateLog extends AppCompatActivity implements View.OnClickListen
 
     @Override
     public void onNothingSelected (AdapterView<?> parent) {}
+
 }

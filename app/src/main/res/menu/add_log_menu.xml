@@ -6,4 +6,9 @@
             android:title="@string/edit_log"
             android:icon="@drawable/ic_done"
             app:showAsAction="ifRoom"/>
+
+    <item android:id="@+id/showLog"
+            android:title="@string/edit_log"
+            android:icon="@drawable/ic_done"
+            app:showAsAction="ifRoom"/>
 </menu>

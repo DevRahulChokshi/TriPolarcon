@@ -57,4 +57,5 @@
     <string name="date_formate">DD/MM/YY</string>
     <string name="choose">Choose</string>
     <string name="time_formate">HH/MM</string>
+    <string name="show_log_detail">Show Log</string>
 </resources>

@@ -70,7 +70,6 @@ public class AddLogAsyncTask  extends AsyncTask<String,Void,Boolean>{
         if (!response.isNull (Constants.REQUEST_STATUS)){
             try {
                 String success=response.getString (Constants.REQUEST_STATUS);
-
                 Log.i (AddLogAsyncTask.class.getSimpleName ()," "+success);
             }
             catch (JSONException e) {
@@ -85,14 +84,13 @@ public class AddLogAsyncTask  extends AsyncTask<String,Void,Boolean>{
 
     @Override
     protected void onPostExecute (Boolean aBoolean) {
-
         if (aBoolean){
             progressBar.setVisibility (View.GONE);
+
         }
         else {
             Toast.makeText (context,"Something Wrong",Toast.LENGTH_LONG).show ();
         }
-
         super.onPostExecute (aBoolean);
     }
 }
