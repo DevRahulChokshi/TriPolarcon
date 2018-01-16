@@ -75,6 +75,7 @@ public class ActivityContainer extends AppCompatActivity  implements MyAdapterIt
         setSupportActionBar (mMainToolbar);
         ActionBar actionBar=getSupportActionBar ();
         if (actionBar!=null){
+            actionBar.setDisplayShowTitleEnabled (true);
             actionBar.setTitle (R.string.title_home);
         }
     }

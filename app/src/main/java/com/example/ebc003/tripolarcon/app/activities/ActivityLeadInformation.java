@@ -46,6 +46,7 @@ public class ActivityLeadInformation extends AppCompatActivity implements View.O
     @BindView (R.id.txtPersonNumberData) TextView mTxtPersonNumber;
     @BindView (R.id.txtPersonNoteData) TextView mTxtPersonNote;
     @BindView (R.id.txtLeadInfo) TextView mTxtLeadInfo;
+    @BindView (R.id.txtEnquiryStatusData) TextView mTxtEnquiryStatus;
     @BindView (R.id.progressBarLeadDetails) ProgressBar progressBar;
 
     String company_name;
@@ -132,6 +133,7 @@ public class ActivityLeadInformation extends AppCompatActivity implements View.O
                                     String ContactPersonName=jsonArray.getJSONObject (i).getString ("contact_person");
                                     String ContactPersonNumber=jsonArray.getJSONObject (i).getString ("con_per_no");
                                     String Note=jsonArray.getJSONObject (i).getString ("cust_note");
+                                    String Source=jsonArray.getJSONObject (i).getString ("source");
                                     assign_to=jsonArray.getJSONObject (i).getString ("assign_to");
 
                                     mTxtCompanyEmail.setText (CompanyEmail);
@@ -143,6 +145,7 @@ public class ActivityLeadInformation extends AppCompatActivity implements View.O
                                     mTxtPersonName.setText (ContactPersonName);
                                     mTxtPersonNumber.setText (ContactPersonNumber);
                                     mTxtPersonNote.setText (Note);
+                                    mTxtEnquiryStatus.setText (Source);
 
                                 }catch (JSONException e){
                                     e.printStackTrace ();
@@ -184,6 +187,7 @@ public class ActivityLeadInformation extends AppCompatActivity implements View.O
         ActionBar actionBar=getSupportActionBar ();
         if (actionBar!=null){
             actionBar.setTitle (R.string.lead_title);
+            actionBar.setDisplayHomeAsUpEnabled (true);
         }
     }
 
@@ -196,8 +200,6 @@ public class ActivityLeadInformation extends AppCompatActivity implements View.O
                     Intent intent=new Intent (this,ActivityTradingDetails.class);
                     intent.putExtra (Constants.USER_ID,CompanyID);
                     intent.putExtra (Constants.ASSIGN_TO,assign_to);
-                    Log.i (TAG,"IntentData ID:-"+CompanyID);
-                    Log.i (TAG,"IntentData: Company Name-"+CompanyID);
                     startActivity (intent);
                 break;
         }

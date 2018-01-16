@@ -1,8 +1,6 @@
 package com.example.ebc003.tripolarcon.app.fragments;
 
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.nfc.Tag;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -147,7 +145,6 @@ public class HomeFragment extends Fragment{
     }
 
     private void getData(){
-
         //Creating a string request
         StringRequest stringRequest = new StringRequest (Request.Method.POST,Constants.URL_SHOW_LEAD_LIST,
                 new Response.Listener<String>() {

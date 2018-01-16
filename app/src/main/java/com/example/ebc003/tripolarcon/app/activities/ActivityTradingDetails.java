@@ -2,6 +2,7 @@ package com.example.ebc003.tripolarcon.app.activities;
 
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -25,7 +26,7 @@ public class ActivityTradingDetails extends AppCompatActivity implements TabLayo
 
         ButterKnife.bind (this);
 
-        setSupportActionBar(toolbar);
+        setUpToolbar();
 
         tabLayout.addTab(tabLayout.newTab().setText("Trading"));
         tabLayout.addTab(tabLayout.newTab().setText("TradingService"));
@@ -36,6 +37,15 @@ public class ActivityTradingDetails extends AppCompatActivity implements TabLayo
         viewPager.setAdapter(adapter);
 
         tabLayout.setOnTabSelectedListener(this);
+    }
+
+    private void setUpToolbar () {
+        setSupportActionBar(toolbar);
+        ActionBar actionBar=getSupportActionBar ();
+        if (actionBar!=null){
+            actionBar.setTitle (R.string.order_details);
+            actionBar.setDisplayHomeAsUpEnabled (true);
+        }
     }
 
     @Override

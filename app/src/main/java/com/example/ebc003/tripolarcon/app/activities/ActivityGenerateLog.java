@@ -36,6 +36,8 @@ public class ActivityGenerateLog extends AppCompatActivity implements View.OnCli
     private static final String TAG=ActivityGenerateLog.class.getSimpleName ();
 
     @BindView (R.id.spinAddLogSchedule) Spinner mSpinnerSchedule;
+    @BindView (R.id.spinAddLogCallType) Spinner mSpinnerCallType;
+    @BindView (R.id.spinAddLogStatus) Spinner mSpinnerStatus;
     @BindView (R.id.add_log_toolbar) Toolbar toolbar;
     @BindView (R.id.btnDtn) Button mBtnDate;
     @BindView (R.id.btnTime) Button mBtnTime;
@@ -48,7 +50,9 @@ public class ActivityGenerateLog extends AppCompatActivity implements View.OnCli
     String company_name;
     String userID;
     String companyId;
-    String item;
+    String mSpinnserSchedule;
+    String mSpinnserCallType;
+    String mSpinnserStaus;
 
 
 
@@ -60,12 +64,14 @@ public class ActivityGenerateLog extends AppCompatActivity implements View.OnCli
         ButterKnife.bind (this);
         //setUp Toolbar
         setToolbar();
-        //Add Spinner item
+        //Add Spinner mSpinnserSchedule
         setSpinner();
 
         mBtnDate.setOnClickListener (this);
         mBtnTime.setOnClickListener (this);
         mSpinnerSchedule.setOnItemSelectedListener (this);
+        mSpinnerCallType.setOnItemSelectedListener (this);
+        mSpinnerStatus.setOnItemSelectedListener (this);
 
         checkShredPreference ();
 
@@ -88,9 +94,18 @@ public class ActivityGenerateLog extends AppCompatActivity implements View.OnCli
     }
 
     private void setSpinner () {
-        String [] mListSchedule={"Select the item","Meeting","Site Visit","Phone Call","Reminder","Follow up"};
+        String [] mListSchedule={"Meeting","Site Visit","Phone Call","Reminder","Follow up"};
         ArrayAdapter<String> adapterSchedule=new ArrayAdapter<String> (getApplicationContext (),android.R.layout.simple_spinner_dropdown_item,mListSchedule);
         mSpinnerSchedule.setAdapter (adapterSchedule);
+
+        String [] mListCallType={"Phone call","Enquiry call","Reminder Call","Follow up","Payment"};
+        ArrayAdapter<String> adapterCallType=new ArrayAdapter<String> (getApplicationContext (),android.R.layout.simple_spinner_dropdown_item,mListCallType);
+        mSpinnerCallType.setAdapter (adapterCallType);
+
+        String [] mListStatus={"Call back","No response","No related","Order closed","Directly forwarded","Number not reachable","Others","Quotation","Order finalise","Sampling","Site visit","Send to contractor","FCD"};
+        ArrayAdapter<String> adapterStatus=new ArrayAdapter<String> (getApplicationContext (),android.R.layout.simple_spinner_dropdown_item,mListStatus);
+        mSpinnerStatus.setAdapter (adapterStatus);
+
     }
 
     private void setToolbar () {
@@ -144,7 +159,7 @@ public class ActivityGenerateLog extends AppCompatActivity implements View.OnCli
         String CurrentTime=hour+"/"+minute;
 
         AddLogAsyncTask addLogAsyncTask=new AddLogAsyncTask (getApplicationContext (),progressBar);
-        addLogAsyncTask.execute (item,CurrentDate,CurrentTime,mRemark,mDate,mTime,companyId,userID);
+        addLogAsyncTask.execute (mSpinnserSchedule,CurrentDate,CurrentTime,mSpinnserCallType,mSpinnserStaus,mRemark,mDate,mTime,companyId,userID);
     }
 
     @Override
@@ -179,7 +194,9 @@ public class ActivityGenerateLog extends AppCompatActivity implements View.OnCli
 
     @Override
     public void onItemSelected (AdapterView<?> parent, View view, int position, long id) {
-        item= (String) parent.getItemAtPosition (position);
+        mSpinnserSchedule = (String) parent.getItemAtPosition (position);
+        mSpinnserCallType = (String) parent.getItemAtPosition (position);
+        mSpinnserStaus = (String) parent.getItemAtPosition (position);
     }
 
     @Override

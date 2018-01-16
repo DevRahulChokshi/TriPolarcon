@@ -57,5 +57,10 @@
     <string name="date_formate">DD/MM/YY</string>
     <string name="choose">Choose</string>
     <string name="time_formate">HH/MM</string>
-    <string name="show_log_detail">Show Log</string>
+    <string name="show_log_detail">Show log</string>
+    <string name="order_details">Order details</string>
+    <string name="Enquiry_status">Status</string>
+    <string name="Enquiry_source">Source</string>
+    <string name="AddLogCallType">Call Type</string>
+    <string name="AddLogStatus">Status</string>
 </resources>

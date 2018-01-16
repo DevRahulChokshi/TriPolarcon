@@ -15,8 +15,7 @@
     </style>
 
     <style name="ToolBarTheme" parent="ThemeOverlay.AppCompat.Light">
-        <item name="android:maxWidth">20dip</item>
-        <item name="android:maxHeight">20dip</item>
+
         <item name="android:textColorPrimary">#fff</item>    <!-- Text Color of Toolbar Title  -->
         <item name="android:textColorSecondary">#fff</item>  <!-- Color of Overflow Menu ( 3 DOTS icon )
                                                                     and color of Navigation Drawer Icon-->

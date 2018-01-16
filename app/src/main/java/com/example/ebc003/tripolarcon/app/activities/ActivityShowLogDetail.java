@@ -1,10 +1,12 @@
 package com.example.ebc003.tripolarcon.app.activities;
 
 import android.content.Intent;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 
 import com.android.volley.AuthFailureError;
@@ -37,6 +39,10 @@ public class ActivityShowLogDetail extends AppCompatActivity {
 
     @BindView (R.id.recyclerShowLogDetails)
     RecyclerView mRecyclerShowLog;
+
+    @BindView (R.id.show_log_detail_toolbar)
+    Toolbar mToolbar;
+
     private RecyclerView.LayoutManager layoutManager;
     List<LogData> mLogList;
 
@@ -46,10 +52,25 @@ public class ActivityShowLogDetail extends AppCompatActivity {
         setContentView (R.layout.activity_show_log_detail);
         ButterKnife.bind (this);
 
+        setUpToolbar();
+
         mLogList=new ArrayList<> ();
         layoutManager=new LinearLayoutManager (getApplicationContext ());
         mRecyclerShowLog.setLayoutManager (layoutManager);
         getData();
+    }
+
+    private void setUpToolbar () {
+        setSupportActionBar (mToolbar);
+        ActionBar actionBar=getSupportActionBar ();
+        if (actionBar!=null){
+            actionBar.setDisplayShowTitleEnabled (true);
+            actionBar.setTitle (R.string.show_log_detail);
+            actionBar.setDisplayHomeAsUpEnabled (true);
+        }
+        else {
+            Log.i (TAG,"ACTION BAR");
+        }
     }
 
     private String getIntentExtras () {
@@ -82,12 +103,11 @@ public class ActivityShowLogDetail extends AppCompatActivity {
                                     LogData logData=new LogData ();
                                     logData.setLogUserLatter (jsonArray.getJSONObject (i).getString (Constants.USER_ID));
                                     logData.setLogCompanyName(jsonArray.getJSONObject (i).getString (Constants.USER_ID));
-                                    logData.setLogCompanyDate(jsonArray.getJSONObject (i).getString ("sche_date"));
-                                    logData.setLogCompanyTime(jsonArray.getJSONObject (i).getString ("sche_time"));
-                                    logData.setLogCompanyRemark (jsonArray.getJSONObject (i).getString ("en_remark"));
+                                    logData.setLogCompanyDate(jsonArray.getJSONObject (i).getString (Constants.SHOW_LOG_DATE));
+                                    logData.setLogCompanyTime(jsonArray.getJSONObject (i).getString (Constants.SHOW_LOG_TIME));
+                                    logData.setLogCompanyRemark (jsonArray.getJSONObject (i).getString (Constants.SHOW_LOG_REMARK));
 
                                     mLogList.add (logData);
-
                                 }catch (JSONException e){
                                     e.printStackTrace ();
                                 }
@@ -110,7 +130,6 @@ public class ActivityShowLogDetail extends AppCompatActivity {
                 String user_id=getIntentExtras ();
                 Map<String,String> stringMap=new HashMap<> ();
                 stringMap.put (Constants.USER_ID,user_id);
-                Log.i (TAG,"HASH MAP USER_ID:-"+user_id);
                 return stringMap;
             }
         };

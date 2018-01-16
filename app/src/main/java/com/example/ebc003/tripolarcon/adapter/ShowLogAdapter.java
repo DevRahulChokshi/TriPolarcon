@@ -46,9 +46,9 @@ public class ShowLogAdapter extends RecyclerView.Adapter<ShowLogAdapter.LogHolde
             if (logData!=null){
                 holder.mTxtCompanyLatter.setText (logData.getLogUserLatter ());
                 holder.mTxtCompanyName.setText (logData.getLogUserLatter ());
-                holder.mTxtScheduleDateTime.setText (logData.getLogUserLatter ());
+                String mLogData=logData.getLogCompanyDate ()+" "+logData.getLogCompanyTime ()+" "+logData.getLogCompanyRemark ();
+                holder.mTxtScheduleDateTime.setText (mLogData);
 
-                Log.i (TAG,"LIST DATA:-");
             }
             else {
                 Log.i (TAG,"DATA NULL");

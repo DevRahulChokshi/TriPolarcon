@@ -28,6 +28,8 @@ import butterknife.BindView;
 
 public class AddLogAsyncTask  extends AsyncTask<String,Void,Boolean>{
 
+    private String TAG=AddLogAsyncTask.class.getSimpleName ();
+
     ProgressBar progressBar;
     private Context context;
 
@@ -58,11 +60,21 @@ public class AddLogAsyncTask  extends AsyncTask<String,Void,Boolean>{
         listData.add (new BasicNameValuePair (Constants.LOG_SCHEDULE,mSchedule));
         listData.add (new BasicNameValuePair (Constants.LOG_TIME,mLogTime));
         listData.add (new BasicNameValuePair (Constants.LOG_DATE,mLogDate));
+        listData.add (new BasicNameValuePair (Constants.LOG_CALL_TYPE,mRemark));
+        listData.add (new BasicNameValuePair (Constants.LOG_STATUS,mRemark));
         listData.add (new BasicNameValuePair (Constants.LOG_REMARK,mRemark));
         listData.add (new BasicNameValuePair (Constants.LOG_SCHEDULE_DATE,mScheduleDate));
         listData.add (new BasicNameValuePair (Constants.LOG_SCHEDULE_TIME,mScheduleTime));
         listData.add (new BasicNameValuePair (Constants.GENERATED_BY,mGeneratedBy));
         listData.add (new BasicNameValuePair (Constants.COMPANY_NAME,mCustomer));
+        Log.i (TAG,"Spinner Schedule:-"+mSchedule);
+        Log.i (TAG,"Current Date:-"+mLogTime);
+        Log.i (TAG,"Current Time:-"+mLogDate);
+        Log.i (TAG,"Remark:-"+mRemark);
+        Log.i (TAG,"Schedule Date:-"+mScheduleDate);
+        Log.i (TAG,"Schedule Time:-"+mScheduleTime);
+        Log.i (TAG,"Customer ID:-"+mCustomer);
+        Log.i (TAG,"User ID:-"+mGeneratedBy);
 
         JSONParser parser=new JSONParser ();
         JSONObject response=parser.makeHttpRequest (Constants.URL_ADD_LOG,Constants.METHOD_POST,listData);
