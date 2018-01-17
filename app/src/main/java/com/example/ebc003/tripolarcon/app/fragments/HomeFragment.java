@@ -49,12 +49,9 @@ public class HomeFragment extends Fragment{
     private String TAG=HomeFragment.class.getSimpleName ();
     List<LeadListData> listData;
 
-    @BindView(R.id.progressBarShowLead)
-    ProgressBar progressBar;
-    @BindView (R.id.recyclerConvertedLead)
-    RecyclerView convertedLeadList;
-    @BindView (R.id.txtTotalLead)
-    TextView mTxtTotalLead;
+    @BindView(R.id.progressBarShowLead) ProgressBar progressBar;
+    @BindView (R.id.recyclerConvertedLead) RecyclerView convertedLeadList;
+    @BindView (R.id.txtTotalLead) TextView mTxtTotalLead;
 
     private RecyclerView.LayoutManager layoutManager;
     private String user_id;

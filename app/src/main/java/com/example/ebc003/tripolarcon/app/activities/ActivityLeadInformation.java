@@ -66,6 +66,13 @@ public class ActivityLeadInformation extends AppCompatActivity implements View.O
         checkIntentData();
 
         getLeadData ();
+
+        mToolbar.setNavigationOnClickListener (new View.OnClickListener () {
+            @Override
+            public void onClick (View v) {
+                finish ();
+            }
+        });
     }
 
     @Override
@@ -187,7 +194,8 @@ public class ActivityLeadInformation extends AppCompatActivity implements View.O
         ActionBar actionBar=getSupportActionBar ();
         if (actionBar!=null){
             actionBar.setTitle (R.string.lead_title);
-            actionBar.setDisplayHomeAsUpEnabled (true);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
     }
 

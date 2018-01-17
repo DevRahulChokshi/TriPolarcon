@@ -6,8 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:focusableInTouchMode="true"
     tools:context="com.example.ebc003.tripolarcon.app.activities.ActivityGenerateLog">
-
     <android.support.v7.widget.Toolbar
         android:id="@+id/add_log_toolbar"
         android:minHeight="?attr/actionBarSize"
@@ -16,13 +16,11 @@
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
         app:popupTheme="@style/PopupTheme"/>
-
     <ProgressBar
         android:id="@+id/progressBarAddLog"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:indeterminate="true" />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -48,7 +46,6 @@
             android:textColor="@color/textColorEarthquakeLocation"
             android:padding="10dp"
             android:textSize="15sp"/>
-
         <Spinner
             android:id="@+id/spinAddLogSchedule"
             android:layout_width="0dp"
@@ -60,14 +57,12 @@
             android:textColor="@color/textColorEarthquakeLocation"
             android:textSize="15sp" />
     </LinearLayout>
-
     <LinearLayout
         android:id="@+id/linearAddLogDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginBottom="10dp">
-
         <TextView
             android:id="@+id/txtAddLogDate"
             android:layout_width="0dp"
@@ -78,7 +73,6 @@
             android:layout_marginTop="10dp"
             android:padding="10dp"
             android:textSize="15sp"/>
-
         <EditText
             android:id="@+id/editAddLogDtn"
             android:layout_width="0dp"
@@ -89,7 +83,6 @@
             android:layout_marginTop="10dp"
             android:padding="10dp"
             android:textSize="15sp"/>
-
         <Button
             android:id="@+id/btnDtn"
             android:layout_width="0dp"
@@ -97,14 +90,12 @@
             android:layout_height="wrap_content"
             android:text="@string/choose"/>
     </LinearLayout>
-
     <LinearLayout
         android:id="@+id/linearAddLogTime"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginBottom="10dp">
-
         <TextView
             android:id="@+id/txtAddLogTime"
             android:layout_width="0dp"
@@ -115,7 +106,6 @@
             android:layout_marginTop="10dp"
             android:padding="10dp"
             android:textSize="15sp"/>
-
         <EditText
             android:id="@+id/editAddLogTime"
             android:layout_width="0dp"
@@ -133,7 +123,6 @@
             android:layout_height="wrap_content"
             android:text="@string/choose"/>
     </LinearLayout>
-
     <LinearLayout
         android:id="@+id/linearAddLogCallType"
         android:layout_width="match_parent"
@@ -150,7 +139,6 @@
             android:textColor="@color/textColorEarthquakeLocation"
             android:padding="10dp"
             android:textSize="15sp"/>
-
         <Spinner
             android:id="@+id/spinAddLogCallType"
             android:layout_width="0dp"
@@ -162,14 +150,12 @@
             android:textColor="@color/textColorEarthquakeLocation"
             android:textSize="15sp" />
     </LinearLayout>
-
     <LinearLayout
         android:id="@+id/linearAddLogStatus"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:orientation="horizontal">
-
         <TextView
             android:id="@+id/txtAddLogStatus"
             android:layout_width="0dp"
@@ -180,7 +166,6 @@
             android:text="@string/AddLogStatus"
             android:textColor="@color/textColorEarthquakeLocation"
             android:textSize="15sp" />
-
         <Spinner
             android:id="@+id/spinAddLogStatus"
             android:layout_width="0dp"
@@ -192,14 +177,12 @@
             android:textColor="@color/textColorEarthquakeLocation"
             android:textSize="15sp" />
     </LinearLayout>
-
     <LinearLayout
         android:id="@+id/linearAddLogRemark"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginBottom="10dp">
-
         <TextView
             android:id="@+id/txtAddLogRemark"
             android:layout_width="0dp"
@@ -210,7 +193,6 @@
             android:textColor="@color/textColorEarthquakeLocation"
             android:padding="10dp"
             android:textSize="15sp"/>
-
         <EditText
             android:id="@+id/editAddLogRemark"
             android:layout_width="0dp"
@@ -221,10 +203,8 @@
             android:padding="10dp"
             android:textSize="15sp"/>
     </LinearLayout>
-
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:theme="@style/Divider"/>
-
+        android:drawable="@style/Divider"/>
 </LinearLayout>

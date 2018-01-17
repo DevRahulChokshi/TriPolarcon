@@ -49,13 +49,14 @@ public class NavigationDrawerItems {
         return new int[]{
                 R.drawable.ic_home_black,
                 R.drawable.ic_mode_edit_black,
-                R.drawable.ic_reminder_black
+                R.drawable.ic_reminder_black,
+                R.drawable.ic_event
         };
     }
 
     private static String[] getTitles(){
         return new String[]{
-            "Home","Leads","Reminder"
+            "Home","Leads","Reminder","Daily plan"
         };
     }
 }

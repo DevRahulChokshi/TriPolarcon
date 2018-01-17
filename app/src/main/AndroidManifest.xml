@@ -11,19 +11,19 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/MaterialTheme">
-        <activity android:name=".app.activities.ActivitySplashScreen">
+        <activity android:name="com.example.ebc003.tripolarcon.app.activities.ActivitySplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".app.activities.ActivityLogin" />
-        <activity android:name=".app.activities.ActivityContainer" />
-        <activity android:name=".app.activities.ActivityLeadInformation" />
-        <activity android:name=".app.activities.ActivityTradingDetails" />
-        <activity android:name=".app.activities.ActivityGenerateLog" />
-        <activity android:name=".app.activities.ActivityShowLogDetail"></activity>
+        <activity android:name="com.example.ebc003.tripolarcon.app.activities.ActivityLogin" />
+        <activity android:name="com.example.ebc003.tripolarcon.app.activities.ActivityContainer" />
+        <activity android:name="com.example.ebc003.tripolarcon.app.activities.ActivityLeadInformation"/>
+        <activity android:name="com.example.ebc003.tripolarcon.app.activities.ActivityTradingDetails" />
+        <activity android:name="com.example.ebc003.tripolarcon.app.activities.ActivityGenerateLog" />
+        <activity android:name="com.example.ebc003.tripolarcon.app.activities.ActivityShowLogDetail"/>
     </application>
 
 </manifest>

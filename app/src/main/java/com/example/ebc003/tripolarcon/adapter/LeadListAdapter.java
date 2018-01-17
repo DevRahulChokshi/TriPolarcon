@@ -100,14 +100,14 @@ public class LeadListAdapter extends RecyclerView.Adapter<LeadListAdapter.MyView
        TextView txtUser;
        TextView txtUserEmail;
        TextView txtLeadTitle;
-       AppCompatCheckBox checkLead;
+//       AppCompatCheckBox checkLead;
 
         public MyViewHolder (final View itemView) {
             super (itemView);
             txtUser=itemView.findViewById (R.id.txtUser);
             txtUserEmail=itemView.findViewById (R.id.txtUserEmail);
             txtLeadTitle=itemView.findViewById (R.id.txtLeadTitle);
-            checkLead=itemView.findViewById (R.id.checkLead);
+//            checkLead=itemView.findViewById (R.id.checkLead);
         }
     }
 }

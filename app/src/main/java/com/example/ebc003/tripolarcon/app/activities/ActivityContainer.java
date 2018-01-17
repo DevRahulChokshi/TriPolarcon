@@ -18,6 +18,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.example.ebc003.tripolarcon.R;
 import com.example.ebc003.tripolarcon.app.MyAdapterItemActivity;
+import com.example.ebc003.tripolarcon.app.fragments.DailyPlanFragment;
 import com.example.ebc003.tripolarcon.app.fragments.HomeFragment;
 import com.example.ebc003.tripolarcon.app.fragments.LeadFragment;
 import com.example.ebc003.tripolarcon.app.fragments.NavigationDrawerFragment;
@@ -52,12 +53,6 @@ public class ActivityContainer extends AppCompatActivity  implements MyAdapterIt
         checkShredPreference();
 
         manager=getSupportFragmentManager ();
-
-//        HomeFragment homeFragment=new HomeFragment ();
-//        FragmentManager fragmentManager=getSupportFragmentManager ();
-//        FragmentTransaction transaction=fragmentManager.beginTransaction ();
-//        transaction.replace (R.id.fragment_container,homeFragment);
-//        transaction.commit ();
     }
 
     private void checkShredPreference () {
@@ -148,11 +143,23 @@ public class ActivityContainer extends AppCompatActivity  implements MyAdapterIt
                 drawerLayout.closeDrawer (GravityCompat.START);
                 break;
             }
-            case "Reminder":{
-                ReminderFragment reminderFragment=new ReminderFragment ();
-                FragmentTransaction transaction=manager.beginTransaction ();
-                transaction.replace (R.id.fragment_container,reminderFragment,Constants.FRAG_REMINDER);
+            case "Reminder": {
+                ReminderFragment reminderFragment = new ReminderFragment ();
+                FragmentTransaction transaction = manager.beginTransaction ();
+                transaction.replace (R.id.fragment_container, reminderFragment, Constants.FRAG_REMINDER);
                 transaction.addToBackStack (Constants.FRAG_REMINDER);
+                transaction.commit ();
+                drawerLayout.closeDrawer (GravityCompat.START);
+                break;
+            }
+            case "Daily plan":{
+                DailyPlanFragment dailyPlanFragment=new DailyPlanFragment ();
+                FragmentTransaction transaction=manager.beginTransaction ();
+                transaction.replace (R.id.fragment_container,dailyPlanFragment,Constants.FRAG_DAILY_PLAN);
+                transaction.addToBackStack (Constants.FRAG_DAILY_PLAN);
+                Bundle bundle=new Bundle ();
+                bundle.putString (Constants.USER_ID,userID);
+                dailyPlanFragment.setArguments (bundle);
                 transaction.commit ();
                 drawerLayout.closeDrawer (GravityCompat.START);
                 break;

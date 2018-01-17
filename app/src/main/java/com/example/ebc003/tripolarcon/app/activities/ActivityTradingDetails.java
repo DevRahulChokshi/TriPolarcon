@@ -6,6 +6,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 
 import com.example.ebc003.tripolarcon.R;
 import com.example.ebc003.tripolarcon.adapter.Pager;
@@ -37,6 +38,13 @@ public class ActivityTradingDetails extends AppCompatActivity implements TabLayo
         viewPager.setAdapter(adapter);
 
         tabLayout.setOnTabSelectedListener(this);
+
+        toolbar.setNavigationOnClickListener (new View.OnClickListener () {
+            @Override
+            public void onClick (View v) {
+                finish ();
+            }
+        });
     }
 
     private void setUpToolbar () {
@@ -44,7 +52,8 @@ public class ActivityTradingDetails extends AppCompatActivity implements TabLayo
         ActionBar actionBar=getSupportActionBar ();
         if (actionBar!=null){
             actionBar.setTitle (R.string.order_details);
-            actionBar.setDisplayHomeAsUpEnabled (true);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
     }
 

@@ -11,15 +11,19 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
 import com.example.ebc003.tripolarcon.R;
 import com.example.ebc003.tripolarcon.model.JSONParser;
 import com.example.ebc003.tripolarcon.model.Constants;
+
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 

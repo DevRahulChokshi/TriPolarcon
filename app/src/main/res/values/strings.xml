@@ -63,4 +63,8 @@
     <string name="Enquiry_source">Source</string>
     <string name="AddLogCallType">Call Type</string>
     <string name="AddLogStatus">Status</string>
+    <string name="strEnquiry">Enquiry</string>
+    <string name="strEnquiryTime">Time</string>
+    <string name="strEnquiryScheduleType">ScheduleType</string>
+    <string name="strEnquiryLocation">Location</string>
 </resources>

@@ -85,6 +85,13 @@ public class ActivityGenerateLog extends AppCompatActivity implements View.OnCli
         }
         progressBar.setVisibility (View.GONE);
 
+        toolbar.setNavigationOnClickListener (new View.OnClickListener () {
+            @Override
+            public void onClick (View v) {
+                finish ();
+            }
+        });
+
     }
 
     private void checkShredPreference () {
@@ -113,7 +120,8 @@ public class ActivityGenerateLog extends AppCompatActivity implements View.OnCli
         ActionBar actionBar=getSupportActionBar ();
         if (actionBar!=null){
             actionBar.setTitle (R.string.add_log_detail);
-            actionBar.setDisplayHomeAsUpEnabled (true);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
     }
 

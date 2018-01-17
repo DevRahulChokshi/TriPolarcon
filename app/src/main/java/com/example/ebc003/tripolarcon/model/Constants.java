@@ -23,6 +23,8 @@ public class Constants {
     public static final String FRAG_LEADS="fragLeads";
     public static final String FRAG_REMINDER="fragReminder";
     public static final String FRAG_ADD_LEAD="fragAddLead";
+    public static final String FRAG_DAILY_PLAN = "fragDailyPlan";
+
 
     public static final String USER_ID="id";
     public static final String COMPANY_NAME="company_name";
@@ -67,6 +69,7 @@ public class Constants {
     public static final String UNIT="unit_id";
 
     public static final String LOG_SCHEDULE = "add_schedule";
+    public static final String SHOW_LOG_SCHEDULE = "sche_type";
     public static final String LOG_SCHEDULE_TIME = "add_schedule_time";
     public static final String LOG_SCHEDULE_DATE = "add_schedule_date";
     public static final String LOG_DATE = "add_date";

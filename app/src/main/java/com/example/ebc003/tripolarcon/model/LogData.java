@@ -15,6 +15,8 @@ public class LogData {
     private String logCompanyRemark;
     private String logUserLatter;
     private String logCompanyName;
+    private String logScheduleType;
+    private String logLocation;
 
     public String getLogCompanyDate () {
         return logCompanyDate;
@@ -58,5 +60,21 @@ public class LogData {
     public void setLogCompanyName (String logCompanyName) {
         this.logCompanyName = logCompanyName;
         Log.i (TAG,"COMPANY REMARK:-"+logCompanyName);
+    }
+
+    public String getLogScheduleType () {
+        return logScheduleType;
+    }
+
+    public void setLogScheduleType (String logScheduleType) {
+        this.logScheduleType = logScheduleType;
+    }
+
+    public String getLogLocation () {
+        return logLocation;
+    }
+
+    public void setLogLocation (String logLocation) {
+        this.logLocation = logLocation;
     }
 }
