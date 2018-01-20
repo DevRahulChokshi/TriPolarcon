@@ -67,4 +67,6 @@
     <string name="strEnquiryTime">Time</string>
     <string name="strEnquiryScheduleType">ScheduleType</string>
     <string name="strEnquiryLocation">Location</string>
+    <string name="AddLogPhoto">Photo</string>
+    <string name="upload">UPLOAD</string>
 </resources>

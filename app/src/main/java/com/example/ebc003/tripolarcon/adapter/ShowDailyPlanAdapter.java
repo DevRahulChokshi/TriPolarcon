@@ -11,6 +11,9 @@ import android.widget.TextView;
 import com.example.ebc003.tripolarcon.R;
 import com.example.ebc003.tripolarcon.model.LogData;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -24,6 +27,7 @@ public class ShowDailyPlanAdapter extends RecyclerView.Adapter<ShowDailyPlanAdap
     Context context;
     List<LogData> mLogList;
     LayoutInflater layoutInflater;
+
 
     public ShowDailyPlanAdapter (Context context, List<LogData> mLogList) {
         this.context=context;

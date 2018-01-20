@@ -1,9 +1,13 @@
 package com.example.ebc003.tripolarcon.app.fragments;
 
+import android.Manifest;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -56,7 +60,6 @@ public class HomeFragment extends Fragment{
     private RecyclerView.LayoutManager layoutManager;
     private String user_id;
     private int size;
-
 
     @Override
     public void onAttach (Context context) {

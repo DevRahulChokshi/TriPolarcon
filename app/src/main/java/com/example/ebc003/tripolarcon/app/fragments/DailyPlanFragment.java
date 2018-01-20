@@ -1,6 +1,5 @@
 package com.example.ebc003.tripolarcon.app.fragments;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -26,9 +25,12 @@ import com.example.ebc003.tripolarcon.model.LogData;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
-import java.sql.BatchUpdateException;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -85,14 +87,48 @@ public class DailyPlanFragment extends Fragment{
                         try {
                             //Parsing the fetched Json String to JSON Object
                             jsonArray = new JSONArray (response);
-                            for (int i=0;i<=jsonArray.length ();i++){
+
+                            JSONArray jsonSortedArray=new JSONArray ();
+                            List<JSONObject> jsonObjects=new ArrayList<> ();
+
+                            for (int i=0;i<jsonArray.length ();i++){
+                                jsonObjects.add (jsonArray.getJSONObject (i));
+                            }
+
+                            Collections.sort (jsonObjects, new Comparator<JSONObject> () {
+                                @Override
+                                public int compare (JSONObject o1, JSONObject o2) {
+
+                                    String valA=new String ();
+                                    String valB=new String ();
+
+                                    try {
+                                        valA= (String) o1.get (Constants.SHOW_LOG_DATE);
+                                        valB= (String) o1.get (Constants.SHOW_LOG_DATE);
+                                    } catch (JSONException e) {
+                                        e.printStackTrace ();
+                                    }
+
+                                    return valA.compareTo (valB);
+
+                                }
+                            });
+
+                            for (int i=0;i<jsonObjects.size ();i++){
+                                jsonSortedArray.put (jsonObjects.get (i));
+                            }
+
+                            String js=jsonSortedArray.toString ();
+
+                            for (int i=0;i<=jsonSortedArray.length ();i++){
                                 try{
                                     LogData logData=new LogData ();
-                                    logData.setLogUserLatter (jsonArray.getJSONObject (i).getString (Constants.USER_ID));
-                                    logData.setLogCompanyName(jsonArray.getJSONObject (i).getString (Constants.USER_ID));
-                                    logData.setLogCompanyTime(jsonArray.getJSONObject (i).getString (Constants.SHOW_LOG_TIME));
-                                    logData.setLogScheduleType (jsonArray.getJSONObject (i).getString (Constants.SHOW_LOG_SCHEDULE));
-                                    logData.setLogCompanyTime(jsonArray.getJSONObject (i).getString (Constants.SHOW_LOG_TIME));
+                                    logData.setLogUserLatter (jsonSortedArray.getJSONObject (i).getString (Constants.USER_ID));
+                                    logData.setLogCompanyName(jsonSortedArray.getJSONObject (i).getString (Constants.USER_ID));
+                                    logData.setLogCompanyName(jsonSortedArray.getJSONObject (i).getString (Constants.USER_ID));
+                                    logData.setLogCompanyDate(jsonSortedArray.getJSONObject (i).getString (Constants.SHOW_LOG_DATE));
+                                    logData.setLogScheduleType (jsonSortedArray.getJSONObject (i).getString (Constants.SHOW_LOG_SCHEDULE));
+                                    logData.setLogCompanyTime(jsonSortedArray.getJSONObject (i).getString (Constants.SHOW_LOG_TIME));
 
                                     mLogDataList.add (logData);
                                 }catch (JSONException e){

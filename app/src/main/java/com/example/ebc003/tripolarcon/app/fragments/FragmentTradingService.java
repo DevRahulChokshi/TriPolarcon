@@ -49,7 +49,6 @@ public class FragmentTradingService extends Fragment {
     @BindView (R.id.txtServiceRequirementRemarkData) TextView mRequirementRemark;
     @BindView (R.id.txtServiceAssignToData) TextView mAssignTo;
     @BindView (R.id.txtServiceGeneratedToData) TextView mGeneratedTo;
-
     @BindView (R.id.progressBarShowServiceDetails) ProgressBar progressBar;
 
     private String user_id;
@@ -57,7 +56,6 @@ public class FragmentTradingService extends Fragment {
     private String order_description;
     private String area;
     private String unit;
-    private String pro_id;
     private String source_id;
     private String status_id;
     private String action_id;

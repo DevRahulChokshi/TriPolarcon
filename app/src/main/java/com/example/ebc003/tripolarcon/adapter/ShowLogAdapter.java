@@ -48,7 +48,6 @@ public class ShowLogAdapter extends RecyclerView.Adapter<ShowLogAdapter.LogHolde
                 holder.mTxtCompanyName.setText (logData.getLogUserLatter ());
                 String mLogData=logData.getLogCompanyDate ()+" "+logData.getLogCompanyTime ()+" "+logData.getLogCompanyRemark ();
                 holder.mTxtScheduleDateTime.setText (mLogData);
-
             }
             else {
                 Log.i (TAG,"DATA NULL");
