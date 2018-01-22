@@ -75,7 +75,6 @@ public class LeadListAdapter extends RecyclerView.Adapter<LeadListAdapter.MyView
         else {
             Toast.makeText (context.getApplicationContext (),"Data is null", Toast.LENGTH_LONG).show ();
         }
-
         holder.itemView.setOnClickListener (new View.OnClickListener () {
             @Override
             public void onClick (View v) {
