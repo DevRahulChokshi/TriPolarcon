@@ -92,7 +92,7 @@ public class ActivityGenerateLog extends AppCompatActivity implements View.OnCli
         ButterKnife.bind (this);
         //setUp Toolbar
         setToolbar();
-        //Add Spinner mSpinnserSchedule
+        //Add Spinner mSpinnerSchedule
         setSpinner();
 
         mBtnDate.setOnClickListener (this);
@@ -148,7 +148,6 @@ public class ActivityGenerateLog extends AppCompatActivity implements View.OnCli
         String [] mListStatus={"Call back","No response","No related","Order closed","Directly forwarded","Number not reachable","Others","Quotation","Order finalise","Sampling","Site visit","Send to contractor","FCD"};
         ArrayAdapter<String> adapterStatus=new ArrayAdapter<String> (getApplicationContext (),android.R.layout.simple_spinner_dropdown_item,mListStatus);
         mSpinnerStatus.setAdapter (adapterStatus);
-
     }
 
     private void setToolbar () {
@@ -203,7 +202,8 @@ public class ActivityGenerateLog extends AppCompatActivity implements View.OnCli
         String CurrentTime=hour+"/"+minute;
 
         AddLogAsyncTask addLogAsyncTask=new AddLogAsyncTask (getApplicationContext (),progressBar);
-        addLogAsyncTask.execute (mSpinnserSchedule,CurrentDate,CurrentTime,mSpinnserCallType,mSpinnserStaus,mRemark,mDate,mTime,companyId,userID);
+        Log.i (TAG,"AsyncTask:-"+mCurrentPhotoPath);
+        addLogAsyncTask.execute (mSpinnserSchedule,CurrentDate,CurrentTime,mSpinnserCallType,mSpinnserStaus,mRemark,mDate,mTime,companyId,userID,mCurrentPhotoPath);
     }
 
     @Override
@@ -228,8 +228,6 @@ public class ActivityGenerateLog extends AppCompatActivity implements View.OnCli
        }
     }
 
-
-
     @Override
     public void getItem (int day, int month, int years) {
         String myDate=years+"/"+(month+1)+"/"+day;
@@ -244,25 +242,38 @@ public class ActivityGenerateLog extends AppCompatActivity implements View.OnCli
 
     @Override
     public void onItemSelected (AdapterView<?> parent, View view, int position, long id) {
-        mSpinnserSchedule = (String) parent.getItemAtPosition (position);
-        mSpinnserCallType = (String) parent.getItemAtPosition (position);
-        mSpinnserStaus = (String) parent.getItemAtPosition (position);
+        int viewId=parent.getId ();
+
+        Log.i (TAG," "+viewId);
+        switch (viewId){
+            case R.id.spinAddLogSchedule:{
+                mSpinnserSchedule = (String) parent.getItemAtPosition (position);
+                Log.i (TAG,"SpinnerSchedule:-"+mSpinnserSchedule);
+                break;
+            }
+            case R.id.spinAddLogCallType:{
+                mSpinnserCallType = (String) parent.getItemAtPosition (position);
+                Log.i (TAG,"SpinnerSchedule:-"+mSpinnserCallType);
+                break;
+            }
+            case R.id.spinAddLogStatus:{
+                mSpinnserStaus = (String) parent.getItemAtPosition (position);
+                Log.i (TAG,"SpinnerSchedule:-"+mSpinnserStaus);
+                break;
+            }
+        }
     }
 
     @Override
     public void onNothingSelected (AdapterView<?> parent) {}
 
     @Override
-    public void onRequestPermissionsResult (int requestCode, @NonNull String[] permissions,
-                                            @NonNull int[] grantResults) {
+    public void onRequestPermissionsResult (int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         // redirects to utils
-
         permissionUtils.onRequestPermissionsResult (requestCode, permissions, grantResults);
-
     }
 
     // Callback functions
-
 
     @Override
     public void PermissionGranted (int request_code) {
@@ -385,6 +396,7 @@ public class ActivityGenerateLog extends AppCompatActivity implements View.OnCli
         BitmapFactory.Options bmOptions = new BitmapFactory.Options();
         bmOptions.inJustDecodeBounds = true;
         BitmapFactory.decodeFile(mCurrentPhotoPath, bmOptions);
+        Log.i (TAG,mCurrentPhotoPath);
         int photoW = bmOptions.outWidth;
         int photoH = bmOptions.outHeight;
 

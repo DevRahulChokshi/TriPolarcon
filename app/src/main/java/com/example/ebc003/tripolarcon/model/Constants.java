@@ -28,6 +28,7 @@ public class Constants {
 
     public static final String USER_ID="id";
     public static final String COMPANY_NAME="company_name";
+    public static final String LOG_IMG_PATH="log_img_path";
     public static final String ADDRESS="address";
     public static final String PIN_CODE="pin_code";
     public static final String PHONE_NO="phone_no";
