@@ -44,11 +44,7 @@ import butterknife.ButterKnife;
 
 public class DailyPlanFragment extends Fragment{
 
-    @BindView (R.id.recyclerShowDailyPlan) RecyclerView mRecyclerDailyPlan;
-
-    private RecyclerView.LayoutManager layoutManager;
     private String TAG=DailyPlanFragment.class.getSimpleName ();
-    private List<LogData> mLogDataList;
     String mUserId;
 
     @Override
@@ -65,103 +61,7 @@ public class DailyPlanFragment extends Fragment{
     @Override
     public View onCreateView (LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view=inflater.inflate (R.layout.fragment_daily_plan,container,false);
-
         ButterKnife.bind (this,view);
-
-        layoutManager=new LinearLayoutManager (view.getContext ());
-        mRecyclerDailyPlan.setLayoutManager (layoutManager);
-
-        mLogDataList =new ArrayList<> ();
-        getData ();
-
         return view;
-    }
-
-    private void getData()  {
-        //Creating a string request
-        StringRequest stringRequest = new StringRequest (Request.Method.POST,Constants.URL_SHOW_LOG_DETAIL,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        JSONArray jsonArray = null;
-                        try {
-                            //Parsing the fetched Json String to JSON Object
-                            jsonArray = new JSONArray (response);
-
-                            JSONArray jsonSortedArray=new JSONArray ();
-                            List<JSONObject> jsonObjects=new ArrayList<> ();
-
-                            for (int i=0;i<jsonArray.length ();i++){
-                                jsonObjects.add (jsonArray.getJSONObject (i));
-                            }
-
-                            Collections.sort (jsonObjects, new Comparator<JSONObject> () {
-                                @Override
-                                public int compare (JSONObject o1, JSONObject o2) {
-
-                                    String valA=new String ();
-                                    String valB=new String ();
-
-                                    try {
-                                        valA= (String) o1.get (Constants.SHOW_LOG_DATE);
-                                        valB= (String) o1.get (Constants.SHOW_LOG_DATE);
-                                    } catch (JSONException e) {
-                                        e.printStackTrace ();
-                                    }
-
-                                    return valA.compareTo (valB);
-
-                                }
-                            });
-
-                            for (int i=0;i<jsonObjects.size ();i++){
-                                jsonSortedArray.put (jsonObjects.get (i));
-                            }
-
-                            String js=jsonSortedArray.toString ();
-
-                            for (int i=0;i<=jsonSortedArray.length ();i++){
-                                try{
-                                    LogData logData=new LogData ();
-                                    logData.setLogUserLatter (jsonSortedArray.getJSONObject (i).getString (Constants.USER_ID));
-                                    logData.setLogCompanyName(jsonSortedArray.getJSONObject (i).getString (Constants.USER_ID));
-                                    logData.setLogCompanyName(jsonSortedArray.getJSONObject (i).getString (Constants.USER_ID));
-                                    logData.setLogCompanyDate(jsonSortedArray.getJSONObject (i).getString (Constants.SHOW_LOG_DATE));
-                                    logData.setLogScheduleType (jsonSortedArray.getJSONObject (i).getString (Constants.SHOW_LOG_SCHEDULE));
-                                    logData.setLogCompanyTime(jsonSortedArray.getJSONObject (i).getString (Constants.SHOW_LOG_TIME));
-
-                                    mLogDataList.add (logData);
-                                }catch (JSONException e){
-                                    e.printStackTrace ();
-                                }
-                            }
-                            setRecycler();
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-
-                    }
-                })
-        {
-            @Override
-            protected Map<String, String> getParams () throws AuthFailureError {
-                Map<String,String> stringMap=new HashMap<> ();
-                stringMap.put (Constants.USER_ID,mUserId);
-                return stringMap;
-            }
-        };
-        RequestQueue requestQueue = Volley.newRequestQueue(getContext ());
-        requestQueue.add(stringRequest);
-    }
-    private void setRecycler(){
-        ShowDailyPlanAdapter showDailyPlanAdapter=new ShowDailyPlanAdapter (getContext (),mLogDataList);
-        DividerItemDecoration dividerItemDecoration=new DividerItemDecoration (getContext (), DividerItemDecoration.HORIZONTAL);
-        mRecyclerDailyPlan.addItemDecoration (dividerItemDecoration);
-        mRecyclerDailyPlan.setAdapter (showDailyPlanAdapter);
     }
 }

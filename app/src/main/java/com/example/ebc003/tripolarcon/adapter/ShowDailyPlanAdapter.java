@@ -24,9 +24,9 @@ public class ShowDailyPlanAdapter extends RecyclerView.Adapter<ShowDailyPlanAdap
 
     private String TAG=ShowDailyPlanAdapter.class.getSimpleName ();
 
-    Context context;
-    List<LogData> mLogList;
-    LayoutInflater layoutInflater;
+    private Context context;
+    private List<LogData> mLogList;
+    private LayoutInflater layoutInflater;
 
 
     public ShowDailyPlanAdapter (Context context, List<LogData> mLogList) {
