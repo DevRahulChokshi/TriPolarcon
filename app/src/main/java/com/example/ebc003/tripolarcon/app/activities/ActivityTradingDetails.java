@@ -37,6 +37,7 @@ public class ActivityTradingDetails extends AppCompatActivity implements TabLayo
 
         viewPager.setAdapter(adapter);
         tabLayout.setOnTabSelectedListener(this);
+
         toolbar.setNavigationOnClickListener (new View.OnClickListener () {
             @Override
             public void onClick (View v) {

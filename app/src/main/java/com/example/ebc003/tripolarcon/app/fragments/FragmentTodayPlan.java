@@ -1,5 +1,6 @@
 package com.example.ebc003.tripolarcon.app.fragments;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -13,7 +14,16 @@ import com.example.ebc003.tripolarcon.R;
  * Created by EBC003 on 1/25/2018.
  */
 
-public class TodayPlan extends Fragment {
+public class FragmentTodayPlan extends Fragment {
+
+    @Override
+    public void onCreate (@Nullable Bundle savedInstanceState) {
+
+        
+
+
+        super.onCreate (savedInstanceState);
+    }
 
     @Nullable
     @Override

@@ -13,7 +13,7 @@ import com.example.ebc003.tripolarcon.R;
  * Created by EBC003 on 1/25/2018.
  */
 
-public class TomorrowPlan extends Fragment {
+public class FragmentTomorrowPlan extends Fragment {
 
     @Nullable
     @Override

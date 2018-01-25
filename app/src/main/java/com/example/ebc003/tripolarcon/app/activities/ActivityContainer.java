@@ -126,7 +126,6 @@ public class ActivityContainer extends AppCompatActivity  implements MyAdapterIt
                 HomeFragment homeFragment=new HomeFragment ();
                 FragmentTransaction transaction=manager.beginTransaction ();
                 transaction.replace (R.id.fragment_container,homeFragment,Constants.FRAG_HOME);
-                transaction.addToBackStack (Constants.FRAG_HOME);
                 Bundle bundle=new Bundle ();
                 bundle.putString (Constants.USER_ID,userID);
                 homeFragment.setArguments (bundle);
@@ -138,7 +137,6 @@ public class ActivityContainer extends AppCompatActivity  implements MyAdapterIt
                 LeadFragment leadFragment=new LeadFragment ();
                 FragmentTransaction transaction=manager.beginTransaction ();
                 transaction.replace (R.id.fragment_container,leadFragment,Constants.FRAG_LEADS);
-                transaction.addToBackStack (Constants.FRAG_LEADS);
                 transaction.commit ();
                 drawerLayout.closeDrawer (GravityCompat.START);
                 break;
@@ -147,7 +145,6 @@ public class ActivityContainer extends AppCompatActivity  implements MyAdapterIt
                 ReminderFragment reminderFragment = new ReminderFragment ();
                 FragmentTransaction transaction = manager.beginTransaction ();
                 transaction.replace (R.id.fragment_container, reminderFragment, Constants.FRAG_REMINDER);
-                transaction.addToBackStack (Constants.FRAG_REMINDER);
                 transaction.commit ();
                 drawerLayout.closeDrawer (GravityCompat.START);
                 break;
@@ -156,7 +153,6 @@ public class ActivityContainer extends AppCompatActivity  implements MyAdapterIt
                 DailyPlanFragment dailyPlanFragment=new DailyPlanFragment ();
                 FragmentTransaction transaction=manager.beginTransaction ();
                 transaction.replace (R.id.fragment_container,dailyPlanFragment,Constants.FRAG_DAILY_PLAN);
-                transaction.addToBackStack (Constants.FRAG_DAILY_PLAN);
                 Bundle bundle=new Bundle ();
                 bundle.putString (Constants.USER_ID,userID);
                 dailyPlanFragment.setArguments (bundle);
