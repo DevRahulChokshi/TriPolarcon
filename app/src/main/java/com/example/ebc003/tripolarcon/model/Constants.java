@@ -25,7 +25,6 @@ public class Constants {
     public static final String FRAG_ADD_LEAD="fragAddLead";
     public static final String FRAG_DAILY_PLAN = "fragDailyPlan";
 
-
     public static final String USER_ID="id";
     public static final String COMPANY_NAME="company_name";
     public static final String LOG_IMG_PATH="log_img_path";
@@ -39,19 +38,13 @@ public class Constants {
     public static final String URL_INSERT_LEAD="http://www.ebusinesscanvas.com/pathalogy_lab/lead_insert.php";
     public static final String REQUEST_STATUS="success";
 
-    public static final String COMPANY_WEBSITE="website";
-    public static final String OFFICE_PHONE_NUMBER="office_phone_number";
-    public static final String COMPANY_FAX_NO="fax_no";
-    public static final String CONTACT_PERSON_NAME="contact_person_name";
-    public static final String CONTACT_PERSON_NUMBER="contact_person_number";
-    public static final String NOTE="cust_note";
-
     public static final String URL_SHOW_LEAD_LIST="http://www.ebusinesscanvas.com/tripolarcon/android_app/lead_list_show.php";
     public static final String URL_SHOW_LOG_DETAIL="http://www.ebusinesscanvas.com/tripolarcon/android_app/show_log_detail.php";
     public static final String URL_SHOW_LEAD_DETAIL_INFO="http://www.ebusinesscanvas.com/tripolarcon/android_app/lead_detail_info.php";
     public static final String URL_SHOW_TRADING_INFO="http://www.ebusinesscanvas.com/tripolarcon/android_app/trading_detail.php";
     public static final String URL_SHOW_TRADING_SERVICE_INFO="http://www.ebusinesscanvas.com/tripolarcon/android_app/trading_service_detail.php";
     public static final String URL_ADD_LOG="http://www.ebusinesscanvas.com/tripolarcon/android_app/add_log.php";
+    public static final String URL_SHOW_TODAY_PLAN="http://www.ebusinesscanvas.com/tripolarcon/android_app/show_daily_plan.php";
 
     public static final String ORDER_DATE="order_date";
     public static final String ORDER_DETAIL_ID="order_details_id";
@@ -81,4 +74,6 @@ public class Constants {
     public static final String SHOW_LOG_DATE="sche_date";
     public static final String SHOW_LOG_TIME="sche_time";
     public static final String SHOW_LOG_REMARK="en_remark";
+    public static final String SHOW_PLAN_DATE="cur_date";
+    public static final String SHOW_PLAN_TIME="cur_time";
 }

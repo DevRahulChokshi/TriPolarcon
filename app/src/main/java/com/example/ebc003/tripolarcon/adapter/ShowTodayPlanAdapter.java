@@ -17,15 +17,15 @@ import java.util.List;
  * Created by EBC003 on 1/13/2018.
  */
 
-public class ShowLogAdapter extends RecyclerView.Adapter<ShowLogAdapter.LogHolder>{
+public class ShowTodayPlanAdapter extends RecyclerView.Adapter<ShowTodayPlanAdapter.LogHolder>{
 
-    private String TAG=ShowLogAdapter.class.getSimpleName ();
+    private String TAG=ShowTodayPlanAdapter.class.getSimpleName ();
 
     Context context;
     List<LogData> mLogList;
     LayoutInflater layoutInflater;
 
-    public ShowLogAdapter (Context context, List<LogData> mLogList) {
+    public ShowTodayPlanAdapter (Context context, List<LogData> mLogList) {
         this.context=context;
         layoutInflater=LayoutInflater.from (context);
         this.mLogList=mLogList;
@@ -33,7 +33,7 @@ public class ShowLogAdapter extends RecyclerView.Adapter<ShowLogAdapter.LogHolde
 
     @Override
     public LogHolder onCreateViewHolder (ViewGroup parent, int viewType) {
-        View view=layoutInflater.inflate (R.layout.show_log_detail,parent,false);
+        View view=layoutInflater.inflate (R.layout.show_today_plan_list,parent,false);
         LogHolder logHolder=new LogHolder (view);
         return logHolder;
     }
@@ -45,8 +45,8 @@ public class ShowLogAdapter extends RecyclerView.Adapter<ShowLogAdapter.LogHolde
             if (logData!=null){
                 holder.mTxtCompanyLatter.setText (logData.getLogUserLatter ());
                 holder.mTxtCompanyName.setText (logData.getLogUserLatter ());
-                String mLogData=logData.getLogCompanyDate ()+" "+logData.getLogCompanyTime ()+" "+logData.getLogCompanyRemark ();
-                holder.mTxtScheduleDateTime.setText (mLogData);
+                String mLogData=logData.getLogCompanyDate ()+" "+logData.getLogCompanyTime ()+" "+logData.getLogScheduleType ();
+                holder.mTxtTodayPlanDetails.setText (mLogData);
             }
             else {
                 Log.i (TAG,"DATA NULL");
@@ -66,13 +66,13 @@ public class ShowLogAdapter extends RecyclerView.Adapter<ShowLogAdapter.LogHolde
 
         TextView mTxtCompanyLatter;
         TextView mTxtCompanyName;
-        TextView mTxtScheduleDateTime;
+        TextView mTxtTodayPlanDetails;
 
         public LogHolder (View itemView) {
             super (itemView);
-            mTxtCompanyLatter=itemView.findViewById (R.id.txtLogCompanyLatter);
-            mTxtCompanyName=itemView.findViewById (R.id.txtLogCompanyName);
-            mTxtScheduleDateTime=itemView.findViewById (R.id.txtLogDateTime);
+            mTxtCompanyLatter=itemView.findViewById (R.id.txtTodayPlanLatter);
+            mTxtCompanyName=itemView.findViewById (R.id.txtTodayPlanCompanyName);
+            mTxtTodayPlanDetails =itemView.findViewById (R.id.txtToDayPlanDetails);
         }
     }
 }

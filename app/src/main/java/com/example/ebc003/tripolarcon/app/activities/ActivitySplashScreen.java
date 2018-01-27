@@ -23,7 +23,6 @@ public class ActivitySplashScreen extends AppCompatActivity {
 
     @BindView (R.id.icon_image) ImageView mImageView;
 
-
     @Override
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate (savedInstanceState);
@@ -38,9 +37,6 @@ public class ActivitySplashScreen extends AppCompatActivity {
             }
         },2000);
     }
-
-
-
 
     private void checkSharedPreference () {
         SharedPreferences sharedPreferences=getSharedPreferences (Constants.PREFERENCE_KEY,MODE_PRIVATE);
