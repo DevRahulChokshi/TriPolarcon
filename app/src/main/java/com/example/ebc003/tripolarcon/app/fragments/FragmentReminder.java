@@ -13,7 +13,7 @@ import com.example.ebc003.tripolarcon.R;
  * Created by EBC003 on 12/9/2017.
  */
 
-public class ReminderFragment extends Fragment{
+public class FragmentReminder extends Fragment{
     @Nullable
     @Override
     public View onCreateView (LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

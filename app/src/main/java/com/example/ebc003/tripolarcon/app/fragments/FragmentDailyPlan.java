@@ -20,13 +20,13 @@ import butterknife.ButterKnife;
  * Created by EBC003 on 1/16/2018.
  */
 
-public class DailyPlanFragment extends Fragment implements TabLayout.OnTabSelectedListener {
+public class FragmentDailyPlan extends Fragment implements TabLayout.OnTabSelectedListener {
 
     @BindView (R.id.tabLayoutDailyPlan) TabLayout tabLayout;
     @BindView (R.id.pagerDailyPlan) ViewPager viewPager;
 
 
-    private String TAG=DailyPlanFragment.class.getSimpleName ();
+    private String TAG=FragmentDailyPlan.class.getSimpleName ();
     String mUserId;
 
     @Override

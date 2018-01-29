@@ -1,6 +1,8 @@
 package com.example.ebc003.tripolarcon.adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -9,6 +11,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.ebc003.tripolarcon.R;
+import com.example.ebc003.tripolarcon.app.activities.ActivityLeadInformation;
+import com.example.ebc003.tripolarcon.model.Constants;
 import com.example.ebc003.tripolarcon.model.LogData;
 
 import java.util.List;
@@ -39,7 +43,7 @@ public class ShowTodayPlanAdapter extends RecyclerView.Adapter<ShowTodayPlanAdap
     }
 
     @Override
-    public void onBindViewHolder (LogHolder holder, int position) {
+    public void onBindViewHolder (final LogHolder holder, int position) {
         if (mLogList!=null){
             LogData logData=mLogList.get (position);
             if (logData!=null){
@@ -55,6 +59,16 @@ public class ShowTodayPlanAdapter extends RecyclerView.Adapter<ShowTodayPlanAdap
         else {
             Log.i (TAG,"DATA NULL");
         }
+        holder.itemView.setOnClickListener (new View.OnClickListener () {
+            @Override
+            public void onClick (View v) {
+                String strLeadTitle=(String)holder.mTxtCompanyName.getText ();
+                Intent intent=new Intent (context.getApplicationContext (),ActivityLeadInformation.class);
+                intent.putExtra (Constants.USER_ID,strLeadTitle);
+                context.startActivity (intent);
+                Log.i (TAG,"COMPANY_ID:-:"+strLeadTitle);
+            }
+        });
     }
 
     @Override

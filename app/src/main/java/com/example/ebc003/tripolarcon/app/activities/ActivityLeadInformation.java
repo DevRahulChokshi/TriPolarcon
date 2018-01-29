@@ -97,7 +97,6 @@ public class ActivityLeadInformation extends AppCompatActivity implements View.O
     }
 
     private void checkIntentData () {
-
         Intent intent=getIntent ();
         if (intent!=null){
             Bundle bundle=intent.getExtras ();
@@ -111,7 +110,6 @@ public class ActivityLeadInformation extends AppCompatActivity implements View.O
         }else{
             Log.i (TAG,"Intent is null");
         }
-
     }
 
     private void getLeadData () {
@@ -161,14 +159,12 @@ public class ActivityLeadInformation extends AppCompatActivity implements View.O
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-
                         progressBar.setVisibility (View.GONE);
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-
                     }
                 })
         {
@@ -176,7 +172,7 @@ public class ActivityLeadInformation extends AppCompatActivity implements View.O
             protected Map<String, String> getParams () throws AuthFailureError {
                 Log.i (TAG,"HasMap"+company_name);
                 Map<String,String> stringMap=new HashMap<> ();
-                stringMap.put (Constants.COMPANY_NAME,company_name);
+                stringMap.put (Constants.USER_ID,CompanyID);
                 return stringMap;
             }
         };

@@ -1,13 +1,9 @@
 package com.example.ebc003.tripolarcon.app.fragments;
 
-import android.Manifest;
 import android.content.Context;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -42,15 +38,13 @@ import java.util.Map;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-import static android.content.Context.MODE_PRIVATE;
-
 /**
  * Created by EBC003 on 12/9/2017.
  */
 
-public class HomeFragment extends Fragment{
+public class FragmentHome extends Fragment{
 
-    private String TAG=HomeFragment.class.getSimpleName ();
+    private String TAG=FragmentHome.class.getSimpleName ();
     List<LeadListData> listData;
 
     @BindView(R.id.progressBarShowLead) ProgressBar progressBar;
@@ -158,10 +152,10 @@ public class HomeFragment extends Fragment{
                             Log.i (TAG,"Size:-"+size);
                             for (int i=0;i<=jsonArray.length ();i++){
                                 try{
-
                                     LeadListData leadListData=new LeadListData ();
 
                                     String CompanyID=jsonArray.getJSONObject (i).getString ("id");
+                                    Log.i (TAG,"COMPANY ID:"+CompanyID);
                                     String CompanyName=jsonArray.getJSONObject (i).getString ("name");
                                     String CompanyEmail=jsonArray.getJSONObject (i).getString ("email");
                                     String OfficePhoneNumber=jsonArray.getJSONObject (i).getString ("cust_comp_phn");
@@ -211,6 +205,7 @@ public class HomeFragment extends Fragment{
             protected Map<String, String> getParams () throws AuthFailureError {
                 Map<String,String> stringMap=new HashMap<> ();
                 stringMap.put (Constants.USER_ID,user_id);
+                Log.i (TAG,"USER ID:-"+user_id);
                 return stringMap;
             }
         };

@@ -26,7 +26,7 @@ import butterknife.ButterKnife;
  * Created by EBC003 on 12/9/2017.
  */
 
-public class LeadFragment extends Fragment {
+public class FragmentLead extends Fragment {
 
     @BindView (R.id.fab) FloatingActionButton fab;
     @BindView (R.id.recyclerLeadDataList) RecyclerView mRecyclerDataList;

@@ -98,7 +98,7 @@ public class FragmentTodayPlan extends Fragment {
                             for (int i=0;i<=jsonArray.length ();i++){
                                 try{
                                     LogData logData=new LogData ();
-                                    logData.setLogUserLatter (jsonArray.getJSONObject (i).getString (Constants.USER_ID));
+                                    logData.setLogUserLatter (jsonArray.getJSONObject (i).getString (Constants.CUSTOMER_ID));
                                     logData.setLogCompanyName(jsonArray.getJSONObject (i).getString (Constants.USER_ID));
                                     logData.setLogCompanyDate(jsonArray.getJSONObject (i).getString (Constants.SHOW_PLAN_DATE));
                                     logData.setLogCompanyTime(jsonArray.getJSONObject (i).getString (Constants.SHOW_PLAN_TIME));

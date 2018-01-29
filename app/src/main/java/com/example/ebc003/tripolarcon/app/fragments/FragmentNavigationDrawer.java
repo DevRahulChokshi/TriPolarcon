@@ -29,7 +29,7 @@ import butterknife.BindView;
  * Created by EBC003 on 12/8/2017.
  */
 
-public class NavigationDrawerFragment extends Fragment {
+public class FragmentNavigationDrawer extends Fragment {
 
     private ActionBarDrawerToggle actionBarDrawerToggle;
     private DrawerLayout drawerLayout;
@@ -58,8 +58,8 @@ public class NavigationDrawerFragment extends Fragment {
         String userEmail=sharedPreferences.getString (Constants.USER_EMAIL,"N/A");
         String userName=sharedPreferences.getString (Constants.USER_NAME,"N/A");
 
-        Log.i (NavigationDrawerFragment.class.getSimpleName (),userName);
-        Log.i (NavigationDrawerFragment.class.getSimpleName (),userEmail);
+        Log.i (FragmentNavigationDrawer.class.getSimpleName (),userName);
+        Log.i (FragmentNavigationDrawer.class.getSimpleName (),userEmail);
     }
 
     public  void setUpDrawer(int fragmentId, final DrawerLayout drawerLayout, Toolbar toolbar){

@@ -59,6 +59,19 @@
                     android:textSize="16sp"
                     tools:text="Long placeholder location that should wrap to more than 2 lines of text" />
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/txtCompanyId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:fontFamily="sans-serif-medium"
+                android:maxLines="1"
+                android:textColor="@android:color/white"
+                android:textAllCaps="true"
+                android:textSize="12sp"
+                tools:text="InfosysVisit" />
+
             <!--<LinearLayout-->
                 <!--android:layout_width="wrap_content"-->
                 <!--android:layout_height="wrap_content"-->

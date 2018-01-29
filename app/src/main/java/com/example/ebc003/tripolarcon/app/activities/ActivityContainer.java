@@ -18,11 +18,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.example.ebc003.tripolarcon.R;
 import com.example.ebc003.tripolarcon.app.MyAdapterItemActivity;
-import com.example.ebc003.tripolarcon.app.fragments.DailyPlanFragment;
-import com.example.ebc003.tripolarcon.app.fragments.HomeFragment;
-import com.example.ebc003.tripolarcon.app.fragments.LeadFragment;
-import com.example.ebc003.tripolarcon.app.fragments.NavigationDrawerFragment;
-import com.example.ebc003.tripolarcon.app.fragments.ReminderFragment;
+import com.example.ebc003.tripolarcon.app.fragments.FragmentHome;
+import com.example.ebc003.tripolarcon.app.fragments.FragmentLead;
+import com.example.ebc003.tripolarcon.app.fragments.FragmentNavigationDrawer;
+import com.example.ebc003.tripolarcon.app.fragments.FragmentReminder;
 import com.example.ebc003.tripolarcon.model.Constants;
 
 import butterknife.BindView;
@@ -76,7 +75,7 @@ public class ActivityContainer extends AppCompatActivity  implements MyAdapterIt
     }
 
     private void setUpDrawer() {
-        NavigationDrawerFragment drawerFragment = (NavigationDrawerFragment) getSupportFragmentManager().findFragmentById(R.id.nav_drwr_fragment);
+        FragmentNavigationDrawer drawerFragment = (FragmentNavigationDrawer) getSupportFragmentManager().findFragmentById(R.id.nav_drwr_fragment);
         drawerFragment.setUpDrawer(R.id.nav_drwr_fragment, drawerLayout, mMainToolbar);
     }
 
@@ -123,41 +122,49 @@ public class ActivityContainer extends AppCompatActivity  implements MyAdapterIt
     public void getItemActivity (String item) {
         switch (item){
             case "Home":{
-                HomeFragment homeFragment=new HomeFragment ();
+                FragmentHome fragmentHome =new FragmentHome ();
                 FragmentTransaction transaction=manager.beginTransaction ();
-                transaction.replace (R.id.fragment_container,homeFragment,Constants.FRAG_HOME);
+                transaction.replace (R.id.fragment_container, fragmentHome,Constants.FRAG_HOME);
                 Bundle bundle=new Bundle ();
                 bundle.putString (Constants.USER_ID,userID);
-                homeFragment.setArguments (bundle);
+                fragmentHome.setArguments (bundle);
                 transaction.commit ();
                 drawerLayout.closeDrawer (GravityCompat.START);
                 break;
             }
             case "Leads":{
-                LeadFragment leadFragment=new LeadFragment ();
+                FragmentLead fragmentLead =new FragmentLead ();
                 FragmentTransaction transaction=manager.beginTransaction ();
-                transaction.replace (R.id.fragment_container,leadFragment,Constants.FRAG_LEADS);
+                transaction.replace (R.id.fragment_container, fragmentLead,Constants.FRAG_LEADS);
                 transaction.commit ();
                 drawerLayout.closeDrawer (GravityCompat.START);
                 break;
-            }
+                }
             case "Reminder": {
-                ReminderFragment reminderFragment = new ReminderFragment ();
+                FragmentReminder fragmentReminder = new FragmentReminder ();
                 FragmentTransaction transaction = manager.beginTransaction ();
-                transaction.replace (R.id.fragment_container, reminderFragment, Constants.FRAG_REMINDER);
+                transaction.replace (R.id.fragment_container, fragmentReminder, Constants.FRAG_REMINDER);
                 transaction.commit ();
                 drawerLayout.closeDrawer (GravityCompat.START);
                 break;
             }
             case "Daily plan":{
-                DailyPlanFragment dailyPlanFragment=new DailyPlanFragment ();
-                FragmentTransaction transaction=manager.beginTransaction ();
-                transaction.replace (R.id.fragment_container,dailyPlanFragment,Constants.FRAG_DAILY_PLAN);
+                Intent intent=new Intent (this,ActivityDailyPlan.class);
                 Bundle bundle=new Bundle ();
                 bundle.putString (Constants.USER_ID,userID);
-                dailyPlanFragment.setArguments (bundle);
-                transaction.commit ();
+                startActivity (intent,bundle);
                 drawerLayout.closeDrawer (GravityCompat.START);
+
+//                ActivityDailyPlan dailyPlan=new ActivityDailyPlan ();
+////                FragmentDailyPlan dailyPlanFragment=new FragmentDailyPlan ();
+//                FragmentTransaction transaction=manager.beginTransaction ();
+////                transaction.replace (R.id.fragment_container,dailyPlanFragment,Constants.FRAG_DAILY_PLAN);
+//                Bundle bundle=new Bundle ();
+//                bundle.putString (Constants.USER_ID,userID);
+////                dailyPlanFragment.setArguments (bundle);
+//                transaction.commit ();
+//                drawerLayout.closeDrawer (GravityCompat.START);
+
                 break;
             }
         }

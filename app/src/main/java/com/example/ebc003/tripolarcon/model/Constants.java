@@ -76,4 +76,5 @@ public class Constants {
     public static final String SHOW_LOG_REMARK="en_remark";
     public static final String SHOW_PLAN_DATE="cur_date";
     public static final String SHOW_PLAN_TIME="cur_time";
+    public static final String CUSTOMER_ID="customer_id";
 }

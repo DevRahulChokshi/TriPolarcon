@@ -2,7 +2,6 @@ package com.example.ebc003.tripolarcon.adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.widget.AppCompatCheckBox;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -66,7 +65,7 @@ public class LeadListAdapter extends RecyclerView.Adapter<LeadListAdapter.MyView
                 holder.txtUser.setText (leadListData.getTxtUser ());
                 holder.txtLeadTitle.setText (leadListData.getTxtLeadTitle ());
                 holder.txtUserEmail.setText (leadListData.getTxtUserEmail ());
-                strCompanyName=leadListData.getTxtCompanyId ();
+                holder.txtCompanyId.setText (leadListData.getTxtCompanyId ());
             }
             else {
                 Toast.makeText (context.getApplicationContext (),"Data List is null",Toast.LENGTH_LONG).show ();
@@ -78,9 +77,10 @@ public class LeadListAdapter extends RecyclerView.Adapter<LeadListAdapter.MyView
         holder.itemView.setOnClickListener (new View.OnClickListener () {
             @Override
             public void onClick (View v) {
-                String strLeadTitle=(String)holder.txtLeadTitle.getText ();
+                String strLeadTitle=(String)holder.txtCompanyId.getText ();
                 Intent intent=new Intent (context.getApplicationContext (),ActivityLeadInformation.class);
-                intent.putExtra (Constants.COMPANY_NAME,strLeadTitle);
+                Log.i (TAG,"CompanyID:-"+strCompanyName);
+                intent.putExtra (Constants.USER_ID,strLeadTitle);
                 context.startActivity (intent);
             }
         });
@@ -99,6 +99,7 @@ public class LeadListAdapter extends RecyclerView.Adapter<LeadListAdapter.MyView
        TextView txtUser;
        TextView txtUserEmail;
        TextView txtLeadTitle;
+       TextView txtCompanyId;
 //       AppCompatCheckBox checkLead;
 
         public MyViewHolder (final View itemView) {
@@ -106,6 +107,7 @@ public class LeadListAdapter extends RecyclerView.Adapter<LeadListAdapter.MyView
             txtUser=itemView.findViewById (R.id.txtUser);
             txtUserEmail=itemView.findViewById (R.id.txtUserEmail);
             txtLeadTitle=itemView.findViewById (R.id.txtLeadTitle);
+            txtCompanyId=itemView.findViewById (R.id.txtCompanyId);
 //            checkLead=itemView.findViewById (R.id.checkLead);
         }
     }

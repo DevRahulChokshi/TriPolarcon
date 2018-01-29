@@ -4,19 +4,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- our tablayout to display tabs  -->
-    <android.support.design.widget.TabLayout
-        android:id="@+id/tabLayoutDailyPlan"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
+    <!--&lt;!&ndash; our tablayout to display tabs  &ndash;&gt;-->
+    <!--<android.support.design.widget.TabLayout-->
+        <!--android:id="@+id/tabLayoutDailyPlan"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:background="?attr/colorPrimary"-->
+        <!--android:minHeight="?attr/actionBarSize"-->
+        <!--android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>-->
 
-    <!-- View pager to swipe views -->
-    <android.support.v4.view.ViewPager
-        android:id="@+id/pagerDailyPlan"
-        android:layout_width="match_parent"
-        android:layout_height="fill_parent"/>
+    <!--&lt;!&ndash; View pager to swipe views &ndash;&gt;-->
+    <!--<android.support.v4.view.ViewPager-->
+        <!--android:id="@+id/pagerDailyPlan"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="fill_parent"/>-->
 
 </android.support.constraint.ConstraintLayout>
