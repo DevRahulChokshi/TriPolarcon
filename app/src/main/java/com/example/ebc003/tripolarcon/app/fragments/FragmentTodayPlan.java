@@ -50,8 +50,8 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class FragmentTodayPlan extends Fragment {
 
-    @BindView (R.id.recyclerTodayPlan) RecyclerView mRecyclerToDayPlan;
-    @BindView (R.id.progressBarToDayPlan) ProgressBar mProgressBar;
+    @BindView (R.id.recyclerTomorrow) RecyclerView mRecyclerToDayPlan;
+    @BindView (R.id.progressBarTomorrowPlan) ProgressBar mProgressBar;
     private RecyclerView.LayoutManager layoutManager;
     private String user_id;
     private String TAG=FragmentTodayPlan.class.getSimpleName ();

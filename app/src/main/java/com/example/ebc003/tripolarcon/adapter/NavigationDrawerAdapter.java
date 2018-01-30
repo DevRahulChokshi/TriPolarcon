@@ -60,9 +60,9 @@ public class NavigationDrawerAdapter extends RecyclerView.Adapter<NavigationDraw
             public void onClick (View v) {
                 String item= holder.imgTitle.getText ().toString ();
                 myAdapterItem.getItem (item);
-                v.setBackgroundColor (context.getResources ().getColor (R.color.grey_300));
-                holder.imgTitle.setTextColor (context.getResources ().getColor (R.color.primaryColor));
 
+//                v.setBackgroundColor (context.getResources ().getColor (R.color.grey_300));
+//                holder.imgTitle.setTextColor (context.getResources ().getColor (R.color.primaryColor));
             }
         });
     }

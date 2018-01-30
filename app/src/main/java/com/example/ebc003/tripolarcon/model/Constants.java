@@ -77,4 +77,5 @@ public class Constants {
     public static final String SHOW_PLAN_DATE="cur_date";
     public static final String SHOW_PLAN_TIME="cur_time";
     public static final String CUSTOMER_ID="customer_id";
+    public static final String LOG_DATETIME = "datetime";
 }

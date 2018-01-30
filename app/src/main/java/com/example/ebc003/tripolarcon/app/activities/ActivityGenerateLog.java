@@ -46,6 +46,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.TimeZone;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -82,6 +83,7 @@ public class ActivityGenerateLog extends AppCompatActivity implements View.OnCli
     static final int REQUEST_TAKE_PHOTO_CAMERA = 1;
     static final int REQUEST_TAKE_PHOTO_GALLERY = 2;
     static String fileFinalPath;
+    String dateforrow;
 
 
     @Override
@@ -128,6 +130,24 @@ public class ActivityGenerateLog extends AppCompatActivity implements View.OnCli
         permissions.add (Manifest.permission.WRITE_EXTERNAL_STORAGE);
         permissions.add (Manifest.permission.READ_EXTERNAL_STORAGE);
 
+//        Date date = new Date();
+//        SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+//        String strDate = formatter.format(date);
+//        System.out.println("Date Format with MM/dd/yyyy : "+strDate);
+//
+//        formatter = new SimpleDateFormat("dd-M-yyyy hh:mm:ss");
+//        strDate = formatter.format(date);
+//        System.out.println("Date Format with dd-M-yyyy hh:mm:ss : "+strDate);
+
+        long timeInMillis = System.currentTimeMillis();
+        Calendar cal1 = Calendar.getInstance();
+        cal1.setTimeInMillis(timeInMillis);
+        SimpleDateFormat dateFormat = new SimpleDateFormat(
+                "yyyy/MM/dd hh:mm:ss a");
+
+        dateforrow = dateFormat.format(cal1.getTime());
+
+        System.out.println("Date Format with dd-M-yyyy hh:mm:ss : "+dateforrow);
     }
 
     private void checkShredPreference () {
@@ -191,6 +211,7 @@ public class ActivityGenerateLog extends AppCompatActivity implements View.OnCli
         String mTime=mEdtTime.getText ().toString ();
 
         final Calendar myCalender = Calendar.getInstance();
+        myCalender.set (Calendar.AM_PM,Calendar.AM);
         int hour = myCalender.get(Calendar.HOUR_OF_DAY);
         int minute = myCalender.get(Calendar.MINUTE);
 
@@ -203,7 +224,7 @@ public class ActivityGenerateLog extends AppCompatActivity implements View.OnCli
 
         AddLogAsyncTask addLogAsyncTask=new AddLogAsyncTask (getApplicationContext (),progressBar);
         Log.i (TAG,"AsyncTask:-"+mCurrentPhotoPath);
-        addLogAsyncTask.execute (mSpinnserSchedule,CurrentDate,CurrentTime,mSpinnserCallType,mSpinnserStaus,mRemark,mDate,mTime,companyId,userID,mCurrentPhotoPath);
+        addLogAsyncTask.execute (mSpinnserSchedule,CurrentDate,CurrentTime,mSpinnserCallType,mSpinnserStaus,mRemark,mDate,mTime,companyId,userID,mCurrentPhotoPath,dateforrow);
     }
 
     @Override

@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.ebc003.tripolarcon.R;
 import com.example.ebc003.tripolarcon.model.JSONParser;
@@ -90,7 +91,7 @@ public class ActivityLogin extends AppCompatActivity {
             JSONParser parser=new JSONParser ();
             JSONObject response=parser.makeHttpRequest (Constants.URL_LOGIN,Constants.METHOD_POST,listData);
 
-            if (!response.isNull (Constants.EMP_ID)){
+            if (response!=null){
                 try {
                     String reg_id=response.getString (Constants.EMP_ID);
                     String user_name=response.getString (Constants.USER_NAME);
