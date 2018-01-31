@@ -5,5 +5,5 @@ package com.example.ebc003.tripolarcon.app;
  */
 
 public interface MyTimePicker {
-    void getItem (int hours, int minuets);
+    void getItem (int hours, int minuets,String format);
 }

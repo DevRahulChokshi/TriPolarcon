@@ -52,6 +52,14 @@ public class ActivityContainer extends AppCompatActivity  implements MyAdapterIt
         checkShredPreference();
 
         manager=getSupportFragmentManager ();
+
+        FragmentHome fragmentHome=new FragmentHome ();
+        FragmentTransaction tx = getSupportFragmentManager().beginTransaction();
+        tx.replace(R.id.fragment_container,fragmentHome);
+        Bundle bundle=new Bundle ();
+        bundle.putString (Constants.USER_ID,userID);
+        fragmentHome.setArguments (bundle);
+        tx.commit();
     }
 
     private void checkShredPreference () {

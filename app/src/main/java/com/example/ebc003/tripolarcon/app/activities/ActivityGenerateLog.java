@@ -85,7 +85,6 @@ public class ActivityGenerateLog extends AppCompatActivity implements View.OnCli
     static String fileFinalPath;
     String dateforrow;
 
-
     @Override
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate (savedInstanceState);
@@ -256,8 +255,8 @@ public class ActivityGenerateLog extends AppCompatActivity implements View.OnCli
     }
 
     @Override
-    public void getItem (int hours, int minuets) {
-        String myTime=hours+":"+minuets;
+    public void getItem (int hours, int minuets,String format) {
+        String myTime=hours+":"+minuets+" "+format;
         mEdtTime.setText (myTime);
     }
 

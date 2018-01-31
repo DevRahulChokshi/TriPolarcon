@@ -2,7 +2,6 @@ package com.example.ebc003.tripolarcon.app.fragments;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DividerItemDecoration;
@@ -12,10 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ProgressBar;
-import android.widget.Toast;
-
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -24,10 +20,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.ebc003.tripolarcon.R;
-import com.example.ebc003.tripolarcon.adapter.LeadListAdapter;
 import com.example.ebc003.tripolarcon.adapter.ShowTodayPlanAdapter;
 import com.example.ebc003.tripolarcon.model.Constants;
-import com.example.ebc003.tripolarcon.model.LeadListData;
 import com.example.ebc003.tripolarcon.model.LogData;
 
 import org.json.JSONArray;
@@ -50,8 +44,8 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class FragmentTodayPlan extends Fragment {
 
-    @BindView (R.id.recyclerTomorrow) RecyclerView mRecyclerToDayPlan;
-    @BindView (R.id.progressBarTomorrowPlan) ProgressBar mProgressBar;
+    @BindView (R.id.recyclerTodayPlan) RecyclerView mRecyclerToDayPlan;
+    @BindView (R.id.progressBarToDayPlan) ProgressBar mProgressBar;
     private RecyclerView.LayoutManager layoutManager;
     private String user_id;
     private String TAG=FragmentTodayPlan.class.getSimpleName ();
@@ -117,7 +111,6 @@ public class FragmentTodayPlan extends Fragment {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-
                     }
                 })
         {

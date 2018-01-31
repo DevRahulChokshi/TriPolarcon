@@ -126,9 +126,7 @@ public class ActivityLeadInformation extends AppCompatActivity implements View.O
                             Log.i (TAG,"Size:-"+size);
                             for (int i=0;i<=jsonArray.length ();i++){
                                 try{
-
                                     CompanyID=jsonArray.getJSONObject (i).getString (Constants.USER_ID);
-                                    Log.i (TAG,"JSON DATA:-:-"+CompanyID);
                                     String CompanyName=jsonArray.getJSONObject (i).getString ("name");
                                     String CompanyEmail=jsonArray.getJSONObject (i).getString ("email");
                                     String OfficePhoneNumber=jsonArray.getJSONObject (i).getString ("cust_comp_phn");

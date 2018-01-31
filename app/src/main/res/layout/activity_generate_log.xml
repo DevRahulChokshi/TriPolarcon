@@ -233,6 +233,7 @@
 
     <ImageView
         android:id="@+id/imgLog"
+        android:layout_gravity="center"
         android:layout_width="300dp"
         android:layout_height="200dp" />
 
