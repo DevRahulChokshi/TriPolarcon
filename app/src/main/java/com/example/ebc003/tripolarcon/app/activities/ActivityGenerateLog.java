@@ -213,13 +213,14 @@ public class ActivityGenerateLog extends AppCompatActivity implements View.OnCli
         myCalender.set (Calendar.AM_PM,Calendar.AM);
         int hour = myCalender.get(Calendar.HOUR_OF_DAY);
         int minute = myCalender.get(Calendar.MINUTE);
+        int seconds = myCalender.get(Calendar.SECOND);
 
         int year = myCalender.get(Calendar.YEAR);
         int month = myCalender.get(Calendar.MONTH);
         int day = myCalender.get(Calendar.DAY_OF_MONTH);
 
-        String CurrentDate=year+"/"+(month)+1+"/"+day;
-        String CurrentTime=hour+"/"+minute;
+        String CurrentDate=year+"-"+((month)+1)+"-"+day;
+        String CurrentTime=hour+":"+minute+":"+seconds;
 
         AddLogAsyncTask addLogAsyncTask=new AddLogAsyncTask (getApplicationContext (),progressBar);
         Log.i (TAG,"AsyncTask:-"+mCurrentPhotoPath);

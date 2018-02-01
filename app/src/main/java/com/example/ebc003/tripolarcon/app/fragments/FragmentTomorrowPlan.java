@@ -22,6 +22,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.ebc003.tripolarcon.R;
 import com.example.ebc003.tripolarcon.adapter.ShowTodayPlanAdapter;
+import com.example.ebc003.tripolarcon.adapter.ShowTomorrowPlanAdapter;
 import com.example.ebc003.tripolarcon.model.Constants;
 import com.example.ebc003.tripolarcon.model.LogData;
 
@@ -45,10 +46,8 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class FragmentTomorrowPlan extends Fragment {
 
-    @BindView(R.id.recyclerTomorrow)
-    RecyclerView mRecyclerToDayPlan;
-    @BindView (R.id.progressBarTomorrowPlan)
-    ProgressBar mProgressBar;
+    @BindView(R.id.recyclerTomorrow) RecyclerView mRecyclerToDayPlan;
+    @BindView (R.id.progressBarTomorrowPlan) ProgressBar mProgressBar;
     private RecyclerView.LayoutManager layoutManager;
     private String user_id;
     private String TAG=FragmentTomorrowPlan.class.getSimpleName ();
@@ -61,13 +60,13 @@ public class FragmentTomorrowPlan extends Fragment {
 
         ButterKnife.bind (this,view);
 
-//        mLogList=new ArrayList<> ();
-////        getData ();
-//        layoutManager=new LinearLayoutManager (view.getContext ());
-//        mRecyclerToDayPlan.setLayoutManager (layoutManager);
-//        mProgressBar.setVisibility (View.VISIBLE);
-//
-//        getSharedPreferenceData();
+        mLogList=new ArrayList<> ();
+        getData ();
+        layoutManager=new LinearLayoutManager (view.getContext ());
+        mRecyclerToDayPlan.setLayoutManager (layoutManager);
+        mProgressBar.setVisibility (View.VISIBLE);
+
+        getSharedPreferenceData();
 
         return view;
     }
@@ -120,11 +119,12 @@ public class FragmentTomorrowPlan extends Fragment {
                 int year = myCalender.get(Calendar.YEAR);
                 int month = myCalender.get(Calendar.MONTH);
                 int day = myCalender.get(Calendar.DAY_OF_MONTH);
-                String CurrentDate=year+"/"+(month)+1+"/"+day;
+                String CurrentDate=year+"-"+((month)+1)+"/"+((day)+1);
 
                 Map<String,String> stringMap=new HashMap<> ();
                 stringMap.put (Constants.USER_ID,user_id);
                 stringMap.put (Constants.SHOW_LOG_DATE,CurrentDate);
+                Log.i (TAG,CurrentDate);
                 return stringMap;
             }
         };
@@ -133,10 +133,10 @@ public class FragmentTomorrowPlan extends Fragment {
     }
 
     private void setRecycler () {
-        ShowTodayPlanAdapter leadListAdapter=new ShowTodayPlanAdapter (getContext (),mLogList);
+        ShowTomorrowPlanAdapter showTomorrowPlanAdapter=new ShowTomorrowPlanAdapter (getContext (),mLogList);
         DividerItemDecoration dividerItemDecoration=new DividerItemDecoration (getContext (), DividerItemDecoration.HORIZONTAL);
         mRecyclerToDayPlan.addItemDecoration (dividerItemDecoration);
-        mRecyclerToDayPlan.setAdapter (leadListAdapter);
+        mRecyclerToDayPlan.setAdapter (showTomorrowPlanAdapter);
         mProgressBar.setVisibility (View.GONE);
     }
 }

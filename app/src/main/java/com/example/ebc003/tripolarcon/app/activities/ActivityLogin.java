@@ -41,9 +41,7 @@ public class ActivityLogin extends AppCompatActivity {
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate (savedInstanceState);
         setContentView (R.layout.activity_login);
-
         ButterKnife.bind (this);
-
         setTypeFace();
     }
 
@@ -53,7 +51,6 @@ public class ActivityLogin extends AppCompatActivity {
     }
 
     public void onHomePage (View view) {
-
         String strEmail=mEdtEmail.getText ().toString ();
         String strPassword=mEdtPassword.getText ().toString ();
 

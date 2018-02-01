@@ -121,11 +121,12 @@ public class FragmentTodayPlan extends Fragment {
                 int year = myCalender.get(Calendar.YEAR);
                 int month = myCalender.get(Calendar.MONTH);
                 int day = myCalender.get(Calendar.DAY_OF_MONTH);
-                String CurrentDate=year+"/"+(month)+1+"/"+day;
+                String CurrentDate=year+"-"+((month)+1)+"-"+day;
 
                 Map<String,String> stringMap=new HashMap<> ();
                 stringMap.put (Constants.USER_ID,user_id);
                 stringMap.put (Constants.SHOW_LOG_DATE,CurrentDate);
+                Log.i (TAG,CurrentDate);
                 return stringMap;
             }
         };

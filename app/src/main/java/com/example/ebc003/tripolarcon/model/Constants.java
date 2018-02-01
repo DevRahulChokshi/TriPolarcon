@@ -44,7 +44,8 @@ public class Constants {
     public static final String URL_SHOW_TRADING_INFO="http://www.ebusinesscanvas.com/tripolarcon/android_app/trading_detail.php";
     public static final String URL_SHOW_TRADING_SERVICE_INFO="http://www.ebusinesscanvas.com/tripolarcon/android_app/trading_service_detail.php";
     public static final String URL_ADD_LOG="http://www.ebusinesscanvas.com/tripolarcon/android_app/add_log.php";
-    public static final String URL_SHOW_TODAY_PLAN="http://www.ebusinesscanvas.com/tripolarcon/android_app/show_daily_plan.php";
+    public static final String URL_SHOW_TODAY_PLAN="http://www.ebusinesscanvas.com/tripolarcon/android_app/show_today_plan.php";
+    public static final String URL_SHOW_TOMORROW_PLAN="http://www.ebusinesscanvas.com/tripolarcon/android_app/show_tomorrow_plan.php";
 
     public static final String ORDER_DATE="order_date";
     public static final String ORDER_DETAIL_ID="order_details_id";

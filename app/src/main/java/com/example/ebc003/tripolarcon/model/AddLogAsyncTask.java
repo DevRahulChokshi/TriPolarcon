@@ -77,8 +77,8 @@ public class AddLogAsyncTask  extends AsyncTask<String,Void,Boolean>{
         listData.add (new BasicNameValuePair (Constants.LOG_DATETIME,mDateTime));
 
         Log.i (TAG,"Spinner Schedule:-"+mSchedule);
-        Log.i (TAG,"Current Date:-"+mLogTime);
-        Log.i (TAG,"Current Time:-"+mLogDate);
+        Log.i (TAG,"Current Date:-"+mLogDate);
+        Log.i (TAG,"Current Time:-"+mLogTime);
         Log.i (TAG,"Remark:-"+mRemark);
         Log.i (TAG,"Schedule Date:-"+mScheduleDate);
         Log.i (TAG,"Schedule Time:-"+mScheduleTime);
