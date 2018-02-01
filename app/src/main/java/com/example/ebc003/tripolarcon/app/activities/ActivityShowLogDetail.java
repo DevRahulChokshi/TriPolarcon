@@ -46,7 +46,7 @@ public class ActivityShowLogDetail extends AppCompatActivity {
     private List<LogData> mLeadListData;
 
     @BindView (R.id.recyclerShowLog) RecyclerView mRecyclerView;
-//    @BindView (R.id.toolbar_show_log) Toolbar mToolbar;
+    @BindView (R.id.toolbar_show_log) Toolbar mToolbar;
 
     @Override
     protected void onCreate (Bundle savedInstanceState) {
@@ -55,7 +55,7 @@ public class ActivityShowLogDetail extends AppCompatActivity {
 
         ButterKnife.bind (this);
 
-//        setUpToolbar();
+        setUpToolbar();
         getIntentData();
         getData ();
 
@@ -63,27 +63,27 @@ public class ActivityShowLogDetail extends AppCompatActivity {
         mRecyclerView.setLayoutManager (mLayoutManager);
         mLeadListData=new ArrayList<> ();
 
-//        mToolbar.setNavigationOnClickListener (new View.OnClickListener () {
-//             @Override
-//             public void onClick (View v) {
-//                 finish ();
-//             }
-//         });
+        mToolbar.setNavigationOnClickListener (new View.OnClickListener () {
+             @Override
+             public void onClick (View v) {
+                 finish ();
+             }
+         });
     }
 
-//    private void setUpToolbar () {
-//        setSupportActionBar (mToolbar);
-//        ActionBar actionBar=getSupportActionBar ();
-//            if (actionBar!=null){
-//                    actionBar.setDisplayShowTitleEnabled (true);
-//                    actionBar.setTitle (R.string.show_log_detail);
-//                    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//                    getSupportActionBar().setDisplayShowHomeEnabled(true);
-//            }
-//            else {
-//                    Log.i (TAG,"ACTION BAR");
-//            }
-//    }
+    private void setUpToolbar () {
+        setSupportActionBar (mToolbar);
+        ActionBar actionBar=getSupportActionBar ();
+            if (actionBar!=null){
+                    actionBar.setDisplayShowTitleEnabled (true);
+                    actionBar.setTitle (R.string.show_log_detail);
+                    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+                    getSupportActionBar().setDisplayShowHomeEnabled(true);
+            }
+            else {
+                    Log.i (TAG,"ACTION BAR");
+            }
+    }
 
     private void getIntentData () {
         Intent mUserDataIntent=getIntent ();
