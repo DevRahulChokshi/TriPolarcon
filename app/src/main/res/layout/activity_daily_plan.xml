@@ -16,7 +16,6 @@
         android:minHeight="?attr/actionBarSize"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
-
     <!-- our tablayout to display tabs  -->
     <android.support.design.widget.TabLayout
         android:id="@+id/tabLayoutDailyPlan"
@@ -25,11 +24,9 @@
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
-
     <!-- View pager to swipe views -->
     <android.support.v4.view.ViewPager
         android:id="@+id/pagerDailyPlan"
         android:layout_width="match_parent"
         android:layout_height="fill_parent"/>
-
 </LinearLayout>

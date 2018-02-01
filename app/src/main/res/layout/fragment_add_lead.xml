@@ -3,11 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:android="http://schemas.android.com/apk/res/android">
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
         <TextView
             android:id="@+id/txtCompanyName"
             android:layout_width="wrap_content"
@@ -20,7 +18,6 @@
             android:layout_toStartOf="@+id/edtCompanyName"
             android:text="@string/company"
             android:textAlignment="center" />
-
         <EditText
             android:id="@+id/edtCompanyName"
             android:layout_width="200dp"
@@ -28,7 +25,6 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:inputType="text" />
-
         <TextView
             android:id="@+id/txtAddress"
             android:layout_width="wrap_content"
@@ -41,7 +37,6 @@
             android:layout_marginRight="5dp"
             android:text="@string/address"
             android:textAlignment="center" />
-
         <EditText
             android:id="@+id/edtAddress"
             android:layout_width="200dp"
@@ -53,7 +48,6 @@
             android:layout_below="@+id/edtCompanyName"
             android:layout_marginTop="5dp"
             android:inputType="text" />
-
         <TextView
             android:id="@+id/txtPincode"
             android:layout_width="wrap_content"
@@ -66,7 +60,6 @@
             android:layout_marginRight="5dp"
             android:text="@string/pincode"
             android:textAlignment="center" />
-
         <EditText
             android:id="@+id/edtPincode"
             android:layout_width="200dp"
@@ -75,7 +68,6 @@
             android:layout_toEndOf="@+id/txtPhone"
             android:layout_toRightOf="@+id/txtPhone"
             android:inputType="text" />
-
         <TextView
             android:id="@+id/txtPhone"
             android:layout_width="wrap_content"
@@ -88,7 +80,6 @@
             android:layout_marginRight="5dp"
             android:text="@string/phone_no"
             android:textAlignment="center" />
-
         <EditText
             android:id="@+id/edtPhoneNo"
             android:layout_width="200dp"
@@ -100,7 +91,6 @@
             android:layout_below="@+id/edtPincode"
             android:layout_marginTop="5dp"
             android:inputType="text" />
-
         <TextView
             android:id="@+id/txtMobile"
             android:layout_width="wrap_content"
@@ -111,7 +101,6 @@
             android:layout_alignStart="@+id/txtPhone"
             android:text="@string/mobile_no"
             android:textAlignment="center" />
-
         <EditText
             android:id="@+id/edtMobileNo"
             android:layout_width="200dp"
@@ -123,7 +112,6 @@
             android:layout_below="@+id/edtPhoneNo"
             android:layout_marginTop="5dp"
             android:inputType="text" />
-
         <TextView
             android:id="@+id/txtEmail"
             android:layout_width="wrap_content"
@@ -134,7 +122,6 @@
             android:layout_alignStart="@+id/txtMobile"
             android:text="@string/email"
             android:textAlignment="center" />
-
         <EditText
             android:id="@+id/edtEmail"
             android:layout_width="200dp"
@@ -146,7 +133,6 @@
             android:layout_below="@+id/edtMobileNo"
             android:layout_marginTop="5dp"
             android:inputType="text" />
-
         <TextView
             android:id="@+id/txtWebSite"
             android:layout_width="wrap_content"
@@ -157,7 +143,6 @@
             android:layout_alignStart="@+id/txtEmail"
             android:text="@string/web_site"
             android:textAlignment="center" />
-
         <EditText
             android:id="@+id/edtWebSite"
             android:layout_width="200dp"
@@ -169,7 +154,6 @@
             android:layout_below="@+id/edtEmail"
             android:layout_marginTop="5dp"
             android:inputType="text" />
-
         <TextView
             android:id="@+id/txtGSTIN"
             android:layout_width="wrap_content"
@@ -182,7 +166,6 @@
             android:layout_marginRight="5dp"
             android:text="@string/gstin"
             android:textAlignment="center" />
-
         <EditText
             android:id="@+id/edtGSTIN"
             android:layout_width="200dp"
@@ -191,7 +174,6 @@
             android:layout_toEndOf="@+id/txtPhone"
             android:layout_toRightOf="@+id/txtPhone"
             android:inputType="text" />
-
         <TextView
             android:id="@+id/txtState"
             android:layout_width="wrap_content"
@@ -202,7 +184,6 @@
             android:layout_alignStart="@+id/txtGSTIN"
             android:text="@string/state"
             android:textAlignment="center" />
-
         <EditText
             android:id="@+id/edtState"
             android:layout_width="200dp"
@@ -214,13 +195,11 @@
             android:layout_below="@+id/edtGSTIN"
             android:layout_marginTop="5dp"
             android:inputType="text" />
-
         <Button
             android:id="@+id/insertFragData"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/edtState"
             android:text="INSERT" />
-
     </RelativeLayout>
 </ScrollView>

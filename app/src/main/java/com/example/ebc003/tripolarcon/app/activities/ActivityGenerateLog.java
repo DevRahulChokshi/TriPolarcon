@@ -9,6 +9,7 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -31,6 +32,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.example.ebc003.tripolarcon.R;
 import com.example.ebc003.tripolarcon.app.MyDatePicker;
@@ -194,9 +196,9 @@ public class ActivityGenerateLog extends AppCompatActivity implements View.OnCli
                 break;
             }
             case R.id.showLog:{
-                    Intent intent=new Intent (this,ActivityShowLogDetail.class);
-                    intent.putExtra (Constants.USER_ID,userID);
-                    startActivity (intent);
+                Intent intent=new Intent (this,ActivityShowLogDetail.class);
+                intent.putExtra (Constants.USER_ID,userID);
+                startActivity (intent);
                 break;
             }
         }
@@ -263,6 +265,9 @@ public class ActivityGenerateLog extends AppCompatActivity implements View.OnCli
 
     @Override
     public void onItemSelected (AdapterView<?> parent, View view, int position, long id) {
+        {
+            ((TextView) view).setTextColor(getResources ().getColor (R.color.textColorEarthquakeLocation));
+        }
         int viewId=parent.getId ();
 
         Log.i (TAG," "+viewId);
@@ -284,6 +289,7 @@ public class ActivityGenerateLog extends AppCompatActivity implements View.OnCli
             }
         }
     }
+
 
     @Override
     public void onNothingSelected (AdapterView<?> parent) {}

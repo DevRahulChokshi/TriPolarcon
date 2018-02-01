@@ -1,14 +1,17 @@
 package com.example.ebc003.tripolarcon.app.activities;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.ListView;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -18,6 +21,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.ebc003.tripolarcon.R;
+import com.example.ebc003.tripolarcon.adapter.LeadListAdapter;
 import com.example.ebc003.tripolarcon.adapter.ShowLogAdapter;
 import com.example.ebc003.tripolarcon.model.Constants;
 import com.example.ebc003.tripolarcon.model.LeadListData;
@@ -37,64 +41,30 @@ import butterknife.ButterKnife;
 public class ActivityShowLogDetail extends AppCompatActivity {
 
     private String TAG=ActivityShowLogDetail.class.getSimpleName ();
+    private String mUserID;
+    private RecyclerView.LayoutManager mLayoutManager;
+    private List<LeadListData> mLeadListData;
 
-    @BindView (R.id.recyclerShowLogDetails)
-    RecyclerView mRecyclerShowLog;
-
-    @BindView (R.id.show_log_detail_toolbar)
-    Toolbar mToolbar;
-
-    private RecyclerView.LayoutManager layoutManager;
-    List<LogData> mLogList;
+    @BindView (R.id.recyclerShowLog) RecyclerView mRecyclerView;
+    @BindView (R.id.toolbar_show_log) Toolbar mToolbar;
 
     @Override
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate (savedInstanceState);
         setContentView (R.layout.activity_show_log_detail);
+
         ButterKnife.bind (this);
 
-        setUpToolbar();
-
-        mLogList=new ArrayList<> ();
-        layoutManager=new LinearLayoutManager (getApplicationContext ());
-        mRecyclerShowLog.setLayoutManager (layoutManager);
-        getData();
-
-        mToolbar.setNavigationOnClickListener (new View.OnClickListener () {
-            @Override
-            public void onClick (View v) {
-                finish ();
-            }
-        });
+        getIntentData();
+        getData ();
+        mLayoutManager=new LinearLayoutManager (this);
+        mRecyclerView.setLayoutManager (mLayoutManager);
     }
 
-    private void setUpToolbar () {
-        setSupportActionBar (mToolbar);
-        ActionBar actionBar=getSupportActionBar ();
-        if (actionBar!=null){
-            actionBar.setDisplayShowTitleEnabled (true);
-            actionBar.setTitle (R.string.show_log_detail);
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setDisplayShowHomeEnabled(true);
-        }
-        else {
-            Log.i (TAG,"ACTION BAR");
-        }
-    }
-
-    private String getIntentExtras () {
-        String userId = null;
-        Intent intent=getIntent ();
-        if (intent!=null) {
-             userId= intent.getStringExtra (Constants.USER_ID);
-             if (userId!=null){
-                 Log.i (TAG,"USER ID:-"+userId);
-             }
-             else {
-                 userId="N/A";
-             }
-        }
-        return userId;
+    private void getIntentData () {
+        Intent mUserDataIntent=getIntent ();
+        mUserID=mUserDataIntent.getStringExtra (Constants.USER_ID);
+        Log.i (TAG,"UserId:"+mUserID);
     }
 
     private void getData(){
@@ -109,14 +79,23 @@ public class ActivityShowLogDetail extends AppCompatActivity {
                             jsonArray = new JSONArray (response);
                             for (int i=0;i<=jsonArray.length ();i++){
                                 try{
-                                    LogData logData=new LogData ();
-                                    logData.setLogUserLatter (jsonArray.getJSONObject (i).getString (Constants.USER_ID));
-                                    logData.setLogCompanyName(jsonArray.getJSONObject (i).getString (Constants.USER_ID));
-                                    logData.setLogCompanyDate(jsonArray.getJSONObject (i).getString (Constants.SHOW_LOG_DATE));
-                                    logData.setLogCompanyTime(jsonArray.getJSONObject (i).getString (Constants.SHOW_LOG_TIME));
-                                    logData.setLogCompanyRemark (jsonArray.getJSONObject (i).getString (Constants.SHOW_LOG_REMARK));
+                                    LeadListData listData=new LeadListData ();
 
-                                    mLogList.add (logData);
+                                    String CompanyID=jsonArray.getJSONObject (i).getString ("id");
+                                    Log.i (TAG,"COMPANY ID:"+CompanyID);
+
+                                    String CompanyName=jsonArray.getJSONObject (i).getString ("name");
+                                    String CompanyEmail=jsonArray.getJSONObject (i).getString ("email");
+                                    String OfficePhoneNumber=jsonArray.getJSONObject (i).getString ("cust_comp_phn");
+                                    String Address=jsonArray.getJSONObject (i).getString ("invoicing_address");
+                                    String FaxNumber=jsonArray.getJSONObject (i).getString ("cust_comp_fax");
+                                    String ContactPersonName=jsonArray.getJSONObject (i).getString ("contact_person");
+                                    String ContactPersonNumber=jsonArray.getJSONObject (i).getString ("con_per_no");
+                                    String ContactPersonDesignation=jsonArray.getJSONObject (i).getString ("con_per_des");
+                                    String Note=jsonArray.getJSONObject (i).getString ("cust_note");
+
+                                    mLeadListData.add (listData);
+
                                 }catch (JSONException e){
                                     e.printStackTrace ();
                                 }
@@ -136,18 +115,21 @@ public class ActivityShowLogDetail extends AppCompatActivity {
         {
             @Override
             protected Map<String, String> getParams () throws AuthFailureError {
-                String user_id=getIntentExtras ();
                 Map<String,String> stringMap=new HashMap<> ();
-                stringMap.put (Constants.USER_ID,user_id);
+                stringMap.put (Constants.USER_ID,mUserID);
+                Log.i (TAG,"USER ID:-"+mUserID);
                 return stringMap;
             }
         };
-        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext ());
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
     }
 
-    void setRecycler(){
-        ShowLogAdapter showLogAdapter=new ShowLogAdapter (getApplicationContext (),mLogList);
-        mRecyclerShowLog.setAdapter (showLogAdapter);
+    private void setRecycler () {
+        LeadListAdapter leadListAdapter=new LeadListAdapter (this,mLeadListData);
+        DividerItemDecoration dividerItemDecoration=new DividerItemDecoration (this, DividerItemDecoration.HORIZONTAL);
+        mRecyclerView.addItemDecoration (dividerItemDecoration);
+        mRecyclerView.setAdapter (leadListAdapter);
     }
+
 }

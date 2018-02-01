@@ -12,7 +12,6 @@ import android.view.View;
 
 import com.example.ebc003.tripolarcon.R;
 import com.example.ebc003.tripolarcon.adapter.PagerDailyPlan;
-import com.example.ebc003.tripolarcon.app.fragments.FragmentDailyPlan;
 import com.example.ebc003.tripolarcon.model.Constants;
 
 import butterknife.BindView;

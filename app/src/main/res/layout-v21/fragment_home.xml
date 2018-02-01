@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
     <ProgressBar
         android:id="@+id/progressBarShowLead"
         android:layout_width="match_parent"
@@ -16,13 +15,11 @@
         android:layout_centerHorizontal="true"
         app:layout_constraintRight_toLeftOf="parent"
         app:layout_constraintLeft_toRightOf="parent"/>
-
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerConvertedLead"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/progressBarShowLead"/>
-
     <TextView
         android:id="@+id/txtTotalLead"
         android:layout_width="wrap_content"
@@ -34,5 +31,4 @@
         app:layout_constraintTop_toBottomOf="@+id/recyclerConvertedLead"
         app:layout_constraintLeft_toRightOf="parent"
         app:layout_constraintRight_toLeftOf="parent"/>
-
 </android.support.constraint.ConstraintLayout>
