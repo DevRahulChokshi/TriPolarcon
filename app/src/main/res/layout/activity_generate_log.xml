@@ -11,6 +11,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:focusableInTouchMode="true"
+        android:background="@android:color/white"
         tools:context="com.example.ebc003.tripolarcon.app.activities.ActivityGenerateLog">
         <android.support.v7.widget.Toolbar
             android:id="@+id/add_log_toolbar"

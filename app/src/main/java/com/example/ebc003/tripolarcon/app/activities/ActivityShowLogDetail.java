@@ -43,10 +43,10 @@ public class ActivityShowLogDetail extends AppCompatActivity {
     private String TAG=ActivityShowLogDetail.class.getSimpleName ();
     private String mUserID;
     private RecyclerView.LayoutManager mLayoutManager;
-    private List<LeadListData> mLeadListData;
+    private List<LogData> mLeadListData;
 
     @BindView (R.id.recyclerShowLog) RecyclerView mRecyclerView;
-    @BindView (R.id.toolbar_show_log) Toolbar mToolbar;
+//    @BindView (R.id.toolbar_show_log) Toolbar mToolbar;
 
     @Override
     protected void onCreate (Bundle savedInstanceState) {
@@ -55,11 +55,35 @@ public class ActivityShowLogDetail extends AppCompatActivity {
 
         ButterKnife.bind (this);
 
+//        setUpToolbar();
         getIntentData();
         getData ();
+
         mLayoutManager=new LinearLayoutManager (this);
         mRecyclerView.setLayoutManager (mLayoutManager);
+        mLeadListData=new ArrayList<> ();
+
+//        mToolbar.setNavigationOnClickListener (new View.OnClickListener () {
+//             @Override
+//             public void onClick (View v) {
+//                 finish ();
+//             }
+//         });
     }
+
+//    private void setUpToolbar () {
+//        setSupportActionBar (mToolbar);
+//        ActionBar actionBar=getSupportActionBar ();
+//            if (actionBar!=null){
+//                    actionBar.setDisplayShowTitleEnabled (true);
+//                    actionBar.setTitle (R.string.show_log_detail);
+//                    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//                    getSupportActionBar().setDisplayShowHomeEnabled(true);
+//            }
+//            else {
+//                    Log.i (TAG,"ACTION BAR");
+//            }
+//    }
 
     private void getIntentData () {
         Intent mUserDataIntent=getIntent ();
@@ -79,22 +103,15 @@ public class ActivityShowLogDetail extends AppCompatActivity {
                             jsonArray = new JSONArray (response);
                             for (int i=0;i<=jsonArray.length ();i++){
                                 try{
-                                    LeadListData listData=new LeadListData ();
 
-                                    String CompanyID=jsonArray.getJSONObject (i).getString ("id");
-                                    Log.i (TAG,"COMPANY ID:"+CompanyID);
+                                    LogData logData=new LogData ();
+                                    logData.setLogUserLatter (jsonArray.getJSONObject (i).getString (Constants.USER_ID));
+                                    logData.setLogCompanyName(jsonArray.getJSONObject (i).getString (Constants.USER_ID));
+                                    logData.setLogCompanyDate(jsonArray.getJSONObject (i).getString (Constants.SHOW_LOG_DATE));
+                                    logData.setLogCompanyTime(jsonArray.getJSONObject (i).getString (Constants.SHOW_LOG_TIME));
+                                    logData.setLogCompanyRemark (jsonArray.getJSONObject (i).getString (Constants.SHOW_LOG_REMARK));
 
-                                    String CompanyName=jsonArray.getJSONObject (i).getString ("name");
-                                    String CompanyEmail=jsonArray.getJSONObject (i).getString ("email");
-                                    String OfficePhoneNumber=jsonArray.getJSONObject (i).getString ("cust_comp_phn");
-                                    String Address=jsonArray.getJSONObject (i).getString ("invoicing_address");
-                                    String FaxNumber=jsonArray.getJSONObject (i).getString ("cust_comp_fax");
-                                    String ContactPersonName=jsonArray.getJSONObject (i).getString ("contact_person");
-                                    String ContactPersonNumber=jsonArray.getJSONObject (i).getString ("con_per_no");
-                                    String ContactPersonDesignation=jsonArray.getJSONObject (i).getString ("con_per_des");
-                                    String Note=jsonArray.getJSONObject (i).getString ("cust_note");
-
-                                    mLeadListData.add (listData);
+                                    mLeadListData.add (logData);
 
                                 }catch (JSONException e){
                                     e.printStackTrace ();
@@ -126,10 +143,10 @@ public class ActivityShowLogDetail extends AppCompatActivity {
     }
 
     private void setRecycler () {
-        LeadListAdapter leadListAdapter=new LeadListAdapter (this,mLeadListData);
-        DividerItemDecoration dividerItemDecoration=new DividerItemDecoration (this, DividerItemDecoration.HORIZONTAL);
-        mRecyclerView.addItemDecoration (dividerItemDecoration);
-        mRecyclerView.setAdapter (leadListAdapter);
+        ShowLogAdapter showLogAdapter=new ShowLogAdapter (getApplicationContext (),mLeadListData);
+//        DividerItemDecoration dividerItemDecoration=new DividerItemDecoration (this, DividerItemDecoration.HORIZONTAL);
+//        mRecyclerView.addItemDecoration (dividerItemDecoration);
+        mRecyclerView.setAdapter (showLogAdapter);
     }
 
 }
