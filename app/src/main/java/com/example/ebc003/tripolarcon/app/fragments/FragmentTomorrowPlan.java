@@ -79,12 +79,13 @@ public class FragmentTomorrowPlan extends Fragment {
 
     private void getData(){
         //Creating a string request
-        StringRequest stringRequest = new StringRequest (Request.Method.POST,Constants.URL_SHOW_TODAY_PLAN,
+        StringRequest stringRequest = new StringRequest (Request.Method.POST,Constants.URL_SHOW_TOMORROW_PLAN,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         JSONArray jsonArray = null;
                         try {
+
                             //Parsing the fetched Json String to JSON Object
                             jsonArray = new JSONArray (response);
                             for (int i=0;i<=jsonArray.length ();i++){

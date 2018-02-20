@@ -103,7 +103,6 @@ public class ActivityShowLogDetail extends AppCompatActivity {
                             jsonArray = new JSONArray (response);
                             for (int i=0;i<=jsonArray.length ();i++){
                                 try{
-
                                     LogData logData=new LogData ();
                                     logData.setLogUserLatter (jsonArray.getJSONObject (i).getString (Constants.USER_ID));
                                     logData.setLogCompanyName(jsonArray.getJSONObject (i).getString (Constants.USER_ID));
@@ -143,9 +142,9 @@ public class ActivityShowLogDetail extends AppCompatActivity {
     }
 
     private void setRecycler () {
-        ShowLogAdapter showLogAdapter=new ShowLogAdapter (getApplicationContext (),mLeadListData);
-//        DividerItemDecoration dividerItemDecoration=new DividerItemDecoration (this, DividerItemDecoration.HORIZONTAL);
-//        mRecyclerView.addItemDecoration (dividerItemDecoration);
+        ShowLogAdapter showLogAdapter=new ShowLogAdapter (this,mLeadListData);
+        DividerItemDecoration dividerItemDecoration=new DividerItemDecoration (this, DividerItemDecoration.HORIZONTAL);
+        mRecyclerView.addItemDecoration (dividerItemDecoration);
         mRecyclerView.setAdapter (showLogAdapter);
     }
 

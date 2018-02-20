@@ -1,6 +1,7 @@
 package com.example.ebc003.tripolarcon.app.fragments;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -43,9 +44,6 @@ public class FragmentTradingService extends Fragment {
     @BindView (R.id.txtProductAreaData) TextView mArea;
     @BindView (R.id.txtProductUnitData) TextView mUnit;
     @BindView (R.id.txtServiceSourceTypeData) TextView mSourceType;
-    @BindView (R.id.txtServiceStatusData) TextView mStatus;
-    @BindView (R.id.txtServiceActionData) TextView mAction;
-    @BindView (R.id.txtServiceFollowUpData) TextView mFollowUp;
     @BindView (R.id.txtServiceRequirementRemarkData) TextView mRequirementRemark;
     @BindView (R.id.txtServiceAssignToData) TextView mAssignTo;
     @BindView (R.id.txtServiceGeneratedToData) TextView mGeneratedTo;
@@ -57,9 +55,6 @@ public class FragmentTradingService extends Fragment {
     private String area;
     private String unit;
     private String source_id;
-    private String status_id;
-    private String action_id;
-    private String follow_id;
     private String requirement_remark;
     private String order_date;
     private String generated_by;
@@ -82,7 +77,6 @@ public class FragmentTradingService extends Fragment {
         }
 
         getLeadData ();
-
         return view;
     }
 
@@ -106,22 +100,16 @@ public class FragmentTradingService extends Fragment {
                                         area=jsonArray.getJSONObject (i).getString (Constants.AREA);
                                         unit=jsonArray.getJSONObject (i).getString (Constants.UNIT);
                                         source_id=jsonArray.getJSONObject (i).getString (Constants.SOURCE_ID);
-                                        status_id=jsonArray.getJSONObject (i).getString (Constants.ENQUIRE_STATUS_ID);
-                                        action_id=jsonArray.getJSONObject (i).getString (Constants.ENQUIRE_ACTION_ID);
-                                        follow_id=jsonArray.getJSONObject (i).getString (Constants.FOLLOW_UP_ID);
                                         requirement_remark =jsonArray.getJSONObject (i).getString (Constants.REQUIREMENT_REMARK);
                                         order_date =jsonArray.getJSONObject (i).getString (Constants.ORDER_DATE);
-                                        assign_to =jsonArray.getJSONObject (i).getString (Constants.ASSIGN_TO);
-                                        generated_by =jsonArray.getJSONObject (i).getString (Constants.GENERATED_BY);
+                                        assign_to =jsonArray.getJSONObject (i).getString (Constants.ASSIGN_TO_NAME);
+                                        generated_by =jsonArray.getJSONObject (i).getString (Constants.GENERATED_BY_NAME);
 
                                         mTradingServiceDate.setText (order_date);
                                         mOrderDescription.setText (order_description);
                                         mArea.setText (area);
                                         mUnit.setText (unit);
                                         mSourceType.setText (source_id);
-                                        mStatus.setText (status_id);
-                                        mAction.setText (action_id);
-                                        mFollowUp.setText (follow_id);
                                         mRequirementRemark.setText (requirement_remark);
                                         mGeneratedTo.setText (generated_by);
                                         mAssignTo.setText (assign_to);

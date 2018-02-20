@@ -24,9 +24,12 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.internal.Utils;
 
 public class ActivityLogin extends AppCompatActivity {
 
@@ -53,6 +56,9 @@ public class ActivityLogin extends AppCompatActivity {
     public void onHomePage (View view) {
         String strEmail=mEdtEmail.getText ().toString ();
         String strPassword=mEdtPassword.getText ().toString ();
+        // Check patter for email id
+        Pattern p = Pattern.compile (Constants.regEx);
+        Matcher m = p.matcher (strEmail);
 
         if (strEmail.isEmpty ()&&strEmail.length ()==0){
             mEdtEmail.setError ("Enter the email");
@@ -60,6 +66,14 @@ public class ActivityLogin extends AppCompatActivity {
         }
         else if(strPassword.isEmpty ()&&strPassword.length ()==0){
             mEdtPassword.setError ("Enter the password");
+            mEdtPassword.setFocusable (true);
+        }
+        else if(!strEmail.matches (Constants.emailPattern)){
+            mEdtEmail.setError ("Invalid email");
+            mEdtEmail.setFocusable (true);
+        }
+        else if(strPassword.length ()<=5){
+            mEdtPassword.setError ("Pass must be 5 latter or digit");
             mEdtPassword.setFocusable (true);
         }
         else {
@@ -88,30 +102,30 @@ public class ActivityLogin extends AppCompatActivity {
             JSONParser parser=new JSONParser ();
             JSONObject response=parser.makeHttpRequest (Constants.URL_LOGIN,Constants.METHOD_POST,listData);
 
-            if (response!=null){
                 try {
-                    String reg_id=response.getString (Constants.EMP_ID);
-                    String user_name=response.getString (Constants.USER_NAME);
+                    String status=response.getString (Constants.RESPONSE_STATUS);
+                    if(status.equals (Constants.REQUEST_STATUS)){
+                        String reg_id=response.getString (Constants.EMP_ID);
+                        String user_name=response.getString (Constants.USER_NAME);
 
-                    //SET SharedPreference
-                    setSharedPreference(reg_id,strEmail,user_name);
+                        //SET SharedPreference
+                        setSharedPreference(reg_id,strEmail,user_name);
 
-                    Intent intent=new Intent (getApplicationContext (),ActivityContainer.class);
-                    startActivity (intent);
-                    finish ();
+                        Intent intent=new Intent (getApplicationContext (),ActivityContainer.class);
+                        startActivity (intent);
+                        finish ();
+                    }
+                    else {
+                        return false;
+                    }
                 } catch (JSONException e) {
                     e.printStackTrace ();
                 }
+                return true;
             }
-            else {
-              return false;
-            }
-            return true;
-        }
 
         @Override
         protected void onPostExecute (Boolean aBoolean) {
-            mProgressBar.setVisibility (View.INVISIBLE);
             super.onPostExecute (aBoolean);
 
             if (!aBoolean){
@@ -119,8 +133,11 @@ public class ActivityLogin extends AppCompatActivity {
                 mEdtEmail.setFocusable (true);
                 mEdtPassword.setError ("Enter the correct password");
                 mEdtPassword.setFocusable (true);
+                mProgressBar.setVisibility (View.INVISIBLE);
             }
         }
+    }
+
 
         private void setSharedPreference (String reg_id,String userEmail,String userName){
             Context context=getApplicationContext ();
@@ -131,5 +148,5 @@ public class ActivityLogin extends AppCompatActivity {
             editor.putString (Constants.USER_NAME,userName);
             editor.apply ();
         }
-    }
 }
+

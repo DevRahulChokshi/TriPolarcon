@@ -127,6 +127,7 @@ public class FragmentTodayPlan extends Fragment {
                 stringMap.put (Constants.USER_ID,user_id);
                 stringMap.put (Constants.SHOW_LOG_DATE,CurrentDate);
                 Log.i (TAG,CurrentDate);
+                Log.i (TAG,user_id);
                 return stringMap;
             }
         };

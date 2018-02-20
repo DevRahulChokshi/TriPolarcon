@@ -98,7 +98,7 @@ public class AddLogAsyncTask  extends AsyncTask<String,Void,Boolean>{
         }
 
         // Set your server page url (and the file title/description)
-        HttpFileUpload hfu = new HttpFileUpload("http://www.ebusinesscanvas.com/tripolarcon/android_app/file_upload_log_generate.php", "ftitle", "fdescription",mFilePath);
+        HttpFileUpload hfu = new HttpFileUpload(Constants.FILE_UPLOAD_URL, "ftitle", "fdescription",mFilePath);
         hfu.Send_Now(fstrm);
 
         JSONParser parser=new JSONParser ();

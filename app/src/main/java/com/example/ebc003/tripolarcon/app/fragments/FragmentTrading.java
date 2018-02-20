@@ -1,6 +1,7 @@
 package com.example.ebc003.tripolarcon.app.fragments;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -40,9 +41,6 @@ public class FragmentTrading extends Fragment {
     @BindView (R.id.txtBrandNameData) TextView mBrandName;
     @BindView (R.id.txtProductNameData) TextView mProductName;
     @BindView (R.id.txtSourceTypeData) TextView mSourceType;
-    @BindView (R.id.txtStatusData) TextView mStatus;
-    @BindView (R.id.txtActionData) TextView mAction;
-    @BindView (R.id.txtFollowUpData) TextView mFollowUp;
     @BindView (R.id.txtRequirementRemarkData) TextView mRequirementData;
     @BindView (R.id.txtAssignToData) TextView mAssignTo;
     @BindView (R.id.txtGeneratedToData) TextView mGeneratedTo;
@@ -55,9 +53,6 @@ public class FragmentTrading extends Fragment {
     private String brand_id;
     private String pro_id;
     private String source_id;
-    private String status_id;
-    private String action_id;
-    private String follow_id;
     private String requirement_remark;
     private String order_date;
     private String generated_by;
@@ -80,7 +75,6 @@ public class FragmentTrading extends Fragment {
         }
 
         getLeadData ();
-
         return view;
     }
 
@@ -102,22 +96,18 @@ public class FragmentTrading extends Fragment {
                                             brand_id=jsonArray.getJSONObject (i).getString (Constants.BRAND_ID);
                                             pro_id=jsonArray.getJSONObject (i).getString (Constants.PRO_ID);
                                             source_id=jsonArray.getJSONObject (i).getString (Constants.SOURCE_ID);
-                                            status_id=jsonArray.getJSONObject (i).getString (Constants.ENQUIRE_STATUS_ID);
-                                            action_id=jsonArray.getJSONObject (i).getString (Constants.ENQUIRE_ACTION_ID);
-                                            follow_id=jsonArray.getJSONObject (i).getString (Constants.FOLLOW_UP_ID);
                                             requirement_remark =jsonArray.getJSONObject (i).getString (Constants.REQUIREMENT_REMARK);
                                             order_date =jsonArray.getJSONObject (i).getString (Constants.ORDER_DATE);
-                                            generated_by =jsonArray.getJSONObject (i).getString (Constants.GENERATED_BY);
+                                            generated_by =jsonArray.getJSONObject (i).getString (Constants.GENERATED_BY_NAME);
+                                            assign_to =jsonArray.getJSONObject (i).getString (Constants.ASSIGN_TO_NAME);
 
                                             mDate.setText (order_date);
                                             mBrandName.setText (brand_id);
                                             mProductName.setText (pro_id);
                                             mSourceType.setText (source_id);
-                                            mStatus.setText (status_id);
-                                            mAction.setText (action_id);
-                                            mFollowUp.setText (follow_id);
                                             mRequirementData.setText (requirement_remark);
                                             mGeneratedTo.setText (generated_by);
+                                            mAssignTo.setText (assign_to);
                                     }
                                     else {
                                             Log.i (TAG,"USER NAME NOT EQUAL");

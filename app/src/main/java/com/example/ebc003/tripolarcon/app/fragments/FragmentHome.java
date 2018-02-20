@@ -4,6 +4,8 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -148,45 +150,52 @@ public class FragmentHome extends Fragment{
                         try {
                             //Parsing the fetched Json String to JSON Object
                             jsonArray = new JSONArray (response);
-                            size=jsonArray.length ();
-                            Log.i (TAG,"Size:-"+size);
-                            for (int i=0;i<=jsonArray.length ();i++){
-                                try{
-                                    LeadListData leadListData=new LeadListData ();
 
-                                    String CompanyID=jsonArray.getJSONObject (i).getString ("id");
-                                    Log.i (TAG,"COMPANY ID:"+CompanyID);
-                                    String CompanyName=jsonArray.getJSONObject (i).getString ("name");
-                                    String CompanyEmail=jsonArray.getJSONObject (i).getString ("email");
-                                    String OfficePhoneNumber=jsonArray.getJSONObject (i).getString ("cust_comp_phn");
-                                    String Address=jsonArray.getJSONObject (i).getString ("invoicing_address");
-                                    String FaxNumber=jsonArray.getJSONObject (i).getString ("cust_comp_fax");
-                                    String ContactPersonName=jsonArray.getJSONObject (i).getString ("contact_person");
-                                    String ContactPersonNumber=jsonArray.getJSONObject (i).getString ("con_per_no");
-                                    String ContactPersonDesignation=jsonArray.getJSONObject (i).getString ("con_per_des");
-                                    String Note=jsonArray.getJSONObject (i).getString ("cust_note");
+                            if (!response.equals (Constants.RESPONSE_STATUS_FAIL)){
+                                for (int i=0;i<=jsonArray.length ();i++){
+                                    try{
+                                        LeadListData leadListData=new LeadListData ();
 
-                                    String fistLatter=CompanyName;
-                                    char first=fistLatter.charAt (0);
-                                    String firstData= String.valueOf (first);
+                                        String CompanyID=jsonArray.getJSONObject (i).getString ("id");
+                                        Log.i (TAG,"COMPANY ID:"+CompanyID);
 
-                                    leadListData.setTxtUserEmail (CompanyEmail);
-                                    leadListData.setTxtCompanyId (CompanyID);
-                                    leadListData.setTxtLeadTitle (CompanyName);
-                                    leadListData.setTxtUser (firstData);
-                                    leadListData.setStrOfficeNumber (OfficePhoneNumber);
-                                    leadListData.setStrAddress (Address);
-                                    leadListData.setStrFaxNumber (FaxNumber);
-                                    leadListData.setStrPersonName (ContactPersonName);
-                                    leadListData.setStrPersonNumber (ContactPersonNumber);
-                                    leadListData.setStrPersonDesignation (ContactPersonDesignation);
-                                    leadListData.setStrNote (Note);
+                                        String CompanyName=jsonArray.getJSONObject (i).getString ("name");
+                                        String CompanyEmail=jsonArray.getJSONObject (i).getString ("email");
+                                        String OfficePhoneNumber=jsonArray.getJSONObject (i).getString ("cust_comp_phn");
+                                        String Address=jsonArray.getJSONObject (i).getString ("invoicing_address");
+                                        String FaxNumber=jsonArray.getJSONObject (i).getString ("cust_comp_fax");
+                                        String ContactPersonName=jsonArray.getJSONObject (i).getString ("contact_person");
+                                        String ContactPersonNumber=jsonArray.getJSONObject (i).getString ("con_per_no");
+                                        String ContactPersonDesignation=jsonArray.getJSONObject (i).getString ("con_per_des");
+                                        String Note=jsonArray.getJSONObject (i).getString ("cust_note");
 
-                                    listData.add (leadListData);
+                                        String fistLatter=CompanyName;
+                                        char first=fistLatter.charAt (0);
+                                        String firstData= String.valueOf (first);
 
-                                }catch (JSONException e){
-                                    e.printStackTrace ();
+                                        leadListData.setTxtUserEmail (CompanyEmail);
+                                        leadListData.setTxtCompanyId (CompanyID);
+                                        leadListData.setTxtLeadTitle (CompanyName);
+                                        leadListData.setTxtUser (firstData);
+                                        leadListData.setStrOfficeNumber (OfficePhoneNumber);
+                                        leadListData.setStrAddress (Address);
+                                        leadListData.setStrFaxNumber (FaxNumber);
+                                        leadListData.setStrPersonName (ContactPersonName);
+                                        leadListData.setStrPersonNumber (ContactPersonNumber);
+                                        leadListData.setStrPersonDesignation (ContactPersonDesignation);
+                                        leadListData.setStrNote (Note);
+                                        listData.add (leadListData);
+                                    }catch (JSONException e){
+                                        e.printStackTrace ();
+                                    }
                                 }
+                            }
+                            else {
+                                FragmentNoData fragmentNoData=new FragmentNoData ();
+                                FragmentManager fragmentManager=getFragmentManager ();
+                                FragmentTransaction transaction=fragmentManager.beginTransaction ();
+                                transaction.replace (R.id.fragment_container,fragmentNoData);
+                                transaction.commit ();
                             }
                             setRecycler();
                         } catch (JSONException e) {

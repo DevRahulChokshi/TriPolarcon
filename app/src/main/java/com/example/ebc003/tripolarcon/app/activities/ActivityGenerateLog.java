@@ -9,7 +9,6 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -48,7 +47,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.TimeZone;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -131,15 +129,6 @@ public class ActivityGenerateLog extends AppCompatActivity implements View.OnCli
         permissions.add (Manifest.permission.WRITE_EXTERNAL_STORAGE);
         permissions.add (Manifest.permission.READ_EXTERNAL_STORAGE);
 
-//        Date date = new Date();
-//        SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
-//        String strDate = formatter.format(date);
-//        System.out.println("Date Format with MM/dd/yyyy : "+strDate);
-//
-//        formatter = new SimpleDateFormat("dd-M-yyyy hh:mm:ss");
-//        strDate = formatter.format(date);
-//        System.out.println("Date Format with dd-M-yyyy hh:mm:ss : "+strDate);
-
         long timeInMillis = System.currentTimeMillis();
         Calendar cal1 = Calendar.getInstance();
         cal1.setTimeInMillis(timeInMillis);
@@ -159,15 +148,15 @@ public class ActivityGenerateLog extends AppCompatActivity implements View.OnCli
 
     private void setSpinner () {
         String [] mListSchedule={"Meeting","Site Visit","Phone Call","Reminder","Follow up"};
-        ArrayAdapter<String> adapterSchedule=new ArrayAdapter<String> (getApplicationContext (),android.R.layout.simple_spinner_dropdown_item,mListSchedule);
+        ArrayAdapter<String> adapterSchedule=new ArrayAdapter<String> (this,android.R.layout.simple_spinner_dropdown_item,mListSchedule);
         mSpinnerSchedule.setAdapter (adapterSchedule);
 
         String [] mListCallType={"Phone call","Enquiry call","Reminder Call","Follow up","Payment"};
-        ArrayAdapter<String> adapterCallType=new ArrayAdapter<String> (getApplicationContext (),android.R.layout.simple_spinner_dropdown_item,mListCallType);
+        ArrayAdapter<String> adapterCallType=new ArrayAdapter<String> (this,android.R.layout.simple_spinner_dropdown_item,mListCallType);
         mSpinnerCallType.setAdapter (adapterCallType);
 
         String [] mListStatus={"Call back","No response","No related","Order closed","Directly forwarded","Number not reachable","Others","Quotation","Order finalise","Sampling","Site visit","Send to contractor","FCD"};
-        ArrayAdapter<String> adapterStatus=new ArrayAdapter<String> (getApplicationContext (),android.R.layout.simple_spinner_dropdown_item,mListStatus);
+        ArrayAdapter<String> adapterStatus=new ArrayAdapter<String> (this,android.R.layout.simple_spinner_dropdown_item,mListStatus);
         mSpinnerStatus.setAdapter (adapterStatus);
     }
 
@@ -224,9 +213,26 @@ public class ActivityGenerateLog extends AppCompatActivity implements View.OnCli
         String CurrentDate=year+"-"+((month)+1)+"-"+day;
         String CurrentTime=hour+":"+minute+":"+seconds;
 
-        AddLogAsyncTask addLogAsyncTask=new AddLogAsyncTask (getApplicationContext (),progressBar);
-        Log.i (TAG,"AsyncTask:-"+mCurrentPhotoPath);
-        addLogAsyncTask.execute (mSpinnserSchedule,CurrentDate,CurrentTime,mSpinnserCallType,mSpinnserStaus,mRemark,mDate,mTime,companyId,userID,mCurrentPhotoPath,dateforrow);
+        checkValidation(mDate,mTime,CurrentDate,CurrentTime,mRemark);
+    }
+
+    private void checkValidation (String mDate,String mTime,String mCurrentDate,String mCurrentTime,String mRemark) {
+        if (mDate.isEmpty () && mDate.length ()==0){
+            mEdtDate.setError ("Choose date");
+            mEdtDate.setFocusable (true);
+        }
+        else if(mTime.isEmpty ()&& mTime.length ()==0){
+            mEdtTime.setError ("Choose time");
+            mEdtTime.setFocusable (true);
+        }
+        else {
+            mEdtTime.setFocusable (false);
+            mEdtDate.setFocusable (false);
+
+            AddLogAsyncTask addLogAsyncTask=new AddLogAsyncTask (getApplicationContext (),progressBar);
+            Log.i (TAG,"AsyncTask:-"+mCurrentPhotoPath);
+            addLogAsyncTask.execute (mSpinnserSchedule,mCurrentDate,mCurrentTime,mSpinnserCallType,mSpinnserStaus,mRemark,mDate,mTime,companyId,userID,mCurrentPhotoPath,dateforrow);
+        }
     }
 
     @Override
@@ -289,7 +295,6 @@ public class ActivityGenerateLog extends AppCompatActivity implements View.OnCli
             }
         }
     }
-
 
     @Override
     public void onNothingSelected (AdapterView<?> parent) {}
@@ -354,8 +359,8 @@ public class ActivityGenerateLog extends AppCompatActivity implements View.OnCli
         fileFinalPath = getPath(selectedImageUri, ActivityGenerateLog.this);
 
         Bitmap bm;
-        BitmapFactory.Options btmapOptions = new BitmapFactory.Options();
-        bm = BitmapFactory.decodeFile(fileFinalPath, btmapOptions);
+        BitmapFactory.Options bitmapOptions = new BitmapFactory.Options();
+        bm = BitmapFactory.decodeFile(fileFinalPath, bitmapOptions);
         mImageUpload.setImageBitmap(bm);
     }
 
@@ -377,7 +382,6 @@ public class ActivityGenerateLog extends AppCompatActivity implements View.OnCli
                 ".jpg",         /* suffix */
                 storageDir      /* directory */
         );
-
         // Save a file: path for use with ACTION_VIEW intents
         mCurrentPhotoPath = image.getAbsolutePath();
         return image;
@@ -393,7 +397,6 @@ public class ActivityGenerateLog extends AppCompatActivity implements View.OnCli
                 photoFile = createImageFile();
             } catch (IOException ex) {
                 // Error occurred while creating the File
-
             }
             // Continue only if the File was successfully created
             if (photoFile != null) {

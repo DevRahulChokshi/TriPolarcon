@@ -70,4 +70,6 @@
     <string name="AddLogPhoto">Photo</string>
     <string name="upload">UPLOAD</string>
     <string name="daily_plan">Daily Plan</string>
+    <string name="connection_error">No Internet Connection !</string>
+    <string name="data_not_found">No data available !</string>
 </resources>

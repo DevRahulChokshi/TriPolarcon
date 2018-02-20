@@ -23,7 +23,6 @@ public class Constants {
     public static final String FRAG_LEADS="fragLeads";
     public static final String FRAG_REMINDER="fragReminder";
     public static final String FRAG_ADD_LEAD="fragAddLead";
-    public static final String FRAG_DAILY_PLAN = "fragDailyPlan";
 
     public static final String USER_ID="id";
     public static final String COMPANY_NAME="company_name";
@@ -79,4 +78,13 @@ public class Constants {
     public static final String SHOW_PLAN_TIME="cur_time";
     public static final String CUSTOMER_ID="customer_id";
     public static final String LOG_DATETIME = "datetime";
+
+    public static final String emailPattern = "[a-zA-Z0-9._-]+@[a-z._-]+\\.+[a-z]+";
+    public static final String regEx = "\\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}\\b";
+    public static final String RESPONSE_STATUS = "status";
+    public static final String RESPONSE_STATUS_FAIL = "fail";
+
+    public static final String FILE_UPLOAD_URL="http://www.ebusinesscanvas.com/tripolarcon/android_app/file_upload_log_generate.php";
+    public static final String ASSIGN_TO_NAME = "assign_to_name";
+    public static final String GENERATED_BY_NAME = "generated_by_name";
 }
