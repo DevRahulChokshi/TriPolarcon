@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -44,9 +45,9 @@ import butterknife.ButterKnife;
  * Created by EBC003 on 12/9/2017.
  */
 
-public class FragmentHome extends Fragment{
+public class FragmentEnquiryList extends Fragment{
 
-    private String TAG=FragmentHome.class.getSimpleName ();
+    private String TAG=FragmentEnquiryList.class.getSimpleName ();
     List<LeadListData> listData;
 
     @BindView(R.id.progressBarShowLead) ProgressBar progressBar;
@@ -55,7 +56,7 @@ public class FragmentHome extends Fragment{
 
     private RecyclerView.LayoutManager layoutManager;
     private String user_id;
-    private int size;
+
 
     @Override
     public void onAttach (Context context) {
@@ -75,13 +76,19 @@ public class FragmentHome extends Fragment{
             user_id=bundle.getString (Constants.USER_ID,"N/A");
             Log.i (TAG,"USER_ID:-"+user_id);
         }
+        setUpToolbar();
+    }
+
+    private void setUpToolbar () {
+        Toolbar toolbar = (Toolbar) getActivity().findViewById(R.id.main_toolbar);
+        toolbar.setTitle(R.string.strEnquiryList);
     }
 
     @Nullable
     @Override
     public View onCreateView (LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         Log.i (TAG,"onCreateView");
-        View view=inflater.inflate (R.layout.fragment_home,container,false);
+        View view=inflater.inflate (R.layout.fragment_enquiry_list,container,false);
 
         ButterKnife.bind (this,view);
 
@@ -228,8 +235,5 @@ public class FragmentHome extends Fragment{
         convertedLeadList.addItemDecoration (dividerItemDecoration);
         convertedLeadList.setAdapter (leadListAdapter);
         progressBar.setVisibility (View.GONE);
-
-        String mTxtTotalSize=size+" "+"Leads";
-        mTxtTotalLead.setText (mTxtTotalSize);
     }
 }

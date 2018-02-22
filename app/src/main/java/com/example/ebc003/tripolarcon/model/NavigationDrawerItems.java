@@ -47,16 +47,17 @@ public class NavigationDrawerItems {
     private static int[] getImages(){
 
         return new int[]{
-                R.drawable.ic_home_black,
-                R.drawable.ic_mode_edit_black,
-                R.drawable.ic_reminder_black,
-                R.drawable.ic_event
+                R.drawable.ic_dashboard_black,
+                R.drawable.ic_list_black,
+                R.drawable.ic_add_black,
+                R.drawable.ic_search_black,
+                R.drawable.ic_chat_bubble_black
         };
     }
 
     private static String[] getTitles(){
         return new String[]{
-            "Home","Leads","Reminder","Daily plan"
+            "Dashboard","Enquiry List","New Enquiry","Daily plan","Notification"
         };
     }
 }

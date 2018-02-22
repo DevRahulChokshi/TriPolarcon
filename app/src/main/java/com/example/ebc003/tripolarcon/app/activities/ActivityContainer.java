@@ -18,10 +18,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.example.ebc003.tripolarcon.R;
 import com.example.ebc003.tripolarcon.app.MyAdapterItemActivity;
-import com.example.ebc003.tripolarcon.app.fragments.FragmentHome;
+import com.example.ebc003.tripolarcon.app.fragments.FragmentDashboard;
+import com.example.ebc003.tripolarcon.app.fragments.FragmentEnquiryList;
 import com.example.ebc003.tripolarcon.app.fragments.FragmentLead;
 import com.example.ebc003.tripolarcon.app.fragments.FragmentNavigationDrawer;
-import com.example.ebc003.tripolarcon.app.fragments.FragmentReminder;
+import com.example.ebc003.tripolarcon.app.fragments.FragmentNotification;
 import com.example.ebc003.tripolarcon.model.Constants;
 
 import butterknife.BindView;
@@ -53,13 +54,14 @@ public class ActivityContainer extends AppCompatActivity  implements MyAdapterIt
 
         manager=getSupportFragmentManager ();
 
-        FragmentHome fragmentHome=new FragmentHome ();
-        FragmentTransaction tx = getSupportFragmentManager().beginTransaction();
-        tx.replace(R.id.fragment_container,fragmentHome);
-        Bundle bundle=new Bundle ();
-        bundle.putString (Constants.USER_ID,userID);
-        fragmentHome.setArguments (bundle);
-        tx.commit();
+        getDefaultFrag();
+    }
+
+    private void getDefaultFrag () {
+        FragmentDashboard fragmentDashboard =new FragmentDashboard ();
+        FragmentTransaction transaction=manager.beginTransaction ();
+        transaction.replace (R.id.fragment_container, fragmentDashboard,Constants.FRAG_DASHBOARD);
+        transaction.commit ();
     }
 
     private void checkShredPreference () {
@@ -78,7 +80,7 @@ public class ActivityContainer extends AppCompatActivity  implements MyAdapterIt
         ActionBar actionBar=getSupportActionBar ();
         if (actionBar!=null){
             actionBar.setDisplayShowTitleEnabled (true);
-            actionBar.setTitle (R.string.title_home);
+            actionBar.setTitle (R.string.title_dashboard);
         }
     }
 
@@ -129,18 +131,29 @@ public class ActivityContainer extends AppCompatActivity  implements MyAdapterIt
     @Override
     public void getItemActivity (String item) {
         switch (item){
-            case "Home":{
-                FragmentHome fragmentHome =new FragmentHome ();
+            case "Dashboard":{
+                FragmentDashboard fragmentDashboard =new FragmentDashboard ();
                 FragmentTransaction transaction=manager.beginTransaction ();
-                transaction.replace (R.id.fragment_container, fragmentHome,Constants.FRAG_HOME);
-                Bundle bundle=new Bundle ();
-                bundle.putString (Constants.USER_ID,userID);
-                fragmentHome.setArguments (bundle);
+                transaction.replace (R.id.fragment_container, fragmentDashboard,Constants.FRAG_DASHBOARD);
+//                Bundle bundle=new Bundle ();
+//                bundle.putString (Constants.USER_ID,userID);
+//                fragmentHome.setArguments (bundle);
                 transaction.commit ();
                 drawerLayout.closeDrawer (GravityCompat.START);
                 break;
             }
-            case "Leads":{
+            case "Enquiry List":{
+                FragmentEnquiryList fragmentEnquiryList =new FragmentEnquiryList ();
+                FragmentTransaction transaction=manager.beginTransaction ();
+                transaction.replace (R.id.fragment_container, fragmentEnquiryList,Constants.FRAG_HOME);
+                Bundle bundle=new Bundle ();
+                bundle.putString (Constants.USER_ID,userID);
+                fragmentEnquiryList.setArguments (bundle);
+                transaction.commit ();
+                drawerLayout.closeDrawer (GravityCompat.START);
+                break;
+            }
+            case "New Enquiry":{
                 FragmentLead fragmentLead =new FragmentLead ();
                 FragmentTransaction transaction=manager.beginTransaction ();
                 transaction.replace (R.id.fragment_container, fragmentLead,Constants.FRAG_LEADS);
@@ -148,10 +161,10 @@ public class ActivityContainer extends AppCompatActivity  implements MyAdapterIt
                 drawerLayout.closeDrawer (GravityCompat.START);
                 break;
                 }
-            case "Reminder": {
-                FragmentReminder fragmentReminder = new FragmentReminder ();
+            case "Notification": {
+                FragmentNotification fragmentNotification = new FragmentNotification ();
                 FragmentTransaction transaction = manager.beginTransaction ();
-                transaction.replace (R.id.fragment_container, fragmentReminder, Constants.FRAG_REMINDER);
+                transaction.replace (R.id.fragment_container, fragmentNotification, Constants.FRAG_REMINDER);
                 transaction.commit ();
                 drawerLayout.closeDrawer (GravityCompat.START);
                 break;

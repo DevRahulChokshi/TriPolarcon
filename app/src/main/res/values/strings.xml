@@ -72,4 +72,8 @@
     <string name="daily_plan">Daily Plan</string>
     <string name="connection_error">No Internet Connection !</string>
     <string name="data_not_found">No data available !</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="strEnquiryList">Enquiry List</string>
+    <string name="strNewEnquiry">New Enquiry</string>
+    <string name="strNotification">Notification</string>
 </resources>

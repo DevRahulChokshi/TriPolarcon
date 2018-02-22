@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,6 +36,12 @@ public class FragmentLead extends Fragment {
     private LeadListAdapter leadListAdapter;
     List<LeadListData> listData;
 
+    @Override
+    public void onCreate (@Nullable Bundle savedInstanceState) {
+        super.onCreate (savedInstanceState);
+        setUpToolbar ();
+    }
+
     @Nullable
     @Override
     public View onCreateView (LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -59,7 +66,6 @@ public class FragmentLead extends Fragment {
         layoutManager=new LinearLayoutManager (view.getContext ());
         mRecyclerDataList.setLayoutManager (layoutManager);
 
-        checkLeadDataList();
 
 //        listData=new ArrayList<> ();
 //        listData.add (new LeadListData ("R","Google Visit","dev.rahulchokshi@gmail.com",true));
@@ -81,8 +87,9 @@ public class FragmentLead extends Fragment {
         return view;
     }
 
-    private void checkLeadDataList () {
-
+    private void setUpToolbar () {
+        Toolbar toolbar = (Toolbar) getActivity().findViewById(R.id.main_toolbar);
+        toolbar.setTitle(R.string.strNewEnquiry);
     }
 }
 

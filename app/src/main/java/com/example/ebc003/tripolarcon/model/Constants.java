@@ -87,4 +87,5 @@ public class Constants {
     public static final String FILE_UPLOAD_URL="http://www.ebusinesscanvas.com/tripolarcon/android_app/file_upload_log_generate.php";
     public static final String ASSIGN_TO_NAME = "assign_to_name";
     public static final String GENERATED_BY_NAME = "generated_by_name";
+    public static final String FRAG_DASHBOARD = "frag_dashboard";
 }
