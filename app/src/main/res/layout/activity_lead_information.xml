@@ -213,31 +213,6 @@
                     android:textSize="15sp"/>
             </LinearLayout>
             <LinearLayout
-                android:id="@+id/linearCompanyPersonNumber"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/txtPersonNumber"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/Person_number"
-                    android:layout_marginTop="10dp"
-                    android:padding="10dp"
-                    android:textSize="15sp"/>
-                <TextView
-                    android:id="@+id/txtPersonNumberData"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textColor="@color/textColorEarthquakeLocation"
-                    android:text="@string/note_available"
-                    android:layout_marginTop="10dp"
-                    android:padding="10dp"
-                    android:textSize="15sp"/>
-            </LinearLayout>
-            <LinearLayout
                 android:id="@+id/linearCompanyNote"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

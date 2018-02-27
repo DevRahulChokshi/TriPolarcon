@@ -43,7 +43,7 @@ public class ActivityLeadInformation extends AppCompatActivity implements View.O
     @BindView (R.id.txtAddressData) TextView mTxtAddress;
     @BindView (R.id.txtFaxData) TextView mTxtFax;
     @BindView (R.id.txtPersonNameData) TextView mTxtPersonName;
-    @BindView (R.id.txtPersonNumberData) TextView mTxtPersonNumber;
+//    @BindView (R.id.txtPersonNumberData) TextView mTxtPersonNumber;
     @BindView (R.id.txtPersonNoteData) TextView mTxtPersonNote;
     @BindView (R.id.txtLeadInfo) TextView mTxtLeadInfo;
     @BindView (R.id.txtEnquiryStatusData) TextView mTxtEnquiryStatus;
@@ -134,7 +134,7 @@ public class ActivityLeadInformation extends AppCompatActivity implements View.O
                                     String Address=jsonArray.getJSONObject (i).getString ("invoicing_address");
                                     String FaxNumber=jsonArray.getJSONObject (i).getString ("cust_comp_fax");
                                     String ContactPersonName=jsonArray.getJSONObject (i).getString ("contact_person");
-                                    String ContactPersonNumber=jsonArray.getJSONObject (i).getString ("con_per_no");
+//                                    String ContactPersonNumber=jsonArray.getJSONObject (i).getString ("con_per_no");
                                     String Note=jsonArray.getJSONObject (i).getString ("cust_note");
                                     String Source=jsonArray.getJSONObject (i).getString ("source");
                                     assign_to=jsonArray.getJSONObject (i).getString ("assign_to");
@@ -146,7 +146,7 @@ public class ActivityLeadInformation extends AppCompatActivity implements View.O
                                     mTxtAddress.setText (Address);
                                     mTxtFax.setText (FaxNumber);
                                     mTxtPersonName.setText (ContactPersonName);
-                                    mTxtPersonNumber.setText (ContactPersonNumber);
+//                                    mTxtPersonNumber.setText (ContactPersonNumber);
                                     mTxtPersonNote.setText (Note);
                                     mTxtEnquiryStatus.setText (Source);
 

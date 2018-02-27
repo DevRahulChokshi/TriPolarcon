@@ -76,4 +76,15 @@
     <string name="strEnquiryList">Enquiry List</string>
     <string name="strNewEnquiry">New Enquiry</string>
     <string name="strNotification">Notification</string>
+    <string name="contact_person">Contact Person</string>
+    <string name="contact_person_designation">Designation</string>
+    <string name="cityName">City</string>
+    <string name="PAN_Number">PAN</string>
+    <string name="GST_Number">GST</string>
+    <string name="FAX_Number">FAX</string>
+    <string name="Source_Online">Online</string>
+    <string name="Source_Offline">Offline</string>
+    <string name="Source">Source</string>
+    <string name="strCreateEnquiry">Create Enquiry</string>
+    <string name="generate_lead">Generate Lead</string>
 </resources>

@@ -1,5 +1,7 @@
 package com.example.ebc003.tripolarcon.app.fragments;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -9,12 +11,15 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.ebc003.tripolarcon.R;
 import com.example.ebc003.tripolarcon.adapter.LeadListAdapter;
+import com.example.ebc003.tripolarcon.app.activities.ActivityGenerateLead;
+import com.example.ebc003.tripolarcon.app.activities.ActivityGenerateLog;
 import com.example.ebc003.tripolarcon.model.Constants;
 import com.example.ebc003.tripolarcon.model.LeadListData;
 
@@ -23,11 +28,16 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import static android.content.Context.MODE_PRIVATE;
+import static com.android.volley.VolleyLog.TAG;
+
 /**
  * Created by EBC003 on 12/9/2017.
  */
 
 public class FragmentLead extends Fragment {
+
+    private static final String TAG=FragmentLead.class.getSimpleName ();
 
     @BindView (R.id.fab) FloatingActionButton fab;
     @BindView (R.id.recyclerLeadDataList) RecyclerView mRecyclerDataList;
@@ -36,10 +46,14 @@ public class FragmentLead extends Fragment {
     private LeadListAdapter leadListAdapter;
     List<LeadListData> listData;
 
+    private String userID;
+    private String userName;
+
     @Override
     public void onCreate (@Nullable Bundle savedInstanceState) {
         super.onCreate (savedInstanceState);
         setUpToolbar ();
+        checkShredPreference ();
     }
 
     @Nullable
@@ -54,12 +68,8 @@ public class FragmentLead extends Fragment {
 
             @Override
             public void onClick (View v) {
-                FragmentAddLead  fragmentAddLead=new FragmentAddLead ();
-                FragmentManager fragmentManager =getFragmentManager ();
-                FragmentTransaction transaction=fragmentManager.beginTransaction ();
-                transaction.replace (container.getId (),fragmentAddLead,Constants.FRAG_ADD_LEAD);
-                transaction.addToBackStack (Constants.FRAG_ADD_LEAD);
-                transaction.commit ();
+                Intent intent=new Intent (getActivity (), ActivityGenerateLead.class);
+                getActivity ().startActivity (intent);
             }
         });
 
@@ -89,7 +99,16 @@ public class FragmentLead extends Fragment {
 
     private void setUpToolbar () {
         Toolbar toolbar = (Toolbar) getActivity().findViewById(R.id.main_toolbar);
-        toolbar.setTitle(R.string.strNewEnquiry);
+        toolbar.setTitle(R.string.strEnquiry);
+    }
+
+    private void checkShredPreference () {
+        SharedPreferences sharedPreferences=getActivity ().getSharedPreferences (Constants.PREFERENCE_KEY,MODE_PRIVATE);
+        userID=sharedPreferences.getString (Constants.EMP_ID,"N/A");
+        userName=sharedPreferences.getString (Constants.USER_NAME,"N/A");
+
+        Log.i (TAG,"User id:-"+userID);
+        Log.i (TAG,"User name:-"+userName);
     }
 }
 

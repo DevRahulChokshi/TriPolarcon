@@ -52,7 +52,6 @@ public class FragmentEnquiryList extends Fragment{
 
     @BindView(R.id.progressBarShowLead) ProgressBar progressBar;
     @BindView (R.id.recyclerConvertedLead) RecyclerView convertedLeadList;
-    @BindView (R.id.txtTotalLead) TextView mTxtTotalLead;
 
     private RecyclerView.LayoutManager layoutManager;
     private String user_id;

@@ -8,7 +8,7 @@ public class Constants {
 
     public static final String USER_EMAIL="user_email";
     public static final String USER_PASSWORD="user_password";
-
+    public static final String USER_ID_NAME="customer_id_name";
     public static final String METHOD_POST="POST";
     public static final String METHOD_GET="GET";
 
@@ -28,13 +28,11 @@ public class Constants {
     public static final String COMPANY_NAME="company_name";
     public static final String LOG_IMG_PATH="log_img_path";
     public static final String ADDRESS="address";
-    public static final String PIN_CODE="pin_code";
     public static final String PHONE_NO="phone_no";
-    public static final String MOBILE_NO="mobile_no";
     public static final String WEB_SITE="web_site";
     public static final String GST_NO="gst_no";
     public static final String STATE="state";
-    public static final String URL_INSERT_LEAD="http://www.ebusinesscanvas.com/pathalogy_lab/lead_insert.php";
+    public static final String URL_INSERT_LEAD="http://www.ebusinesscanvas.com/tripolarcon/android_app/add_lead_details.php";
     public static final String REQUEST_STATUS="success";
 
     public static final String URL_SHOW_LEAD_LIST="http://www.ebusinesscanvas.com/tripolarcon/android_app/lead_list_show.php";
@@ -88,4 +86,11 @@ public class Constants {
     public static final String ASSIGN_TO_NAME = "assign_to_name";
     public static final String GENERATED_BY_NAME = "generated_by_name";
     public static final String FRAG_DASHBOARD = "frag_dashboard";
+    public static final String CONTACT_PERSON = "contactPerson";
+    public static final String CONTACT_DESIGNATION = "contactDesignation";
+    public static final String CITY = "city";
+    public static final String FAX_NUMBER = "FAX_Number";
+    public static final String PAN_NUMBER = "PAN_Number";
+    public static final String NOTE = "note";
+    public static final String SOURCE = "source";
 }

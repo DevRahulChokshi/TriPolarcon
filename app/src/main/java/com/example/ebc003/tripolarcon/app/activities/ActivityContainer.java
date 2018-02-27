@@ -45,15 +45,10 @@ public class ActivityContainer extends AppCompatActivity  implements MyAdapterIt
         setContentView (R.layout.activity_container);
 
         ButterKnife.bind (this);
-
         setUpToolbar();
-
         setUpDrawer();
-
         checkShredPreference();
-
         manager=getSupportFragmentManager ();
-
         getDefaultFrag();
     }
 
