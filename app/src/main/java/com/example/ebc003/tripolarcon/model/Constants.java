@@ -93,4 +93,5 @@ public class Constants {
     public static final String PAN_NUMBER = "PAN_Number";
     public static final String NOTE = "note";
     public static final String SOURCE = "source";
+    public static final String NO_DATA = "no_data";
 }

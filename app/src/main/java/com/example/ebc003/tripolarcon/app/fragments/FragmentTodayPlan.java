@@ -86,28 +86,32 @@ public class FragmentTodayPlan extends Fragment {
                     @Override
                     public void onResponse(String response) {
                         JSONArray jsonArray = null;
-                        try {
-                            //Parsing the fetched Json String to JSON Object
-                            jsonArray = new JSONArray (response);
-                            for (int i=0;i<=jsonArray.length ();i++){
-                                try{
-                                    LogData logData=new LogData ();
-                                    String fistLatter= jsonArray.getJSONObject (i).getString (Constants.USER_ID_NAME);
-                                    char first=fistLatter.charAt (0);
-                                    String firstData= String.valueOf (first);
-                                    logData.setLogUserLatter (firstData);
-                                    logData.setLogCompanyName(jsonArray.getJSONObject (i).getString (Constants.USER_ID_NAME));
-                                    logData.setLogCompanyDate(jsonArray.getJSONObject (i).getString (Constants.SHOW_PLAN_DATE));
-                                    logData.setLogCompanyTime(jsonArray.getJSONObject (i).getString (Constants.SHOW_PLAN_TIME));
-                                    logData.setLogScheduleType (jsonArray.getJSONObject (i).getString (Constants.SHOW_LOG_SCHEDULE));
-                                    mLogList.add (logData);
-                                }catch (JSONException e){
-                                    e.printStackTrace ();
+                        if (!response.isEmpty ()){
+                            try {
+                                //Parsing the fetched Json String to JSON Object
+                                jsonArray = new JSONArray (response);
+                                for (int i=0;i<=jsonArray.length ();i++){
+                                    try{
+                                        LogData logData=new LogData ();
+                                        String fistLatter= jsonArray.getJSONObject (i).getString (Constants.USER_ID_NAME);
+                                        char first=fistLatter.charAt (0);
+                                        String firstData= String.valueOf (first);
+                                        logData.setLogUserLatter (firstData);
+                                        logData.setLogCompanyName(jsonArray.getJSONObject (i).getString (Constants.USER_ID_NAME));
+                                        logData.setLogCompanyDate(jsonArray.getJSONObject (i).getString (Constants.SHOW_PLAN_DATE));
+                                        logData.setLogCompanyTime(jsonArray.getJSONObject (i).getString (Constants.SHOW_PLAN_TIME));
+                                        logData.setLogScheduleType (jsonArray.getJSONObject (i).getString (Constants.SHOW_LOG_SCHEDULE));
+                                        mLogList.add (logData);
+                                    }catch (JSONException e){
+                                        e.printStackTrace ();
+                                    }
                                 }
+                                setRecycler();
+                            } catch (JSONException e) {
+                                e.printStackTrace();
                             }
-                            setRecycler();
-                        } catch (JSONException e) {
-                            e.printStackTrace();
+                        }else {
+                            mProgressBar.setVisibility (View.GONE);
                         }
                     }
                 },

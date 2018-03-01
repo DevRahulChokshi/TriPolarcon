@@ -4,6 +4,8 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -85,23 +87,26 @@ public class FragmentTomorrowPlan extends Fragment {
                     public void onResponse(String response) {
                         JSONArray jsonArray = null;
                         try {
-
-                            //Parsing the fetched Json String to JSON Object
-                            jsonArray = new JSONArray (response);
-                            for (int i=0;i<=jsonArray.length ();i++){
-                                try{
-                                    LogData logData=new LogData ();
-                                    logData.setLogUserLatter (jsonArray.getJSONObject (i).getString (Constants.CUSTOMER_ID));
-                                    logData.setLogCompanyName(jsonArray.getJSONObject (i).getString (Constants.USER_ID));
-                                    logData.setLogCompanyDate(jsonArray.getJSONObject (i).getString (Constants.SHOW_PLAN_DATE));
-                                    logData.setLogCompanyTime(jsonArray.getJSONObject (i).getString (Constants.SHOW_PLAN_TIME));
-                                    logData.setLogScheduleType (jsonArray.getJSONObject (i).getString (Constants.SHOW_LOG_SCHEDULE));
-                                    mLogList.add (logData);
-                                }catch (JSONException e){
-                                    e.printStackTrace ();
+                            if (!response.isEmpty ()){
+                                //Parsing the fetched Json String to JSON Object
+                                jsonArray = new JSONArray (response);
+                                for (int i=0;i<=jsonArray.length ();i++){
+                                    try{
+                                        LogData logData=new LogData ();
+                                        logData.setLogUserLatter (jsonArray.getJSONObject (i).getString (Constants.CUSTOMER_ID));
+                                        logData.setLogCompanyName(jsonArray.getJSONObject (i).getString (Constants.USER_ID));
+                                        logData.setLogCompanyDate(jsonArray.getJSONObject (i).getString (Constants.SHOW_PLAN_DATE));
+                                        logData.setLogCompanyTime(jsonArray.getJSONObject (i).getString (Constants.SHOW_PLAN_TIME));
+                                        logData.setLogScheduleType (jsonArray.getJSONObject (i).getString (Constants.SHOW_LOG_SCHEDULE));
+                                        mLogList.add (logData);
+                                    }catch (JSONException e){
+                                        e.printStackTrace ();
+                                    }
                                 }
+                                setRecycler();
+                            }else {
+                               mProgressBar.setVisibility (View.GONE);
                             }
-                            setRecycler();
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }

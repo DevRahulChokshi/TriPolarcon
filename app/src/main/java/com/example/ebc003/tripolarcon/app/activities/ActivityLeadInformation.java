@@ -1,6 +1,7 @@
 package com.example.ebc003.tripolarcon.app.activities;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -149,6 +150,19 @@ public class ActivityLeadInformation extends AppCompatActivity implements View.O
 //                                    mTxtPersonNumber.setText (ContactPersonNumber);
                                     mTxtPersonNote.setText (Note);
                                     mTxtEnquiryStatus.setText (Source);
+
+                                    Typeface regularFont=Typeface.createFromAsset (getAssets (),"fonts/Nunito-Regular.ttf");
+                                    Typeface boldFont=Typeface.createFromAsset (getAssets (),"fonts/Nunito-Bold.ttf");
+                                    mTxtCompanyEmail.setTypeface (regularFont);
+                                    mTxtCompanyName.setTypeface (regularFont);
+                                    mTxtOfficePhone.setTypeface (regularFont);
+                                    mTxtWebSite.setTypeface (regularFont);
+                                    mTxtAddress.setTypeface (regularFont);
+                                    mTxtFax.setTypeface (regularFont);
+                                    mTxtPersonName.setTypeface (regularFont);
+                                    mTxtPersonNote.setTypeface (regularFont);
+                                    mTxtEnquiryStatus.setTypeface (regularFont);
+                                    mTxtLeadInfo.setTypeface (boldFont);
 
                                 }catch (JSONException e){
                                     e.printStackTrace ();

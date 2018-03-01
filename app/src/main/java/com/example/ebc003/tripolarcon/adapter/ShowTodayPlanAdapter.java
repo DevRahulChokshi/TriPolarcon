@@ -48,7 +48,7 @@ public class ShowTodayPlanAdapter extends RecyclerView.Adapter<ShowTodayPlanAdap
             LogData logData=mLogList.get (position);
             if (logData!=null){
                 holder.mTxtCompanyLatter.setText (logData.getLogUserLatter ());
-                holder.mTxtCompanyName.setText (logData.getLogUserLatter ());
+                holder.mTxtCompanyName.setText (logData.getLogCompanyName ());
                 String mLogData=logData.getLogCompanyDate ()+" "+logData.getLogCompanyTime ()+" "+logData.getLogScheduleType ();
                 holder.mTxtTodayPlanDetails.setText (mLogData);
             }

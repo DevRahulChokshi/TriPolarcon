@@ -85,43 +85,50 @@ public class FragmentTrading extends Fragment {
                     @Override
                     public void onResponse(String response) {
                         JSONArray jsonArray = null;
-                        try {
-                            jsonArray = new JSONArray (response);
-                            int size=jsonArray.length ();
-                            Log.i (TAG,"Size:-"+size);
-                            for (int i=0;i<=jsonArray.length ();i++){
-                                try{
-                                    String CompanyName=jsonArray.getJSONObject (i).getString ("customer_id");
-                                    if (CompanyName.equals (user_id)){
-                                            brand_id=jsonArray.getJSONObject (i).getString (Constants.BRAND_ID);
-                                            pro_id=jsonArray.getJSONObject (i).getString (Constants.PRO_ID);
-                                            source_id=jsonArray.getJSONObject (i).getString (Constants.SOURCE_ID);
-                                            requirement_remark =jsonArray.getJSONObject (i).getString (Constants.REQUIREMENT_REMARK);
-                                            order_date =jsonArray.getJSONObject (i).getString (Constants.ORDER_DATE);
-                                            generated_by =jsonArray.getJSONObject (i).getString (Constants.GENERATED_BY_NAME);
-                                            assign_to =jsonArray.getJSONObject (i).getString (Constants.ASSIGN_TO_NAME);
+                            try {
+                                jsonArray = new JSONArray (response);
+                                    for (int i = 0; i <= jsonArray.length (); i++) {
+                                        try {
+                                            String CompanyName = jsonArray.getJSONObject (i).getString ("customer_id");
+                                            if (CompanyName.equals (user_id)) {
+                                                brand_id = jsonArray.getJSONObject (i).getString (Constants.BRAND_ID);
+                                                pro_id = jsonArray.getJSONObject (i).getString (Constants.PRO_ID);
+                                                source_id = jsonArray.getJSONObject (i).getString (Constants.SOURCE_ID);
+                                                requirement_remark = jsonArray.getJSONObject (i).getString (Constants.REQUIREMENT_REMARK);
+                                                order_date = jsonArray.getJSONObject (i).getString (Constants.ORDER_DATE);
+                                                generated_by = jsonArray.getJSONObject (i).getString (Constants.GENERATED_BY_NAME);
+                                                assign_to = jsonArray.getJSONObject (i).getString (Constants.ASSIGN_TO_NAME);
 
-                                            mDate.setText (order_date);
-                                            mBrandName.setText (brand_id);
-                                            mProductName.setText (pro_id);
-                                            mSourceType.setText (source_id);
-                                            mRequirementData.setText (requirement_remark);
-                                            mGeneratedTo.setText (generated_by);
-                                            mAssignTo.setText (assign_to);
+                                                mDate.setText (order_date);
+                                                mBrandName.setText (brand_id);
+                                                mProductName.setText (pro_id);
+                                                mSourceType.setText (source_id);
+                                                mRequirementData.setText (requirement_remark);
+                                                mGeneratedTo.setText (generated_by);
+                                                mAssignTo.setText (assign_to);
+
+                                                Typeface regularFont=Typeface.createFromAsset (getActivity ().getAssets (),"fonts/Nunito-Regular.ttf");
+
+                                                mDate.setTypeface (regularFont);
+                                                mBrandName.setTypeface (regularFont);
+                                                mProductName.setTypeface (regularFont);
+                                                mSourceType.setTypeface (regularFont);
+                                                mRequirementData.setTypeface (regularFont);
+                                                mGeneratedTo.setTypeface (regularFont);
+                                                mAssignTo.setTypeface (regularFont);
+
+                                                progressBar.setVisibility (View.GONE);
+                                            } else {
+                                                Log.i (TAG, "USER NAME NOT EQUAL");
+                                            }
+                                        } catch (JSONException e) {
+                                            e.printStackTrace ();
+                                        }
                                     }
-                                    else {
-                                            Log.i (TAG,"USER NAME NOT EQUAL");
-                                    }
-
-                                    progressBar.setVisibility (View.GONE);
-
-                                }catch (JSONException e){
-                                    e.printStackTrace ();
-                                }
                             }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
+                            catch (JSONException e) {
+                                e.printStackTrace ();
+                            }
                     }
                 },
                 new Response.ErrorListener() {
@@ -140,5 +147,7 @@ public class FragmentTrading extends Fragment {
         };
         RequestQueue requestQueue = Volley.newRequestQueue(getContext ());
         requestQueue.add(stringRequest);
+
+        progressBar.setVisibility (View.GONE);
     }
 }

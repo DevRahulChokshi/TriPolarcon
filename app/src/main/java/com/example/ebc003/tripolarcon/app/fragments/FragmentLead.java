@@ -52,7 +52,6 @@ public class FragmentLead extends Fragment {
     @Override
     public void onCreate (@Nullable Bundle savedInstanceState) {
         super.onCreate (savedInstanceState);
-        setUpToolbar ();
         checkShredPreference ();
     }
 
@@ -61,7 +60,7 @@ public class FragmentLead extends Fragment {
     public View onCreateView (LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View view=inflater.inflate (R.layout.fragment_lead,container,false);
-
+        setUpToolbar ();
         ButterKnife.bind (this,view);
 
         fab.setOnClickListener (new View.OnClickListener () {

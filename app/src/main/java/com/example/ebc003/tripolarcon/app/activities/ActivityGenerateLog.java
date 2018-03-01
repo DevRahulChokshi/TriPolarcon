@@ -9,6 +9,7 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -229,6 +230,9 @@ public class ActivityGenerateLog extends AppCompatActivity implements View.OnCli
             mEdtTime.setFocusable (false);
             mEdtDate.setFocusable (false);
 
+            Typeface regularFont=Typeface.createFromAsset (getAssets (),"fonts/Nunito-Regular.ttf");
+            mEdtRemark.setTypeface (regularFont);
+
             AddLogAsyncTask addLogAsyncTask=new AddLogAsyncTask (getApplicationContext (),progressBar);
             Log.i (TAG,"AsyncTask:-"+mCurrentPhotoPath);
             addLogAsyncTask.execute (mSpinnserSchedule,mCurrentDate,mCurrentTime,mSpinnserCallType,mSpinnserStaus,mRemark,mDate,mTime,companyId,userID,mCurrentPhotoPath,dateforrow);
@@ -261,12 +265,16 @@ public class ActivityGenerateLog extends AppCompatActivity implements View.OnCli
     public void getItem (int day, int month, int years) {
         String myDate=years+"/"+(month+1)+"/"+day;
         mEdtDate.setText (myDate);
+        Typeface regularFont=Typeface.createFromAsset (getAssets (),"fonts/Nunito-Regular.ttf");
+        mEdtDate.setTypeface (regularFont);
     }
 
     @Override
     public void getItem (int hours, int minuets,String format) {
         String myTime=hours+":"+minuets+" "+format;
         mEdtTime.setText (myTime);
+        Typeface regularFont=Typeface.createFromAsset (getAssets (),"fonts/Nunito-Regular.ttf");
+        mEdtTime.setTypeface (regularFont);
     }
 
     @Override

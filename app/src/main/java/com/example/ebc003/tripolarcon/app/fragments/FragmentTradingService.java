@@ -87,46 +87,58 @@ public class FragmentTradingService extends Fragment {
                     @Override
                     public void onResponse(String response) {
                         JSONArray jsonArray = null;
-                        try {
-                            jsonArray = new JSONArray (response);
-                            int size=jsonArray.length ();
-                            Log.i (TAG,"Size:-"+size);
-                            for (int i=0;i<=jsonArray.length ();i++){
-                                try{
-                                    String CompanyName=jsonArray.getJSONObject (i).getString ("customer_id");
-                                    if (CompanyName.equals (user_id)){
+                            try {
+                                jsonArray = new JSONArray (response);
+                                int size=jsonArray.length ();
+                                Log.i (TAG,"Size:-"+size);
+                                for (int i=0;i<=jsonArray.length ();i++){
+                                    try{
+                                        String CompanyName=jsonArray.getJSONObject (i).getString ("customer_id");
+                                        if (CompanyName.equals (user_id)){
 
-                                        order_description=jsonArray.getJSONObject (i).getString (Constants.ORDER_DESCRIPTION);
-                                        area=jsonArray.getJSONObject (i).getString (Constants.AREA);
-                                        unit=jsonArray.getJSONObject (i).getString (Constants.UNIT);
-                                        source_id=jsonArray.getJSONObject (i).getString (Constants.SOURCE_ID);
-                                        requirement_remark =jsonArray.getJSONObject (i).getString (Constants.REQUIREMENT_REMARK);
-                                        order_date =jsonArray.getJSONObject (i).getString (Constants.ORDER_DATE);
-                                        assign_to =jsonArray.getJSONObject (i).getString (Constants.ASSIGN_TO_NAME);
-                                        generated_by =jsonArray.getJSONObject (i).getString (Constants.GENERATED_BY_NAME);
+                                            order_description=jsonArray.getJSONObject (i).getString (Constants.ORDER_DESCRIPTION);
+                                            area=jsonArray.getJSONObject (i).getString (Constants.AREA);
+                                            unit=jsonArray.getJSONObject (i).getString (Constants.UNIT);
+                                            source_id=jsonArray.getJSONObject (i).getString (Constants.SOURCE_ID);
+                                            requirement_remark =jsonArray.getJSONObject (i).getString (Constants.REQUIREMENT_REMARK);
+                                            order_date =jsonArray.getJSONObject (i).getString (Constants.ORDER_DATE);
+                                            assign_to =jsonArray.getJSONObject (i).getString (Constants.ASSIGN_TO_NAME);
+                                            generated_by =jsonArray.getJSONObject (i).getString (Constants.GENERATED_BY_NAME);
 
-                                        mTradingServiceDate.setText (order_date);
-                                        mOrderDescription.setText (order_description);
-                                        mArea.setText (area);
-                                        mUnit.setText (unit);
-                                        mSourceType.setText (source_id);
-                                        mRequirementRemark.setText (requirement_remark);
-                                        mGeneratedTo.setText (generated_by);
-                                        mAssignTo.setText (assign_to);
+                                            mTradingServiceDate.setText (order_date);
+                                            mOrderDescription.setText (order_description);
+                                            mArea.setText (area);
+                                            mUnit.setText (unit);
+                                            mSourceType.setText (source_id);
+                                            mRequirementRemark.setText (requirement_remark);
+                                            mGeneratedTo.setText (generated_by);
+                                            mAssignTo.setText (assign_to);
+
+                                            Typeface regularFont=Typeface.createFromAsset (getActivity ().getAssets (),"fonts/Nunito-Regular.ttf");
+
+                                            mTradingServiceDate.setTypeface (regularFont);
+                                            mOrderDescription.setTypeface (regularFont);
+                                            mArea.setTypeface (regularFont);
+                                            mUnit.setTypeface (regularFont);
+                                            mSourceType.setTypeface (regularFont);
+                                            mRequirementRemark.setTypeface (regularFont);
+                                            mGeneratedTo.setTypeface (regularFont);
+                                            mAssignTo.setTypeface (regularFont);
+
+
+                                            progressBar.setVisibility (View.GONE);
+                                        }
+                                        else {
+                                            Log.i (TAG,"USER NAME NOT EQUAL");
+                                        }
+
+                                    }catch (JSONException e){
+                                        e.printStackTrace ();
                                     }
-                                    else {
-                                        Log.i (TAG,"USER NAME NOT EQUAL");
-                                    }
-
-                                    progressBar.setVisibility (View.GONE);
-
-                                }catch (JSONException e){
-                                    e.printStackTrace ();
                                 }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
                             }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
                     }
                 },
                 new Response.ErrorListener() {
@@ -145,5 +157,6 @@ public class FragmentTradingService extends Fragment {
         };
         RequestQueue requestQueue = Volley.newRequestQueue(getContext ());
         requestQueue.add(stringRequest);
+        progressBar.setVisibility (View.GONE);
     }
 }

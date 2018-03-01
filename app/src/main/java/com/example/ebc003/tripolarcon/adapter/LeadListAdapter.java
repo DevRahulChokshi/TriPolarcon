@@ -2,6 +2,7 @@ package com.example.ebc003.tripolarcon.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -66,6 +67,13 @@ public class LeadListAdapter extends RecyclerView.Adapter<LeadListAdapter.MyView
                 holder.txtLeadTitle.setText (leadListData.getTxtLeadTitle ());
                 holder.txtUserEmail.setText (leadListData.getTxtUserEmail ());
                 holder.txtCompanyId.setText (leadListData.getTxtCompanyId ());
+
+                Typeface regularFont=Typeface.createFromAsset (context.getAssets (),"fonts/Nunito-Regular.ttf");
+                Typeface boldFont=Typeface.createFromAsset (context.getAssets (),"fonts/Nunito-Bold.ttf");
+                holder.txtUser.setTypeface (boldFont);
+                holder.txtLeadTitle.setTypeface (boldFont);
+                holder.txtUserEmail.setTypeface (regularFont);
+                holder.txtCompanyId.setTypeface (regularFont);
             }
             else {
                 Toast.makeText (context.getApplicationContext (),"Data List is null",Toast.LENGTH_LONG).show ();

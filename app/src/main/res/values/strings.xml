@@ -87,4 +87,6 @@
     <string name="Source">Source</string>
     <string name="strCreateEnquiry">Create Enquiry</string>
     <string name="generate_lead">Generate Lead</string>
+    <string name="search">Search</string>
+    <string name="search_hint">Search</string>
 </resources>

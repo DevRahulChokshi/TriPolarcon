@@ -75,7 +75,16 @@ public class FragmentEnquiryList extends Fragment{
             user_id=bundle.getString (Constants.USER_ID,"N/A");
             Log.i (TAG,"USER_ID:-"+user_id);
         }
-        setUpToolbar();
+    }
+
+    @Override
+    public void onSaveInstanceState (Bundle outState) {
+        super.onSaveInstanceState (outState);
+    }
+
+    @Override
+    public void onViewStateRestored (@Nullable Bundle savedInstanceState) {
+        super.onViewStateRestored (savedInstanceState);
     }
 
     private void setUpToolbar () {
@@ -88,11 +97,12 @@ public class FragmentEnquiryList extends Fragment{
     public View onCreateView (LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         Log.i (TAG,"onCreateView");
         View view=inflater.inflate (R.layout.fragment_enquiry_list,container,false);
-
         ButterKnife.bind (this,view);
 
-        getData ();
-        layoutManager=new LinearLayoutManager (view.getContext ());
+        setUpToolbar();
+
+
+        layoutManager=new LinearLayoutManager (view.getContext());
         convertedLeadList.setLayoutManager (layoutManager);
 
         return view;
@@ -113,6 +123,7 @@ public class FragmentEnquiryList extends Fragment{
     @Override
     public void onResume () {
         super.onResume ();
+        getData ();
         Log.i (TAG,"onResume");
     }
 

@@ -36,7 +36,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
-            android:textColor="@color/grey_500"
+            android:textColor="@color/textColorEarthquakeLocation"
             android:textStyle="bold"/>
         <LinearLayout
             android:id="@+id/linearAddLogSchedule"
@@ -51,7 +51,7 @@
                 android:layout_weight="1"
                 android:text="@string/AddLogSchedule"
                 android:layout_marginTop="10dp"
-                android:textColor="@color/textColorEarthquakeLocation"
+                android:textColor="@color/textColorEarthquakeDetails"
                 android:padding="10dp"
                 android:textSize="15sp"/>
             <Spinner
@@ -76,7 +76,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/AddLogDate"
-                android:textColor="@color/textColorEarthquakeLocation"
+                android:textColor="@color/textColorEarthquakeDetails"
                 android:layout_marginTop="10dp"
                 android:padding="10dp"
                 android:textSize="15sp"/>
@@ -108,7 +108,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textColor="@color/textColorEarthquakeLocation"
+                android:textColor="@color/textColorEarthquakeDetails"
                 android:text="@string/AddLogTime"
                 android:layout_marginTop="10dp"
                 android:padding="10dp"
@@ -143,7 +143,7 @@
                 android:layout_weight="1"
                 android:text="@string/AddLogCallType"
                 android:layout_marginTop="10dp"
-                android:textColor="@color/textColorEarthquakeLocation"
+                android:textColor="@color/textColorEarthquakeDetails"
                 android:padding="10dp"
                 android:textSize="15sp"/>
             <Spinner
@@ -171,7 +171,7 @@
                 android:layout_weight="1"
                 android:padding="10dp"
                 android:text="@string/AddLogStatus"
-                android:textColor="@color/textColorEarthquakeLocation"
+                android:textColor="@color/textColorEarthquakeDetails"
                 android:textSize="15sp" />
             <Spinner
                 android:id="@+id/spinAddLogStatus"
@@ -197,7 +197,7 @@
                 android:layout_weight="1"
                 android:text="@string/AddLogRemark"
                 android:layout_marginTop="10dp"
-                android:textColor="@color/textColorEarthquakeLocation"
+                android:textColor="@color/textColorEarthquakeDetails"
                 android:padding="10dp"
                 android:textSize="15sp"/>
             <EditText
@@ -223,7 +223,7 @@
                 android:layout_weight="1"
                 android:text="@string/AddLogPhoto"
                 android:layout_marginTop="10dp"
-                android:textColor="@color/textColorEarthquakeLocation"
+                android:textColor="@color/textColorEarthquakeDetails"
                 android:padding="10dp"
                 android:textSize="15sp"/>
             <Button

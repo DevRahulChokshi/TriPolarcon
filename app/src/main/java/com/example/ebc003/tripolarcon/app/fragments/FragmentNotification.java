@@ -19,7 +19,6 @@ public class FragmentNotification extends Fragment{
     @Override
     public void onCreate (@Nullable Bundle savedInstanceState) {
         super.onCreate (savedInstanceState);
-        setUpToolbar ();
     }
 
     @Nullable
@@ -27,6 +26,7 @@ public class FragmentNotification extends Fragment{
     public View onCreateView (LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View view=inflater.inflate (R.layout.fragment_reminder,container,false);
+        setUpToolbar ();
         return view;
     }
 
