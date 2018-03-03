@@ -50,7 +50,7 @@ public class ActivityLeadInformation extends AppCompatActivity implements View.O
     @BindView (R.id.txtEnquiryStatusData) TextView mTxtEnquiryStatus;
     @BindView (R.id.progressBarLeadDetails) ProgressBar progressBar;
 
-    String company_name;
+    String CompanyName;
     String CompanyID;
     String assign_to;
 
@@ -88,7 +88,7 @@ public class ActivityLeadInformation extends AppCompatActivity implements View.O
         switch (id){
             case R.id.editLog:{
                 Intent intent=new Intent (this,ActivityGenerateLog.class);
-                intent.putExtra (Constants.COMPANY_NAME,company_name);
+                intent.putExtra (Constants.COMPANY_NAME,CompanyName);
                 intent.putExtra (Constants.USER_ID,CompanyID);
                 startActivity (intent);
                 break;
@@ -102,9 +102,7 @@ public class ActivityLeadInformation extends AppCompatActivity implements View.O
         if (intent!=null){
             Bundle bundle=intent.getExtras ();
             if (bundle!=null){
-                company_name=bundle.getString (Constants.COMPANY_NAME,"N/A");
                 CompanyID=bundle.getString (Constants.USER_ID,"N/A");
-                Log.i (TAG,company_name);
             }else {
                 Log.i (TAG,"Bundle is null");
             }
@@ -128,7 +126,7 @@ public class ActivityLeadInformation extends AppCompatActivity implements View.O
                             for (int i=0;i<=jsonArray.length ();i++){
                                 try{
                                     CompanyID=jsonArray.getJSONObject (i).getString (Constants.USER_ID);
-                                    String CompanyName=jsonArray.getJSONObject (i).getString ("name");
+                                    CompanyName=jsonArray.getJSONObject (i).getString ("name");
                                     String CompanyEmail=jsonArray.getJSONObject (i).getString ("email");
                                     String OfficePhoneNumber=jsonArray.getJSONObject (i).getString ("cust_comp_phn");
                                     String company_website=jsonArray.getJSONObject (i).getString ("website");
@@ -182,9 +180,9 @@ public class ActivityLeadInformation extends AppCompatActivity implements View.O
         {
             @Override
             protected Map<String, String> getParams () throws AuthFailureError {
-                Log.i (TAG,"HasMap"+company_name);
                 Map<String,String> stringMap=new HashMap<> ();
                 stringMap.put (Constants.USER_ID,CompanyID);
+                Log.i (TAG,"ID:-"+CompanyID);
                 return stringMap;
             }
         };

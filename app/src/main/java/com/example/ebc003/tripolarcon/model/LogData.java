@@ -10,6 +10,7 @@ public class LogData {
 
     private String TAG=LogData.class.getSimpleName ();
 
+    private String logCompanyId;
     private String logCompanyDate;
     private String logCompanyTime;
     private String logCompanyRemark;
@@ -17,6 +18,14 @@ public class LogData {
     private String logCompanyName;
     private String logScheduleType;
     private String logLocation;
+
+    public String getLogCompanyId () {
+        return logCompanyId;
+    }
+
+    public void setLogCompanyId (String logCompanyId) {
+        this.logCompanyId = logCompanyId;
+    }
 
     public String getLogCompanyDate () {
         return logCompanyDate;

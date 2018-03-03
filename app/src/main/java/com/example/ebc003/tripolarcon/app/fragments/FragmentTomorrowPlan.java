@@ -93,8 +93,13 @@ public class FragmentTomorrowPlan extends Fragment {
                                 for (int i=0;i<=jsonArray.length ();i++){
                                     try{
                                         LogData logData=new LogData ();
-                                        logData.setLogUserLatter (jsonArray.getJSONObject (i).getString (Constants.CUSTOMER_ID));
-                                        logData.setLogCompanyName(jsonArray.getJSONObject (i).getString (Constants.USER_ID));
+                                        String fistLatter=jsonArray.getJSONObject (i).getString (Constants.USER_ID_NAME);
+                                        char first=fistLatter.charAt (0);
+                                        String firstData= String.valueOf (first);
+                                        logData.setLogUserLatter (firstData);
+
+                                        logData.setLogCompanyId (jsonArray.getJSONObject (i).getString (Constants.CUSTOMER_ID));
+                                        logData.setLogCompanyName(jsonArray.getJSONObject (i).getString (Constants.USER_ID_NAME));
                                         logData.setLogCompanyDate(jsonArray.getJSONObject (i).getString (Constants.SHOW_PLAN_DATE));
                                         logData.setLogCompanyTime(jsonArray.getJSONObject (i).getString (Constants.SHOW_PLAN_TIME));
                                         logData.setLogScheduleType (jsonArray.getJSONObject (i).getString (Constants.SHOW_LOG_SCHEDULE));

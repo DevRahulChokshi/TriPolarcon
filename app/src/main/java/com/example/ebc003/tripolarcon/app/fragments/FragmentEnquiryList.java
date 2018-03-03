@@ -175,7 +175,6 @@ public class FragmentEnquiryList extends Fragment{
 
                                         String CompanyID=jsonArray.getJSONObject (i).getString ("id");
                                         Log.i (TAG,"COMPANY ID:"+CompanyID);
-
                                         String CompanyName=jsonArray.getJSONObject (i).getString ("name");
                                         String CompanyEmail=jsonArray.getJSONObject (i).getString ("email");
                                         String OfficePhoneNumber=jsonArray.getJSONObject (i).getString ("cust_comp_phn");

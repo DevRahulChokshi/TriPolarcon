@@ -48,6 +48,7 @@ public class FragmentTodayPlan extends Fragment {
     @BindView (R.id.progressBarToDayPlan) ProgressBar mProgressBar;
     private RecyclerView.LayoutManager layoutManager;
     private String user_id;
+    private String customer_id;
     private String TAG=FragmentTodayPlan.class.getSimpleName ();
     List<LogData> mLogList;
 
@@ -97,6 +98,7 @@ public class FragmentTodayPlan extends Fragment {
                                         char first=fistLatter.charAt (0);
                                         String firstData= String.valueOf (first);
                                         logData.setLogUserLatter (firstData);
+                                        logData.setLogCompanyId (jsonArray.getJSONObject (i).getString (Constants.CUSTOMER_ID));
                                         logData.setLogCompanyName(jsonArray.getJSONObject (i).getString (Constants.USER_ID_NAME));
                                         logData.setLogCompanyDate(jsonArray.getJSONObject (i).getString (Constants.SHOW_PLAN_DATE));
                                         logData.setLogCompanyTime(jsonArray.getJSONObject (i).getString (Constants.SHOW_PLAN_TIME));

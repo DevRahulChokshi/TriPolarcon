@@ -72,6 +72,7 @@ public class ActivityGenerateLog extends AppCompatActivity implements View.OnCli
 
     String company_name;
     String userID;
+    String userName;
     String companyId;
     String mSpinnserSchedule;
     String mSpinnserCallType;
@@ -144,6 +145,7 @@ public class ActivityGenerateLog extends AppCompatActivity implements View.OnCli
     private void checkShredPreference () {
         SharedPreferences sharedPreferences=getSharedPreferences (Constants.PREFERENCE_KEY,MODE_PRIVATE);
         userID=sharedPreferences.getString (Constants.EMP_ID,"N/A");
+        userName=sharedPreferences.getString (Constants.USER_NAME,"N/A");
         Log.i (TAG,"User id:-"+userID);
     }
 
@@ -215,28 +217,6 @@ public class ActivityGenerateLog extends AppCompatActivity implements View.OnCli
         String CurrentTime=hour+":"+minute+":"+seconds;
 
         checkValidation(mDate,mTime,CurrentDate,CurrentTime,mRemark);
-    }
-
-    private void checkValidation (String mDate,String mTime,String mCurrentDate,String mCurrentTime,String mRemark) {
-        if (mDate.isEmpty () && mDate.length ()==0){
-            mEdtDate.setError ("Choose date");
-            mEdtDate.setFocusable (true);
-        }
-        else if(mTime.isEmpty ()&& mTime.length ()==0){
-            mEdtTime.setError ("Choose time");
-            mEdtTime.setFocusable (true);
-        }
-        else {
-            mEdtTime.setFocusable (false);
-            mEdtDate.setFocusable (false);
-
-            Typeface regularFont=Typeface.createFromAsset (getAssets (),"fonts/Nunito-Regular.ttf");
-            mEdtRemark.setTypeface (regularFont);
-
-            AddLogAsyncTask addLogAsyncTask=new AddLogAsyncTask (getApplicationContext (),progressBar);
-            Log.i (TAG,"AsyncTask:-"+mCurrentPhotoPath);
-            addLogAsyncTask.execute (mSpinnserSchedule,mCurrentDate,mCurrentTime,mSpinnserCallType,mSpinnserStaus,mRemark,mDate,mTime,companyId,userID,mCurrentPhotoPath,dateforrow);
-        }
     }
 
     @Override
@@ -364,11 +344,12 @@ public class ActivityGenerateLog extends AppCompatActivity implements View.OnCli
 
     private void getGallery (Intent intent) {
         Uri selectedImageUri = intent.getData();
-        fileFinalPath = getPath(selectedImageUri, ActivityGenerateLog.this);
+        mCurrentPhotoPath = getPath(selectedImageUri, ActivityGenerateLog.this);
 
         Bitmap bm;
         BitmapFactory.Options bitmapOptions = new BitmapFactory.Options();
-        bm = BitmapFactory.decodeFile(fileFinalPath, bitmapOptions);
+        bm = BitmapFactory.decodeFile(mCurrentPhotoPath, bitmapOptions);
+        Log.i (TAG,"Current File Path:-"+mCurrentPhotoPath);
         mImageUpload.setImageBitmap(bm);
     }
 
@@ -434,7 +415,7 @@ public class ActivityGenerateLog extends AppCompatActivity implements View.OnCli
         BitmapFactory.Options bmOptions = new BitmapFactory.Options();
         bmOptions.inJustDecodeBounds = true;
         BitmapFactory.decodeFile(mCurrentPhotoPath, bmOptions);
-        Log.i (TAG,mCurrentPhotoPath);
+        Log.i (TAG,"Current File Path:-"+mCurrentPhotoPath);
         int photoW = bmOptions.outWidth;
         int photoH = bmOptions.outHeight;
 
@@ -464,5 +445,29 @@ public class ActivityGenerateLog extends AppCompatActivity implements View.OnCli
     @Override
     public void NeverAskAgain(int request_code) {
         Log.i("PERMISSION","NEVER ASK AGAIN");
+    }
+
+    private void checkValidation (String mDate,String mTime,String mCurrentDate,String mCurrentTime,String mRemark) {
+        if (mDate.isEmpty () && mDate.length ()==0){
+            mEdtDate.setError ("Choose date");
+            mEdtDate.setFocusable (true);
+        }
+        else if(mTime.isEmpty ()&& mTime.length ()==0){
+            mEdtTime.setError ("Choose time");
+            mEdtTime.setFocusable (true);
+        }
+        else {
+            mEdtTime.setFocusable (false);
+            mEdtDate.setFocusable (false);
+
+            Typeface regularFont=Typeface.createFromAsset (getAssets (),"fonts/Nunito-Regular.ttf");
+            mEdtRemark.setTypeface (regularFont);
+
+            AddLogAsyncTask addLogAsyncTask=new AddLogAsyncTask (getApplicationContext (),progressBar);
+            Log.i (TAG,"AsyncTask:-"+mCurrentPhotoPath);
+            addLogAsyncTask.execute (mSpinnserSchedule,mCurrentDate,mCurrentTime,mSpinnserCallType,mSpinnserStaus,mRemark,mDate,mTime,companyId,userID,mCurrentPhotoPath,dateforrow,company_name,userName);
+            Log.i (TAG,"ADD IN ASYNC TASK:-"+company_name);
+            Log.i (TAG,"AsyncTask:-"+userName);
+        }
     }
 }

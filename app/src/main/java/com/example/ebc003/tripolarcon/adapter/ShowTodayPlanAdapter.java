@@ -47,6 +47,7 @@ public class ShowTodayPlanAdapter extends RecyclerView.Adapter<ShowTodayPlanAdap
         if (mLogList!=null){
             LogData logData=mLogList.get (position);
             if (logData!=null){
+                holder.mTxtTodayID.setText (logData.getLogCompanyId ());
                 holder.mTxtCompanyLatter.setText (logData.getLogUserLatter ());
                 holder.mTxtCompanyName.setText (logData.getLogCompanyName ());
                 String mLogData=logData.getLogCompanyDate ()+" "+logData.getLogCompanyTime ()+" "+logData.getLogScheduleType ();
@@ -62,7 +63,7 @@ public class ShowTodayPlanAdapter extends RecyclerView.Adapter<ShowTodayPlanAdap
         holder.itemView.setOnClickListener (new View.OnClickListener () {
             @Override
             public void onClick (View v) {
-                String strLeadTitle=(String)holder.mTxtCompanyName.getText ();
+                String strLeadTitle=(String)holder.mTxtTodayID.getText ();
                 Intent intent=new Intent (context.getApplicationContext (),ActivityLeadInformation.class);
                 intent.putExtra (Constants.USER_ID,strLeadTitle);
                 context.startActivity (intent);
@@ -81,12 +82,14 @@ public class ShowTodayPlanAdapter extends RecyclerView.Adapter<ShowTodayPlanAdap
         TextView mTxtCompanyLatter;
         TextView mTxtCompanyName;
         TextView mTxtTodayPlanDetails;
+        TextView mTxtTodayID;
 
         public LogHolder (View itemView) {
             super (itemView);
             mTxtCompanyLatter=itemView.findViewById (R.id.txtTodayPlanLatter);
             mTxtCompanyName=itemView.findViewById (R.id.txtTodayPlanCompanyName);
             mTxtTodayPlanDetails =itemView.findViewById (R.id.txtToDayPlanDetails);
+            mTxtTodayID =itemView.findViewById (R.id.txtCompanyIdToday);
         }
     }
 }

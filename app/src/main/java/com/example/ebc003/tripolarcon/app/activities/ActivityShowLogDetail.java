@@ -99,8 +99,9 @@ public class ActivityShowLogDetail extends AppCompatActivity {
                             for (int i=0;i<=jsonArray.length ();i++){
                                 try{
                                     LogData logData=new LogData ();
-                                    logData.setLogUserLatter (jsonArray.getJSONObject (i).getString (Constants.USER_ID));
-                                    logData.setLogCompanyName(jsonArray.getJSONObject (i).getString (Constants.USER_ID));
+                                    logData.setLogUserLatter (jsonArray.getJSONObject (i).getString (Constants.USER_ID_NAME));
+
+                                    logData.setLogCompanyName(jsonArray.getJSONObject (i).getString (Constants.USER_ID_NAME));
                                     logData.setLogCompanyDate(jsonArray.getJSONObject (i).getString (Constants.SHOW_LOG_DATE));
                                     logData.setLogCompanyTime(jsonArray.getJSONObject (i).getString (Constants.SHOW_LOG_TIME));
                                     logData.setLogCompanyRemark (jsonArray.getJSONObject (i).getString (Constants.SHOW_LOG_REMARK));

@@ -61,6 +61,8 @@ public class AddLogAsyncTask  extends AsyncTask<String,Void,Boolean>{
         String mCustomer=strings[9];
         String mFilePath=strings[10];
         String mDateTime=strings[11];
+        String mCompanyName=strings[12];
+        String mUserName=strings[13];
 
         List<NameValuePair> listData=new ArrayList<> ();
         listData.add (new BasicNameValuePair (Constants.LOG_SCHEDULE,mSchedule));
@@ -75,6 +77,8 @@ public class AddLogAsyncTask  extends AsyncTask<String,Void,Boolean>{
         listData.add (new BasicNameValuePair (Constants.COMPANY_NAME,mCustomer));
         listData.add (new BasicNameValuePair (Constants.LOG_IMG_PATH,mFilePath));
         listData.add (new BasicNameValuePair (Constants.LOG_DATETIME,mDateTime));
+        listData.add (new BasicNameValuePair (Constants.USER_ID,mCompanyName));
+        listData.add (new BasicNameValuePair (Constants.USER_NAME,mUserName));
 
         Log.i (TAG,"Spinner Schedule:-"+mSchedule);
         Log.i (TAG,"Current Date:-"+mLogDate);
@@ -88,6 +92,8 @@ public class AddLogAsyncTask  extends AsyncTask<String,Void,Boolean>{
         Log.i (TAG,"Call type:-"+mCall_type);
         Log.i (TAG,"Status:-"+mStatus);
         Log.i (TAG,"DATETIME:-"+mDateTime);
+        Log.i (TAG,"CompanyName:-"+mCompanyName);
+        Log.i (TAG,"UserName:-"+mUserName);
 
         // Set your file path here
         FileInputStream fstrm = null;

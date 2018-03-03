@@ -87,7 +87,6 @@ public class LeadListAdapter extends RecyclerView.Adapter<LeadListAdapter.MyView
             public void onClick (View v) {
                 String strLeadTitle=(String)holder.txtCompanyId.getText ();
                 Intent intent=new Intent (context.getApplicationContext (),ActivityLeadInformation.class);
-                Log.i (TAG,"CompanyID:-"+strCompanyName);
                 intent.putExtra (Constants.USER_ID,strLeadTitle);
                 context.startActivity (intent);
             }
