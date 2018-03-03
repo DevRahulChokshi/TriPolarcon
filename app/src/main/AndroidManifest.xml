@@ -58,7 +58,8 @@
 
         <activity android:name=".app.activities.ActivityDailyPlan" />
         <activity android:name=".app.activities.ActivityGenerateLead" />
-        <activity android:name=".app.activities.ActivityEditTradingDetails"></activity>
+        <activity android:name=".app.activities.ActivityEditTradingDetails" />
+        <activity android:name=".app.activities.TestEditTrading"></activity>
     </application>
 
 </manifest>
