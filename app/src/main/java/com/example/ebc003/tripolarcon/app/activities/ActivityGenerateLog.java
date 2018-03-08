@@ -264,7 +264,6 @@ public class ActivityGenerateLog extends AppCompatActivity implements View.OnCli
         }
         int viewId=parent.getId ();
 
-        Log.i (TAG," "+viewId);
         switch (viewId){
             case R.id.spinAddLogSchedule:{
                 mSpinnserSchedule = (String) parent.getItemAtPosition (position);

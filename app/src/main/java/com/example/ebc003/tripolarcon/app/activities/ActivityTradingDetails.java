@@ -1,17 +1,22 @@
 package com.example.ebc003.tripolarcon.app.activities;
 
+import android.content.Intent;
+import android.icu.text.UnicodeSetSpanner;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.ebc003.tripolarcon.R;
 import com.example.ebc003.tripolarcon.adapter.Pager;
+import com.example.ebc003.tripolarcon.model.Constants;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -21,6 +26,12 @@ public class ActivityTradingDetails extends AppCompatActivity implements TabLayo
     @BindView (R.id.tabLayout) TabLayout tabLayout;
     @BindView (R.id.pager) ViewPager viewPager;
     @BindView (R.id.toolbar) Toolbar toolbar;
+
+    private String mStrCompanyId;
+    private String mStrAssignPersonId;
+    private String mStrCompanyName;
+
+    private String TAG=ActivityTradingDetails.class.getSimpleName ();
 
     @Override
     protected void onCreate (Bundle savedInstanceState) {
@@ -46,6 +57,17 @@ public class ActivityTradingDetails extends AppCompatActivity implements TabLayo
                 finish ();
             }
         });
+
+        Intent intent=getIntent ();
+        if (intent!=null){
+            mStrCompanyName=intent.getStringExtra (Constants.COMPANY_NAME);
+            mStrAssignPersonId=intent.getStringExtra (Constants.ASSIGN_TO);
+            mStrCompanyId=intent.getStringExtra (Constants.USER_ID);
+
+            Log.i (TAG,mStrCompanyId);
+            Log.i (TAG,mStrAssignPersonId);
+            Log.i (TAG,mStrCompanyName);
+        }
     }
 
     private void setUpToolbar () {
@@ -69,15 +91,16 @@ public class ActivityTradingDetails extends AppCompatActivity implements TabLayo
         int id=item.getItemId ();
         switch (id){
             case R.id.editLog:{
-//                Intent intent=new Intent (this,ActivityGenerateLog.class);
-//                intent.putExtra (Constants.COMPANY_NAME,company_name);
-//                intent.putExtra (Constants.USER_ID,CompanyID);
-//                startActivity (intent);
+                Intent intent=new Intent (this,ActivityEditTradingDetails.class);
+                intent.putExtra (Constants.COMPANY_NAME,mStrCompanyName);
+                intent.putExtra (Constants.ASSIGN_TO,mStrAssignPersonId);
+                intent.putExtra (Constants.USER_ID,mStrCompanyId);
+                startActivity (intent);
                 break;
             }
         }
         return super.onOptionsItemSelected (item);
-    }   
+    }
 
     @Override
     public void onTabSelected (TabLayout.Tab tab) {

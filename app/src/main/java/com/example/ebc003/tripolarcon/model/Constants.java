@@ -41,6 +41,7 @@ public class Constants {
     public static final String URL_SHOW_TRADING_INFO="http://www.ebusinesscanvas.com/tripolarcon/android_app/trading_detail.php";
     public static final String URL_SHOW_TRADING_SERVICE_INFO="http://www.ebusinesscanvas.com/tripolarcon/android_app/trading_service_detail.php";
     public static final String URL_ADD_LOG="http://www.ebusinesscanvas.com/tripolarcon/android_app/add_log.php";
+    public static final String URL_EDIT_TRADING_DETAILS="http://www.ebusinesscanvas.com/tripolarcon/android_app/edit_trading_details.php";
     public static final String URL_SHOW_TODAY_PLAN="http://www.ebusinesscanvas.com/tripolarcon/android_app/show_today_plan.php";
     public static final String URL_SHOW_TOMORROW_PLAN="http://www.ebusinesscanvas.com/tripolarcon/android_app/show_tomorrow_plan.php";
 
@@ -94,4 +95,22 @@ public class Constants {
     public static final String NOTE = "note";
     public static final String SOURCE = "source";
     public static final String NO_DATA = "no_data";
+
+    public static final String TRADING_BRAND_NAME = "trading_brand_name";
+    public static final String TRADING_PRODUCT_NAME = "trading_product_name";
+    public static final String TRADING_SOURCE_TYPE = "trading_source_type";
+    public static final String TRADING_ENQUIRY_STATUS = "trading_enquiry_status";
+    public static final String TRADING_ENQUIRY_ACTION = "trading_enquiry_action";
+    public static final String TRADING_FOLLOWUP = "trading_follow_up";
+    public static final String TRADING_REMARK = "trading_remark";
+
+    public static final String TRADING_SERVICE_ORDER_DESCRIPTION = "trading_service_order_description";
+    public static final String TRADING_SERVICE_AREA = "trading_service_area";
+    public static final String TRADING_SERVICE_UNIT = "trading_service_unit";
+    public static final String TRADING_SERVICE_SOURCE_TYPE = "trading_service_source_type";
+    public static final String TRADING_SERVICE_ENQUIRY_STATUS = "trading_service_enquiry_status";
+    public static final String TRADING_SERVICE_ENQUIRY_ACTION = "trading_service_enquiry_action";
+    public static final String TRADING_SERVICE_FOLLOWUP = "trading_service_follow_up";
+    public static final String TRADING_SERVICE_REMARK = "trading_service_remark";
+
 }

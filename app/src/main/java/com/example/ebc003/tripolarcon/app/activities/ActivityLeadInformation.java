@@ -44,7 +44,6 @@ public class ActivityLeadInformation extends AppCompatActivity implements View.O
     @BindView (R.id.txtAddressData) TextView mTxtAddress;
     @BindView (R.id.txtFaxData) TextView mTxtFax;
     @BindView (R.id.txtPersonNameData) TextView mTxtPersonName;
-//    @BindView (R.id.txtPersonNumberData) TextView mTxtPersonNumber;
     @BindView (R.id.txtPersonNoteData) TextView mTxtPersonNote;
     @BindView (R.id.txtLeadInfo) TextView mTxtLeadInfo;
     @BindView (R.id.txtEnquiryStatusData) TextView mTxtEnquiryStatus;
@@ -214,6 +213,11 @@ public class ActivityLeadInformation extends AppCompatActivity implements View.O
                     Intent intent=new Intent (this,ActivityTradingDetails.class);
                     intent.putExtra (Constants.USER_ID,CompanyID);
                     intent.putExtra (Constants.ASSIGN_TO,assign_to);
+                    intent.putExtra (Constants.COMPANY_NAME,CompanyName);
+
+                    Log.i (TAG,"USER_ID"+CompanyID);
+                    Log.i (TAG,"ASSIGN_TO"+assign_to);
+                    Log.i (TAG,"COMPANY_NAME"+CompanyName);
                     startActivity (intent);
                 break;
         }
