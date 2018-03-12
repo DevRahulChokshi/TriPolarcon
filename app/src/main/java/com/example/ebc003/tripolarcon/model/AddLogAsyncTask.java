@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.icu.text.UnicodeSetSpanner;
+import android.nfc.Tag;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.view.View;
@@ -95,17 +96,21 @@ public class AddLogAsyncTask  extends AsyncTask<String,Void,Boolean>{
         Log.i (TAG,"CompanyName:-"+mCompanyName);
         Log.i (TAG,"UserName:-"+mUserName);
 
-        // Set your file path here
-        FileInputStream fstrm = null;
-        try {
-            fstrm = new FileInputStream (mFilePath);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+        if (mFilePath==null){
+            Log.i(TAG,"FILE PATH IS EMPTY");
+        }else {
+            // Set your file path here
+            FileInputStream fstrm = null;
+            try {
+                fstrm = new FileInputStream (mFilePath);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+            // Set your server page url (and the file title/description)
+            HttpFileUpload hfu = new HttpFileUpload(Constants.FILE_UPLOAD_URL, "ftitle", "fdescription",mFilePath);
+            hfu.Send_Now(fstrm);
         }
 
-        // Set your server page url (and the file title/description)
-        HttpFileUpload hfu = new HttpFileUpload(Constants.FILE_UPLOAD_URL, "ftitle", "fdescription",mFilePath);
-        hfu.Send_Now(fstrm);
 
         JSONParser parser=new JSONParser ();
         JSONObject response=parser.makeHttpRequest (Constants.URL_ADD_LOG,Constants.METHOD_POST,listData);

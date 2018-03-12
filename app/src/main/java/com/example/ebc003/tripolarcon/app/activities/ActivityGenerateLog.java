@@ -225,11 +225,15 @@ public class ActivityGenerateLog extends AppCompatActivity implements View.OnCli
 
        switch (id){
            case R.id.btnDtn:{
+               mEdtDate.setError(null);
+               mEdtDate.clearFocus();
                DialogFragment dialogFragment=new DatePickerDialogExample ();
                dialogFragment.show (getFragmentManager (),"date");
                break;
            }
            case R.id.btnTime:{
+               mEdtTime.setError(null);
+               mEdtTime.clearFocus();
                DialogFragment dialogFragment=new TimePickerDialogExample ();
                dialogFragment.show (getFragmentManager (),"time");
                break;

@@ -1,7 +1,6 @@
 package com.example.ebc003.tripolarcon.app.activities;
 
 import android.content.Intent;
-import android.icu.text.UnicodeSetSpanner;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
@@ -12,31 +11,34 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import com.example.ebc003.tripolarcon.R;
 import com.example.ebc003.tripolarcon.adapter.Pager;
+import com.example.ebc003.tripolarcon.adapter.PagerEditTradingDetails;
 import com.example.ebc003.tripolarcon.model.Constants;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class ActivityTradingDetails extends AppCompatActivity implements TabLayout.OnTabSelectedListener{
+public class ActivityEditTradingDetailsTabView extends AppCompatActivity implements TabLayout.OnTabSelectedListener{
 
-    @BindView (R.id.tabLayout) TabLayout tabLayout;
-    @BindView (R.id.pager) ViewPager viewPager;
-    @BindView (R.id.toolbar) Toolbar toolbar;
+    @BindView(R.id.tabLayout_trading_tab_view)
+    TabLayout tabLayout;
+    @BindView (R.id.pager_trading_tab_view)
+    ViewPager viewPager;
+    @BindView (R.id.toolbar_trading_tab_view)
+    Toolbar toolbar;
 
     private String mStrCompanyId;
     private String mStrAssignPersonId;
     private String mStrCompanyName;
 
-    private String TAG=ActivityTradingDetails.class.getSimpleName ();
+    private String TAG=ActivityEditTradingDetailsTabView.class.getSimpleName ();
 
     @Override
-    protected void onCreate (Bundle savedInstanceState) {
-        super.onCreate (savedInstanceState);
-        setContentView (R.layout.activity_trading_details);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_edit_trading_details_tab_view);
 
         ButterKnife.bind (this);
 
@@ -46,7 +48,7 @@ public class ActivityTradingDetails extends AppCompatActivity implements TabLayo
         tabLayout.addTab(tabLayout.newTab().setText("TradingService"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
-        Pager adapter = new Pager (getSupportFragmentManager(), tabLayout.getTabCount());
+        PagerEditTradingDetails adapter = new PagerEditTradingDetails (getSupportFragmentManager(), tabLayout.getTabCount());
 
         viewPager.setAdapter(adapter);
         tabLayout.setOnTabSelectedListener(this);
@@ -80,27 +82,6 @@ public class ActivityTradingDetails extends AppCompatActivity implements TabLayo
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu (Menu menu) {
-        getMenuInflater ().inflate (R.menu.lead_info_menu,menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected (MenuItem item) {
-        int id=item.getItemId ();
-        switch (id){
-            case R.id.editLog:{
-                Intent intent=new Intent (this,ActivityEditTradingDetailsTabView.class);
-                intent.putExtra (Constants.COMPANY_NAME,mStrCompanyName);
-                intent.putExtra (Constants.ASSIGN_TO,mStrAssignPersonId);
-                intent.putExtra (Constants.USER_ID,mStrCompanyId);
-                startActivity (intent);
-                break;
-            }
-        }
-        return super.onOptionsItemSelected (item);
-    }
 
     @Override
     public void onTabSelected (TabLayout.Tab tab) {
