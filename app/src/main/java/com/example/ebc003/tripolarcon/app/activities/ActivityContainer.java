@@ -144,6 +144,7 @@ public class ActivityContainer extends AppCompatActivity  implements MyAdapterIt
             case "Dashboard":{
                 FragmentDashboard fragmentDashboard =new FragmentDashboard ();
                 FragmentTransaction transaction=manager.beginTransaction ();
+                transaction.setCustomAnimations(R.animator.fade_in_slow, R.animator.fade_out_quick);
                 transaction.replace (R.id.fragment_container, fragmentDashboard,Constants.FRAG_DASHBOARD);
 //                Bundle bundle=new Bundle ();
 //                bundle.putString (Constants.USER_ID,userID);
@@ -155,6 +156,7 @@ public class ActivityContainer extends AppCompatActivity  implements MyAdapterIt
             case "Enquiry List":{
                 FragmentEnquiryList fragmentEnquiryList =new FragmentEnquiryList ();
                 FragmentTransaction transaction=manager.beginTransaction ();
+                transaction.setCustomAnimations(R.animator.fade_in_slow, R.animator.fade_out_quick);
                 transaction.replace (R.id.fragment_container, fragmentEnquiryList,Constants.FRAG_HOME);
                 Bundle bundle=new Bundle ();
                 bundle.putString (Constants.USER_ID,userID);
@@ -166,6 +168,7 @@ public class ActivityContainer extends AppCompatActivity  implements MyAdapterIt
             case "New Enquiry":{
                 FragmentLead fragmentLead =new FragmentLead ();
                 FragmentTransaction transaction=manager.beginTransaction ();
+                transaction.setCustomAnimations(R.animator.fade_in_slow, R.animator.fade_out_quick);
                 transaction.replace (R.id.fragment_container, fragmentLead,Constants.FRAG_LEADS);
                 transaction.commit ();
                 drawerLayout.closeDrawer (GravityCompat.START);
@@ -174,6 +177,7 @@ public class ActivityContainer extends AppCompatActivity  implements MyAdapterIt
             case "Notification": {
                 FragmentNotification fragmentNotification = new FragmentNotification ();
                 FragmentTransaction transaction = manager.beginTransaction ();
+                transaction.setCustomAnimations(R.animator.fade_in_slow, R.animator.fade_out_quick);
                 transaction.replace (R.id.fragment_container, fragmentNotification, Constants.FRAG_REMINDER);
                 transaction.commit ();
                 drawerLayout.closeDrawer (GravityCompat.START);

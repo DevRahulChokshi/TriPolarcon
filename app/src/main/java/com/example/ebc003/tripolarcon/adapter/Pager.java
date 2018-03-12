@@ -8,8 +8,9 @@ import com.example.ebc003.tripolarcon.app.fragments.FragmentTrading;
 import com.example.ebc003.tripolarcon.app.fragments.FragmentTradingService;
 
 /**
- * Created by Belal on 2/3/2016.
+ * Created by Rahul Chokshi on 2/3/2016.
  */
+
 public class Pager extends FragmentStatePagerAdapter {
 
     int tabCount;
@@ -25,7 +26,6 @@ public class Pager extends FragmentStatePagerAdapter {
             case 0:
                 return new FragmentTrading();
             case 1:
-
                 return new FragmentTradingService();
 
             default:

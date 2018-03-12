@@ -1,12 +1,16 @@
 package com.example.ebc003.tripolarcon.app.activities;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -14,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ebc003.tripolarcon.R;
+import com.example.ebc003.tripolarcon.model.BroadcastMaster;
 import com.example.ebc003.tripolarcon.model.JSONParser;
 import com.example.ebc003.tripolarcon.model.Constants;
 
@@ -29,7 +34,6 @@ import java.util.regex.Pattern;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.internal.Utils;
 
 public class ActivityLogin extends AppCompatActivity {
 
@@ -37,8 +41,10 @@ public class ActivityLogin extends AppCompatActivity {
     @BindView (R.id.editEmail) EditText mEdtEmail;
     @BindView (R.id.editPassword) EditText mEdtPassword;
     @BindView (R.id.loginProgressbar) ProgressBar mProgressBar;
+    @BindView (R.id.constraintLogin) ConstraintLayout constraintLayout;
 
     private static final String TAG=ActivityLogin.class.getSimpleName ();
+    BroadcastMaster broadcastMaster;
 
     @Override
     protected void onCreate (Bundle savedInstanceState) {
@@ -46,6 +52,36 @@ public class ActivityLogin extends AppCompatActivity {
         setContentView (R.layout.activity_login);
         ButterKnife.bind (this);
         setTypeFace();
+
+        broadcastMaster=new BroadcastMaster (constraintLayout);
+    }
+
+    @Override
+    protected void onResume () {
+        super.onResume ();
+        registerInternetCheckReceiver();
+    }
+
+    private void registerInternetCheckReceiver() {
+        IntentFilter intentFilter=new IntentFilter();
+        intentFilter.addAction("android.net.wifi.STATE_CHANGE");
+        intentFilter.addAction("android.net.conn.CONNECTIVITY_CHANGE");
+        registerReceiver(broadcastReceiver,intentFilter);
+    }
+
+    public BroadcastReceiver broadcastReceiver=new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String status=broadcastMaster.getConnectivityStatusString(context);
+            broadcastMaster.setSnackBarMessage (status,false);
+        }
+    };
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.i(TAG,"onPause:");
+        unregisterReceiver(broadcastReceiver);
     }
 
     private void setTypeFace () {
@@ -77,7 +113,13 @@ public class ActivityLogin extends AppCompatActivity {
             mEdtPassword.setFocusable (true);
         }
         else {
-            new MyAsyncTask ().execute (strEmail,strPassword);
+            String status=broadcastMaster.getConnectivityStatusString(this);
+            if (status.equalsIgnoreCase ("internet not connected")){
+                broadcastMaster.setSnackBarMessage (status,false);
+                Toast.makeText (this,"Check Internet Connection..",Toast.LENGTH_SHORT).show ();
+            }else {
+                new MyAsyncTask ().execute (strEmail,strPassword);
+            }
         }
     }
 

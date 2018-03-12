@@ -56,7 +56,6 @@ public class FragmentEnquiryList extends Fragment{
     private RecyclerView.LayoutManager layoutManager;
     private String user_id;
 
-
     @Override
     public void onAttach (Context context) {
         super.onAttach (context);
@@ -75,6 +74,8 @@ public class FragmentEnquiryList extends Fragment{
             user_id=bundle.getString (Constants.USER_ID,"N/A");
             Log.i (TAG,"USER_ID:-"+user_id);
         }
+
+        getData ();
     }
 
     @Override
@@ -123,7 +124,6 @@ public class FragmentEnquiryList extends Fragment{
     @Override
     public void onResume () {
         super.onResume ();
-        getData ();
         Log.i (TAG,"onResume");
     }
 
@@ -240,7 +240,7 @@ public class FragmentEnquiryList extends Fragment{
 
     private void setRecycler () {
         LeadListAdapter leadListAdapter=new LeadListAdapter (getContext (),listData);
-        DividerItemDecoration dividerItemDecoration=new DividerItemDecoration (getContext (), DividerItemDecoration.HORIZONTAL);
+        DividerItemDecoration dividerItemDecoration=new DividerItemDecoration (getContext (),DividerItemDecoration.VERTICAL);
         convertedLeadList.addItemDecoration (dividerItemDecoration);
         convertedLeadList.setAdapter (leadListAdapter);
         progressBar.setVisibility (View.GONE);

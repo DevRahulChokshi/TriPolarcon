@@ -9,6 +9,7 @@
     <color name="primaryTextColor">#ffffff</color>
     <color name="secondaryTextColor">#ffffff</color>
 
+    <color name="white">#ffffff</color>
     <color name="overflowMenuBg">#fffcfff6</color>
 
     <color name="grey_25">#FDFDFD</color>

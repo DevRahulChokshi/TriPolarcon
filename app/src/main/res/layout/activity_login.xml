@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     android:padding="20dp"
     android:background="@android:color/white"
+    android:id="@+id/constraintLayoutLogin"
     tools:context="com.example.ebc003.tripolarcon.app.activities.ActivityLogin">
     <ProgressBar
         android:id="@+id/loginProgressbar"

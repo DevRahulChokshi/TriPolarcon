@@ -6,6 +6,10 @@ package com.example.ebc003.tripolarcon.model;
 
 public class Constants {
 
+    public static final int TYPE_WIFI=1;
+    public static final int TYPE_MOBILE=2;
+    public static final int TYPE_NOT_CONNECTED=0;
+
     public static final String USER_EMAIL="user_email";
     public static final String USER_PASSWORD="user_password";
     public static final String USER_ID_NAME="customer_id_name";

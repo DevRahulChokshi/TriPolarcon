@@ -138,7 +138,7 @@ public class ActivityShowLogDetail extends AppCompatActivity {
 
     private void setRecycler () {
         ShowLogAdapter showLogAdapter=new ShowLogAdapter (this,mLeadListData);
-        DividerItemDecoration dividerItemDecoration=new DividerItemDecoration (this, DividerItemDecoration.HORIZONTAL);
+        DividerItemDecoration dividerItemDecoration=new DividerItemDecoration (getApplicationContext (),DividerItemDecoration.VERTICAL);
         mRecyclerView.addItemDecoration (dividerItemDecoration);
         mRecyclerView.setAdapter (showLogAdapter);
     }

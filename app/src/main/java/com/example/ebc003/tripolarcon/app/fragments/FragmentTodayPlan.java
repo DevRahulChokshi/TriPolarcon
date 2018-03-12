@@ -146,7 +146,7 @@ public class FragmentTodayPlan extends Fragment {
 
     private void setRecycler () {
         ShowTodayPlanAdapter leadListAdapter=new ShowTodayPlanAdapter (getContext (),mLogList);
-        DividerItemDecoration dividerItemDecoration=new DividerItemDecoration (getContext (), DividerItemDecoration.HORIZONTAL);
+        DividerItemDecoration dividerItemDecoration=new DividerItemDecoration (getContext (),DividerItemDecoration.VERTICAL);
         mRecyclerToDayPlan.addItemDecoration (dividerItemDecoration);
         mRecyclerToDayPlan.setAdapter (leadListAdapter);
         mProgressBar.setVisibility (View.GONE);
