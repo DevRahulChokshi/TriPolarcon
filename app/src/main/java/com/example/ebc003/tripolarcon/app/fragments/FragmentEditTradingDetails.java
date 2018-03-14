@@ -73,6 +73,8 @@ public class FragmentEditTradingDetails extends Fragment implements AdapterView.
 
         checkShredPreference ();
 
+        progressBar.setVisibility (View.GONE);
+
         Intent intent=getActivity().getIntent ();
         if (intent!=null){
             mStrCompanyName=intent.getStringExtra (Constants.COMPANY_NAME);
