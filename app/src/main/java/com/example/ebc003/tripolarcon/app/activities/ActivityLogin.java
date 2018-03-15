@@ -53,13 +53,14 @@ public class ActivityLogin extends AppCompatActivity {
         ButterKnife.bind (this);
         setTypeFace();
 
-        broadcastMaster=new BroadcastMaster (constraintLayout);
+        broadcastMaster=new BroadcastMaster (constraintLayout,getApplicationContext ());
     }
 
     @Override
     protected void onResume () {
         super.onResume ();
         registerInternetCheckReceiver();
+
     }
 
     private void registerInternetCheckReceiver() {
@@ -81,6 +82,11 @@ public class ActivityLogin extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
         Log.i(TAG,"onPause:");
+    }
+
+    @Override
+    protected void onDestroy () {
+        super.onDestroy ();
         unregisterReceiver(broadcastReceiver);
     }
 

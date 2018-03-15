@@ -190,6 +190,9 @@ public class ActivityGenerateLog extends AppCompatActivity implements View.OnCli
             case R.id.showLog:{
                 Intent intent=new Intent (this,ActivityShowLogDetail.class);
                 intent.putExtra (Constants.USER_ID,userID);
+                intent.putExtra (Constants.COMPANY_NAME,companyId);
+                Log.i (TAG,"USER ID:-"+userID);
+                Log.i (TAG,"COMPANY ID:-"+companyId);
                 startActivity (intent);
                 break;
             }

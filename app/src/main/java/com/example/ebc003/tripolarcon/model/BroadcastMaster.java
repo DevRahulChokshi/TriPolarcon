@@ -7,9 +7,11 @@ import android.net.NetworkInfo;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * Created by EBC003 on 3/12/2018.
@@ -17,12 +19,15 @@ import android.widget.TextView;
 
 public class BroadcastMaster extends AppCompatActivity {
 
-    private Snackbar snackbar;
-    private boolean internetConnected=true;
-    ConstraintLayout constraintLayout;
+        private Snackbar snackbar;
+        private boolean internetConnected=true;
+        ConstraintLayout constraintLayout;
 
-    public BroadcastMaster (ConstraintLayout constraintLayout) {
+        Context context;
+
+    public BroadcastMaster (ConstraintLayout constraintLayout,Context context) {
         this.constraintLayout = constraintLayout;
+        this.context=context;
     }
 
     public void setSnackBarMessage (String status, boolean showBar) {
@@ -73,6 +78,7 @@ public class BroadcastMaster extends AppCompatActivity {
         else if(conn==Constants.TYPE_NOT_CONNECTED){
             status="internet not connected";
         }
+        Log.i (BroadcastMaster.class.getSimpleName (),"Internet Connection:"+status);
         return status;
     }
 

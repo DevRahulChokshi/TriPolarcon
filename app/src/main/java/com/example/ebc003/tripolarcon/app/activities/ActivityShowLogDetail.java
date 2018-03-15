@@ -37,6 +37,7 @@ public class ActivityShowLogDetail extends AppCompatActivity {
 
     private String TAG=ActivityShowLogDetail.class.getSimpleName ();
     private String mUserID;
+    private String mCompanyID;
     private RecyclerView.LayoutManager mLayoutManager;
     private List<LogData> mLeadListData;
 
@@ -83,7 +84,9 @@ public class ActivityShowLogDetail extends AppCompatActivity {
     private void getIntentData () {
         Intent mUserDataIntent=getIntent ();
         mUserID=mUserDataIntent.getStringExtra (Constants.USER_ID);
+        mCompanyID=mUserDataIntent.getStringExtra (Constants.COMPANY_NAME);
         Log.i (TAG,"UserId:"+mUserID);
+        Log.i (TAG,"CompanyId:"+mCompanyID);
     }
 
     private void getData(){
@@ -100,7 +103,6 @@ public class ActivityShowLogDetail extends AppCompatActivity {
                                 try{
                                     LogData logData=new LogData ();
                                     logData.setLogUserLatter (jsonArray.getJSONObject (i).getString (Constants.USER_ID_NAME));
-
                                     logData.setLogCompanyName(jsonArray.getJSONObject (i).getString (Constants.USER_ID_NAME));
                                     logData.setLogCompanyDate(jsonArray.getJSONObject (i).getString (Constants.SHOW_LOG_DATE));
                                     logData.setLogCompanyTime(jsonArray.getJSONObject (i).getString (Constants.SHOW_LOG_TIME));
@@ -127,8 +129,8 @@ public class ActivityShowLogDetail extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams () throws AuthFailureError {
                 Map<String,String> stringMap=new HashMap<> ();
-                stringMap.put (Constants.USER_ID,mUserID);
-                Log.i (TAG,"USER ID:-"+mUserID);
+                stringMap.put (Constants.USER_ID,mCompanyID);
+                Log.i (TAG,"COMPANY ID:-"+mCompanyID);
                 return stringMap;
             }
         };

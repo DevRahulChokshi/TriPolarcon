@@ -15,7 +15,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -45,13 +44,14 @@ import butterknife.ButterKnife;
  * Created by EBC003 on 12/9/2017.
  */
 
+
 public class FragmentEnquiryList extends Fragment{
 
     private String TAG=FragmentEnquiryList.class.getSimpleName ();
     List<LeadListData> listData;
 
     @BindView(R.id.progressBarShowLead) ProgressBar progressBar;
-    @BindView (R.id.recyclerConvertedLead) RecyclerView convertedLeadList;
+    @BindView  (R.id.recyclerConvertedLead) RecyclerView convertedLeadList;
 
     private RecyclerView.LayoutManager layoutManager;
     private String user_id;
@@ -74,7 +74,6 @@ public class FragmentEnquiryList extends Fragment{
             user_id=bundle.getString (Constants.USER_ID,"N/A");
             Log.i (TAG,"USER_ID:-"+user_id);
         }
-
         getData ();
     }
 
