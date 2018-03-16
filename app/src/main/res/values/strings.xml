@@ -91,4 +91,6 @@
     <string name="search_hint">Search</string>
     <string name="edit_trading_details">Trading details</string>
     <string name="tradingRemark">Remark</string>
+    <string name="imaDescription">ImgInfo</string>
+    <string name="txtDetails">View Details</string>
 </resources>

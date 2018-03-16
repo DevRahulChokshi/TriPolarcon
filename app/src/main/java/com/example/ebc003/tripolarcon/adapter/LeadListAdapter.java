@@ -68,8 +68,8 @@ public class LeadListAdapter extends RecyclerView.Adapter<LeadListAdapter.MyView
                 holder.txtUserEmail.setText (leadListData.getTxtUserEmail ());
                 holder.txtCompanyId.setText (leadListData.getTxtCompanyId ());
 
-                Typeface regularFont=Typeface.createFromAsset (context.getAssets (),"fonts/Nunito-Regular.ttf");
-                Typeface boldFont=Typeface.createFromAsset (context.getAssets (),"fonts/Nunito-Bold.ttf");
+                Typeface regularFont=Typeface.createFromAsset (context.getAssets (),"fonts/OpenSansCondensed-Light.ttf");
+                Typeface boldFont=Typeface.createFromAsset (context.getAssets (),"fonts/OpenSansCondensed-Bold.ttf");
                 holder.txtUser.setTypeface (boldFont);
                 holder.txtLeadTitle.setTypeface (boldFont);
                 holder.txtUserEmail.setTypeface (regularFont);

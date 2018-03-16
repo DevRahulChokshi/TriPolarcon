@@ -91,7 +91,7 @@ public class ActivityLogin extends AppCompatActivity {
     }
 
     private void setTypeFace () {
-        Typeface customFont=Typeface.createFromAsset (getAssets (),"fonts/Nunito-Bold.ttf");
+        Typeface customFont=Typeface.createFromAsset (getAssets (),"fonts/OpenSansCondensed-Bold.ttf");
         mTxtLogin.setTypeface (customFont);
     }
 

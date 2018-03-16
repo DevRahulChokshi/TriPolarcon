@@ -87,44 +87,41 @@ public class ActivityContainer extends AppCompatActivity  implements MyAdapterIt
         drawerFragment.setUpDrawer(R.id.nav_drwr_fragment, drawerLayout, mMainToolbar);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu (Menu menu) {
-        getMenuInflater ().inflate (R.menu.main_menu,menu);
-        MenuItem searchItem = menu.findItem(R.id.action_search);
+//    @Override
+//    public boolean onCreateOptionsMenu (Menu menu) {
+//        getMenuInflater ().inflate (R.menu.main_menu,menu);
+//        MenuItem searchItem = menu.findItem(R.id.action_search);
+//
+//        SearchManager searchManager = (SearchManager) ActivityContainer.this.getSystemService(Context.SEARCH_SERVICE);
+//
+//        SearchView searchView = null;
+//        if (searchItem != null) {
+//            searchView = (SearchView) searchItem.getActionView();
+//        }
+//        if (searchView != null) {
+//            searchView.setSearchableInfo(searchManager.getSearchableInfo(ActivityContainer.this.getComponentName()));
+//        }
+//        return super.onCreateOptionsMenu (menu);
+//    }
 
-        SearchManager searchManager = (SearchManager) ActivityContainer.this.getSystemService(Context.SEARCH_SERVICE);
-
-        SearchView searchView = null;
-        if (searchItem != null) {
-            searchView = (SearchView) searchItem.getActionView();
-        }
-        if (searchView != null) {
-            searchView.setSearchableInfo(searchManager.getSearchableInfo(ActivityContainer.this.getComponentName()));
-        }
-        return super.onCreateOptionsMenu (menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected (MenuItem item) {
-        switch (item.getItemId ()){
-            case R.id.menu_logout: {
-                clearSharedPreference();
-
-                Intent intent=new Intent (this,ActivityLogin.class);
-                startActivity (intent);
-                finish ();
-            }
-
-        }
-        return super.onOptionsItemSelected (item);
-    }
-
-    private void clearSharedPreference () {
-        SharedPreferences sharedPreferences=getSharedPreferences (Constants.PREFERENCE_KEY,MODE_PRIVATE);
-        SharedPreferences.Editor editor=sharedPreferences.edit ();
-        editor.clear ();
-        editor.apply ();
-    }
+//    @Override
+//    public boolean onOptionsItemSelected (MenuItem item) {
+//        switch (item.getItemId ()){
+//            case R.id.menu_logout: {
+//                clearSharedPreference();
+//
+//                Intent intent=new Intent (this,ActivityLogin.class);
+//                startActivity (intent);
+//                finish ();
+//            }
+//
+//        }
+//        return super.onOptionsItemSelected (item);
+//    }
+//
+//    private void clearSharedPreference () {
+//
+//    }
 
     @Override
     protected void onResume () {

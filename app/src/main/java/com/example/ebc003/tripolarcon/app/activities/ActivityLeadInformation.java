@@ -148,17 +148,17 @@ public class ActivityLeadInformation extends AppCompatActivity implements View.O
                                     mTxtPersonNote.setText (Note);
                                     mTxtEnquiryStatus.setText (Source);
 
-                                    Typeface regularFont=Typeface.createFromAsset (getAssets (),"fonts/Nunito-Regular.ttf");
-                                    Typeface boldFont=Typeface.createFromAsset (getAssets (),"fonts/Nunito-Bold.ttf");
-                                    mTxtCompanyEmail.setTypeface (regularFont);
-                                    mTxtCompanyName.setTypeface (regularFont);
-                                    mTxtOfficePhone.setTypeface (regularFont);
-                                    mTxtWebSite.setTypeface (regularFont);
-                                    mTxtAddress.setTypeface (regularFont);
-                                    mTxtFax.setTypeface (regularFont);
-                                    mTxtPersonName.setTypeface (regularFont);
-                                    mTxtPersonNote.setTypeface (regularFont);
-                                    mTxtEnquiryStatus.setTypeface (regularFont);
+                                    Typeface regularFont=Typeface.createFromAsset (getAssets (),"fonts/OpenSansCondensed-Light.ttf");
+                                    Typeface boldFont=Typeface.createFromAsset (getAssets (),"fonts/OpenSansCondensed-Bold.ttf");
+                                    mTxtCompanyEmail.setTypeface (boldFont);
+                                    mTxtCompanyName.setTypeface (boldFont);
+                                    mTxtOfficePhone.setTypeface (boldFont);
+                                    mTxtWebSite.setTypeface (boldFont);
+                                    mTxtAddress.setTypeface (boldFont);
+                                    mTxtFax.setTypeface (boldFont);
+                                    mTxtPersonName.setTypeface (boldFont);
+                                    mTxtPersonNote.setTypeface (boldFont);
+                                    mTxtEnquiryStatus.setTypeface (boldFont);
                                     mTxtLeadInfo.setTypeface (boldFont);
 
                                 }catch (JSONException e){

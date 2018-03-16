@@ -252,7 +252,7 @@ public class ActivityGenerateLog extends AppCompatActivity implements View.OnCli
     public void getItem (int day, int month, int years) {
         String myDate=years+"/"+(month+1)+"/"+day;
         mEdtDate.setText (myDate);
-        Typeface regularFont=Typeface.createFromAsset (getAssets (),"fonts/Nunito-Regular.ttf");
+        Typeface regularFont=Typeface.createFromAsset (getAssets (),"fonts/OpenSansCondensed-Light.ttf");
         mEdtDate.setTypeface (regularFont);
     }
 
@@ -260,7 +260,7 @@ public class ActivityGenerateLog extends AppCompatActivity implements View.OnCli
     public void getItem (int hours, int minuets,String format) {
         String myTime=hours+":"+minuets+" "+format;
         mEdtTime.setText (myTime);
-        Typeface regularFont=Typeface.createFromAsset (getAssets (),"fonts/Nunito-Regular.ttf");
+        Typeface regularFont=Typeface.createFromAsset (getAssets (),"fonts/OpenSansCondensed-Light.ttf");
         mEdtTime.setTypeface (regularFont);
     }
 
@@ -466,7 +466,7 @@ public class ActivityGenerateLog extends AppCompatActivity implements View.OnCli
             mEdtTime.setFocusable (false);
             mEdtDate.setFocusable (false);
 
-            Typeface regularFont=Typeface.createFromAsset (getAssets (),"fonts/Nunito-Regular.ttf");
+            Typeface regularFont=Typeface.createFromAsset (getAssets (),"fonts/OpenSansCondensed-Light.ttf");
             mEdtRemark.setTypeface (regularFont);
 
             AddLogAsyncTask addLogAsyncTask=new AddLogAsyncTask (getApplicationContext (),progressBar);

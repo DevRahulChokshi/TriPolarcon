@@ -107,7 +107,7 @@ public class FragmentTrading extends Fragment {
                                                 mGeneratedTo.setText (generated_by);
                                                 mAssignTo.setText (assign_to);
 
-                                                Typeface regularFont=Typeface.createFromAsset (getActivity ().getAssets (),"fonts/Nunito-Regular.ttf");
+                                                Typeface regularFont=Typeface.createFromAsset (getActivity ().getAssets (),"fonts/OpenSansCondensed-Bold.ttf");
 
                                                 mDate.setTypeface (regularFont);
                                                 mBrandName.setTypeface (regularFont);
