@@ -51,14 +51,13 @@ public class CustomGridViewAdapter extends BaseAdapter {
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         if (convertView == null) {
-
             gridViewAndroid = new View(mContext);
             gridViewAndroid = inflater.inflate(R.layout.customize_gridview, null);
 
-            TextView txtCounterItem = (TextView) gridViewAndroid.findViewById(R.id.txtCounterItem);
-            TextView txtTitleItem = (TextView) gridViewAndroid.findViewById(R.id.txtTitleItem);
-            TextView txtDetailsItem = (TextView) gridViewAndroid.findViewById(R.id.txtDetailsItem);
-            ImageView imageViewAndroid = (ImageView) gridViewAndroid.findViewById(R.id.imgItem);
+            TextView txtCounterItem = gridViewAndroid.findViewById(R.id.txtCounterItem);
+            TextView txtTitleItem = gridViewAndroid.findViewById(R.id.txtTitleItem);
+            TextView txtDetailsItem = gridViewAndroid.findViewById(R.id.txtDetailsItem);
+            ImageView imageViewAndroid = gridViewAndroid.findViewById(R.id.imgItem);
 
             txtCounterItem.setText(gridViewStringCounterItem[i]);
             txtTitleItem.setText(gridViewStringTitleItem[i]);
@@ -71,7 +70,7 @@ public class CustomGridViewAdapter extends BaseAdapter {
             txtTitleItem.setTypeface (customFontLight);
 
         } else {
-            gridViewAndroid = (View) convertView;
+            gridViewAndroid = convertView;
         }
 
         return gridViewAndroid;

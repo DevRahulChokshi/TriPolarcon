@@ -37,6 +37,8 @@ import butterknife.ButterKnife;
 
 public class FragmentTrading extends Fragment {
 
+    private static final String TAG=FragmentTrading.class.getSimpleName ();
+
     @BindView (R.id.txtTradingDateData) TextView mDate;
     @BindView (R.id.txtBrandNameData) TextView mBrandName;
     @BindView (R.id.txtProductNameData) TextView mProductName;
@@ -45,8 +47,6 @@ public class FragmentTrading extends Fragment {
     @BindView (R.id.txtAssignToData) TextView mAssignTo;
     @BindView (R.id.txtGeneratedToData) TextView mGeneratedTo;
     @BindView (R.id.progressBarShowLeadDetail) ProgressBar progressBar;
-
-    private static final String TAG=FragmentTrading.class.getSimpleName ();
 
     private String user_id;
     private String assign_to;

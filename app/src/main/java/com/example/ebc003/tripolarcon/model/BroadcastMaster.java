@@ -49,7 +49,7 @@ public class BroadcastMaster extends AppCompatActivity {
         snackbar.setActionTextColor(Color.GREEN);
 
         View sbView=snackbar.getView();
-        TextView textView = (TextView) sbView.findViewById(android.support.design.R.id.snackbar_text);
+        TextView textView = sbView.findViewById(android.support.design.R.id.snackbar_text);
         textView.setTextColor(Color.WHITE);
 
         if(internetStatus.equalsIgnoreCase("Lost Internet Connection")){

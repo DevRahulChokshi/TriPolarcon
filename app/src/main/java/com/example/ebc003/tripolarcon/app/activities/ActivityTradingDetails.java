@@ -80,27 +80,27 @@ public class ActivityTradingDetails extends AppCompatActivity implements TabLayo
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu (Menu menu) {
-        getMenuInflater ().inflate (R.menu.lead_info_menu,menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected (MenuItem item) {
-        int id=item.getItemId ();
-        switch (id){
-            case R.id.editLog:{
-                Intent intent=new Intent (this,ActivityEditTradingDetailsTabView.class);
-                intent.putExtra (Constants.COMPANY_NAME,mStrCompanyName);
-                intent.putExtra (Constants.ASSIGN_TO,mStrAssignPersonId);
-                intent.putExtra (Constants.USER_ID,mStrCompanyId);
-                startActivity (intent);
-                break;
-            }
-        }
-        return super.onOptionsItemSelected (item);
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu (Menu menu) {
+//        getMenuInflater ().inflate (R.menu.lead_info_menu,menu);
+//        return true;
+//    }
+//
+//    @Override
+//    public boolean onOptionsItemSelected (MenuItem item) {
+//        int id=item.getItemId ();
+//        switch (id){
+//            case R.id.editLog:{
+//                Intent intent=new Intent (this,ActivityEditTradingDetailsTabView.class);
+//                intent.putExtra (Constants.COMPANY_NAME,mStrCompanyName);
+//                intent.putExtra (Constants.ASSIGN_TO,mStrAssignPersonId);
+//                intent.putExtra (Constants.USER_ID,mStrCompanyId);
+//                startActivity (intent);
+//                break;
+//            }
+//        }
+//        return super.onOptionsItemSelected (item);
+//    }
 
     @Override
     public void onTabSelected (TabLayout.Tab tab) {

@@ -134,8 +134,7 @@ public class ActivityGenerateLog extends AppCompatActivity implements View.OnCli
         long timeInMillis = System.currentTimeMillis();
         Calendar cal1 = Calendar.getInstance();
         cal1.setTimeInMillis(timeInMillis);
-        SimpleDateFormat dateFormat = new SimpleDateFormat(
-                "yyyy/MM/dd hh:mm:ss a");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd hh:mm:ss a");
 
         dateforrow = dateFormat.format(cal1.getTime());
 

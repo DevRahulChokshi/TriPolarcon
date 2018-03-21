@@ -8,12 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-
 import com.example.ebc003.tripolarcon.R;
-import com.example.ebc003.tripolarcon.adapter.Pager;
 import com.example.ebc003.tripolarcon.adapter.PagerEditTradingDetails;
 import com.example.ebc003.tripolarcon.model.Constants;
 

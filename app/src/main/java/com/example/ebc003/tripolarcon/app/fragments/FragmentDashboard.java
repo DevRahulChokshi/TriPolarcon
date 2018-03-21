@@ -79,7 +79,7 @@ public class FragmentDashboard extends Fragment {
     }
 
     private void setUpToolbar () {
-        Toolbar toolbar = (Toolbar) getActivity().findViewById(R.id.main_toolbar);
+        Toolbar toolbar = getActivity().findViewById(R.id.main_toolbar);
         toolbar.setTitle(R.string.title_dashboard);
     }
 

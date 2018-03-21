@@ -3,6 +3,7 @@ package com.example.ebc003.tripolarcon.app.activities;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -16,6 +17,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.example.ebc003.tripolarcon.R;
 import com.example.ebc003.tripolarcon.model.Constants;
 import com.example.ebc003.tripolarcon.model.JSONParser;
@@ -31,6 +33,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class ActivityGenerateLead extends AppCompatActivity {
 
@@ -100,7 +103,11 @@ public class ActivityGenerateLead extends AppCompatActivity {
         int id=item.getItemId ();
         switch (id){
             case R.id.addLog:{
-                getStringData();
+                AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext ());
+                builder.setMessage(R.string.dialog_message)
+                        .setTitle(R.string.generate_lead_titile);
+                AlertDialog dialog = builder.create();
+
                 break;
             }
         }
@@ -142,10 +149,8 @@ public class ActivityGenerateLead extends AppCompatActivity {
 
         String radioString= (String) radioOffline.getText ();
 
-        Toast.makeText (getApplicationContext (),"Radio:"+radioOffline.getText (),Toast.LENGTH_SHORT).show ();
-
-        MyAsyncTask myAsyncTask=new MyAsyncTask ();
-        myAsyncTask.execute (company_name,address,email,phone_no,state,website,ContactPerson,ContactDesignation,City,FAX_Number,PAN_Number,GST_Number,Note,userID,userName,CurrentDate,CurrentTime,radioString);
+//        MyAsyncTask myAsyncTask=new MyAsyncTask ();
+//        myAsyncTask.execute (company_name,address,email,phone_no,state,website,ContactPerson,ContactDesignation,City,FAX_Number,PAN_Number,GST_Number,Note,userID,userName,CurrentDate,CurrentTime,radioString);
     }
 
     private void checkShredPreference () {

@@ -47,17 +47,19 @@ public class ShowLogAdapter extends RecyclerView.Adapter<ShowLogAdapter.LogHolde
                 String companyName=logData.getLogUserLatter();
                 char first= companyName.charAt (0);
                 String firstData= String.valueOf (first);
+
                 holder.mTxtCompanyLatter.setText (firstData);
                 holder.mTxtCompanyName.setText (logData.getLogUserLatter ());
-                String mLogData=logData.getLogCompanyDate ()+" "+logData.getLogCompanyTime ()+" "+logData.getLogCompanyRemark ();
+                String mLogData=logData.getLogCompanyDate ()+" "+logData.getLogCompanyTime ();
                 holder.mTxtScheduleDateTime.setText (mLogData);
+                holder.mTxtLogRemark.setText (logData.getLogCompanyRemark ());
             }
             else {
                 Log.i (TAG,"DATA NULL");
             }
         }
         else {
-            Log.i (TAG,"DATA NULL");
+            Log.i (TAG, "DATA NULL");
         }
     }
 
@@ -71,12 +73,14 @@ public class ShowLogAdapter extends RecyclerView.Adapter<ShowLogAdapter.LogHolde
         TextView mTxtCompanyLatter;
         TextView mTxtCompanyName;
         TextView mTxtScheduleDateTime;
+        TextView mTxtLogRemark;
 
         public LogHolder (View itemView) {
             super (itemView);
             mTxtCompanyLatter=itemView.findViewById (R.id.txtLogCompanyLatter);
             mTxtCompanyName=itemView.findViewById (R.id.txtLogCompanyName);
             mTxtScheduleDateTime=itemView.findViewById (R.id.txtLogDateTime);
+            mTxtLogRemark=itemView.findViewById (R.id.txtLogRemark);
         }
     }
 }
