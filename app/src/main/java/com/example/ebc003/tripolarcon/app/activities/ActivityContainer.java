@@ -53,7 +53,7 @@ public class ActivityContainer extends AppCompatActivity  implements MyAdapterIt
         checkShredPreference();
         manager=getSupportFragmentManager ();
         getDefaultFrag();
-    }
+}
 
     private void getDefaultFrag () {
         FragmentDashboard fragmentDashboard =new FragmentDashboard ();

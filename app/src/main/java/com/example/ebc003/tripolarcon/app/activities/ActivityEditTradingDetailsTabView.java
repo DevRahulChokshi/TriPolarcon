@@ -18,12 +18,9 @@ import butterknife.ButterKnife;
 
 public class ActivityEditTradingDetailsTabView extends AppCompatActivity implements TabLayout.OnTabSelectedListener{
 
-    @BindView(R.id.tabLayout_trading_tab_view)
-    TabLayout tabLayout;
-    @BindView (R.id.pager_trading_tab_view)
-    ViewPager viewPager;
-    @BindView (R.id.toolbar_trading_tab_view)
-    Toolbar toolbar;
+    @BindView(R.id.tabLayout_trading_tab_view) TabLayout tabLayout;
+    @BindView (R.id.pager_trading_tab_view) ViewPager viewPager;
+    @BindView (R.id.toolbar_trading_tab_view) Toolbar toolbar;
 
     private String mStrCompanyId;
     private String mStrAssignPersonId;
@@ -62,9 +59,9 @@ public class ActivityEditTradingDetailsTabView extends AppCompatActivity impleme
             mStrAssignPersonId=intent.getStringExtra (Constants.ASSIGN_TO);
             mStrCompanyId=intent.getStringExtra (Constants.USER_ID);
 
-            Log.i (TAG,mStrCompanyId);
-            Log.i (TAG,mStrAssignPersonId);
-            Log.i (TAG,mStrCompanyName);
+//            Log.i (TAG,mStrCompanyId);
+//            Log.i (TAG,mStrAssignPersonId);
+//            Log.i (TAG,mStrCompanyName);
         }
     }
 
@@ -77,7 +74,6 @@ public class ActivityEditTradingDetailsTabView extends AppCompatActivity impleme
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
     }
-
 
     @Override
     public void onTabSelected (TabLayout.Tab tab) {

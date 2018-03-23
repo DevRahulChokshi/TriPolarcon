@@ -84,9 +84,6 @@ public class FragmentEditTradingServiceDetails extends Fragment implements Adapt
             mStrAssignPersonId=intent.getStringExtra (Constants.ASSIGN_TO);
             mStrCompanyId=intent.getStringExtra (Constants.USER_ID);
 
-            Log.i (TAG,mStrCompanyId);
-            Log.i (TAG,mStrAssignPersonId);
-            Log.i (TAG,mStrCompanyName);
         }
 
         return view;

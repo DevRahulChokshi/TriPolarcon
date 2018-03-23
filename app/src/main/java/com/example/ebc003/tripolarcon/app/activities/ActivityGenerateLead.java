@@ -1,5 +1,7 @@
 package com.example.ebc003.tripolarcon.app.activities;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.support.v7.app.ActionBar;
@@ -17,7 +19,6 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import com.afollestad.materialdialogs.MaterialDialog;
 import com.example.ebc003.tripolarcon.R;
 import com.example.ebc003.tripolarcon.model.Constants;
 import com.example.ebc003.tripolarcon.model.JSONParser;
@@ -33,7 +34,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 public class ActivityGenerateLead extends AppCompatActivity {
 
@@ -41,8 +41,8 @@ public class ActivityGenerateLead extends AppCompatActivity {
     private String userID;
     private String userName;
 
-    @BindView(R.id.generateLeadToolbar) Toolbar toolbar;
-    @BindView(R.id.progressBarGenerateLead) ProgressBar progressBar;
+    @BindView (R.id.generateLeadToolbar) Toolbar toolbar;
+    @BindView (R.id.progressBarGenerateLead) ProgressBar progressBar;
     @BindView (R.id.edtCompanyName) EditText mEdtCompanyName;
     @BindView (R.id.edtEmail) EditText mEdtEmail;
     @BindView (R.id.edtPhoneNo) EditText mEdtPhoneNo;
@@ -103,15 +103,34 @@ public class ActivityGenerateLead extends AppCompatActivity {
         int id=item.getItemId ();
         switch (id){
             case R.id.addLog:{
-                AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext ());
-                builder.setMessage(R.string.dialog_message)
-                        .setTitle(R.string.generate_lead_titile);
-                AlertDialog dialog = builder.create();
-
+                    alertBox ();
                 break;
             }
         }
         return super.onOptionsItemSelected (item);
+    }
+
+    private void alertBox() {
+        AlertDialog.Builder dialog = new AlertDialog.Builder(ActivityGenerateLead.this);
+        dialog.setCancelable(false);
+        dialog.setTitle(R.string.generate_lead_title);
+        dialog.setMessage(R.string.dialog_message);
+        dialog.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int id) {
+                getStringData ();
+                Intent intent=new Intent (getApplicationContext (),ActivityEditTradingDetailsTabView.class);
+                startActivity (intent);
+            }
+        })
+                .setNegativeButton("Cancel ", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        getStringData ();
+                    }
+                });
+        final AlertDialog alert = dialog.create();
+        alert.show();
     }
 
     private void getStringData () {
@@ -149,8 +168,8 @@ public class ActivityGenerateLead extends AppCompatActivity {
 
         String radioString= (String) radioOffline.getText ();
 
-//        MyAsyncTask myAsyncTask=new MyAsyncTask ();
-//        myAsyncTask.execute (company_name,address,email,phone_no,state,website,ContactPerson,ContactDesignation,City,FAX_Number,PAN_Number,GST_Number,Note,userID,userName,CurrentDate,CurrentTime,radioString);
+        MyAsyncTask myAsyncTask=new MyAsyncTask ();
+        myAsyncTask.execute (company_name,address,email,phone_no,state,website,ContactPerson,ContactDesignation,City,FAX_Number,PAN_Number,GST_Number,Note,userID,userName,CurrentDate,CurrentTime,radioString);
     }
 
     private void checkShredPreference () {
@@ -256,7 +275,6 @@ public class ActivityGenerateLead extends AppCompatActivity {
         protected void onPostExecute (Boolean aBoolean) {
             progressBar.setVisibility (View.GONE);
             super.onPostExecute (aBoolean);
-
         }
     }
 }

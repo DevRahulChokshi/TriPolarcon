@@ -32,7 +32,7 @@ import java.util.Map;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class ActivityLeadInformation extends AppCompatActivity implements View.OnClickListener {
+public class    ActivityLeadInformation extends AppCompatActivity implements View.OnClickListener {
 
     private static final String TAG=ActivityLeadInformation.class.getSimpleName ();
 
@@ -47,6 +47,7 @@ public class ActivityLeadInformation extends AppCompatActivity implements View.O
     @BindView (R.id.txtPersonNoteData) TextView mTxtPersonNote;
     @BindView (R.id.txtLeadInfo) TextView mTxtLeadInfo;
     @BindView (R.id.txtEnquiryStatusData) TextView mTxtEnquiryStatus;
+    @BindView (R.id.txtTradingGeneratedBy) TextView mTxtTradingGeneratedBy;
     @BindView (R.id.progressBarLeadDetails) ProgressBar progressBar;
 
     String CompanyName;
@@ -136,6 +137,7 @@ public class ActivityLeadInformation extends AppCompatActivity implements View.O
                                     String Note=jsonArray.getJSONObject (i).getString ("cust_note");
                                     String Source=jsonArray.getJSONObject (i).getString ("source");
                                     assign_to=jsonArray.getJSONObject (i).getString ("assign_to");
+                                    String generated_by=jsonArray.getJSONObject (i).getString ("generated_by_name");
 
                                     mTxtCompanyEmail.setText (CompanyEmail);
                                     mTxtCompanyName.setText (CompanyName);
@@ -147,6 +149,7 @@ public class ActivityLeadInformation extends AppCompatActivity implements View.O
 //                                    mTxtPersonNumber.setText (ContactPersonNumber);
                                     mTxtPersonNote.setText (Note);
                                     mTxtEnquiryStatus.setText (Source);
+                                    mTxtTradingGeneratedBy.setText (generated_by);
 
                                     Typeface regularFont=Typeface.createFromAsset (getAssets (),"fonts/OpenSansCondensed-Light.ttf");
                                     Typeface boldFont=Typeface.createFromAsset (getAssets (),"fonts/OpenSansCondensed-Bold.ttf");
@@ -160,6 +163,7 @@ public class ActivityLeadInformation extends AppCompatActivity implements View.O
                                     mTxtPersonNote.setTypeface (boldFont);
                                     mTxtEnquiryStatus.setTypeface (boldFont);
                                     mTxtLeadInfo.setTypeface (boldFont);
+                                    mTxtTradingGeneratedBy.setTypeface (boldFont);
 
                                 }catch (JSONException e){
                                     e.printStackTrace ();

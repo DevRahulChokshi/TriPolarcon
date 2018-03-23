@@ -93,6 +93,6 @@
     <string name="tradingRemark">Remark</string>
     <string name="imaDescription">ImgInfo</string>
     <string name="txtDetails">View Details</string>
-    <string name="generate_lead_titile">Do want add Trading details ?</string>
-    <string name="dialog_message">Add Trading and Trading services details.</string>
+    <string name="generate_lead_title">Do want to add Trading details ?</string>
+    <string name="dialog_message">Fill up Trading and Trading Service details information.</string>
 </resources>

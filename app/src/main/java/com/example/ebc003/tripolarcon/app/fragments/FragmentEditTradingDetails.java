@@ -42,8 +42,7 @@ public class FragmentEditTradingDetails extends Fragment implements AdapterView.
     @BindView(R.id.spnTradingStatus) Spinner spnTradingStatus;
     @BindView(R.id.spnTradingAction) Spinner mSpnTradingAction;
     @BindView(R.id.spnTradingFollowup) Spinner mSpnTradingFollowup;
-    @BindView(R.id.edtRemark)
-    EditText mEdtRemark;
+    @BindView(R.id.edtRemark) EditText mEdtRemark;
 
     String mStrBrandNameData;
     String mStrProductNameData;
@@ -81,9 +80,6 @@ public class FragmentEditTradingDetails extends Fragment implements AdapterView.
             mStrAssignPersonId=intent.getStringExtra (Constants.ASSIGN_TO);
             mStrCompanyId=intent.getStringExtra (Constants.USER_ID);
 
-            Log.i (TAG,mStrCompanyId);
-            Log.i (TAG,mStrAssignPersonId);
-            Log.i (TAG,mStrCompanyName);
         }
 
         return view;
@@ -124,7 +120,6 @@ public class FragmentEditTradingDetails extends Fragment implements AdapterView.
         String[] mListTradingFollowup = {"Re-Followup", "Reminder"};
         ArrayAdapter<String> adapterListTradingFollowup = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_dropdown_item, mListTradingFollowup);
         mSpnTradingFollowup.setAdapter(adapterListTradingFollowup);
-
     }
 
     private void getStringData () {
@@ -196,7 +191,6 @@ public class FragmentEditTradingDetails extends Fragment implements AdapterView.
                 Log.i(TAG, "SpinnerSchedule:-" + mStrTradingFollowup);
                 break;
             }
-
         }
     }
 
