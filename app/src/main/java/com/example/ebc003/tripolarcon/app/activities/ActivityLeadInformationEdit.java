@@ -33,12 +33,14 @@ import java.util.Map;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class ActivityLeadInformation extends AppCompatActivity implements View.OnClickListener {
+public class ActivityLeadInformationEdit extends AppCompatActivity implements View.OnClickListener{
 
-    private static final String TAG=ActivityLeadInformation.class.getSimpleName ();
+    private static final String TAG=ActivityLeadInformationEdit.class.getSimpleName ();
 
-    @BindView (R.id.lead_info_toolbar) Toolbar mToolbar;
-    @BindView (R.id.txtCompanyNameData) TextView mTxtCompanyName;
+    @BindView(R.id.lead_info_toolbar)
+    Toolbar mToolbar;
+    @BindView (R.id.txtCompanyNameData)
+    TextView mTxtCompanyName;
     @BindView (R.id.txtUserEmailData) TextView mTxtCompanyEmail;
     @BindView (R.id.txtCompanyWebSiteData) TextView mTxtWebSite;
     @BindView (R.id.txtOfficePhoneNumberData) TextView mTxtOfficePhone;
@@ -49,7 +51,8 @@ public class ActivityLeadInformation extends AppCompatActivity implements View.O
     @BindView (R.id.txtLeadInfo) TextView mTxtLeadInfo;
     @BindView (R.id.txtEnquiryStatusData) TextView mTxtEnquiryStatus;
     @BindView (R.id.txtTradingGeneratedBy) TextView mTxtTradingGeneratedBy;
-    @BindView (R.id.progressBarLeadDetails) ProgressBar progressBar;
+    @BindView (R.id.progressBarLeadDetails)
+    ProgressBar progressBar;
 
     String CompanyName;
     String CompanyID;
@@ -58,10 +61,11 @@ public class ActivityLeadInformation extends AppCompatActivity implements View.O
     String userName;
     String generated_by_id;
 
+
     @Override
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate (savedInstanceState);
-        setContentView (R.layout.activity_lead_information);
+        setContentView (R.layout.activity_lead_information_edit);
         ButterKnife.bind (this);
 
         mTxtLeadInfo.setOnClickListener (this);
@@ -225,15 +229,15 @@ public class ActivityLeadInformation extends AppCompatActivity implements View.O
 
         switch (id){
             case R.id.txtLeadInfo:
-                    Intent intent=new Intent (this,ActivityTradingDetails.class);
-                    intent.putExtra (Constants.USER_ID,CompanyID);
-                    intent.putExtra (Constants.ASSIGN_TO,assign_to);
-                    intent.putExtra (Constants.COMPANY_NAME,CompanyName);
+                Intent intent=new Intent (this,ActivityTradingEditDetails.class);
+                intent.putExtra (Constants.USER_ID,CompanyID);
+                intent.putExtra (Constants.ASSIGN_TO,assign_to);
+                intent.putExtra (Constants.COMPANY_NAME,CompanyName);
 
-                    Log.i (TAG,"USER_ID"+CompanyID);
-                    Log.i (TAG,"ASSIGN_TO"+assign_to);
-                    Log.i (TAG,"COMPANY_NAME"+CompanyName);
-                    startActivity (intent);
+                Log.i (TAG,"USER_ID"+CompanyID);
+                Log.i (TAG,"ASSIGN_TO"+assign_to);
+                Log.i (TAG,"COMPANY_NAME"+CompanyName);
+                startActivity (intent);
                 break;
         }
     }

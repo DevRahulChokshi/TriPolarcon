@@ -1,26 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<ScrollView android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/primaryTextColor">
-    <ScrollView
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical">
-    <ProgressBar
-            android:id="@+id/tradingServicesEditProgressbar"
-        android:layout_width="match_parent"
-        android:layout_height="43dp"
-        android:layout_gravity="center_vertical|center_horizontal"
-        android:visibility="invisible"
-        app:layout_constraintLeft_toRightOf="parent"
-        app:layout_constraintRight_toLeftOf="parent"/>
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical"
+        android:background="@color/white">
+        <ProgressBar
+            android:id="@+id/progressBarShowServiceDetails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            app:layout_constraintRight_toLeftOf="parent"
+            app:layout_constraintLeft_toRightOf="parent"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -28,24 +24,42 @@
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
-            android:padding="5dp"
             android:textColor="@color/textColorEarthquakeLocation"
             android:textStyle="bold"/>
-    <LinearLayout
-        android:id="@+id/linerLayoutTradingServices"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="@color/grey_25"
-        android:layout_marginBottom="10dp">
-
+        <LinearLayout
+            android:id="@+id/linearTradingServiceData"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/txtTradingServiceDate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/tradingDate"
+                android:textColor="@color/textColorEarthquakeDetails"
+                android:layout_marginTop="10dp"
+                android:padding="10dp"
+                android:textSize="15sp"/>
+            <TextView
+                android:id="@+id/txtTradingServiceDateData"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="@color/textColorEarthquakeLocation"
+                android:textStyle="bold"
+                android:text="@string/note_available"
+                android:layout_marginTop="10dp"
+                android:padding="10dp"
+                android:textSize="15sp"/>
+        </LinearLayout>
         <LinearLayout
             android:id="@+id/linearOrderDescriptionData"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <TextView
-                android:id="@+id/edtTradingOrderDescription"
+                android:id="@+id/txtTradingOrderDescription"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -54,13 +68,14 @@
                 android:layout_marginTop="10dp"
                 android:padding="10dp"
                 android:textSize="15sp"/>
-            <EditText
-                android:id="@+id/edtOrderDescriptionData"
+            <TextView
+                android:id="@+id/txtOrderDescriptionData"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textColor="@color/textColorEarthquakeLocation"
                 android:textStyle="bold"
+                android:text="@string/note_available"
                 android:layout_marginTop="10dp"
                 android:padding="10dp"
                 android:textSize="15sp"/>
@@ -71,7 +86,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <TextView
-                android:id="@+id/edtTradingArea"
+                android:id="@+id/txtTradingArea"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -80,13 +95,14 @@
                 android:layout_marginTop="10dp"
                 android:padding="10dp"
                 android:textSize="15sp"/>
-            <EditText
-                android:id="@+id/edtProductAreaData"
+            <TextView
+                android:id="@+id/txtProductAreaData"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textColor="@color/textColorEarthquakeLocation"
                 android:textStyle="bold"
+                android:text="@string/note_available"
                 android:layout_marginTop="10dp"
                 android:padding="10dp"
                 android:textSize="15sp"/>
@@ -97,7 +113,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <TextView
-                android:id="@+id/edtTradingUnitName"
+                android:id="@+id/txtTradingUnitName"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -106,14 +122,17 @@
                 android:layout_marginTop="10dp"
                 android:padding="10dp"
                 android:textSize="15sp"/>
-            <Spinner
-                android:id="@+id/spnProductUnitData"
+            <TextView
+                android:id="@+id/txtProductUnitData"
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:textColor="@color/textColorEarthquakeLocation"
+                android:textStyle="bold"
                 android:text="@string/note_available"
-                android:textSize="15sp" />
+                android:layout_marginTop="10dp"
+                android:padding="10dp"
+                android:textSize="15sp"/>
         </LinearLayout>
         <LinearLayout
             android:id="@+id/linearServiceSourceTypeData"
@@ -121,7 +140,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <TextView
-                android:id="@+id/edtTradingServiceSourceType"
+                android:id="@+id/txtTradingServiceSourceType"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -130,14 +149,17 @@
                 android:layout_marginTop="10dp"
                 android:padding="10dp"
                 android:textSize="15sp"/>
-            <Spinner
-                android:id="@+id/spnServiceSourceTypeData"
+            <TextView
+                android:id="@+id/txtServiceSourceTypeData"
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:textColor="@color/textColorEarthquakeLocation"
+                android:textStyle="bold"
                 android:text="@string/note_available"
-                android:textSize="15sp" />
+                android:layout_marginTop="10dp"
+                android:padding="10dp"
+                android:textSize="15sp"/>
         </LinearLayout>
         <LinearLayout
             android:id="@+id/linearServiceRequirementRemarkData"
@@ -145,23 +167,27 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <TextView
-                android:id="@+id/edtTradingServicesStatus"
+                android:id="@+id/txtTradingServiceRequirementRemark"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/tradingStatus"
+                android:text="@string/tradingRequirementRemark"
                 android:textColor="@color/textColorEarthquakeDetails"
                 android:layout_marginTop="10dp"
                 android:padding="10dp"
                 android:textSize="15sp"/>
-            <Spinner
-                android:id="@+id/spnTradingServicesStatus"
+
+            <TextView
+                android:id="@+id/txtServiceRequirementRemarkData"
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_weight="1"
+                android:padding="10dp"
                 android:text="@string/note_available"
-                android:textSize="15sp" />
+                android:textColor="@color/textColorEarthquakeLocation"
+                android:textSize="15sp"
+                android:textStyle="bold" />
         </LinearLayout>
         <LinearLayout
             android:id="@+id/linearServiceAssignToData"
@@ -169,23 +195,26 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <TextView
-                android:id="@+id/edtTradingServiceAssignTo"
+                android:id="@+id/txtTradingServiceAssignTo"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/tradingAction"
+                android:text="@string/tradingAssignTo"
                 android:textColor="@color/textColorEarthquakeDetails"
                 android:layout_marginTop="10dp"
                 android:padding="10dp"
                 android:textSize="15sp"/>
-            <Spinner
-                android:id="@+id/spnTradingServicesAction"
+            <TextView
+                android:id="@+id/txtServiceAssignToData"
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:textColor="@color/textColorEarthquakeLocation"
+                android:textStyle="bold"
                 android:text="@string/note_available"
-                android:textSize="15sp" />
+                android:layout_marginTop="10dp"
+                android:padding="10dp"
+                android:textSize="15sp"/>
         </LinearLayout>
         <LinearLayout
             android:id="@+id/linearServiceGeneratedData"
@@ -193,61 +222,26 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <TextView
-                android:id="@+id/edtServiceGeneratedTo"
+                android:id="@+id/txtServiceGeneratedTo"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/tradingFollowUp"
+                android:text="@string/tradingGeneratedBy"
                 android:textColor="@color/textColorEarthquakeDetails"
                 android:layout_marginTop="10dp"
                 android:padding="10dp"
                 android:textSize="15sp"/>
-            <Spinner
-                android:id="@+id/spnTradingServicesFollowUp"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginTop="10dp"
-                android:layout_weight="1"
-                android:text="@string/note_available"
-                android:textSize="15sp" />
-        </LinearLayout>
-        <LinearLayout
-            android:id="@+id/linearDateData"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
             <TextView
-                android:id="@+id/edtTradingServiceDate"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/tradingRemark"
-                android:textColor="@color/textColorEarthquakeDetails"
-                android:layout_marginTop="10dp"
-                android:padding="10dp"
-                android:textSize="15sp"/>
-            <EditText
-                android:id="@+id/edtTradingServiceRemark"
+                android:id="@+id/txtServiceGeneratedToData"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textColor="@color/textColorEarthquakeLocation"
+                android:text="@string/note_available"
                 android:textStyle="bold"
                 android:layout_marginTop="10dp"
                 android:padding="10dp"
                 android:textSize="15sp"/>
         </LinearLayout>
     </LinearLayout>
-</LinearLayout>
-    </ScrollView>
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/fabTradingService"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:background="@color/secondaryColor"
-            android:src="@drawable/ic_done" />
-</RelativeLayout>
+</ScrollView>

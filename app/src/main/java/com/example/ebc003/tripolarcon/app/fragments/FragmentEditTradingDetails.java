@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,6 +18,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.ebc003.tripolarcon.R;
+import com.example.ebc003.tripolarcon.app.activities.ActivityGenerateLead;
 import com.example.ebc003.tripolarcon.model.Constants;
 import com.example.ebc003.tripolarcon.model.EditTradingDetailsAsyncTask;
 
@@ -35,6 +37,7 @@ public class FragmentEditTradingDetails extends Fragment implements AdapterView.
 
     private static final String TAG=FragmentEditTradingDetails.class.getSimpleName();
 
+    @BindView(R.id.fabTradingEdit) FloatingActionButton actionButton;
     @BindView(R.id.tradingEditProgressbar) ProgressBar progressBar;
     @BindView(R.id.spnBrandNameData) Spinner mSpnBrandNameData;
     @BindView(R.id.spnProductNameData) Spinner mSpnProductNameData;
@@ -80,7 +83,19 @@ public class FragmentEditTradingDetails extends Fragment implements AdapterView.
             mStrAssignPersonId=intent.getStringExtra (Constants.ASSIGN_TO);
             mStrCompanyId=intent.getStringExtra (Constants.USER_ID);
 
+            Log.i (TAG,"CompanyName:-"+mStrCompanyName);
+            Log.i (TAG,"AssignPersonId:-"+mStrAssignPersonId);
+            Log.i (TAG,"CompanyId:-"+mStrCompanyId);
         }
+
+
+        actionButton.setOnClickListener (new View.OnClickListener () {
+
+            @Override
+            public void onClick (View v) {
+                getStringData();
+            }
+        });
 
         return view;
     }
@@ -122,7 +137,7 @@ public class FragmentEditTradingDetails extends Fragment implements AdapterView.
         mSpnTradingFollowup.setAdapter(adapterListTradingFollowup);
     }
 
-    private void getStringData () {
+        private void getStringData () {
 
         String StrRemark=mEdtRemark.getText ().toString ();
 

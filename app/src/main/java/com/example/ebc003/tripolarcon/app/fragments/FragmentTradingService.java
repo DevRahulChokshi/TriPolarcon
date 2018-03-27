@@ -51,6 +51,7 @@ public class FragmentTradingService extends Fragment {
 
     private String user_id;
     private String assign_to;
+    private String company_name;
     private String order_description;
     private String area;
     private String unit;
@@ -71,9 +72,11 @@ public class FragmentTradingService extends Fragment {
         if (intent!=null){
             user_id=intent.getStringExtra (Constants.USER_ID);
             assign_to=intent.getStringExtra (Constants.ASSIGN_TO);
+            company_name=intent.getStringExtra (Constants.COMPANY_NAME);
 
             Log.i (TAG,"USER_ID:-"+user_id);
             Log.i (TAG,"ASSIGN_TO:-"+assign_to);
+            Log.i (TAG,"COMPANY NAME:-"+company_name);
         }
 
         getLeadData ();
@@ -90,7 +93,6 @@ public class FragmentTradingService extends Fragment {
                             try {
                                 jsonArray = new JSONArray (response);
                                 int size=jsonArray.length ();
-                                Log.i (TAG,"Size:-"+size);
                                 for (int i=0;i<=jsonArray.length ();i++){
                                     try{
                                         String CompanyName=jsonArray.getJSONObject (i).getString ("customer_id");

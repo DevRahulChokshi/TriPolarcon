@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -20,6 +21,7 @@ import com.example.ebc003.tripolarcon.R;
 import com.example.ebc003.tripolarcon.app.activities.ActivityEditTradingDetails;
 import com.example.ebc003.tripolarcon.model.Constants;
 import com.example.ebc003.tripolarcon.model.EditTradingDetailsAsyncTask;
+import com.example.ebc003.tripolarcon.model.EditTradingServicesDetailsAsyncTask;
 
 import java.util.Calendar;
 
@@ -37,7 +39,7 @@ public class FragmentEditTradingServiceDetails extends Fragment implements Adapt
     private static final String TAG=FragmentEditTradingServiceDetails.class.getSimpleName ();
 
     @BindView(R.id.tradingServicesEditProgressbar) ProgressBar progressBar;
-
+    @BindView(R.id.fabTradingService) FloatingActionButton actionButton;
     @BindView(R.id.edtOrderDescriptionData) EditText mEdtOrderDescriptionData;
     @BindView(R.id.edtProductAreaData) EditText mEdtProductAreaData;
     @BindView(R.id.spnProductUnitData) Spinner mSpnProductUnitData;
@@ -84,7 +86,19 @@ public class FragmentEditTradingServiceDetails extends Fragment implements Adapt
             mStrAssignPersonId=intent.getStringExtra (Constants.ASSIGN_TO);
             mStrCompanyId=intent.getStringExtra (Constants.USER_ID);
 
+            Log.i (TAG,"CompanyName:-"+mStrCompanyName);
+            Log.i (TAG,"AssignPersonId:-"+mStrAssignPersonId);
+            Log.i (TAG,"CompanyId:-"+mStrCompanyId);
         }
+
+        actionButton.setOnClickListener (new View.OnClickListener () {
+
+            @Override
+            public void onClick (View v) {
+                getStringData();
+            }
+        });
+
 
         return view;
     }
@@ -147,7 +161,7 @@ public class FragmentEditTradingServiceDetails extends Fragment implements Adapt
         String CurrentDate=year+"-"+((month)+1)+"-"+day;
         String CurrentTime=hour+":"+minute+":"+seconds;
 
-        EditTradingDetailsAsyncTask addLTask=new EditTradingDetailsAsyncTask (getContext (),progressBar);
+        EditTradingServicesDetailsAsyncTask addLTask=new EditTradingServicesDetailsAsyncTask (getContext (),progressBar);
         addLTask.execute (mStrProductUnitData,mStrServiceSourceTypeData,mStrTradingServicesStatus,mStrTradingServicesAction,mStrTradingServicesFollowUp,StrOrderDescriptionData,StrProductAreaData,StrTradingServiceRemark,CurrentDate,CurrentTime,mStrCompanyId,mStrAssignPersonId,userID,mStrCompanyName,userName,userName);
     }
 

@@ -43,7 +43,6 @@ public class FragmentDashboard extends Fragment {
     } ;
     String[] gridViewString = {
             "Generated Lead", "Converted Lead", "Pending Lead", "Lost Lead",
-
     } ;
     int[] gridViewImageId = {
             R.drawable.ic_account_box_white, R.drawable.ic_assignment_turned_in_white, R.drawable.ic_assignment_late_white, R.drawable.ic_restore_page_white,

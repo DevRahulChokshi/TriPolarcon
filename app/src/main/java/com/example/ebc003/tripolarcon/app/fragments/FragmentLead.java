@@ -37,6 +37,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.ebc003.tripolarcon.R;
+import com.example.ebc003.tripolarcon.adapter.LeadEditTradingAdapter;
 import com.example.ebc003.tripolarcon.adapter.LeadListAdapter;
 import com.example.ebc003.tripolarcon.app.activities.ActivityEditTradingDetailsTabView;
 import com.example.ebc003.tripolarcon.app.activities.ActivityGenerateLead;
@@ -103,6 +104,7 @@ public class FragmentLead extends Fragment {
             @Override
             public void onClick (View v) {
                 Intent intent=new Intent (getActivity (), ActivityGenerateLead.class);
+
                 getActivity ().startActivity (intent);
             }
         });
@@ -211,7 +213,7 @@ public class FragmentLead extends Fragment {
     }
 
     private void setRecycler () {
-        LeadListAdapter leadListAdapter=new LeadListAdapter (getContext (),listData);
+        LeadEditTradingAdapter leadListAdapter=new LeadEditTradingAdapter (getContext (),listData);
         DividerItemDecoration dividerItemDecoration=new DividerItemDecoration (getContext (),DividerItemDecoration.VERTICAL);
         mRecyclerDataList.addItemDecoration (dividerItemDecoration);
         mRecyclerDataList.setAdapter (leadListAdapter);

@@ -19,18 +19,28 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.ebc003.tripolarcon.R;
 import com.example.ebc003.tripolarcon.model.Constants;
 import com.example.ebc003.tripolarcon.model.JSONParser;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -59,6 +69,14 @@ public class ActivityGenerateLead extends AppCompatActivity {
     @BindView (R.id.radOnline) RadioButton radioOnline;
     @BindView (R.id.radOffline) RadioButton radioOffline;
     @BindView (R.id.radioGroup) RadioGroup radioGroup;
+
+    private String company_name;
+    String mStrUserID;
+    String mStrCompanyName;
+    String mStrAssignToName;
+    String mStrGeneratedToName;
+    String mStrGeneratedBy;
+    String mStrAssignTo;
 
     @Override
     protected void onCreate (Bundle savedInstanceState) {
@@ -103,39 +121,16 @@ public class ActivityGenerateLead extends AppCompatActivity {
         int id=item.getItemId ();
         switch (id){
             case R.id.addLog:{
-                    alertBox ();
+                getStringData ();
                 break;
             }
         }
         return super.onOptionsItemSelected (item);
     }
 
-    private void alertBox() {
-        AlertDialog.Builder dialog = new AlertDialog.Builder(ActivityGenerateLead.this);
-        dialog.setCancelable(false);
-        dialog.setTitle(R.string.generate_lead_title);
-        dialog.setMessage(R.string.dialog_message);
-        dialog.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int id) {
-                getStringData ();
-                Intent intent=new Intent (getApplicationContext (),ActivityEditTradingDetailsTabView.class);
-                startActivity (intent);
-            }
-        })
-                .setNegativeButton("Cancel ", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        getStringData ();
-                    }
-                });
-        final AlertDialog alert = dialog.create();
-        alert.show();
-    }
-
     private void getStringData () {
 
-        String company_name= mEdtCompanyName.getText ().toString ();
+        company_name= mEdtCompanyName.getText ().toString ();
         String address= mEdtAddress.getText ().toString ();
         String email= mEdtEmail.getText ().toString ();
         String phone_no= mEdtPhoneNo.getText ().toString ();
@@ -180,6 +175,7 @@ public class ActivityGenerateLead extends AppCompatActivity {
         Log.i (TAG,"User id:-"+userID);
         Log.i (TAG,"User name:-"+userName);
     }
+
 
     class MyAsyncTask extends AsyncTask<String,Void,Boolean> {
 
@@ -270,10 +266,12 @@ public class ActivityGenerateLead extends AppCompatActivity {
             }
             return true;
         }
-
         @Override
         protected void onPostExecute (Boolean aBoolean) {
-            progressBar.setVisibility (View.GONE);
+            if (!aBoolean){
+                progressBar.setVisibility (View.GONE);
+                finish ();
+            }
             super.onPostExecute (aBoolean);
         }
     }

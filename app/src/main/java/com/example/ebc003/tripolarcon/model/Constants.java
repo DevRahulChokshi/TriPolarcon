@@ -47,6 +47,7 @@ public class Constants {
     public static final String URL_SHOW_TRADING_SERVICE_INFO="http://www.ebusinesscanvas.com/tripolarcon/android_app/trading_service_detail.php";
     public static final String URL_ADD_LOG="http://www.ebusinesscanvas.com/tripolarcon/android_app/add_log.php";
     public static final String URL_EDIT_TRADING_DETAILS="http://www.ebusinesscanvas.com/tripolarcon/android_app/edit_trading_details.php";
+    public static final String URL_EDIT_TRADING_SERVICES_DETAILS="http://www.ebusinesscanvas.com/tripolarcon/android_app/edit_trading_services.php";
     public static final String URL_SHOW_TODAY_PLAN="http://www.ebusinesscanvas.com/tripolarcon/android_app/show_today_plan.php";
     public static final String URL_SHOW_TOMORROW_PLAN="http://www.ebusinesscanvas.com/tripolarcon/android_app/show_tomorrow_plan.php";
 
@@ -93,6 +94,7 @@ public class Constants {
     public static final String GENERATED_BY_NAME = "generated_by_name";
     public static final String FRAG_DASHBOARD = "frag_dashboard";
     public static final String CONTACT_PERSON = "contactPerson";
+
     public static final String CONTACT_DESIGNATION = "contactDesignation";
     public static final String CITY = "city";
     public static final String FAX_NUMBER = "FAX_Number";
@@ -118,4 +120,5 @@ public class Constants {
     public static final String TRADING_SERVICE_FOLLOWUP = "trading_service_follow_up";
     public static final String TRADING_SERVICE_REMARK = "trading_service_remark";
 
+    public static final String URL_EDIT_TRADING_DETAILS_INFO = "http://www.ebusinesscanvas.com/tripolarcon/android_app/trading_edit_details.php";
 }

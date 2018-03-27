@@ -53,6 +53,7 @@ public class FragmentTrading extends Fragment {
     private String brand_id;
     private String pro_id;
     private String source_id;
+    private String company_name;
     private String requirement_remark;
     private String order_date;
     private String generated_by;
@@ -72,6 +73,7 @@ public class FragmentTrading extends Fragment {
 
             Log.i (TAG,"USER_ID:-"+user_id);
             Log.i (TAG,"ASSIGN_TO:-"+assign_to);
+            Log.i (TAG,"COMPANY NAME:-"+company_name);
         }
 
         getLeadData ();
