@@ -97,6 +97,7 @@ public class ActivityLeadInformation extends AppCompatActivity implements View.O
                 intent.putExtra (Constants.COMPANY_NAME,CompanyName);
                 intent.putExtra (Constants.USER_ID,CompanyID);
                 startActivity (intent);
+                finish ();
                 break;
             }
         }
@@ -234,6 +235,7 @@ public class ActivityLeadInformation extends AppCompatActivity implements View.O
                     Log.i (TAG,"ASSIGN_TO"+assign_to);
                     Log.i (TAG,"COMPANY_NAME"+CompanyName);
                     startActivity (intent);
+                    finish ();
                 break;
         }
     }

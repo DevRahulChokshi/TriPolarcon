@@ -37,7 +37,7 @@ public class ActivityEditTradingDetailsTabView extends AppCompatActivity impleme
     @BindView (R.id.pager_trading_tab_view) ViewPager viewPager;
     @BindView (R.id.toolbar_trading_tab_view) Toolbar toolbar;
 
-    private String mStrUserID;
+    private String mStrCompanyId;
     private String mStrGeneratedByName;
     private String mStrAssignPersonName;
     private String mStrAssignPersonId;
@@ -73,7 +73,12 @@ public class ActivityEditTradingDetailsTabView extends AppCompatActivity impleme
         Intent intent=getIntent ();
         if (intent!=null){
             mStrCompanyName=intent.getStringExtra (Constants.COMPANY_NAME);
-            Log.i (TAG,"Company Name:"+mStrCompanyName);
+            mStrAssignPersonId=intent.getStringExtra (Constants.ASSIGN_TO);
+            mStrCompanyId=intent.getStringExtra (Constants.USER_ID);
+
+            Log.i ("COMPANY ID :",mStrCompanyId);
+            Log.i ("ASSIGN PERSON ID :",mStrAssignPersonId);
+            Log.i ("COMPANY NAME :",mStrCompanyName);;
         }
     }
 

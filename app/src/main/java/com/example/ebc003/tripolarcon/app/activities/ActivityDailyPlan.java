@@ -8,8 +8,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 
 import com.example.ebc003.tripolarcon.R;
@@ -37,7 +35,6 @@ public class ActivityDailyPlan extends AppCompatActivity implements TabLayout.On
         setContentView (R.layout.activity_daily_plan);
 
         ButterKnife.bind (this);
-
         tabLayout.addTab(tabLayout.newTab().setText("Today Plan"));
         tabLayout.addTab(tabLayout.newTab().setText("Tomorrow Plan"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);

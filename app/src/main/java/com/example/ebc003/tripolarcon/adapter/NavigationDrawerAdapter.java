@@ -26,7 +26,7 @@ import butterknife.ButterKnife;
  * Created by EBC003 on 12/8/2017.
  */
 
-public class    NavigationDrawerAdapter extends RecyclerView.Adapter<NavigationDrawerAdapter.MyViewHolder>{
+public class NavigationDrawerAdapter extends RecyclerView.Adapter<NavigationDrawerAdapter.MyViewHolder>{
 
     private List<NavigationDrawerItems> dataList= Collections.emptyList ();
     private Context context;

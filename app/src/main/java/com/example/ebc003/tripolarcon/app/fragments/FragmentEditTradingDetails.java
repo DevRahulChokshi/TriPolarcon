@@ -88,8 +88,7 @@ public class FragmentEditTradingDetails extends Fragment implements AdapterView.
             Log.i (TAG,"CompanyId:-"+mStrCompanyId);
         }
 
-
-        actionButton.setOnClickListener (new View.OnClickListener () {
+        actionButton.setOnClickListener ( new View.OnClickListener () {
 
             @Override
             public void onClick (View v) {
@@ -158,7 +157,6 @@ public class FragmentEditTradingDetails extends Fragment implements AdapterView.
         addLTask.execute (mStrBrandNameData,mStrProductNameData,mStrSourceTypeData,strTradingStatus,mStrTradingAction,mStrTradingFollowup,StrRemark,CurrentDate,CurrentTime,mStrCompanyId,mStrAssignPersonId,userID,mStrCompanyName,userName,userName);
     }
 
-
     private void checkShredPreference () {
         SharedPreferences sharedPreferences=getActivity().getSharedPreferences (Constants.PREFERENCE_KEY,MODE_PRIVATE);
         userID=sharedPreferences.getString (Constants.EMP_ID,"N/A");
@@ -210,7 +208,5 @@ public class FragmentEditTradingDetails extends Fragment implements AdapterView.
     }
 
     @Override
-    public void onNothingSelected(AdapterView<?> adapterView) {
-
-    }
+    public void onNothingSelected(AdapterView<?> adapterView) {}
 }

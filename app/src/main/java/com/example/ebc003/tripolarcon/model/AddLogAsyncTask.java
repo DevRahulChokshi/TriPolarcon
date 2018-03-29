@@ -64,6 +64,8 @@ public class AddLogAsyncTask  extends AsyncTask<String,Void,Boolean>{
         String mDateTime=strings[11];
         String mCompanyName=strings[12];
         String mUserName=strings[13];
+        String mFileName=strings[14];
+        String filePath=Constants.server_image_path.concat (mFileName).trim ();
 
         List<NameValuePair> listData=new ArrayList<> ();
         listData.add (new BasicNameValuePair (Constants.LOG_SCHEDULE,mSchedule));
@@ -76,7 +78,7 @@ public class AddLogAsyncTask  extends AsyncTask<String,Void,Boolean>{
         listData.add (new BasicNameValuePair (Constants.LOG_SCHEDULE_TIME,mScheduleTime));
         listData.add (new BasicNameValuePair (Constants.GENERATED_BY,mGeneratedBy));
         listData.add (new BasicNameValuePair (Constants.COMPANY_NAME,mCustomer));
-        listData.add (new BasicNameValuePair (Constants.LOG_IMG_PATH,mFilePath));
+        listData.add (new BasicNameValuePair (Constants.LOG_IMG_PATH,filePath));
         listData.add (new BasicNameValuePair (Constants.LOG_DATETIME,mDateTime));
         listData.add (new BasicNameValuePair (Constants.USER_ID,mCompanyName));
         listData.add (new BasicNameValuePair (Constants.USER_NAME,mUserName));
@@ -89,7 +91,7 @@ public class AddLogAsyncTask  extends AsyncTask<String,Void,Boolean>{
         Log.i (TAG,"Schedule Time:-"+mScheduleTime);
         Log.i (TAG,"Customer ID:-"+mCustomer);
         Log.i (TAG,"User ID:-"+mGeneratedBy);
-        Log.i (TAG,"File Path:-"+mFilePath);
+        Log.i (TAG,"File Path:-"+filePath);
         Log.i (TAG,"Call type:-"+mCall_type);
         Log.i (TAG,"Status:-"+mStatus);
         Log.i (TAG,"DATETIME:-"+mDateTime);
@@ -108,6 +110,7 @@ public class AddLogAsyncTask  extends AsyncTask<String,Void,Boolean>{
             }
             // Set your server page url (and the file title/description)
             HttpFileUpload hfu = new HttpFileUpload(Constants.FILE_UPLOAD_URL, "ftitle", "fdescription",mFilePath);
+            Log.i (TAG,"FILE PATH:"+mFilePath);
             hfu.Send_Now(fstrm);
         }
 

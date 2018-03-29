@@ -13,6 +13,7 @@ import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.provider.OpenableColumns;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.FileProvider;
@@ -77,14 +78,13 @@ public class ActivityGenerateLog extends AppCompatActivity implements View.OnCli
     String mSpinnserSchedule;
     String mSpinnserCallType;
     String mSpinnserStaus;
+    String FileName;
 
     ArrayList<String> permissions = new ArrayList<> ();
     PermissionUtils permissionUtils;
     String mCurrentPhotoPath;
-    static final int REQUEST_IMAGE_CAPTURE = 1;
     static final int REQUEST_TAKE_PHOTO_CAMERA = 1;
     static final int REQUEST_TAKE_PHOTO_GALLERY = 2;
-    static String fileFinalPath;
     String dateforrow;
 
     @Override
@@ -351,6 +351,14 @@ public class ActivityGenerateLog extends AppCompatActivity implements View.OnCli
         Uri selectedImageUri = intent.getData();
         mCurrentPhotoPath = getPath(selectedImageUri, ActivityGenerateLog.this);
 
+        Cursor returnCursor =
+                getContentResolver().query(selectedImageUri, null, null, null, null);
+        int nameIndex = returnCursor.getColumnIndex(OpenableColumns.DISPLAY_NAME);
+        returnCursor.moveToFirst();
+        FileName=returnCursor.getString(nameIndex);
+        Log.i (TAG,"Gallery Name Google :"+FileName);
+//        sizeView.setText(Long.toString(returnCursor.getLong(sizeIndex)));
+
         Bitmap bm;
         BitmapFactory.Options bitmapOptions = new BitmapFactory.Options();
         bm = BitmapFactory.decodeFile(mCurrentPhotoPath, bitmapOptions);
@@ -369,15 +377,25 @@ public class ActivityGenerateLog extends AppCompatActivity implements View.OnCli
     private File createImageFile() throws IOException {
         // Create an image file name
         String timeStamp = new SimpleDateFormat ("yyyyMMdd_HHmmss").format(new Date ());
+
         String imageFileName = "JPEG_" + timeStamp + "_";
+
         File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
         File image = File.createTempFile(
                 imageFileName,  /* prefix */
                 ".jpg",         /* suffix */
                 storageDir      /* directory */
         );
+
+//        FileName=image.getName ();
+//        Log.i (TAG,")))))FILE NAME:"+FileName);
+
+        Log.i (TAG,"IMAGE PATH:-"+image);
+        Log.i (TAG,"IMAGE FILE NAME:-"+imageFileName);
         // Save a file: path for use with ACTION_VIEW intents
         mCurrentPhotoPath = image.getAbsolutePath();
+        Log.i (TAG,"IMAGE FILE mCurrentPhotoPath:-"+mCurrentPhotoPath);
+
         return image;
     }
 
@@ -397,6 +415,8 @@ public class ActivityGenerateLog extends AppCompatActivity implements View.OnCli
                 Uri photoURI = FileProvider.getUriForFile(this,
                         "com.example.ebc003.tripolarcon.fileprovider",
                         photoFile);
+                FileName=photoFile.getName ();
+                Log.i (TAG,"CAMERA PIC:-:"+FileName);
                 takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
                 startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO_CAMERA);
             }
@@ -406,6 +426,8 @@ public class ActivityGenerateLog extends AppCompatActivity implements View.OnCli
     private void galleryAddPic() {
         Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
         File f = new File(mCurrentPhotoPath);
+        FileName=f.getName ();
+        Log.i (TAG,"GALLERY PIC:-:-"+FileName);
         Uri contentUri = Uri.fromFile(f);
         mediaScanIntent.setData(contentUri);
         this.sendBroadcast(mediaScanIntent);
@@ -470,7 +492,8 @@ public class ActivityGenerateLog extends AppCompatActivity implements View.OnCli
 
             AddLogAsyncTask addLogAsyncTask=new AddLogAsyncTask (getApplicationContext (),progressBar);
             Log.i (TAG,"AsyncTask:-"+mCurrentPhotoPath);
-            addLogAsyncTask.execute (mSpinnserSchedule,mCurrentDate,mCurrentTime,mSpinnserCallType,mSpinnserStaus,mRemark,mDate,mTime,companyId,userID,mCurrentPhotoPath,dateforrow,company_name,userName);
+            Log.i (TAG,"AsyncTask:-"+FileName);
+            addLogAsyncTask.execute (mSpinnserSchedule,mCurrentDate,mCurrentTime,mSpinnserCallType,mSpinnserStaus,mRemark,mDate,mTime,companyId,userID,mCurrentPhotoPath,dateforrow,company_name,userName,FileName);
             Log.i (TAG,"ADD IN ASYNC TASK:-"+company_name);
             Log.i (TAG,"AsyncTask:-"+userName);
         }

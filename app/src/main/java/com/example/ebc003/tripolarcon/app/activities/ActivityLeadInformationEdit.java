@@ -101,6 +101,7 @@ public class ActivityLeadInformationEdit extends AppCompatActivity implements Vi
                 intent.putExtra (Constants.COMPANY_NAME,CompanyName);
                 intent.putExtra (Constants.USER_ID,CompanyID);
                 startActivity (intent);
+                finish ();
                 break;
             }
         }
@@ -234,10 +235,12 @@ public class ActivityLeadInformationEdit extends AppCompatActivity implements Vi
                 intent.putExtra (Constants.ASSIGN_TO,assign_to);
                 intent.putExtra (Constants.COMPANY_NAME,CompanyName);
 
-                Log.i (TAG,"USER_ID"+CompanyID);
-                Log.i (TAG,"ASSIGN_TO"+assign_to);
-                Log.i (TAG,"COMPANY_NAME"+CompanyName);
+                Log.i (TAG,"USER_ID :"+CompanyID);
+                Log.i (TAG,"ASSIGN_TO :"+assign_to);
+                Log.i (TAG,"COMPANY_NAME :"+CompanyName);
+
                 startActivity (intent);
+                finish ();
                 break;
         }
     }

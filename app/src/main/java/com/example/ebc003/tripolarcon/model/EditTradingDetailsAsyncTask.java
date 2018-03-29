@@ -75,20 +75,21 @@ public class EditTradingDetailsAsyncTask extends AsyncTask<String,Void,Boolean>{
         listData.add (new BasicNameValuePair (Constants.ASSIGN_TO_NAME,assignToName));
         listData.add (new BasicNameValuePair (Constants.USER_ID_NAME,userName));
 
-        Log.i (TAG,"Spinner Schedule:-"+mStrBrandNameData);
-        Log.i (TAG,"Current Date:-"+mStrProductNameData);
-        Log.i (TAG,"Current Time:-"+mStrSourceTypeData);
-        Log.i (TAG,"Remark:-"+strTradingStatus);
-        Log.i (TAG,"Schedule Date:-"+mStrTradingAction);
-        Log.i (TAG,"Schedule Time:-"+mStrTradingFollowup);
-        Log.i (TAG,"UserName:-"+CurrentDate);
-        Log.i (TAG,"UserName:-"+CurrentTime);
-        Log.i (TAG,"UserName:-"+mStrCompanyId);
-        Log.i (TAG,"UserName:-"+mStrAssignPersonId);
-        Log.i (TAG,"UserName:-"+userID);
-        Log.i (TAG,"UserName:-"+mStrCompanyName);
-        Log.i (TAG,"UserName:-"+assignToName);
-        Log.i (TAG,"UserName:-"+userName);
+        Log.i (TAG,"Brand Name:-"+mStrBrandNameData);
+        Log.i (TAG,"Product Name:-"+mStrProductNameData);
+        Log.i (TAG,"Source Type:-"+mStrSourceTypeData);
+        Log.i (TAG,"Status:-"+strTradingStatus);
+        Log.i (TAG,"Action:-"+mStrTradingAction);
+        Log.i (TAG,"FollowUp Time:-"+mStrTradingFollowup);
+        Log.i (TAG,"Remark:-"+StrRemark);
+        Log.i (TAG,"CurrentTime:-"+CurrentTime);
+        Log.i (TAG,"CurrentDate:-"+CurrentDate);
+        Log.i (TAG,"mStrCompanyId:-"+mStrCompanyId);
+        Log.i (TAG,"mStrAssignPersonId:-"+mStrAssignPersonId);
+        Log.i (TAG,"userID:-"+userID);
+        Log.i (TAG,"mStrCompanyName:-"+mStrCompanyName);
+        Log.i (TAG,"assignToName:-"+assignToName);
+        Log.i (TAG,"userName:-"+userName);
 
         JSONParser parser=new JSONParser ();
         JSONObject response=parser.makeHttpRequest (Constants.URL_EDIT_TRADING_DETAILS,Constants.METHOD_POST,listData);

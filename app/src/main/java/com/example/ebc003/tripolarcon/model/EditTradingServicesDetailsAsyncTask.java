@@ -75,23 +75,22 @@ public class EditTradingServicesDetailsAsyncTask extends AsyncTask<String,Void,B
         listData.add (new BasicNameValuePair (Constants.ASSIGN_TO_NAME,assignToName));
         listData.add (new BasicNameValuePair (Constants.USER_ID_NAME,userName));
 
-
-        Log.i (TAG,"Customer ID:-"+mStrProductUnitData);
-        Log.i (TAG,"User ID:-"+mStrServiceSourceTypeData);
-        Log.i (TAG,"File Path:-"+mStrTradingServicesStatus);
-        Log.i (TAG,"Call type:-"+mStrTradingServicesAction);
-        Log.i (TAG,"Status:-"+mStrTradingServicesFollowUp);
-        Log.i (TAG,"CompanyName:-"+StrOrderDescriptionData);
-        Log.i (TAG,"UserName:-"+StrProductAreaData);
-        Log.i (TAG,"UserName:-"+StrTradingServiceRemark);
-        Log.i (TAG,"UserName:-"+CurrentDate);
-        Log.i (TAG,"UserName:-"+CurrentTime);
-        Log.i (TAG,"UserName:-"+mStrCompanyId);
-        Log.i (TAG,"UserName:-"+mStrAssignPersonId);
-        Log.i (TAG,"UserName:-"+userID);
-        Log.i (TAG,"UserName:-"+mStrCompanyName);
-        Log.i (TAG,"UserName:-"+assignToName);
-        Log.i (TAG,"UserName:-"+userName);
+        Log.i (TAG,"mStrProductUnitData:-"+mStrProductUnitData);
+        Log.i (TAG,"mStrServiceSourceTypeData:-"+mStrServiceSourceTypeData);
+        Log.i (TAG,"mStrTradingServicesStatus:-"+mStrTradingServicesStatus);
+        Log.i (TAG,"mStrTradingServicesAction:-"+mStrTradingServicesAction);
+        Log.i (TAG,"mStrTradingServicesFollowUp:-"+mStrTradingServicesFollowUp);
+        Log.i (TAG,"StrOrderDescriptionData:-"+StrOrderDescriptionData);
+        Log.i (TAG,"StrProductAreaData:-"+StrProductAreaData);
+        Log.i (TAG,"StrTradingServiceRemark:-"+StrTradingServiceRemark);
+        Log.i (TAG,"CurrentDate:-"+CurrentDate);
+        Log.i (TAG,"CurrentTime:-"+CurrentTime);
+        Log.i (TAG,"mStrCompanyId:-"+mStrCompanyId);
+        Log.i (TAG,"mStrAssignPersonId:-"+mStrAssignPersonId);
+        Log.i (TAG,"userID:-"+userID);
+        Log.i (TAG,"mStrCompanyName:-"+mStrCompanyName);
+        Log.i (TAG,"assignToName:-"+assignToName);
+        Log.i (TAG,"userName:-"+userName);
 
         JSONParser parser=new JSONParser ();
         JSONObject response=parser.makeHttpRequest (Constants.URL_EDIT_TRADING_SERVICES_DETAILS,Constants.METHOD_POST,listData);

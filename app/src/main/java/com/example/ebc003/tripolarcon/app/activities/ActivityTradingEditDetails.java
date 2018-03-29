@@ -33,7 +33,7 @@ public class ActivityTradingEditDetails extends AppCompatActivity implements Tab
     private String mStrAssignPersonId;
     private String mStrCompanyName;
 
-    private String TAG=ActivityTradingDetails.class.getSimpleName ();
+    private String TAG=ActivityTradingEditDetails.class.getSimpleName ();
 
     @Override
     protected void onCreate (Bundle savedInstanceState) {
@@ -66,9 +66,9 @@ public class ActivityTradingEditDetails extends AppCompatActivity implements Tab
             mStrAssignPersonId=intent.getStringExtra (Constants.ASSIGN_TO);
             mStrCompanyId=intent.getStringExtra (Constants.USER_ID);
 
-            Log.i (TAG,mStrCompanyId);
-            Log.i (TAG,mStrAssignPersonId);
-            Log.i (TAG,mStrCompanyName);
+            Log.i ("COMPANY ID :",mStrCompanyId);
+            Log.i ("ASSIGN PERSON ID :",mStrAssignPersonId);
+            Log.i ("COMPANY NAME :",mStrCompanyName);
         }
     }
 
@@ -85,9 +85,11 @@ public class ActivityTradingEditDetails extends AppCompatActivity implements Tab
         switch (id){
             case R.id.editLog:{
                 Intent intent=new Intent (this,ActivityEditTradingDetailsTabView.class);
-//                intent.putExtra (Constants.COMPANY_NAME,CompanyName);
-//                intent.putExtra (Constants.USER_ID,CompanyID);
+                intent.putExtra (Constants.COMPANY_NAME,mStrCompanyName);
+                intent.putExtra (Constants.ASSIGN_TO,mStrAssignPersonId);
+                intent.putExtra (Constants.USER_ID,mStrCompanyId);
                 startActivity (intent);
+                finish ();
                 break;
             }
         }

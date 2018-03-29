@@ -40,7 +40,6 @@ public class FragmentEditTradingService extends Fragment {
 
     private static final String TAG=FragmentTradingService.class.getSimpleName ();
 
-
     @BindView(R.id.txtTradingServiceDateData) TextView mTradingServiceDate;
     @BindView (R.id.txtOrderDescriptionData) TextView mOrderDescription;
     @BindView (R.id.txtProductAreaData) TextView mArea;
@@ -49,8 +48,7 @@ public class FragmentEditTradingService extends Fragment {
     @BindView (R.id.txtServiceRequirementRemarkData) TextView mRequirementRemark;
     @BindView (R.id.txtServiceAssignToData) TextView mAssignTo;
     @BindView (R.id.txtServiceGeneratedToData) TextView mGeneratedTo;
-    @BindView (R.id.progressBarShowServiceDetails)
-    ProgressBar progressBar;
+    @BindView (R.id.progressBarShowServiceDetails) ProgressBar progressBar;
 
     private String user_id;
     private String assign_to;
@@ -81,9 +79,7 @@ public class FragmentEditTradingService extends Fragment {
             Log.i (TAG,"ASSIGN_TO:-"+assign_to);
             Log.i (TAG,"COMPANY NAME:-"+company_name);
         }
-
         getLeadData ();
-
         return view;
     }
 
