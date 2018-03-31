@@ -95,4 +95,8 @@
     <string name="txtDetails">View Details</string>
     <string name="generate_lead_title">Do want to add Trading details ?</string>
     <string name="dialog_message">Fill up Trading and Trading Service details information.</string>
+    <string name="dummy_long_text">
+		We challenged ourselves to create a visual language for our users that synthesizes the classic principles of good design with the innovation and possibility of technology and science. This is material design. This spec is a living document that will be updated as we continue to develop the tenets and specifics of material design.
+	</string>
+    <string name="date_formate_demo">20/03/2018 11:00 PM</string>
 </resources>
