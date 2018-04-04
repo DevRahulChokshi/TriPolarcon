@@ -89,9 +89,9 @@ public class FragmentDashboard extends Fragment {
 
         menuInflater.inflate (R.menu.main_menu,menu);
 
-        MenuItem item = menu.findItem(R.id.action_search);
-
-        item.setVisible (false);
+//        MenuItem item = menu.findItem(R.id.action_search);
+//
+//        item.setVisible (false);
     }
 
     @Override

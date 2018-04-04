@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.ebc003.tripolarcon.R;
 import com.example.ebc003.tripolarcon.app.activities.ActivityLeadInformation;
+import com.example.ebc003.tripolarcon.app.activities.ActivityLogDetailView;
 import com.example.ebc003.tripolarcon.model.Constants;
 import com.example.ebc003.tripolarcon.model.LogData;
 
@@ -69,9 +70,9 @@ public class ShowLogAdapter extends RecyclerView.Adapter<ShowLogAdapter.LogHolde
             @Override
             public void onClick (View v) {
 //                String strLeadTitle=(String)holder.txtCompanyId.getText ();
-//                Intent intent=new Intent (context.getApplicationContext (),ActivityLeadInformation.class);
+                Intent intent=new Intent (context.getApplicationContext (),ActivityLogDetailView.class);
 //                intent.putExtra (Constants.USER_ID,strLeadTitle);
-//                context.startActivity (intent);
+                context.startActivity (intent);
             }
         });
     }

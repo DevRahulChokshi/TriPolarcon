@@ -24,6 +24,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.ebc003.tripolarcon.R;
 import com.example.ebc003.tripolarcon.adapter.LeadListAdapter;
+import com.example.ebc003.tripolarcon.adapter.LeadNotificationAdapter;
 import com.example.ebc003.tripolarcon.model.Constants;
 import com.example.ebc003.tripolarcon.model.LeadListData;
 
@@ -55,6 +56,7 @@ public class FragmentNotification extends Fragment{
     public void onCreate (@Nullable Bundle savedInstanceState) {
         super.onCreate (savedInstanceState);
         listData=new ArrayList<> ();
+        getData();
     }
 
     @Nullable
@@ -66,6 +68,8 @@ public class FragmentNotification extends Fragment{
 
         layoutManager=new LinearLayoutManager (view.getContext());
         convertedLeadList.setLayoutManager (layoutManager);
+
+
         return view;
     }
 
@@ -76,7 +80,7 @@ public class FragmentNotification extends Fragment{
 
     private void getData(){
         //Creating a string request
-        StringRequest stringRequest = new StringRequest (Request.Method.POST, Constants.URL_SHOW_LEAD_LIST,
+        StringRequest stringRequest = new StringRequest (Request.Method.POST, Constants.URL_NOTIFICATION_DETAILS,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -86,42 +90,23 @@ public class FragmentNotification extends Fragment{
                             jsonArray = new JSONArray (response);
 
                             if (!response.equals (Constants.RESPONSE_STATUS_FAIL)){
-                                for (int i=0;i<=jsonArray.length ();i++){
-                                    try{
-                                        LeadListData leadListData=new LeadListData ();
+                                for (int i=0;i<=jsonArray.length ();i++)
+                                    try {
+                                        LeadListData leadListData = new LeadListData ();
 
-                                        String CompanyID=jsonArray.getJSONObject (i).getString ("id");
-                                        Log.i (TAG,"COMPANY ID:"+CompanyID);
-                                        String CompanyName=jsonArray.getJSONObject (i).getString ("name");
-                                        String CompanyEmail=jsonArray.getJSONObject (i).getString ("email");
-                                        String OfficePhoneNumber=jsonArray.getJSONObject (i).getString ("cust_comp_phn");
-                                        String Address=jsonArray.getJSONObject (i).getString ("invoicing_address");
-                                        String FaxNumber=jsonArray.getJSONObject (i).getString ("cust_comp_fax");
-                                        String ContactPersonName=jsonArray.getJSONObject (i).getString ("contact_person");
-                                        String ContactPersonNumber=jsonArray.getJSONObject (i).getString ("con_per_no");
-                                        String ContactPersonDesignation=jsonArray.getJSONObject (i).getString ("con_per_des");
-                                        String Note=jsonArray.getJSONObject (i).getString ("cust_note");
+                                        String notificationSubject = jsonArray.getJSONObject (i).getString ("subject");
+                                        String notificationDescription = jsonArray.getJSONObject (i).getString ("not_desc");
+                                        String notification_datetime = jsonArray.getJSONObject (i).getString ("not_time");
+                                        String senderName = jsonArray.getJSONObject (i).getString ("send_by");
 
-                                        String fistLatter=CompanyName;
-                                        char first=fistLatter.charAt (0);
-                                        String firstData= String.valueOf (first);
-
-                                        leadListData.setTxtUserEmail (CompanyEmail);
-                                        leadListData.setTxtCompanyId (CompanyID);
-                                        leadListData.setTxtLeadTitle (CompanyName);
-                                        leadListData.setTxtUser (firstData);
-                                        leadListData.setStrOfficeNumber (OfficePhoneNumber);
-                                        leadListData.setStrAddress (Address);
-                                        leadListData.setStrFaxNumber (FaxNumber);
-                                        leadListData.setStrPersonName (ContactPersonName);
-                                        leadListData.setStrPersonNumber (ContactPersonNumber);
-                                        leadListData.setStrPersonDesignation (ContactPersonDesignation);
-                                        leadListData.setStrNote (Note);
+                                        leadListData.setTxtUser (notificationSubject);
+                                        leadListData.setStrPersonName (senderName);
+                                        leadListData.setStrPersonNumber (notification_datetime);
+                                        leadListData.setStrNote (notificationDescription);
                                         listData.add (leadListData);
-                                    }catch (JSONException e){
+                                    } catch (JSONException e) {
                                         e.printStackTrace ();
                                     }
-                                }
                             }
                             else {
                                 FragmentNoData fragmentNoData=new FragmentNoData ();
@@ -153,8 +138,8 @@ public class FragmentNotification extends Fragment{
     }
 
     private void setRecycler () {
-        LeadListAdapter leadListAdapter=new LeadListAdapter (getContext (),listData);
-        convertedLeadList.setAdapter (leadListAdapter);
+        LeadNotificationAdapter leadNotificationAdapter=new LeadNotificationAdapter (getContext (),listData);
+        convertedLeadList.setAdapter (leadNotificationAdapter);
         progressBar.setVisibility (View.GONE);
     }
 }

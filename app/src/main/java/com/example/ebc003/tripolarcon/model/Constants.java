@@ -121,5 +121,5 @@ public class Constants {
     public static final String TRADING_SERVICE_FOLLOWUP = "trading_service_follow_up";
     public static final String TRADING_SERVICE_REMARK = "trading_service_remark";
 
-    public static final String URL_EDIT_TRADING_DETAILS_INFO = "http://www.ebusinesscanvas.com/tripolarcon/android_app/trading_edit_details.php";
+    public static final String URL_NOTIFICATION_DETAILS = "http://www.ebusinesscanvas.com/tripolarcon/android_app/notification_details.php";
 }

@@ -193,6 +193,7 @@ public class ActivityGenerateLog extends AppCompatActivity implements View.OnCli
                 Log.i (TAG,"USER ID:-"+userID);
                 Log.i (TAG,"COMPANY ID:-"+companyId);
                 startActivity (intent);
+                finish ();
                 break;
             }
         }

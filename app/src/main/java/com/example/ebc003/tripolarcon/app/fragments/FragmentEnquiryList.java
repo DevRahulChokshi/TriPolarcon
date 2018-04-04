@@ -1,5 +1,6 @@
 package com.example.ebc003.tripolarcon.app.fragments;
 
+import android.app.SearchManager;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -9,12 +10,17 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -51,7 +57,8 @@ public class FragmentEnquiryList extends Fragment{
     List<LeadListData> listData;
 
     @BindView(R.id.progressBarShowLead) ProgressBar progressBar;
-    @BindView  (R.id.recyclerConvertedLead) RecyclerView convertedLeadList;
+    @BindView (R.id.recyclerConvertedLead) RecyclerView convertedLeadList;
+    @BindView (R.id.searchView) SearchView searchView;
 
     private RecyclerView.LayoutManager layoutManager;
     private String user_id;
@@ -66,6 +73,9 @@ public class FragmentEnquiryList extends Fragment{
     public void onCreate (@Nullable Bundle savedInstanceState) {
         super.onCreate (savedInstanceState);
         Log.i (TAG,"onCreate");
+
+
+        setHasOptionsMenu(true);
 
         listData=new ArrayList<> ();
 
@@ -104,8 +114,52 @@ public class FragmentEnquiryList extends Fragment{
 
         layoutManager=new LinearLayoutManager (view.getContext());
         convertedLeadList.setLayoutManager (layoutManager);
-
         return view;
+    }
+
+
+    @Override
+    public void onCreateOptionsMenu (Menu menu, MenuInflater inflater) {
+
+        MenuInflater menuInflater=new MenuInflater (getContext ());
+
+        menuInflater.inflate (R.menu.menu_search_view,menu);
+
+        MenuItem searchItem = menu.findItem(R.id.action_search);
+
+        SearchManager searchManager = (SearchManager) getActivity ().getSystemService(Context.SEARCH_SERVICE);
+
+        SearchView searchView = null;
+        if (searchItem != null) {
+            searchView = (SearchView) searchItem.getActionView();
+        }
+        if (searchView != null) {
+            searchView.setSearchableInfo(searchManager.getSearchableInfo(getActivity().getComponentName()));
+        }
+
+    }
+
+
+
+//    @Override
+//    public void onPrepareOptionsMenu (Menu menu) {
+//        super.onPrepareOptionsMenu (menu);
+//
+//        MenuItem mSearchMenuItem = menu.findItem(R.menu.menu_search_view);
+//        SearchView searchView = (SearchView) mSearchMenuItem.getActionView();
+//    }
+
+    @Override
+    public boolean onOptionsItemSelected (MenuItem item) {
+        int id=item.getItemId ();
+        switch (id){
+            case R.id.action_search:{
+//                Intent intent=new Intent (getContext (),ActivityLogin.class);
+//                startActivity (intent);
+                break;
+            }
+        }
+        return super.onOptionsItemSelected (item);
     }
 
     @Override
@@ -238,7 +292,7 @@ public class FragmentEnquiryList extends Fragment{
     }
 
     private void setRecycler () {
-        LeadListAdapter leadListAdapter=new LeadListAdapter (getContext (),listData);
+        final LeadListAdapter leadListAdapter=new LeadListAdapter (getContext (),listData);
         DividerItemDecoration dividerItemDecoration=new DividerItemDecoration (getContext (),DividerItemDecoration.VERTICAL);
         convertedLeadList.addItemDecoration (dividerItemDecoration);
         convertedLeadList.setAdapter (leadListAdapter);
