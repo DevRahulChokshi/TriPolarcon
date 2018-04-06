@@ -4,11 +4,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,17 +18,18 @@ import com.example.ebc003.tripolarcon.app.activities.ActivityLeadInformation;
 import com.example.ebc003.tripolarcon.model.Constants;
 import com.example.ebc003.tripolarcon.model.LeadListData;
 
-import java.util.List;
+import java.util.ArrayList;
 
 /**
  * Created by EBC003 on 12/20/2017.
  */
 
-public class LeadListAdapter extends RecyclerView.Adapter<LeadListAdapter.MyViewHolder>{
+public class LeadListAdapter extends RecyclerView.Adapter<LeadListAdapter.MyViewHolder> implements Filterable{
 
     Context context;
-    List<LeadListData> listData;
+    ArrayList<LeadListData> listData,players;
     LayoutInflater layoutInflater;
+    CustomFilter filter;
 
     private String strCompanyName;
     private String strCompanyEmail;
@@ -42,10 +44,11 @@ public class LeadListAdapter extends RecyclerView.Adapter<LeadListAdapter.MyView
 
     private static final String TAG=LeadListAdapter.class.getSimpleName ();
 
-    public LeadListAdapter (Context context, List<LeadListData> listData) {
+    public LeadListAdapter (Context context, ArrayList<LeadListData> players) {
         this.context=context;
         layoutInflater=LayoutInflater.from (context);
-        this.listData = listData;
+        this.listData = players;
+        this.players = players;
     }
 
     @Override
@@ -60,8 +63,8 @@ public class LeadListAdapter extends RecyclerView.Adapter<LeadListAdapter.MyView
 
     @Override
     public void onBindViewHolder (final MyViewHolder holder, int position) {
-        if (listData !=null){
-            LeadListData leadListData=listData.get (position);
+        if (players !=null){
+            LeadListData leadListData=players.get (position);
             if (leadListData!=null){
                 holder.txtUser.setText (leadListData.getTxtUser ());
                 holder.txtLeadTitle.setText (leadListData.getTxtLeadTitle ());
@@ -98,7 +101,7 @@ public class LeadListAdapter extends RecyclerView.Adapter<LeadListAdapter.MyView
 
     @Override
     public int getItemCount () {
-        return listData.size ();
+        return players.size ();
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder {
@@ -117,5 +120,16 @@ public class LeadListAdapter extends RecyclerView.Adapter<LeadListAdapter.MyView
             txtCompanyId=itemView.findViewById (R.id.txtCompanyId);
 //            checkLead=itemView.findViewById (R.id.checkLead);
         }
+    }
+
+    //RETURN FILTER OBJ
+    @Override
+    public Filter getFilter() {
+        if(filter==null)
+        {
+            filter=new CustomFilter (listData,this);
+        }
+
+        return filter;
     }
 }

@@ -15,6 +15,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -68,7 +69,7 @@ import static com.android.volley.VolleyLog.TAG;
  * Created by EBC003 on 12/9/2017.
  */
 
-public class FragmentLead extends Fragment {
+public class FragmentLead extends Fragment implements SearchView.OnQueryTextListener{
 
     private static final String TAG=FragmentLead.class.getSimpleName ();
 
@@ -77,8 +78,8 @@ public class FragmentLead extends Fragment {
     @BindView(R.id.progressBarFragmentLead) ProgressBar progressBar;
 
     private RecyclerView.LayoutManager  layoutManager;
-    private LeadListAdapter leadListAdapter;
-    List<LeadListData> listData;
+    private LeadEditTradingAdapter editTradingAdapter;
+    ArrayList<LeadListData> listData;
 
     private String userID;
     private String userName;
@@ -98,6 +99,7 @@ public class FragmentLead extends Fragment {
         View view=inflater.inflate (R.layout.fragment_lead,container,false);
         setUpToolbar ();
         ButterKnife.bind (this,view);
+        setHasOptionsMenu(true);
 
         fab.setOnClickListener (new View.OnClickListener () {
 
@@ -115,6 +117,18 @@ public class FragmentLead extends Fragment {
         mRecyclerDataList.setLayoutManager (layoutManager);
 
         return view;
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_search_view, menu);
+
+        MenuItem searchItem = menu.findItem(R.id.action_search);
+        SearchView searchView = (SearchView) searchItem.getActionView();
+        searchView.setQueryHint("Search");
+        searchView.setOnQueryTextListener(this);
+        searchItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM | MenuItem.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW);
+        super.onCreateOptionsMenu(menu, inflater);
     }
 
     private void setUpToolbar () {
@@ -213,11 +227,22 @@ public class FragmentLead extends Fragment {
     }
 
     private void setRecycler () {
-        LeadEditTradingAdapter leadListAdapter=new LeadEditTradingAdapter (getContext (),listData);
+        editTradingAdapter=new LeadEditTradingAdapter (getContext (),listData);
         DividerItemDecoration dividerItemDecoration=new DividerItemDecoration (getContext (),DividerItemDecoration.VERTICAL);
         mRecyclerDataList.addItemDecoration (dividerItemDecoration);
-        mRecyclerDataList.setAdapter (leadListAdapter);
+        mRecyclerDataList.setAdapter (editTradingAdapter);
         progressBar.setVisibility (View.GONE);
+    }
+
+    @Override
+    public boolean onQueryTextSubmit (String query) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange (String newText) {
+        editTradingAdapter.getFilter ().filter (newText);
+        return false;
     }
 }
 

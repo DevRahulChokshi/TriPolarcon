@@ -7,6 +7,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,17 +19,19 @@ import com.example.ebc003.tripolarcon.app.activities.ActivityLeadInformationEdit
 import com.example.ebc003.tripolarcon.model.Constants;
 import com.example.ebc003.tripolarcon.model.LeadListData;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by EBC003 on 3/27/2018.
  */
 
-public class LeadEditTradingAdapter extends RecyclerView.Adapter<LeadEditTradingAdapter.MyViewHolder>{
+public class LeadEditTradingAdapter extends RecyclerView.Adapter<LeadEditTradingAdapter.MyViewHolder> implements Filterable {
 
     Context context;
-    List<LeadListData> listData;
+    ArrayList<LeadListData> listData,players;
     LayoutInflater layoutInflater;
+    CustomFilterEditTrading  customFilterEditTrading;
 
     private String strCompanyName;
     private String strCompanyEmail;
@@ -42,10 +46,11 @@ public class LeadEditTradingAdapter extends RecyclerView.Adapter<LeadEditTrading
 
     private static final String TAG=LeadListAdapter.class.getSimpleName ();
 
-    public LeadEditTradingAdapter (Context context, List<LeadListData> listData) {
+    public LeadEditTradingAdapter (Context context, ArrayList<LeadListData> players) {
         this.context=context;
         layoutInflater=LayoutInflater.from (context);
-        this.listData = listData;
+        this.listData = players;
+        this.players = players;
     }
 
     @Override
@@ -59,8 +64,8 @@ public class LeadEditTradingAdapter extends RecyclerView.Adapter<LeadEditTrading
 
     @Override
     public void onBindViewHolder (final MyViewHolder holder, int position) {
-        if (listData !=null){
-            LeadListData leadListData=listData.get (position);
+        if (players !=null){
+            LeadListData leadListData=players.get (position);
             if (leadListData!=null){
                 holder.txtUser.setText (leadListData.getTxtUser ());
                 holder.txtLeadTitle.setText (leadListData.getTxtLeadTitle ());
@@ -97,7 +102,7 @@ public class LeadEditTradingAdapter extends RecyclerView.Adapter<LeadEditTrading
 
     @Override
     public int getItemCount () {
-        return listData.size ();
+        return players.size ();
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder {
@@ -116,6 +121,17 @@ public class LeadEditTradingAdapter extends RecyclerView.Adapter<LeadEditTrading
             txtCompanyId=itemView.findViewById (R.id.txtCompanyId);
 //            checkLead=itemView.findViewById (R.id.checkLead);
         }
+    }
+
+    //RETURN FILTER OBJ
+    @Override
+    public Filter getFilter() {
+        if(customFilterEditTrading==null)
+        {
+            customFilterEditTrading=new CustomFilterEditTrading (listData,this);
+        }
+
+        return customFilterEditTrading;
     }
 }
 

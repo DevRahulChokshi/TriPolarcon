@@ -20,7 +20,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
-import android.widget.Toast;
+
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -51,14 +51,17 @@ import butterknife.ButterKnife;
  */
 
 
-public class FragmentEnquiryList extends Fragment{
+public class FragmentEnquiryList extends Fragment implements SearchView.OnQueryTextListener{
 
     private String TAG=FragmentEnquiryList.class.getSimpleName ();
-    List<LeadListData> listData;
+    ArrayList<LeadListData> listData;
 
     @BindView(R.id.progressBarShowLead) ProgressBar progressBar;
     @BindView (R.id.recyclerConvertedLead) RecyclerView convertedLeadList;
-    @BindView (R.id.searchView) SearchView searchView;
+//    @BindView (R.id.mSearch) SearchView searchView;
+    SearchView searchView;
+    LeadListAdapter leadListAdapter;
+
 
     private RecyclerView.LayoutManager layoutManager;
     private String user_id;
@@ -74,11 +77,8 @@ public class FragmentEnquiryList extends Fragment{
         super.onCreate (savedInstanceState);
         Log.i (TAG,"onCreate");
 
-
-        setHasOptionsMenu(true);
-
         listData=new ArrayList<> ();
-
+        setHasOptionsMenu(true);
         Bundle bundle=getArguments ();
         if (bundle!=null){
             user_id=bundle.getString (Constants.USER_ID,"N/A");
@@ -111,55 +111,22 @@ public class FragmentEnquiryList extends Fragment{
 
         setUpToolbar();
 
-
         layoutManager=new LinearLayoutManager (view.getContext());
         convertedLeadList.setLayoutManager (layoutManager);
+
         return view;
     }
 
-
     @Override
-    public void onCreateOptionsMenu (Menu menu, MenuInflater inflater) {
-
-        MenuInflater menuInflater=new MenuInflater (getContext ());
-
-        menuInflater.inflate (R.menu.menu_search_view,menu);
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_search_view, menu);
 
         MenuItem searchItem = menu.findItem(R.id.action_search);
-
-        SearchManager searchManager = (SearchManager) getActivity ().getSystemService(Context.SEARCH_SERVICE);
-
-        SearchView searchView = null;
-        if (searchItem != null) {
-            searchView = (SearchView) searchItem.getActionView();
-        }
-        if (searchView != null) {
-            searchView.setSearchableInfo(searchManager.getSearchableInfo(getActivity().getComponentName()));
-        }
-
-    }
-
-
-
-//    @Override
-//    public void onPrepareOptionsMenu (Menu menu) {
-//        super.onPrepareOptionsMenu (menu);
-//
-//        MenuItem mSearchMenuItem = menu.findItem(R.menu.menu_search_view);
-//        SearchView searchView = (SearchView) mSearchMenuItem.getActionView();
-//    }
-
-    @Override
-    public boolean onOptionsItemSelected (MenuItem item) {
-        int id=item.getItemId ();
-        switch (id){
-            case R.id.action_search:{
-//                Intent intent=new Intent (getContext (),ActivityLogin.class);
-//                startActivity (intent);
-                break;
-            }
-        }
-        return super.onOptionsItemSelected (item);
+        SearchView searchView = (SearchView) searchItem.getActionView();
+        searchView.setQueryHint("Search");
+        searchView.setOnQueryTextListener(this);
+        searchItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM | MenuItem.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW);
+        super.onCreateOptionsMenu(menu, inflater);
     }
 
     @Override
@@ -292,10 +259,22 @@ public class FragmentEnquiryList extends Fragment{
     }
 
     private void setRecycler () {
-        final LeadListAdapter leadListAdapter=new LeadListAdapter (getContext (),listData);
+        leadListAdapter=new LeadListAdapter (getContext (),listData);
         DividerItemDecoration dividerItemDecoration=new DividerItemDecoration (getContext (),DividerItemDecoration.VERTICAL);
         convertedLeadList.addItemDecoration (dividerItemDecoration);
         convertedLeadList.setAdapter (leadListAdapter);
         progressBar.setVisibility (View.GONE);
+
+    }
+
+    @Override
+    public boolean onQueryTextSubmit (String query) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange (String newText) {
+        leadListAdapter.getFilter ().filter (newText);
+        return false;
     }
 }
