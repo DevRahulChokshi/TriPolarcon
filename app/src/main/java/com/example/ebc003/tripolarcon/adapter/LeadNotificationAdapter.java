@@ -45,7 +45,7 @@ public class LeadNotificationAdapter extends RecyclerView.Adapter<LeadNotificati
 
     @Override
     public LeadNotificationAdapter.MyViewHolder onCreateViewHolder (ViewGroup parent, int viewType) {
-        View view=layoutInflater.inflate (R.layout.scroll_view_item,parent,false);
+        View view=layoutInflater.inflate (R.layout.notification_card_view,parent,false);
 
         LeadNotificationAdapter.MyViewHolder myViewHolder=new LeadNotificationAdapter.MyViewHolder (view);
 

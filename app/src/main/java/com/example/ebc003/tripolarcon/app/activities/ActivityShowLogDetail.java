@@ -107,6 +107,11 @@ public class ActivityShowLogDetail extends AppCompatActivity {
                                     logData.setLogCompanyDate(jsonArray.getJSONObject (i).getString (Constants.SHOW_LOG_DATE));
                                     logData.setLogCompanyTime(jsonArray.getJSONObject (i).getString (Constants.SHOW_LOG_TIME));
                                     logData.setLogCompanyRemark (jsonArray.getJSONObject (i).getString (Constants.SHOW_LOG_REMARK));
+                                    logData.setLogScheduleType (jsonArray.getJSONObject (i).getString (Constants.SHOW_LOG_SCHEDULE));
+                                    logData.setLogCallType (jsonArray.getJSONObject (i).getString (Constants.LOG_CALL_TYPE));
+                                    logData.setLogStatus (jsonArray.getJSONObject (i).getString (Constants.LOG_STATUS));
+                                    logData.setLogGenerated (jsonArray.getJSONObject (i).getString (Constants.GENERATED_BY_NAME));
+                                    logData.setLogImgPath (jsonArray.getJSONObject (i).getString (Constants.LOG_IMG_FILE_PATH));
 
                                     mLeadListData.add (logData);
 

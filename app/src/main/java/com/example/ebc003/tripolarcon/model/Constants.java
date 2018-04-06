@@ -77,6 +77,7 @@ public class Constants {
     public static final String LOG_REMARK = "add_remark";
     public static final String LOG_CALL_TYPE = "en_call_type";
     public static final String LOG_STATUS = "en_status";
+    public static final String LOG_IMG_FILE_PATH = "file_path";
     public static final String SHOW_LOG_DATE="sche_date";
     public static final String SHOW_LOG_TIME="sche_time";
     public static final String SHOW_LOG_REMARK="en_remark";

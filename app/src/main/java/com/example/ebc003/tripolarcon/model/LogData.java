@@ -18,6 +18,43 @@ public class LogData {
     private String logCompanyName;
     private String logScheduleType;
     private String logLocation;
+    private String logCallType;
+    private String logStatus;
+    private String logGenerated;
+    private String logImgPath;
+
+
+    public String getLogCallType () {
+        return logCallType;
+    }
+
+    public void setLogCallType (String logCallType) {
+        this.logCallType = logCallType;
+    }
+
+    public String getLogStatus () {
+        return logStatus;
+    }
+
+    public void setLogStatus (String logStatus) {
+        this.logStatus = logStatus;
+    }
+
+    public String getLogGenerated () {
+        return logGenerated;
+    }
+
+    public void setLogGenerated (String logGenerated) {
+        this.logGenerated = logGenerated;
+    }
+
+    public String getLogImgPath () {
+        return logImgPath;
+    }
+
+    public void setLogImgPath (String logImgPath) {
+        this.logImgPath = logImgPath;
+    }
 
     public String getLogCompanyId () {
         return logCompanyId;

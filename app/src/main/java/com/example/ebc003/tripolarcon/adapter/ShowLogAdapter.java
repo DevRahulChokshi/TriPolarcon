@@ -29,6 +29,12 @@ public class ShowLogAdapter extends RecyclerView.Adapter<ShowLogAdapter.LogHolde
     List<LogData> mLogList;
     LayoutInflater layoutInflater;
 
+    String mScheduleTime;
+    String mCallType;
+    String mStatus;
+    String mGeneratedName;
+    String mFilePath;
+
     public ShowLogAdapter (Context context, List<LogData> mLogList) {
         this.context=context;
         layoutInflater=LayoutInflater.from (context);
@@ -57,6 +63,11 @@ public class ShowLogAdapter extends RecyclerView.Adapter<ShowLogAdapter.LogHolde
                 String mLogData=logData.getLogCompanyDate ()+" "+logData.getLogCompanyTime ();
                 holder.mTxtScheduleDateTime.setText (mLogData);
                 holder.mTxtLogRemark.setText (logData.getLogCompanyRemark ());
+                mScheduleTime=logData.getLogScheduleType ();
+                mCallType=logData.getLogCallType ();
+                mStatus=logData.getLogStatus ();
+                mGeneratedName=logData.getLogGenerated ();
+                mFilePath=logData.getLogImgPath ();
             }
             else {
                 Log.i (TAG,"DATA NULL");
@@ -69,9 +80,15 @@ public class ShowLogAdapter extends RecyclerView.Adapter<ShowLogAdapter.LogHolde
         holder.itemView.setOnClickListener (new View.OnClickListener () {
             @Override
             public void onClick (View v) {
-//                String strLeadTitle=(String)holder.txtCompanyId.getText ();
                 Intent intent=new Intent (context.getApplicationContext (),ActivityLogDetailView.class);
-//                intent.putExtra (Constants.USER_ID,strLeadTitle);
+                intent.putExtra (Constants.COMPANY_NAME,holder.mTxtCompanyName.getText ());
+                intent.putExtra (Constants.LOG_SCHEDULE_DATE,holder.mTxtScheduleDateTime.getText ());
+                intent.putExtra (Constants.LOG_REMARK,holder.mTxtLogRemark.getText ());
+                intent.putExtra (Constants.LOG_SCHEDULE,mScheduleTime);
+                intent.putExtra (Constants.LOG_CALL_TYPE,mCallType);
+                intent.putExtra (Constants.LOG_STATUS,mStatus);
+                intent.putExtra (Constants.GENERATED_BY_NAME,mGeneratedName);
+                intent.putExtra (Constants.LOG_IMG_FILE_PATH,mFilePath);
                 context.startActivity (intent);
             }
         });
