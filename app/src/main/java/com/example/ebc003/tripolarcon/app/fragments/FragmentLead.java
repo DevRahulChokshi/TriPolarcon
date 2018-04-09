@@ -1,17 +1,13 @@
 package com.example.ebc003.tripolarcon.app.fragments;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -24,13 +20,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.ProgressBar;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -39,31 +30,21 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.ebc003.tripolarcon.R;
 import com.example.ebc003.tripolarcon.adapter.LeadEditTradingAdapter;
-import com.example.ebc003.tripolarcon.adapter.LeadListAdapter;
-import com.example.ebc003.tripolarcon.app.activities.ActivityEditTradingDetailsTabView;
 import com.example.ebc003.tripolarcon.app.activities.ActivityGenerateLead;
-import com.example.ebc003.tripolarcon.app.activities.ActivityGenerateLog;
 import com.example.ebc003.tripolarcon.model.Constants;
-import com.example.ebc003.tripolarcon.model.JSONParser;
 import com.example.ebc003.tripolarcon.model.LeadListData;
 
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 import static android.content.Context.MODE_PRIVATE;
-import static com.android.volley.VolleyLog.TAG;
 
 /**
  * Created by EBC003 on 12/9/2017.
@@ -132,7 +113,7 @@ public class FragmentLead extends Fragment implements SearchView.OnQueryTextList
     }
 
     private void setUpToolbar () {
-        Toolbar toolbar = (Toolbar) getActivity().findViewById(R.id.main_toolbar);
+        Toolbar toolbar = getActivity().findViewById(R.id.main_toolbar);
         toolbar.setTitle(R.string.strEnquiry);
     }
 
@@ -215,7 +196,7 @@ public class FragmentLead extends Fragment implements SearchView.OnQueryTextList
                 })
         {
             @Override
-            protected Map<String, String> getParams () throws AuthFailureError {
+            protected Map<String, String> getParams () {
                 Map<String,String> stringMap=new HashMap<> ();
                 stringMap.put (Constants.USER_ID,userID);
                 Log.i (TAG,"USER ID:-"+userID);

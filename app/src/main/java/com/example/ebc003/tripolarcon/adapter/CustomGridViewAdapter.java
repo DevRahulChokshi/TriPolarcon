@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 import com.example.ebc003.tripolarcon.R;
 
+import java.util.ArrayList;
+
 /**
  * Created by EBC003 on 3/13/2018.
  */
@@ -18,11 +20,11 @@ import com.example.ebc003.tripolarcon.R;
 public class CustomGridViewAdapter extends BaseAdapter {
 
     private Context mContext;
-    private final String[] gridViewStringCounterItem;
+    private final ArrayList<String> gridViewStringCounterItem;
     private final String[] gridViewStringTitleItem;
     private final int[] gridViewImageId;
 
-    public CustomGridViewAdapter (Context context, String[] gridViewStringCounter, String[] gridViewString, int[] gridViewImageId) {
+    public CustomGridViewAdapter (Context context, ArrayList<String> gridViewStringCounter, String[] gridViewString, int[] gridViewImageId) {
         mContext = context;
         this.gridViewImageId = gridViewImageId;
         this.gridViewStringCounterItem = gridViewStringCounter;
@@ -31,7 +33,7 @@ public class CustomGridViewAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return gridViewStringCounterItem.length;
+        return gridViewStringCounterItem.size ();
     }
 
     @Override
@@ -59,7 +61,7 @@ public class CustomGridViewAdapter extends BaseAdapter {
             TextView txtDetailsItem = gridViewAndroid.findViewById(R.id.txtDetailsItem);
             ImageView imageViewAndroid = gridViewAndroid.findViewById(R.id.imgItem);
 
-            txtCounterItem.setText(gridViewStringCounterItem[i]);
+            txtCounterItem.setText(gridViewStringCounterItem.get (i));
             txtTitleItem.setText(gridViewStringTitleItem[i]);
             imageViewAndroid.setImageResource(gridViewImageId[i]);
 

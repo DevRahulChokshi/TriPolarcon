@@ -1,31 +1,6 @@
 package com.example.ebc003.tripolarcon.app.activities;
 
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import android.widget.ProgressBar;
-import android.widget.Spinner;
-import android.widget.TextView;
-
-import com.example.ebc003.tripolarcon.R;
-import com.example.ebc003.tripolarcon.model.AddLogAsyncTask;
-import com.example.ebc003.tripolarcon.model.Constants;
-import com.example.ebc003.tripolarcon.model.EditTradingDetailsAsyncTask;
-
-import java.util.Calendar;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
 
 public class ActivityEditTradingDetails extends AppCompatActivity  {
 

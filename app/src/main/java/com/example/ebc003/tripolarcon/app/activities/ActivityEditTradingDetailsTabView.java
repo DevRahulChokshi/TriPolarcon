@@ -1,32 +1,18 @@
 package com.example.ebc003.tripolarcon.app.activities;
 
 import android.content.Intent;
-import android.graphics.Typeface;
+import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 import com.example.ebc003.tripolarcon.R;
 import com.example.ebc003.tripolarcon.adapter.PagerEditTradingDetails;
 import com.example.ebc003.tripolarcon.model.Constants;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-
-import java.util.HashMap;
-import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -78,7 +64,7 @@ public class ActivityEditTradingDetailsTabView extends AppCompatActivity impleme
 
             Log.i ("COMPANY ID :",mStrCompanyId);
             Log.i ("ASSIGN PERSON ID :",mStrAssignPersonId);
-            Log.i ("COMPANY NAME :",mStrCompanyName);;
+            Log.i ("COMPANY NAME :",mStrCompanyName);
         }
     }
 

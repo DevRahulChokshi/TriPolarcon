@@ -3,9 +3,9 @@ package com.example.ebc003.tripolarcon.app.activities;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
+import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -14,7 +14,6 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -151,7 +150,7 @@ public class ActivityLeadInformation extends AppCompatActivity implements View.O
                                     String Note=jsonArray.getJSONObject (i).getString ("cust_note");
                                     String Source=jsonArray.getJSONObject (i).getString ("source");
                                     assign_to=jsonArray.getJSONObject (i).getString ("assign_to");
-                                    String generated_by=jsonArray.getJSONObject (i).getString ("generated_by_name");
+           //                         String generated_by=jsonArray.getJSONObject (i).getString ("generated_by_name");
                                     generated_by_id=jsonArray.getJSONObject (i).getString ("generated_by");
 
                                     mTxtCompanyEmail.setText (CompanyEmail);
@@ -164,7 +163,7 @@ public class ActivityLeadInformation extends AppCompatActivity implements View.O
 //                                    mTxtPersonNumber.setText (ContactPersonNumber);
                                     mTxtPersonNote.setText (Note);
                                     mTxtEnquiryStatus.setText (Source);
-                                    mTxtTradingGeneratedBy.setText (generated_by);
+     //                               mTxtTradingGeneratedBy.setText (generated_by);
 
                                     Typeface regularFont=Typeface.createFromAsset (getAssets (),"fonts/OpenSansCondensed-Light.ttf");
                                     Typeface boldFont=Typeface.createFromAsset (getAssets (),"fonts/OpenSansCondensed-Bold.ttf");
@@ -197,7 +196,7 @@ public class ActivityLeadInformation extends AppCompatActivity implements View.O
                 })
         {
             @Override
-            protected Map<String, String> getParams () throws AuthFailureError {
+            protected Map<String, String> getParams () {
                 Map<String,String> stringMap=new HashMap<> ();
                 stringMap.put (Constants.USER_ID,CompanyID);
                 Log.i (TAG,"ID:-"+CompanyID);

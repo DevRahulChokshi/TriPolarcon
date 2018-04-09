@@ -18,9 +18,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.ebc003.tripolarcon.R;
-import com.example.ebc003.tripolarcon.app.activities.ActivityEditTradingDetails;
 import com.example.ebc003.tripolarcon.model.Constants;
-import com.example.ebc003.tripolarcon.model.EditTradingDetailsAsyncTask;
 import com.example.ebc003.tripolarcon.model.EditTradingServicesDetailsAsyncTask;
 
 import java.util.Calendar;

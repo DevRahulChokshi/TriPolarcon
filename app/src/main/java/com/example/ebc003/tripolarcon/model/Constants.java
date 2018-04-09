@@ -10,6 +10,11 @@ public class Constants {
     public static final int TYPE_MOBILE=2;
     public static final int TYPE_NOT_CONNECTED=0;
 
+    public static final String GENERATED_LEAD="generated_lead";
+    public static final String CONVERTED_LEAD="converted_lead";
+    public static final String LOSS_LEAD="loss_lead";
+    public static final String PENDING_LEAD="pending_lead";
+
     public static final String USER_EMAIL="user_email";
     public static final String USER_PASSWORD="user_password";
     public static final String USER_ID_NAME="customer_id_name";
@@ -17,6 +22,7 @@ public class Constants {
     public static final String METHOD_GET="GET";
 
     public static final String URL_LOGIN="http://www.ebusinesscanvas.com/tripolarcon/android_app/login_form.php";
+    public static final String URL_DASHBOARD="http://www.ebusinesscanvas.com/tripolarcon/android_app/dashboard_data.php";
 
     //EMP Table Details
     public static final String EMP_ID="register_id";

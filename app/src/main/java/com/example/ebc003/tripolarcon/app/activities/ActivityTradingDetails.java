@@ -1,18 +1,14 @@
 package com.example.ebc003.tripolarcon.app.activities;
 
 import android.content.Intent;
-import android.icu.text.UnicodeSetSpanner;
+import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import com.example.ebc003.tripolarcon.R;
 import com.example.ebc003.tripolarcon.adapter.Pager;

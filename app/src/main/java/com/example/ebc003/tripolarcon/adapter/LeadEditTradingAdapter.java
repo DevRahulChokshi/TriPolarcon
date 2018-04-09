@@ -9,18 +9,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ebc003.tripolarcon.R;
-import com.example.ebc003.tripolarcon.app.activities.ActivityLeadInformation;
 import com.example.ebc003.tripolarcon.app.activities.ActivityLeadInformationEdit;
 import com.example.ebc003.tripolarcon.model.Constants;
 import com.example.ebc003.tripolarcon.model.LeadListData;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by EBC003 on 3/27/2018.

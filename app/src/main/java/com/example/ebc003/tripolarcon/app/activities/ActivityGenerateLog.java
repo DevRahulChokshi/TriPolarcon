@@ -11,6 +11,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
 import android.net.Uri;
+import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.provider.OpenableColumns;
@@ -20,7 +21,6 @@ import android.support.v4.content.FileProvider;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -31,10 +31,10 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.example.ebc003.tripolarcon.R;
 import com.example.ebc003.tripolarcon.app.MyDatePicker;
 import com.example.ebc003.tripolarcon.app.MyTimePicker;
@@ -67,7 +67,7 @@ public class ActivityGenerateLog extends AppCompatActivity implements View.OnCli
     @BindView (R.id.editAddLogDtn) EditText mEdtDate;
     @BindView (R.id.editAddLogTime) EditText mEdtTime;
     @BindView (R.id.editAddLogRemark) EditText mEdtRemark;
-    @BindView (R.id.progressBarAddLog) ProgressBar progressBar;
+//    @BindView (R.id.progressBarAddLog) ProgressBar progressBar;
     @BindView (R.id.btnPhoto) Button mButtonUpload;
     @BindView (R.id.imgLog) ImageView mImageUpload;
 
@@ -79,6 +79,7 @@ public class ActivityGenerateLog extends AppCompatActivity implements View.OnCli
     String mSpinnserCallType;
     String mSpinnserStaus;
     String FileName;
+    MaterialDialog materialDialog;
 
     ArrayList<String> permissions = new ArrayList<> ();
     PermissionUtils permissionUtils;
@@ -116,7 +117,6 @@ public class ActivityGenerateLog extends AppCompatActivity implements View.OnCli
             Log.i (TAG,company_name);
             Log.i (TAG,companyId);
         }
-        progressBar.setVisibility (View.GONE);
 
         toolbar.setNavigationOnClickListener (new View.OnClickListener () {
             @Override
@@ -183,6 +183,13 @@ public class ActivityGenerateLog extends AppCompatActivity implements View.OnCli
         int id=item.getItemId ();
         switch (id){
             case R.id.addLog:{
+                materialDialog=new MaterialDialog.Builder(this)
+                        .title(R.string.progress_dialog)
+                        .content(R.string.generate_log)
+                        .progress(true, 0)
+                        .progressIndeterminateStyle(false)
+                        .show();
+
                 addLogDetails();
                 break;
             }
@@ -491,7 +498,7 @@ public class ActivityGenerateLog extends AppCompatActivity implements View.OnCli
             Typeface regularFont=Typeface.createFromAsset (getAssets (),"fonts/OpenSansCondensed-Light.ttf");
             mEdtRemark.setTypeface (regularFont);
 
-            AddLogAsyncTask addLogAsyncTask=new AddLogAsyncTask (getApplicationContext (),progressBar);
+            AddLogAsyncTask addLogAsyncTask=new AddLogAsyncTask (getApplicationContext (),materialDialog);
             Log.i (TAG,"AsyncTask:-"+mCurrentPhotoPath);
             Log.i (TAG,"AsyncTask:-"+FileName);
             addLogAsyncTask.execute (mSpinnserSchedule,mCurrentDate,mCurrentTime,mSpinnserCallType,mSpinnserStaus,mRemark,mDate,mTime,companyId,userID,mCurrentPhotoPath,dateforrow,company_name,userName,FileName);

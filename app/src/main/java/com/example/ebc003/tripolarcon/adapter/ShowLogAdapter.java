@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.ebc003.tripolarcon.R;
-import com.example.ebc003.tripolarcon.app.activities.ActivityLeadInformation;
 import com.example.ebc003.tripolarcon.app.activities.ActivityLogDetailView;
 import com.example.ebc003.tripolarcon.model.Constants;
 import com.example.ebc003.tripolarcon.model.LogData;

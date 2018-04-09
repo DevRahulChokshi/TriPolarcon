@@ -12,7 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
-import com.android.volley.AuthFailureError;
+
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -124,7 +124,7 @@ public class FragmentTodayPlan extends Fragment {
                 })
         {
             @Override
-            protected Map<String, String> getParams () throws AuthFailureError {
+            protected Map<String, String> getParams () {
 
                 final Calendar myCalender = Calendar.getInstance();
                 int year = myCalender.get(Calendar.YEAR);

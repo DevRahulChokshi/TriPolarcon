@@ -7,20 +7,20 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
+import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.example.ebc003.tripolarcon.R;
 import com.example.ebc003.tripolarcon.model.BroadcastMaster;
-import com.example.ebc003.tripolarcon.model.JSONParser;
 import com.example.ebc003.tripolarcon.model.Constants;
+import com.example.ebc003.tripolarcon.model.JSONParser;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -40,7 +40,7 @@ public class ActivityLogin extends AppCompatActivity {
     @BindView (R.id.txt_login_text) TextView mTxtLogin;
     @BindView (R.id.editEmail) EditText mEdtEmail;
     @BindView (R.id.editPassword) EditText mEdtPassword;
-    @BindView (R.id.loginProgressbar) ProgressBar mProgressBar;
+//    @BindView (R.id.loginProgressbar) ProgressBar mProgressBar;
     @BindView (R.id.constraintLogin) ConstraintLayout constraintLayout;
 
     private static final String TAG=ActivityLogin.class.getSimpleName ();
@@ -96,6 +96,14 @@ public class ActivityLogin extends AppCompatActivity {
     }
 
     public void onHomePage (View view) {
+
+        MaterialDialog materialDialog=new MaterialDialog.Builder(this)
+                .title(R.string.progress_dialog)
+                .content(R.string.please_wait)
+                .progress(true, 0)
+                .progressIndeterminateStyle(false)
+                .show();
+
         String strEmail=mEdtEmail.getText ().toString ();
         String strPassword=mEdtPassword.getText ().toString ();
         // Check patter for email id
@@ -133,7 +141,7 @@ public class ActivityLogin extends AppCompatActivity {
 
         @Override
         protected void onPreExecute () {
-            mProgressBar.setVisibility (View.VISIBLE);
+//            mProgressBar.setVisibility (View.VISIBLE);
             super.onPreExecute ();
         }
 
@@ -181,7 +189,7 @@ public class ActivityLogin extends AppCompatActivity {
                 mEdtEmail.setFocusable (true);
                 mEdtPassword.setError ("Enter the correct password");
                 mEdtPassword.setFocusable (true);
-                mProgressBar.setVisibility (View.INVISIBLE);
+//                mProgressBar.setVisibility (View.INVISIBLE);
             }
         }
     }

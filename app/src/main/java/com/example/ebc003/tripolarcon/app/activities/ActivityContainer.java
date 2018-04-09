@@ -1,24 +1,20 @@
 package com.example.ebc003.tripolarcon.app.activities;
 
-import android.app.SearchManager;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
 import com.example.ebc003.tripolarcon.R;
 import com.example.ebc003.tripolarcon.app.MyAdapterItemActivity;
 import com.example.ebc003.tripolarcon.app.fragments.FragmentDashboard;
@@ -143,9 +139,9 @@ public class ActivityContainer extends AppCompatActivity  implements MyAdapterIt
                 FragmentTransaction transaction=manager.beginTransaction ();
                 transaction.setCustomAnimations(R.animator.fade_in_slow, R.animator.fade_out_quick);
                 transaction.replace (R.id.fragment_container, fragmentDashboard,Constants.FRAG_DASHBOARD);
-//                Bundle bundle=new Bundle ();
-//                bundle.putString (Constants.USER_ID,userID);
-//                fragmentHome.setArguments (bundle);
+                Bundle bundle=new Bundle ();
+                bundle.putString (Constants.USER_ID,userID);
+                fragmentDashboard.setArguments (bundle);
                 transaction.commit ();
                 drawerLayout.closeDrawer (GravityCompat.START);
                 break;

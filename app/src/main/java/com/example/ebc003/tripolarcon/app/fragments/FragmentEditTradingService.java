@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,7 +12,6 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -151,7 +149,7 @@ public class FragmentEditTradingService extends Fragment {
                 })
         {
             @Override
-            protected Map<String, String> getParams () throws AuthFailureError {
+            protected Map<String, String> getParams () {
                 Map<String,String> stringMap=new HashMap<> ();
                 stringMap.put (Constants.USER_ID,user_id);
                 return stringMap;

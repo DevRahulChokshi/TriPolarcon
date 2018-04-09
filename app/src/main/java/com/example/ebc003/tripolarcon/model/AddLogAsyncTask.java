@@ -1,17 +1,11 @@
 package com.example.ebc003.tripolarcon.model;
 
-import android.app.Dialog;
 import android.content.Context;
-import android.content.Intent;
-import android.icu.text.UnicodeSetSpanner;
-import android.nfc.Tag;
 import android.os.AsyncTask;
 import android.util.Log;
-import android.view.View;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.example.ebc003.tripolarcon.app.activities.ActivityContainer;
+import com.afollestad.materialdialogs.MaterialDialog;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -23,8 +17,6 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.BindView;
-
 /**
  * Created by EBC003 on 1/11/2018.
  */
@@ -33,17 +25,15 @@ public class AddLogAsyncTask  extends AsyncTask<String,Void,Boolean>{
 
     private String TAG=AddLogAsyncTask.class.getSimpleName ();
 
-    ProgressBar progressBar;
     private Context context;
-
-    public AddLogAsyncTask (Context context,ProgressBar progressBar){
+    MaterialDialog materialDialog;
+    public AddLogAsyncTask (Context context, MaterialDialog materialDialog){
         this.context=context;
-        this.progressBar=progressBar;
+        this.materialDialog=materialDialog;
     }
 
     @Override
     protected void onPreExecute () {
-        progressBar.setVisibility (View.VISIBLE);
         super.onPreExecute ();
     }
 
@@ -135,9 +125,11 @@ public class AddLogAsyncTask  extends AsyncTask<String,Void,Boolean>{
 
     @Override
     protected void onPostExecute (Boolean aBoolean) {
-        if (aBoolean){
-            progressBar.setVisibility (View.GONE);
 
+        String mName;
+
+        if (aBoolean){
+            materialDialog.dismiss ();
         }
         else {
             Toast.makeText (context,"Something Wrong",Toast.LENGTH_LONG).show ();

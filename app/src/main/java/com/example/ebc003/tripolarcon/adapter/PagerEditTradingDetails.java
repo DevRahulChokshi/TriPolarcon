@@ -6,8 +6,6 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.example.ebc003.tripolarcon.app.fragments.FragmentEditTradingDetails;
 import com.example.ebc003.tripolarcon.app.fragments.FragmentEditTradingServiceDetails;
-import com.example.ebc003.tripolarcon.app.fragments.FragmentTrading;
-import com.example.ebc003.tripolarcon.app.fragments.FragmentTradingService;
 
 /**
  * Created by developer on 11-03-2018.

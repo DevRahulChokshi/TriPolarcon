@@ -1,6 +1,5 @@
 package com.example.ebc003.tripolarcon.app.fragments;
 
-import android.app.SearchManager;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -21,8 +20,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
-
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -30,17 +27,15 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.ebc003.tripolarcon.R;
+import com.example.ebc003.tripolarcon.adapter.LeadListAdapter;
 import com.example.ebc003.tripolarcon.model.Constants;
 import com.example.ebc003.tripolarcon.model.LeadListData;
-
-import com.example.ebc003.tripolarcon.adapter.LeadListAdapter;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import butterknife.BindView;
@@ -247,7 +242,7 @@ public class FragmentEnquiryList extends Fragment implements SearchView.OnQueryT
                 })
         {
             @Override
-            protected Map<String, String> getParams () throws AuthFailureError {
+            protected Map<String, String> getParams () {
                 Map<String,String> stringMap=new HashMap<> ();
                 stringMap.put (Constants.USER_ID,user_id);
                 Log.i (TAG,"USER ID:-"+user_id);

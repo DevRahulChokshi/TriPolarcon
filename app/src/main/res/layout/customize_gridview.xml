@@ -10,7 +10,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_gravity="center_horizontal"
-        android:src="@drawable/ic_account_box_white"/>
+        android:src="@drawable/ic_account_box"/>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -53,6 +53,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
                 android:foregroundGravity="right"
-                android:src="@drawable/ic_arrow_forward_white"/>
+                android:src="@drawable/ic_arrow_forward"/>
     </LinearLayout>
 </LinearLayout>

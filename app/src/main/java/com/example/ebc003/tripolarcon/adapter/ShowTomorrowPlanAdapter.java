@@ -22,11 +22,10 @@ import java.util.List;
 
 public class ShowTomorrowPlanAdapter extends RecyclerView.Adapter<ShowTomorrowPlanAdapter.LogHolder>{
 
-    private String TAG=ShowTomorrowPlanAdapter.class.getSimpleName ();
-
     Context context;
     List<LogData> mLogList;
     LayoutInflater layoutInflater;
+    private String TAG=ShowTomorrowPlanAdapter.class.getSimpleName ();
 
     public ShowTomorrowPlanAdapter (Context context, List<LogData> mLogList) {
         this.context=context;
