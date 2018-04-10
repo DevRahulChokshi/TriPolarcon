@@ -3,6 +3,8 @@ package com.example.ebc003.tripolarcon.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 
@@ -61,6 +63,7 @@ public class LeadListAdapter extends RecyclerView.Adapter<LeadListAdapter.MyView
         return myViewHolder;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void onBindViewHolder (final MyViewHolder holder, int position) {
         if (players !=null){
@@ -77,6 +80,7 @@ public class LeadListAdapter extends RecyclerView.Adapter<LeadListAdapter.MyView
                 holder.txtLeadTitle.setTypeface (boldFont);
                 holder.txtUserEmail.setTypeface (regularFont);
                 holder.txtCompanyId.setTypeface (regularFont);
+                holder.txtUser.setBackground (context.getDrawable (R.drawable.circle_user));
             }
             else {
                 Toast.makeText (context.getApplicationContext (),"Data List is null",Toast.LENGTH_LONG).show ();
@@ -110,7 +114,7 @@ public class LeadListAdapter extends RecyclerView.Adapter<LeadListAdapter.MyView
        TextView txtUserEmail;
        TextView txtLeadTitle;
        TextView txtCompanyId;
-//       AppCompatCheckBox checkLead;
+
 
         public MyViewHolder (final View itemView) {
             super (itemView);
@@ -118,7 +122,6 @@ public class LeadListAdapter extends RecyclerView.Adapter<LeadListAdapter.MyView
             txtUserEmail=itemView.findViewById (R.id.txtUserEmail);
             txtLeadTitle=itemView.findViewById (R.id.txtLeadTitle);
             txtCompanyId=itemView.findViewById (R.id.txtCompanyId);
-//            checkLead=itemView.findViewById (R.id.checkLead);
         }
     }
 

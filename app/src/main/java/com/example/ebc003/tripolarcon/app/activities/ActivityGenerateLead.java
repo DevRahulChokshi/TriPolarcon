@@ -63,6 +63,7 @@ public class ActivityGenerateLead extends AppCompatActivity {
     String mStrGeneratedToName;
     String mStrGeneratedBy;
     String mStrAssignTo;
+    String radioString;
 
     @Override
     protected void onCreate (Bundle savedInstanceState) {
@@ -122,9 +123,9 @@ public class ActivityGenerateLead extends AppCompatActivity {
         String phone_no= mEdtPhoneNo.getText ().toString ();
         String state= mEdtState.getText ().toString ();
         String website= mEdtWebSite.getText ().toString ();
-        String ContactPerson=mEdtContactPerson.getText ().toString ();
-        String ContactDesignation=mEdtContactDesignation.getText ().toString ();
-        String City=mEdtCity.getText ().toString ();
+        String contactPerson=mEdtContactPerson.getText ().toString ();
+        String contactDesignation=mEdtContactDesignation.getText ().toString ();
+        String city=mEdtCity.getText ().toString ();
         String FAX_Number=mEdtFAX_Number.getText ().toString ();
         String PAN_Number=mEdtPAN_Number.getText ().toString ();
         String GST_Number=mEdt_GST_Number.getText ().toString ();
@@ -147,10 +148,52 @@ public class ActivityGenerateLead extends AppCompatActivity {
         radioOnline=findViewById (id);
         radioOffline=findViewById (id);
 
-        String radioString= (String) radioOffline.getText ();
+        radioString = (String) radioOffline.getText ();
 
-        MyAsyncTask myAsyncTask=new MyAsyncTask ();
-        myAsyncTask.execute (company_name,address,email,phone_no,state,website,ContactPerson,ContactDesignation,City,FAX_Number,PAN_Number,GST_Number,Note,userID,userName,CurrentDate,CurrentTime,radioString);
+        if (company_name.isEmpty ()){
+            mEdtCompanyName.setError ("Enter the company name");
+            mEdtCompanyName.setFocusable (true);
+        }
+        else if(email.isEmpty ()){
+            mEdtEmail.setError ("Enter the email id");
+            mEdtEmail.setFocusable (true);
+        }
+        else if(!email.matches (Constants.emailPattern)){
+            mEdtEmail.setError ("Invalid email");
+            mEdtEmail.setFocusable (true);
+        }
+        else if(phone_no.isEmpty ()){
+            mEdtPhoneNo.setError ("Enter the phone no");
+            mEdtPhoneNo.setFocusable (true);
+        }
+        else if(phone_no.length ()<=10){
+            mEdtPhoneNo.setError ("Please enter 10 digit no");
+            mEdtPhoneNo.setFocusable (true);
+        }
+        else if(contactPerson.isEmpty ()){
+            mEdtContactPerson.setError ("Enter the contact person");
+            mEdtContactPerson.setFocusable (true);
+        }
+        else if(state.isEmpty ()){
+            mEdtState.setError ("Enter the state");
+            mEdtState.setFocusable (true);
+        }
+        else if(city.isEmpty ()){
+            mEdtCity.setError ("Enter the city");
+            mEdtCity.setFocusable (true);
+        }
+        else if(address.isEmpty ()){
+            mEdtAddress.setError ("Enter the address");
+            mEdtAddress.setFocusable (true);
+        }
+        else if(!radioOffline.isChecked () && radioOnline.isChecked ()){
+            radioOffline.setError ("Please select one");
+            radioOnline.setError ("Please select one");
+        }
+        else {
+            MyAsyncTask myAsyncTask=new MyAsyncTask ();
+            myAsyncTask.execute (company_name,address,email,phone_no,state,website,contactPerson,contactDesignation,city,FAX_Number,PAN_Number,GST_Number,Note,userID,userName,CurrentDate,CurrentTime,radioString);
+        }
     }
 
     private void checkShredPreference () {

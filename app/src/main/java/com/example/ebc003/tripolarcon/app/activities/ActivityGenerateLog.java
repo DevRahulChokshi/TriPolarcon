@@ -189,7 +189,6 @@ public class ActivityGenerateLog extends AppCompatActivity implements View.OnCli
                         .progress(true, 0)
                         .progressIndeterminateStyle(false)
                         .show();
-
                 addLogDetails();
                 break;
             }
