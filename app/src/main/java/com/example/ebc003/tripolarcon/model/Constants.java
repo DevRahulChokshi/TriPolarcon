@@ -56,6 +56,7 @@ public class Constants {
     public static final String URL_EDIT_TRADING_SERVICES_DETAILS="http://www.ebusinesscanvas.com/tripolarcon/android_app/edit_trading_services.php";
     public static final String URL_SHOW_TODAY_PLAN="http://www.ebusinesscanvas.com/tripolarcon/android_app/show_today_plan.php";
     public static final String URL_SHOW_TOMORROW_PLAN="http://www.ebusinesscanvas.com/tripolarcon/android_app/show_tomorrow_plan.php";
+    public static final String URL_SHOW_PENDING_ENQUIRY="http://www.ebusinesscanvas.com/tripolarcon/android_app/schedule_pending.php";
     public static final String server_image_path = "http://www.ebusinesscanvas.com/tripolarcon/android_app/AddLogData/";
 
     public static final String ORDER_DATE="order_date";
@@ -129,4 +130,6 @@ public class Constants {
     public static final String TRADING_SERVICE_REMARK = "trading_service_remark";
 
     public static final String URL_NOTIFICATION_DETAILS = "http://www.ebusinesscanvas.com/tripolarcon/android_app/notification_details.php";
+    public static final String STATUS_ONLINE = "online";
+    public static final String STATUS_OFFLINE = "offline";
 }

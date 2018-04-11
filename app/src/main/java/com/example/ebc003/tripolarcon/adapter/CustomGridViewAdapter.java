@@ -1,7 +1,11 @@
 package com.example.ebc003.tripolarcon.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,6 +50,7 @@ public class CustomGridViewAdapter extends BaseAdapter {
         return 0;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public View getView(int i, View convertView, ViewGroup parent) {
         View gridViewAndroid;
@@ -61,6 +66,20 @@ public class CustomGridViewAdapter extends BaseAdapter {
             TextView txtDetailsItem = gridViewAndroid.findViewById(R.id.txtDetailsItem);
             ImageView imageViewAndroid = gridViewAndroid.findViewById(R.id.imgItem);
 
+            switch(i) {
+                case 0:
+                    gridViewAndroid.setBackgroundColor (Color.parseColor ("#2196F3"));
+                    break;
+                case 1:
+                    gridViewAndroid.setBackgroundColor (Color.parseColor ("#4CAF50"));
+                    break;
+                case 2:
+                    gridViewAndroid.setBackgroundColor (Color.parseColor ("#009688"));
+                    break;
+                case 3:
+                    gridViewAndroid.setBackgroundColor (Color.parseColor ("#B71C1C"));
+                    break;
+            }
             txtCounterItem.setText(gridViewStringCounterItem.get (i));
             txtTitleItem.setText(gridViewStringTitleItem[i]);
             imageViewAndroid.setImageResource(gridViewImageId[i]);

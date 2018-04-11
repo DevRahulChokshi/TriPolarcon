@@ -32,17 +32,7 @@ public class LeadListAdapter extends RecyclerView.Adapter<LeadListAdapter.MyView
     ArrayList<LeadListData> listData,players;
     LayoutInflater layoutInflater;
     CustomFilter filter;
-
-    private String strCompanyName;
-    private String strCompanyEmail;
-    private String strCompanyWebsite;
-    private String strOfficeNumber;
-    private String strCompanyAddress;
-    private String strFaxNumber;
-    private String strPersonDesignation;
-    private String strPersonName;
-    private String strPersonNumber;
-    private String strNote;
+    String status;
 
     private static final String TAG=LeadListAdapter.class.getSimpleName ();
 
@@ -74,13 +64,19 @@ public class LeadListAdapter extends RecyclerView.Adapter<LeadListAdapter.MyView
                 holder.txtUserEmail.setText (leadListData.getTxtUserEmail ());
                 holder.txtCompanyId.setText (leadListData.getTxtCompanyId ());
 
+
                 Typeface regularFont=Typeface.createFromAsset (context.getAssets (),"fonts/OpenSansCondensed-Light.ttf");
                 Typeface boldFont=Typeface.createFromAsset (context.getAssets (),"fonts/OpenSansCondensed-Bold.ttf");
                 holder.txtUser.setTypeface (boldFont);
                 holder.txtLeadTitle.setTypeface (boldFont);
                 holder.txtUserEmail.setTypeface (regularFont);
                 holder.txtCompanyId.setTypeface (regularFont);
-                holder.txtUser.setBackground (context.getDrawable (R.drawable.circle_user));
+                status=leadListData.getTxtSource ();
+                if (status.equalsIgnoreCase (Constants.STATUS_ONLINE)){
+                    holder.txtUser.setBackground (context.getDrawable (R.drawable.circle_user_green));
+                }else {
+                    holder.txtUser.setBackground (context.getDrawable (R.drawable.circle_user_red));
+                }
             }
             else {
                 Toast.makeText (context.getApplicationContext (),"Data List is null",Toast.LENGTH_LONG).show ();

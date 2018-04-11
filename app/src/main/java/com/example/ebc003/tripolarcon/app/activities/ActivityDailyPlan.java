@@ -37,6 +37,7 @@ public class ActivityDailyPlan extends AppCompatActivity implements TabLayout.On
         ButterKnife.bind (this);
         tabLayout.addTab(tabLayout.newTab().setText("Today Plan"));
         tabLayout.addTab(tabLayout.newTab().setText("Tomorrow Plan"));
+        tabLayout.addTab(tabLayout.newTab().setText("Pending ENQUIRY"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         PagerDailyPlan adapter = new PagerDailyPlan (getSupportFragmentManager (), tabLayout.getTabCount());

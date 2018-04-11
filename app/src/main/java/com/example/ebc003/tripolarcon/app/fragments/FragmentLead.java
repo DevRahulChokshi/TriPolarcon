@@ -153,6 +153,7 @@ public class FragmentLead extends Fragment implements SearchView.OnQueryTextList
                                         String ContactPersonNumber=jsonArray.getJSONObject (i).getString ("con_per_no");
                                         String ContactPersonDesignation=jsonArray.getJSONObject (i).getString ("con_per_des");
                                         String Note=jsonArray.getJSONObject (i).getString ("cust_note");
+                                        String Source=jsonArray.getJSONObject (i).getString ("source");
 
                                         String fistLatter=CompanyName;
                                         char first=fistLatter.charAt (0);
@@ -169,6 +170,7 @@ public class FragmentLead extends Fragment implements SearchView.OnQueryTextList
                                         leadListData.setStrPersonNumber (ContactPersonNumber);
                                         leadListData.setStrPersonDesignation (ContactPersonDesignation);
                                         leadListData.setStrNote (Note);
+                                        leadListData.setTxtSource (Source);
                                         listData.add (leadListData);
                                     }catch (JSONException e){
                                         e.printStackTrace ();

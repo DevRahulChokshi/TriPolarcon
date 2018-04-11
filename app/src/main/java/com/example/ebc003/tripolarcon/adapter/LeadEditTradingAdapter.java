@@ -3,6 +3,8 @@ package com.example.ebc003.tripolarcon.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,6 +42,7 @@ public class LeadEditTradingAdapter extends RecyclerView.Adapter<LeadEditTrading
     private String strPersonName;
     private String strPersonNumber;
     private String strNote;
+    private String mStrSource;
 
     private static final String TAG=LeadListAdapter.class.getSimpleName ();
 
@@ -59,6 +62,7 @@ public class LeadEditTradingAdapter extends RecyclerView.Adapter<LeadEditTrading
         return myViewHolder;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void onBindViewHolder (final MyViewHolder holder, int position) {
         if (players !=null){
@@ -75,6 +79,12 @@ public class LeadEditTradingAdapter extends RecyclerView.Adapter<LeadEditTrading
                 holder.txtLeadTitle.setTypeface (boldFont);
                 holder.txtUserEmail.setTypeface (regularFont);
                 holder.txtCompanyId.setTypeface (regularFont);
+                mStrSource=leadListData.getTxtSource ();
+                if (mStrSource.equalsIgnoreCase (Constants.STATUS_ONLINE)){
+                    holder.txtUser.setBackground (context.getDrawable (R.drawable.circle_user_green));
+                }else {
+                    holder.txtUser.setBackground (context.getDrawable (R.drawable.circle_user_red));
+                }
             }
             else {
                 Toast.makeText (context.getApplicationContext (),"Data List is null",Toast.LENGTH_LONG).show ();

@@ -21,16 +21,26 @@ public class LeadListData {
     public String strPersonNumber;
     public String strPersonDesignation;
     public String strNote;
+    public String txtStatus;
+    public String txtSource;
 
-    public LeadListData () {
+
+    public String getTxtSource () {
+        return txtSource;
     }
 
-//    public LeadListData (String txtUser, String txtLeadTitle, String txtUserEmail, Boolean isCheckState) {
-//        this.txtUser = txtUser;
-//        this.txtLeadTitle = txtLeadTitle;
-//        this.txtUserEmail = txtUserEmail;
-//        this.isCheckState = isCheckState;
-//    }
+    public void setTxtSource (String txtSource) {
+        this.txtSource = txtSource;
+    }
+
+    public String getTxtStatus () {
+        return txtStatus;
+    }
+
+    public void setTxtStatus (String txtStatus) {
+        this.txtStatus = txtStatus;
+    }
+
 
     public String getTxtCompanyId () {
         return txtCompanyId;

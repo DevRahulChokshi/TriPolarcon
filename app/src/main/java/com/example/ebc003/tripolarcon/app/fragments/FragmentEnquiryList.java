@@ -192,29 +192,17 @@ public class FragmentEnquiryList extends Fragment implements SearchView.OnQueryT
                                         Log.i (TAG,"COMPANY ID:"+CompanyID);
                                         String CompanyName=jsonArray.getJSONObject (i).getString ("name");
                                         String CompanyEmail=jsonArray.getJSONObject (i).getString ("email");
-                                        String OfficePhoneNumber=jsonArray.getJSONObject (i).getString ("cust_comp_phn");
-                                        String Address=jsonArray.getJSONObject (i).getString ("invoicing_address");
-                                        String FaxNumber=jsonArray.getJSONObject (i).getString ("cust_comp_fax");
-                                        String ContactPersonName=jsonArray.getJSONObject (i).getString ("contact_person");
-                                        String ContactPersonNumber=jsonArray.getJSONObject (i).getString ("con_per_no");
-                                        String ContactPersonDesignation=jsonArray.getJSONObject (i).getString ("con_per_des");
-                                        String Note=jsonArray.getJSONObject (i).getString ("cust_note");
+                                        String source=jsonArray.getJSONObject (i).getString ("source");
 
-                                        String fistLatter=CompanyName;
-                                        char first=fistLatter.charAt (0);
+                                        char first= CompanyName.charAt (0);
                                         String firstData= String.valueOf (first);
 
                                         leadListData.setTxtUserEmail (CompanyEmail);
                                         leadListData.setTxtCompanyId (CompanyID);
                                         leadListData.setTxtLeadTitle (CompanyName);
                                         leadListData.setTxtUser (firstData);
-                                        leadListData.setStrOfficeNumber (OfficePhoneNumber);
-                                        leadListData.setStrAddress (Address);
-                                        leadListData.setStrFaxNumber (FaxNumber);
-                                        leadListData.setStrPersonName (ContactPersonName);
-                                        leadListData.setStrPersonNumber (ContactPersonNumber);
-                                        leadListData.setStrPersonDesignation (ContactPersonDesignation);
-                                        leadListData.setStrNote (Note);
+                                        leadListData.setTxtSource (source);
+
                                         listData.add (leadListData);
                                     }catch (JSONException e){
                                         e.printStackTrace ();

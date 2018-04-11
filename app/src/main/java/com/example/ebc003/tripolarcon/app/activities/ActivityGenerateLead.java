@@ -166,7 +166,7 @@ public class ActivityGenerateLead extends AppCompatActivity {
             mEdtPhoneNo.setError ("Enter the phone no");
             mEdtPhoneNo.setFocusable (true);
         }
-        else if(phone_no.length ()<=10){
+        else if(phone_no.length ()<10){
             mEdtPhoneNo.setError ("Please enter 10 digit no");
             mEdtPhoneNo.setFocusable (true);
         }

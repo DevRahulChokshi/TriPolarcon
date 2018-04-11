@@ -8,6 +8,9 @@ import android.os.Handler;
 import android.os.Looper;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.GravityCompat;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -80,9 +83,29 @@ public class FragmentDashboard extends Fragment {
         androidGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
-            public void onItemClick(AdapterView<?> parent, View view,
-                                    int i, long id) {
-                Toast.makeText(getContext (), "GridView Item: " + gridViewString[+i], Toast.LENGTH_LONG).show();
+            public void onItemClick(AdapterView<?> parent, View view, int i, long id) {
+              //  Toast.makeText(getContext (), "GridView Item: " + gridViewString[+i], Toast.LENGTH_LONG).show();
+                String viewString=gridViewString[+i];
+                switch (viewString){
+                    case "Generated Lead":{
+                        FragmentLead fragmentLead =new FragmentLead ();
+                        FragmentManager manager=getFragmentManager ();
+                        FragmentTransaction transaction=manager.beginTransaction ();
+                        transaction.setCustomAnimations(R.animator.fade_in_slow, R.animator.fade_out_quick);
+                        transaction.replace (R.id.fragment_container, fragmentLead,Constants.FRAG_LEADS);
+                        transaction.commit ();
+                        break;
+                    }
+                    case "Converted Lead":{
+                        break;
+                    }
+                    case "Pending Lead":{
+                        break;
+                    }
+                    case "Lost Lead":{
+                        break;
+                    }
+                }
             }
         });
 
@@ -106,10 +129,6 @@ public class FragmentDashboard extends Fragment {
         MenuInflater menuInflater=new MenuInflater (getContext ());
 
         menuInflater.inflate (R.menu.main_menu,menu);
-
-//        MenuItem item = menu.findItem(R.id.action_search);
-//
-//        item.setVisible (false);
     }
 
     @Override

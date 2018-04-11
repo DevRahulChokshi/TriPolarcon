@@ -4,6 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
+import com.example.ebc003.tripolarcon.app.fragments.FragmentPendingEnquiry;
 import com.example.ebc003.tripolarcon.app.fragments.FragmentTodayPlan;
 import com.example.ebc003.tripolarcon.app.fragments.FragmentTomorrowPlan;
 
@@ -27,6 +28,8 @@ public class PagerDailyPlan extends FragmentStatePagerAdapter {
                 return new FragmentTodayPlan ();
             case 1:
                 return new FragmentTomorrowPlan ();
+            case 2:
+                return new FragmentPendingEnquiry ();
             default:
                 return null;
         }
