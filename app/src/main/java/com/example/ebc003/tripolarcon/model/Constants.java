@@ -132,4 +132,5 @@ public class Constants {
     public static final String URL_NOTIFICATION_DETAILS = "http://www.ebusinesscanvas.com/tripolarcon/android_app/notification_details.php";
     public static final String STATUS_ONLINE = "online";
     public static final String STATUS_OFFLINE = "offline";
+    public static final String TAG_PENDING_ENQUIRY = "PendingEnquiry";
 }

@@ -43,6 +43,7 @@ public class ActivityDailyPlan extends AppCompatActivity implements TabLayout.On
         PagerDailyPlan adapter = new PagerDailyPlan (getSupportFragmentManager (), tabLayout.getTabCount());
 
         viewPager.setAdapter(adapter);
+        checkIntentItem();
         tabLayout.setOnTabSelectedListener(this);
 
         setUpToolbar();
@@ -54,6 +55,26 @@ public class ActivityDailyPlan extends AppCompatActivity implements TabLayout.On
                 finish ();
             }
         });
+    }
+
+    private void checkIntentItem () {
+        Intent intent=getIntent ();
+        if (intent!=null){
+            Bundle bundle=intent.getExtras ();
+            if (bundle!=null){
+                String status_enquiry=bundle.getString (Constants.TAG_PENDING_ENQUIRY);
+                if (status_enquiry.equals ("PENDING_ENQUIRY")){
+                    viewPager.setCurrentItem (3);
+                }else {
+                    Log.i (TAG,"Does not equals");
+                }
+            }else {
+                Log.i (TAG,"Bundle is Null");
+            }
+        }
+        else {
+            Log.i (TAG,"Intent is Null");
+        }
     }
 
     private void setUpToolbar () {

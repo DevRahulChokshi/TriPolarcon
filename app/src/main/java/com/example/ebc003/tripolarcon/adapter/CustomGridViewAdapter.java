@@ -74,10 +74,10 @@ public class CustomGridViewAdapter extends BaseAdapter {
                     gridViewAndroid.setBackgroundColor (Color.parseColor ("#4CAF50"));
                     break;
                 case 2:
-                    gridViewAndroid.setBackgroundColor (Color.parseColor ("#009688"));
+                    gridViewAndroid.setBackgroundColor (Color.parseColor ("#B71C1C"));
                     break;
                 case 3:
-                    gridViewAndroid.setBackgroundColor (Color.parseColor ("#B71C1C"));
+                    gridViewAndroid.setBackgroundColor (Color.parseColor ("#009688"));
                     break;
             }
             txtCounterItem.setText(gridViewStringCounterItem.get (i));

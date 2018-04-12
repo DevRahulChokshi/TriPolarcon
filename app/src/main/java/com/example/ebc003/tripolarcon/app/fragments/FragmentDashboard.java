@@ -1,7 +1,13 @@
 package com.example.ebc003.tripolarcon.app.fragments;
 
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.BitmapFactory;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -10,7 +16,8 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.GravityCompat;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.TaskStackBuilder;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -21,22 +28,32 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
-import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.ebc003.tripolarcon.R;
 import com.example.ebc003.tripolarcon.adapter.CustomGridViewAdapter;
 import com.example.ebc003.tripolarcon.app.activities.ActivityContainer;
+import com.example.ebc003.tripolarcon.app.activities.ActivityDailyPlan;
 import com.example.ebc003.tripolarcon.app.activities.ActivityLogin;
 import com.example.ebc003.tripolarcon.model.Constants;
 import com.example.ebc003.tripolarcon.model.JSONParser;
+import com.example.ebc003.tripolarcon.model.LogData;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -55,11 +72,13 @@ public class FragmentDashboard extends Fragment {
     String converted_lead;
     String loss_lead;
     String pending_lead;
+    int mNotificationId=101;
+    ArrayList<String> notificationList;
     @BindView (R.id.grid_view_image_text) GridView androidGridView;
 
     ArrayList<String> gridViewStringCointer ;
     String[] gridViewString = {
-            "Generated Lead", "Converted Lead", "Pending Lead", "Lost Lead",
+            "Generated Lead", "Converted Lead", "Lost Lead", "Pending Lead",
     } ;
     int[] gridViewImageId = {
             R.drawable.ic_account_box, R.drawable.ic_assignment_turned_in, R.drawable.ic_assignment_late, R.drawable.ic_restore_page,
@@ -79,6 +98,7 @@ public class FragmentDashboard extends Fragment {
         ButterKnife.bind (this,view);
         checkShredPreference();
         new MyAsyncTask ().execute (user_id);
+        notificationList=new ArrayList<> ();
 
         androidGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
@@ -100,6 +120,9 @@ public class FragmentDashboard extends Fragment {
                         break;
                     }
                     case "Pending Lead":{
+                        Intent intent=new Intent (getContext (),ActivityDailyPlan.class);
+                        intent.putExtra (Constants.TAG_PENDING_ENQUIRY,"PENDING_ENQUIRY");
+                        startActivity (intent);
                         break;
                     }
                     case "Lost Lead":{
@@ -109,7 +132,81 @@ public class FragmentDashboard extends Fragment {
             }
         });
 
+        checkNotificationList();
+
         return view;
+    }
+
+    private void checkNotificationList () {
+        //Creating a string request
+        StringRequest stringRequest = new StringRequest (Request.Method.POST,Constants.URL_SHOW_PENDING_ENQUIRY,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        JSONArray jsonArray = null;
+                        try {
+                            if (!response.isEmpty ()){
+                                //Parsing the fetched Json String to JSON Object
+                                jsonArray = new JSONArray (response);
+                                for (int i=0;i<=jsonArray.length ();i++){
+                                    try{
+                                        notificationList.add (jsonArray.getJSONObject (i).getString (Constants.USER_ID_NAME));
+                                    }catch (JSONException e){
+                                        e.printStackTrace ();
+                                    }
+                                }
+                            }
+                            checkNotification ();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                    }
+                })
+        {
+            @Override
+            protected Map<String, String> getParams () {
+                Map<String,String> stringMap=new HashMap<> ();
+                stringMap.put (Constants.USER_ID,user_id);
+                return stringMap;
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(getContext ());
+        requestQueue.add(stringRequest);
+    }
+
+    private void checkNotification () {
+        int size=notificationList.size ();
+        Log.i (TAG,"SIZE:-"+size);
+
+        for (int i=0;i<notificationList.size ();i++){
+            String s=notificationList.get (i);
+            NotificationCompat.Builder mBuilder =
+                    new NotificationCompat.Builder(getContext ())
+                            .setSmallIcon(R.mipmap.ic_launcher)
+                            .setLargeIcon(BitmapFactory.decodeResource(getActivity ().getResources(),
+                                    R.mipmap.ic_launcher))
+                            .setContentTitle("You Generated log for")
+                            .setContentText(s)
+                            .setColor (getResources ().getColor (R.color.white));
+            Intent resultIntent = new Intent(getContext (),ActivityContainer.class);
+            TaskStackBuilder stackBuilder = TaskStackBuilder.create(getActivity ());
+            stackBuilder.addParentStack(ActivityDailyPlan.class);
+            stackBuilder.addNextIntent(resultIntent);
+            PendingIntent resultPendingIntent =
+                    stackBuilder.getPendingIntent(
+                            0,
+                            PendingIntent.FLAG_UPDATE_CURRENT
+                    );
+            mBuilder.setContentIntent(resultPendingIntent);
+            NotificationManager mNotificationManager =
+                    (NotificationManager) getActivity ().getSystemService(Context.NOTIFICATION_SERVICE);
+            mNotificationManager.notify(mNotificationId, mBuilder.build());
+        }
     }
 
     private void checkShredPreference () {
@@ -184,11 +281,6 @@ public class FragmentDashboard extends Fragment {
                     gridViewStringCointer.add (converted_lead);
                     gridViewStringCointer.add (loss_lead);
                     gridViewStringCointer.add (pending_lead);
-
-                    Log.i (TAG,generated_lead);
-                    Log.i (TAG,converted_lead);
-                    Log.i (TAG,loss_lead);
-                    Log.i (TAG,pending_lead);
 
                 Handler refresh = new Handler (Looper.getMainLooper());
                 refresh.post(new Runnable() {
