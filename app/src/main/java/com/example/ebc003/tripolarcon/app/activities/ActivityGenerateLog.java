@@ -183,12 +183,6 @@ public class ActivityGenerateLog extends AppCompatActivity implements View.OnCli
         int id=item.getItemId ();
         switch (id){
             case R.id.addLog:{
-                materialDialog=new MaterialDialog.Builder(this)
-                        .title(R.string.progress_dialog)
-                        .content(R.string.generate_log)
-                        .progress(true, 0)
-                        .progressIndeterminateStyle(false)
-                        .show();
                 addLogDetails();
                 break;
             }
@@ -496,6 +490,13 @@ public class ActivityGenerateLog extends AppCompatActivity implements View.OnCli
 
             Typeface regularFont=Typeface.createFromAsset (getAssets (),"fonts/OpenSansCondensed-Light.ttf");
             mEdtRemark.setTypeface (regularFont);
+
+            materialDialog=new MaterialDialog.Builder(this)
+                    .title(R.string.progress_dialog)
+                    .content(R.string.generate_log)
+                    .progress(true, 0)
+                    .progressIndeterminateStyle(false)
+                    .show();
 
             AddLogAsyncTask addLogAsyncTask=new AddLogAsyncTask (getApplicationContext (),materialDialog);
             Log.i (TAG,"AsyncTask:-"+mCurrentPhotoPath);

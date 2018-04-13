@@ -97,13 +97,6 @@ public class ActivityLogin extends AppCompatActivity {
 
     public void onHomePage (View view) {
 
-        MaterialDialog materialDialog=new MaterialDialog.Builder(this)
-                .title(R.string.progress_dialog)
-                .content(R.string.please_wait)
-                .progress(true, 0)
-                .progressIndeterminateStyle(false)
-                .show();
-
         String strEmail=mEdtEmail.getText ().toString ();
         String strPassword=mEdtPassword.getText ().toString ();
         // Check patter for email id
@@ -132,6 +125,13 @@ public class ActivityLogin extends AppCompatActivity {
                 broadcastMaster.setSnackBarMessage (status,false);
                 Toast.makeText (this,"Check Internet Connection..",Toast.LENGTH_SHORT).show ();
             }else {
+
+                MaterialDialog materialDialog=new MaterialDialog.Builder(this)
+                        .title(R.string.progress_dialog)
+                        .content(R.string.please_wait)
+                        .progress(true, 0)
+                        .progressIndeterminateStyle(false)
+                        .show();
                 new MyAsyncTask ().execute (strEmail,strPassword);
             }
         }

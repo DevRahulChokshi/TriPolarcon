@@ -55,8 +55,10 @@ public class AddLogAsyncTask  extends AsyncTask<String,Void,Boolean>{
         String mCompanyName=strings[12];
         String mUserName=strings[13];
         String mFileName=strings[14];
-        String filePath=Constants.server_image_path.concat (mFileName).trim ();
-
+        String filePath=null;
+        if (mFileName!=null){
+            filePath=Constants.server_image_path.concat (mFileName).trim ();
+        }
         List<NameValuePair> listData=new ArrayList<> ();
         listData.add (new BasicNameValuePair (Constants.LOG_SCHEDULE,mSchedule));
         listData.add (new BasicNameValuePair (Constants.LOG_TIME,mLogTime));

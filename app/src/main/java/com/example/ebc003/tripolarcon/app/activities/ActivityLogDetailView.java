@@ -68,7 +68,6 @@ public class ActivityLogDetailView extends AppCompatActivity {
                 Log.i (TAG,mCallType);
                 Log.i (TAG,mStatus);
                 Log.i (TAG,mGeneratedName);
-                Log.i (TAG,mFilePath);
             }else {
                 Log.i (TAG,"Bundle is null");
             }
@@ -76,7 +75,11 @@ public class ActivityLogDetailView extends AppCompatActivity {
             Log.i (TAG,"Intent is null");
         }
 
-        Picasso.get().load(mFilePath).into(imageView);
+        if (mFilePath.isEmpty()){
+            Picasso.get().load(R.drawable.ic_profile).into(imageView);
+        }else {
+            Picasso.get().load(mFilePath).error(R.drawable.ic_profile).into(imageView);
+        }
         progressBar.setVisibility (View.GONE);
         mLogSchedule.setText (mScheduleTime);
         mLogDate.setText (mLogDateTime);

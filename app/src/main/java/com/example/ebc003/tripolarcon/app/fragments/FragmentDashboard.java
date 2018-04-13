@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.BitmapFactory;
 import android.media.RingtoneManager;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -28,6 +30,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -97,14 +100,19 @@ public class FragmentDashboard extends Fragment {
 
         ButterKnife.bind (this,view);
         checkShredPreference();
-        new MyAsyncTask ().execute (user_id);
+
+        if (isNetworkAvailable()){
+            new MyAsyncTask ().execute (user_id);
+        }else {
+            Toast.makeText(getContext(),"There is no internet",Toast.LENGTH_SHORT).show();
+        }
+
         notificationList=new ArrayList<> ();
 
         androidGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int i, long id) {
-              //  Toast.makeText(getContext (), "GridView Item: " + gridViewString[+i], Toast.LENGTH_LONG).show();
                 String viewString=gridViewString[+i];
                 switch (viewString){
                     case "Generated Lead":{
@@ -135,6 +143,12 @@ public class FragmentDashboard extends Fragment {
         checkNotificationList();
 
         return view;
+    }
+
+    private boolean isNetworkAvailable(){
+        ConnectivityManager connectivityManager= (ConnectivityManager) getContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo=connectivityManager.getActiveNetworkInfo();
+        return networkInfo !=null && networkInfo.isConnected();
     }
 
     private void checkNotificationList () {
@@ -232,7 +246,7 @@ public class FragmentDashboard extends Fragment {
     public boolean onOptionsItemSelected (MenuItem item) {
         int id=item.getItemId ();
         switch (id){
-            case R.id.menu_logout:{
+            case R.id.menu_logout:{ 
                 clearSharedPreference();
                 Intent intent=new Intent (getContext (),ActivityLogin.class);
                 startActivity (intent);
