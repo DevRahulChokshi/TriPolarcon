@@ -6,10 +6,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.BitmapFactory;
-import android.media.RingtoneManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -45,7 +43,6 @@ import com.example.ebc003.tripolarcon.app.activities.ActivityDailyPlan;
 import com.example.ebc003.tripolarcon.app.activities.ActivityLogin;
 import com.example.ebc003.tripolarcon.model.Constants;
 import com.example.ebc003.tripolarcon.model.JSONParser;
-import com.example.ebc003.tripolarcon.model.LogData;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -199,15 +196,8 @@ public class FragmentDashboard extends Fragment {
 
         for (int i=0;i<notificationList.size ();i++){
             String s=notificationList.get (i);
-            NotificationCompat.Builder mBuilder =
-                    new NotificationCompat.Builder(getContext ())
-                            .setSmallIcon(R.mipmap.ic_launcher)
-                            .setLargeIcon(BitmapFactory.decodeResource(getActivity ().getResources(),
-                                    R.mipmap.ic_launcher))
-                            .setContentTitle("You Generated log for")
-                            .setContentText(s)
-                            .setColor (getResources ().getColor (R.color.white));
-            Intent resultIntent = new Intent(getContext (),ActivityContainer.class);
+
+            Intent resultIntent = new Intent(getContext (),ActivityDailyPlan.class);
             TaskStackBuilder stackBuilder = TaskStackBuilder.create(getActivity ());
             stackBuilder.addParentStack(ActivityDailyPlan.class);
             stackBuilder.addNextIntent(resultIntent);
@@ -216,10 +206,22 @@ public class FragmentDashboard extends Fragment {
                             0,
                             PendingIntent.FLAG_UPDATE_CURRENT
                     );
+
+            NotificationCompat.Builder mBuilder =
+                    new NotificationCompat.Builder(getContext ())
+                            .setSmallIcon(R.mipmap.ic_launcher)
+                            .setLargeIcon(BitmapFactory.decodeResource(getActivity ().getResources(),
+                                    R.mipmap.ic_launcher))
+                            .setContentIntent(resultPendingIntent)
+                            .setContentTitle("You Generated log for")
+                            .setContentText(s)
+                            .setColor (getResources ().getColor (R.color.white));
+
             mBuilder.setContentIntent(resultPendingIntent);
             NotificationManager mNotificationManager =
                     (NotificationManager) getActivity ().getSystemService(Context.NOTIFICATION_SERVICE);
             mNotificationManager.notify(mNotificationId, mBuilder.build());
+
         }
     }
 

@@ -83,42 +83,6 @@ public class ActivityContainer extends AppCompatActivity  implements MyAdapterIt
         drawerFragment.setUpDrawer(R.id.nav_drwr_fragment, drawerLayout, mMainToolbar);
     }
 
-//    @Override
-//    public boolean onCreateOptionsMenu (Menu menu) {
-//        getMenuInflater ().inflate (R.menu.main_menu,menu);
-//        MenuItem searchItem = menu.findItem(R.id.action_search);
-//
-//        SearchManager searchManager = (SearchManager) ActivityContainer.this.getSystemService(Context.SEARCH_SERVICE);
-//
-//        SearchView searchView = null;
-//        if (searchItem != null) {
-//            searchView = (SearchView) searchItem.getActionView();
-//        }
-//        if (searchView != null) {
-//            searchView.setSearchableInfo(searchManager.getSearchableInfo(ActivityContainer.this.getComponentName()));
-//        }
-//        return super.onCreateOptionsMenu (menu);
-//    }
-
-//    @Override
-//    public boolean onOptionsItemSelected (MenuItem item) {
-//        switch (item.getItemId ()){
-//            case R.id.menu_logout: {
-//                clearSharedPreference();
-//
-//                Intent intent=new Intent (this,ActivityLogin.class);
-//                startActivity (intent);
-//                finish ();
-//            }
-//
-//        }
-//        return super.onOptionsItemSelected (item);
-//    }
-//
-//    private void clearSharedPreference () {
-//
-//    }
-
     @Override
     protected void onResume () {
         super.onResume ();
@@ -182,17 +146,6 @@ public class ActivityContainer extends AppCompatActivity  implements MyAdapterIt
                 bundle.putString (Constants.USER_ID,userID);
                 startActivity (intent,bundle);
                 drawerLayout.closeDrawer (GravityCompat.START);
-
-//                ActivityDailyPlan dailyPlan=new ActivityDailyPlan ();
-////                FragmentDailyPlan dailyPlanFragment=new FragmentDailyPlan ();
-//                FragmentTransaction transaction=manager.beginTransaction ();
-////                transaction.replace (R.id.fragment_container,dailyPlanFragment,Constants.FRAG_DAILY_PLAN);
-//                Bundle bundle=new Bundle ();
-//                bundle.putString (Constants.USER_ID,userID);
-////                dailyPlanFragment.setArguments (bundle);
-//                transaction.commit ();
-//                drawerLayout.closeDrawer (GravityCompat.START);
-
                 break;
             }
         }

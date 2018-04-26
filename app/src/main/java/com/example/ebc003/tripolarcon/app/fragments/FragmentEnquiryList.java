@@ -18,7 +18,9 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -56,6 +58,7 @@ public class FragmentEnquiryList extends Fragment implements SearchView.OnQueryT
 //    @BindView (R.id.mSearch) SearchView searchView;
     SearchView searchView;
     LeadListAdapter leadListAdapter;
+    Button mBtnFilter;
 
 
     private RecyclerView.LayoutManager layoutManager;
@@ -109,6 +112,7 @@ public class FragmentEnquiryList extends Fragment implements SearchView.OnQueryT
         layoutManager=new LinearLayoutManager (view.getContext());
         convertedLeadList.setLayoutManager (layoutManager);
 
+
         return view;
     }
 
@@ -139,6 +143,16 @@ public class FragmentEnquiryList extends Fragment implements SearchView.OnQueryT
     @Override
     public void onResume () {
         super.onResume ();
+
+        mBtnFilter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Toast.makeText(getContext(),"Hello World!",Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
         Log.i (TAG,"onResume");
     }
 

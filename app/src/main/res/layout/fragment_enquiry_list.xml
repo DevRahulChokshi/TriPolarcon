@@ -11,6 +11,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:indeterminate="true" />
+
+    <Button
+        android:id="@+id/btnFilter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="FILTER"/>
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerConvertedLead"
         android:layout_width="match_parent"
